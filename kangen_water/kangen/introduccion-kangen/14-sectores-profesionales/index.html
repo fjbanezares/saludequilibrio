@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sectores Profesionales | Agua Kangen</title>
+    <meta name="description" content="Descubre cómo el Agua Kangen ha revolucionado clínicas dentales, centros de reproducción asistida, hostelería, spas y estética en España.">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* ===== MODULE 14: SECTORES PROFESIONALES ===== */
+
+        .hero-pro {
+            position: relative;
+            padding: 100px 0 80px;
+            background: linear-gradient(135deg, rgba(15,23,42,1) 0%, rgba(30,58,138,0.2) 100%);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            overflow: hidden;
+        }
+
+        .sector-section {
+            margin: 6rem 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (min-width: 968px) {
+            .sector-section {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .sector-img-container {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+        }
+
+        .sector-img-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transform: scale(1.02); /* Hide any tiny AI watermark if present */
+        }
+
+        .sector-img-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15,23,42,0.8), transparent 50%);
+            pointer-events: none;
+        }
+
+        .sector-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .pro-badge {
+            display: inline-block;
+            background: rgba(59,130,246,0.1);
+            border: 1px solid rgba(59,130,246,0.3);
+            color: #3b82f6;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .pro-badge.green {
+            background: rgba(16,185,129,0.1);
+            border-color: rgba(16,185,129,0.3);
+            color: #10b981;
+        }
+
+        .detail-card {
+            background: rgba(255,255,255,0.02);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 0 16px 16px 0;
+            margin-top: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .mini-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .mini-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-color);
+        }
+
+        .mini-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Module nav override */
+        .module-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 3rem;
+        }
+
+        .module-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.5);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: var(--transition);
+        }
+
+        .module-nav a:hover {
+            color: #fff;
+            border-color: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-brand">
+                <span class="logo-icon">💧</span>
+                <span class="logo-text">Agua<span>Kangen</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html">← Índice</a>
+                <a href="#bioclinicos">Entorno Clínico</a>
+                <a href="#hosteleria">Alta Hostelería</a>
+                <a href="#wellness">Wellness</a>
+            </div>
+            <button class="mobile-menu-btn" id="menuBtn">☰</button>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <header class="hero-pro">
+        <div class="container relative z-10">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="sep">›</span>
+                <span>Módulo 14</span>
+            </div>
+            <span class="section-label">Más Allá del Hogar</span>
+            <h1 class="subpage-title">
+                Aplicaciones en el<br>
+                <span class="gradient-text">Sector Profesional</span>
+            </h1>
+            <p class="subpage-subtitle">
+                La prueba de que el Agua Kangen no es una moda la encontramos en la adopción masiva 
+                por parte de los sectores más exigentes: desde clínicas de reproducción asistida 
+                y quirófanos dentales, hasta restaurantes con vocación ecológica y spas de lujo.
+            </p>
+        </div>
+    </header>
+
+    <main class="container py-10">
+        
+        <!-- ===== 1. CLINICAL ENVIRONMENT ===== -->
+        <section class="sector-section" id="bioclinicos">
+            <div class="sector-img-container animate-on-scroll">
+                <img src="../assets/clinic.png" alt="Laboratorio clínico de alta precisión, instrumental médico y agua pura">
+                <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; z-index: 10;">
+                    <h3 class="text-white text-2xl font-bold">Bioseguridad y Precisión</h3>
+                </div>
+            </div>
+            
+            <div class="sector-content animate-on-scroll">
+                <span class="pro-badge">Entorno Clínico</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">El Secreto de la <br><span class="gradient-text">Máxima Asépsia</span></h2>
+                
+                <p class="text-slate-400 leading-relaxed mb-6">
+                    En el ámbito médico, el control de las infecciones y la no-toxicidad celular son vitales. 
+                    En España, el uso clínico del <strong>Ácido Hipocloroso (pH 2.5)</strong> generado por 
+                    las máquinas Enagic está ganando un prestigio inmenso frente a los químicos abrasivos tradicionales.
+                </p>
+
+                <div class="detail-card">
+                    <h4 class="font-bold text-white mb-2 flex items-center gap-2"><span class="text-xl">🦷</span> Clínicas Dentales de Vanguardia</h4>
+                    <p class="text-sm text-slate-400">
+                        Reputadas clínicas en España utilizan el pH 2.5 Kangen para la desinfección inmersiva del instrumental quirúrgico. 
+                        Su capacidad bactericida en 30 segundos elimina patógenos sin el olor tóxico ni el residuo abrasivo de los autoclaves químicos tradicionales.
+                    </p>
+                </div>
+
+                <div class="detail-card" style="border-color: #0ea5e9;">
+                    <h4 class="font-bold text-white mb-2 flex items-center gap-2"><span class="text-xl">🧬</span> Reproducción Asistida</h4>
+                    <p class="text-sm text-slate-400">
+                        Uno de los casos más asombrosos proviene de una prestigiosa clínica pionera de reproducción asistida. 
+                        Utilizan el Agua Fuerte Ácida (pH 2.5) para limpiar y esterilizar las placas y entornos de incubación biológica donde se produce <strong>la fecundación del óvulo y el espermatozoide.</strong> 
+                        Los resultados han demostrado que este higienizante 100% libre de químicos tóxicos respeta la viabilidad celular mejor que los detergentes de laboratorio habituales.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 2. HOSPITALITY & WELLNESS ===== -->
+        <section class="sector-section" id="hosteleria">
+            <div class="sector-content order-2 md:order-1 animate-on-scroll">
+                <span class="pro-badge green">Hostelería y Bienestar</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Excelencia en el <br><span style="color: #10b981;">Servicio Sensorial</span></h2>
+                
+                <p class="text-slate-400 leading-relaxed mb-6">
+                    El paladar no engaña, y la piel tampoco. El sector del lujo, la restauración ecológica 
+                    y el bienestar ha adoptado el agua super-alcalina (pH 11.5) y el agua rica en H2 con entusiasmo.
+                </p>
+
+                <div class="detail-card" style="border-color: #10b981;">
+                    <h4 class="font-bold text-white mb-2 flex items-center gap-2"><span class="text-xl">🥗</span> El Caso de Ecocentro (Madrid)</h4>
+                    <p class="text-sm text-slate-400">
+                        Ecocentro, uno de los referentes nacionales en alimentación consciente y ecológica en Madrid, 
+                        conoce el valor de este agua. Tanto es así que comercializan sus propias botellas de litro de 
+                        Agua Kangen a sus clientes en torno a <strong>1 euro la botella</strong>. Una validación absoluta 
+                        de la enorme demanda de agua micro-estructurada en el sector ecológico de prestigio.
+                    </p>
+                </div>
+
+                <div class="detail-card" style="border-color: #8b5cf6;">
+                    <h4 class="font-bold text-white mb-2 flex items-center gap-2"><span class="text-xl">🧖‍♀️</span> Spas y Estética de Alta Gama</h4>
+                    <p class="text-sm text-slate-400">
+                        Los centros de estética han sustituido tónicos micelares de laboratorios carísimos por el 
+                        <strong>Agua de Belleza (pH 6.0)</strong>, generada in situ. Su efecto ligeramente astringente, 
+                        libre de aromas sintéticos, devuelve el manto ácido natural a la piel, siendo el secreto de los 
+                        mejores tratamientos faciales post-peeling.
+                    </p>
+                </div>
+            </div>
+
+            <div class="sector-img-container order-1 md:order-2 animate-on-scroll">
+                <img src="../assets/hospitality.png" alt="Recepción de Spa premium y detalles de un restaurante ecológico Michelin">
+                <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; z-index: 10;">
+                    <h3 class="text-white text-2xl font-bold">Pureza Ecológica</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 3. OTHER SECTORS (GRID) ===== -->
+        <section class="mb-20" id="wellness">
+            <div class="text-center animate-on-scroll">
+                <h2 class="text-2xl font-bold">Integración en Todas Partes</h2>
+            </div>
+            <div class="grid-3 animate-on-scroll">
+                <div class="mini-card">
+                    <div class="mini-icon">🏋️‍♂️</div>
+                    <h4 class="font-bold mb-2">Gimnasios y Alto Rendimiento</h4>
+                    <p class="text-sm text-slate-400">Atletas de élite evitan la fatiga muscular gracias a la capacidad del Hidrógeno Molecular de neutralizar el ácido láctico intracelular durante el ejercicio explosivo.</p>
+                </div>
+                <div class="mini-card">
+                    <div class="mini-icon">👨‍🍳</div>
+                    <h4 class="font-bold mb-2">Restaurantes Biológicos</h4>
+                    <p class="text-sm text-slate-400">Chefs usan el pH 11.5 de Kangen para extraer profundamente el sabor de los caldos y el té, y para lavar los pesticidas invisibles de frutas y verduras frescas antes de servirlas.</p>
+                </div>
+                <div class="mini-card">
+                    <div class="mini-icon">🌱</div>
+                    <h4 class="font-bold mb-2">Agricultura Urbana</h4>
+                    <p class="text-sm text-slate-400">Germinados y huertos urbanos de alta rotación utilizan los protocolos de pH Kangen para estimular el enraizamiento rápido y evitar proliferación de hongos sin fungicidas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== MODULE NAVIGATION ===== -->
+        <section style="padding: 40px 0;">
+            <div class="module-nav">
+                <a href="../13-lavado-cerebro/index.html">← Módulo 13: Lavado de Cerebro</a>
+                <a href="../index.html">Índice General</a>
+                <a href="../15-ukon-curcuma/index.html">Siguiente: Ukon (Cúrcuma) →</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                💧 Agua<span style="color: var(--accent);">Kangen</span> — Módulo 14
+            </div>
+            <p class="footer-copy">© 2026 — Distribuidor Independiente Enagic. Todos los derechos reservados.</p>
+            <div class="footer-nav">
+                <a href="../index.html">Inicio</a>
+                <a href="../index.html#modulos">Módulos</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+</html>

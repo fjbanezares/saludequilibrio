@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Carpenter y Certificaciones — Respaldo Médico y Regulatorio | Agua Kangen</title>
+    <meta name="description" content="Dr. Michael Carpenter, certificaciones ISO 13485, reconocimiento FDA y la historia de +48 años de Enagic fabricando dispositivos médicos de ionización de agua en Japón.">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* ===== MODULE 06 — DR. CARPENTER & CERTIFICATIONS ===== */
+
+        /* Bio Card */
+        .bio-hero {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin: 3rem 0;
+        }
+
+        .bio-portrait {
+            border-radius: 24px;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+            position: sticky;
+            top: 120px;
+        }
+
+        .bio-portrait img {
+            width: 100%;
+            display: block;
+        }
+
+        .bio-details h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .bio-details .bio-title {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1rem;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .bio-details p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .credentials-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .credentials-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 0.6rem 0;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+
+        .credentials-list li .cred-icon {
+            color: var(--accent);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* Certification Cards */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .cert-card {
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .cert-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .cert-iso::before { background: linear-gradient(90deg, #f59e0b, #d97706); }
+        .cert-fda::before { background: linear-gradient(90deg, #0088ff, #00d2ff); }
+        .cert-wqa::before { background: linear-gradient(90deg, #00e5a0, #14b8a6); }
+
+        .cert-card .cert-badge {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .cert-card h4 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-card .cert-code {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 4px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .cert-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+            padding-left: 50px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 18px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-water);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 1.5rem 0 1.5rem 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: 1.8rem;
+            width: 14px;
+            height: 14px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 3px solid var(--bg-primary);
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+
+        .timeline-year {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-item p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Quote highlight */
+        .quote-highlight {
+            background: linear-gradient(135deg, rgba(0,136,255,0.1), rgba(0,210,255,0.05));
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-highlight::before {
+            content: '"';
+            font-size: 8rem;
+            font-family: Georgia, serif;
+            color: var(--accent);
+            opacity: 0.1;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            line-height: 1;
+        }
+
+        .quote-highlight p {
+            font-size: 1.2rem;
+            font-style: italic;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-highlight cite {
+            display: block;
+            margin-top: 1rem;
+            color: var(--accent);
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        /* Support Stats */
+        .support-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .stat-card .stat-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Module nav */
+        .module-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-light);
+            margin-top: 3rem;
+        }
+
+        .module-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        .module-nav a:hover {
+            color: var(--accent);
+            border-color: var(--border-color);
+            background: var(--card-bg);
+        }
+
+        @media (max-width: 968px) {
+            .bio-hero {
+                grid-template-columns: 1fr;
+            }
+            .bio-portrait {
+                position: static;
+                max-width: 350px;
+                margin: 0 auto;
+            }
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+            .support-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-brand">
+                <span class="logo-icon">💧</span>
+                <span class="logo-text">Agua<span>Kangen</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html">← Inicio</a>
+                <a href="#dr-carpenter">Dr. Carpenter</a>
+                <a href="#certificaciones">Certificaciones</a>
+                <a href="#enagic">Enagic</a>
+                <a href="../index.html#modulos" class="btn-primary btn-sm">Módulos</a>
+            </div>
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+        </div>
+    </nav>
+
+    <!-- ===== SUBPAGE HERO ===== -->
+    <section class="subpage-hero">
+        <div class="glow-orb orb-1" style="opacity:0.15;"></div>
+        <div class="glow-orb orb-2" style="opacity:0.1;"></div>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="sep">›</span>
+                <span>Módulo 06</span>
+            </div>
+            <span class="section-label">Módulo 06 — Autoridad y Confianza</span>
+            <h1 class="subpage-title">
+                Dr. Carpenter y<br>
+                <span class="gradient-text">Certificaciones Médicas</span>
+            </h1>
+            <p class="subpage-subtitle">
+                Detrás de cada dispositivo Kangen hay más de 48 años de ingeniería japonesa,
+                certificaciones de grado médico y el respaldo de profesionales como el Dr. Michael
+                Carpenter. Descubre por qué esto no es un producto más.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== DR. CARPENTER BIOGRAPHY ===== -->
+    <section class="content-section" id="dr-carpenter">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">Respaldo Médico</span>
+                <h2 class="section-title">Dr. Michael <span class="gradient-text">Carpenter</span></h2>
+            </div>
+
+            <div class="bio-hero animate-on-scroll">
+                <div class="bio-portrait">
+                    <img src="../assets/dr_carpenter.png" alt="Dr. Michael Carpenter, médico promotor del Agua Kangen" loading="lazy">
+                </div>
+                <div class="bio-details">
+                    <h3>Dr. Michael Carpenter</h3>
+                    <span class="bio-title">Médico Cirujano · Especialista en Medicina Preventiva y Nutrición Funcional</span>
+
+                    <p>
+                        El Dr. Michael Carpenter es uno de los profesionales médicos más reconocidos en el
+                        campo de la <strong>medicina preventiva basada en la hidratación funcional</strong>.
+                        Tras décadas de práctica clínica, se convirtió en un defensor público de la tecnología
+                        de ionización de agua tras observar resultados consistentes en sus propios pacientes.
+                    </p>
+                    <p>
+                        Su enfoque no se centra en promesas milagrosas, sino en la <strong>evidencia empírica
+                        y la fisiología básica</strong>: un cuerpo correctamente hidratado, con un pH equilibrado
+                        y protegido contra el estrés oxidativo, tiene una capacidad de auto-regeneración
+                        significativamente superior.
+                    </p>
+
+                    <div class="quote-highlight" style="margin: 2rem 0;">
+                        <p>
+                            Llevo más de 20 años investigando el impacto de la calidad del agua en la salud.
+                            Lo que he observado con el agua ionizada alcalina rica en hidrógeno molecular
+                            va más allá de la hidratación convencional: se trata de una herramienta real
+                            de medicina preventiva.
+                        </p>
+                        <cite>— Dr. Michael Carpenter</cite>
+                    </div>
+
+                    <ul class="credentials-list">
+                        <li><span class="cred-icon">🎓</span> Licenciado en Medicina y Cirugía</li>
+                        <li><span class="cred-icon">🏥</span> +20 años de práctica clínica en medicina preventiva</li>
+                        <li><span class="cred-icon">📋</span> Promotor de la hidratación funcional como pilar preventivo</li>
+                        <li><span class="cred-icon">🔬</span> Investigador de los efectos del hidrógeno molecular (H₂)</li>
+                        <li><span class="cred-icon">🎤</span> Conferenciante internacional sobre agua ionizada y salud</li>
+                        <li><span class="cred-icon">📖</span> Autor de publicaciones sobre el impacto del pH en la salud celular</li>
+                    </ul>
+
+                    <h3 style="margin-top: 2rem; font-size: 1.3rem;">Su Perspectiva Clínica</h3>
+                    <p>
+                        El Dr. Carpenter enfatiza que la calidad del agua que consumimos es tan importante como
+                        la calidad de los alimentos. Según su experiencia clínica:
+                    </p>
+                    <ul class="feature-list">
+                        <li><strong>Hidratación celular:</strong> Los micro-clusters del agua ionizada permiten una
+                        absorción hasta 6 veces superior, hidratando a nivel celular real</li>
+                        <li><strong>Reducción del estrés oxidativo:</strong> El hidrógeno molecular (H₂) disuelto
+                        en el agua actúa como el antioxidante más selectivo conocido, neutralizando únicamente
+                        los radicales libres citotóxicos (OH·)</li>
+                        <li><strong>Equilibrio ácido-base:</strong> La alcalinidad del agua ayuda a contrarrestar
+                        la acidificación crónica provocada por la dieta moderna</li>
+                        <li><strong>Desintoxicación:</strong> La mejora en la hidratación celular facilita los
+                        procesos naturales de eliminación de toxinas del organismo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CERTIFICACIONES ===== -->
+    <section class="content-section" style="background: var(--bg-section-alt);" id="certificaciones">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">Garantía de Calidad</span>
+                <h2 class="section-title">Certificaciones de <span class="gradient-text">Grado Médico</span></h2>
+                <p class="section-subtitle mx-auto">
+                    Los ionizadores Kangen no son electrodomésticos convencionales. Son dispositivos
+                    certificados bajo los estándares más exigentes de la industria médica mundial.
+                </p>
+            </div>
+
+            <div class="content-grid animate-on-scroll" style="margin-bottom: 3rem;">
+                <div class="content-image">
+                    <img src="../assets/certificate.png" alt="Certificación ISO 13485 de dispositivo médico Enagic" loading="lazy">
+                </div>
+                <div class="content-text">
+                    <h3>¿Por qué importan las <span class="gradient-text">certificaciones</span>?</h3>
+                    <p>
+                        El mercado está inundado de "ionizadores de agua" baratos sin ninguna certificación médica.
+                        Estos dispositivos usan placas de malla, menos electrodos y materiales de baja calidad que
+                        no garantizan ni la seguridad ni la eficacia del agua producida.
+                    </p>
+                    <p>
+                        Enagic es una de las <strong>únicas empresas en el mundo que fabrica ionizadores de agua
+                        certificados como dispositivo médico</strong>. Esto significa que cada máquina cumple con
+                        estándares de seguridad, pureza y rendimiento comparables a los de equipos hospitalarios.
+                    </p>
+                    <p>
+                        Invertir en un ionizador sin certificación médica es como comprar un marcapasos
+                        sin homologación: puede funcionar, pero nadie te garantiza que sea seguro.
+                    </p>
+                </div>
+            </div>
+
+            <div class="cert-grid animate-on-scroll">
+                <div class="cert-card glass-card cert-iso" style="cursor:default;">
+                    <span class="cert-badge">🏅</span>
+                    <span class="cert-code" style="background: rgba(245,158,11,0.15); color: #f59e0b;">ISO 13485</span>
+                    <h4>Dispositivo Médico</h4>
+                    <p>
+                        La certificación ISO 13485 garantiza que el sistema de gestión de calidad de Enagic
+                        cumple con los <strong>requisitos regulatorios para dispositivos médicos</strong>. Es la
+                        misma certificación exigida para fabricar equipos quirúrgicos, prótesis e instrumentación
+                        hospitalaria.
+                    </p>
+                </div>
+
+                <div class="cert-card glass-card cert-fda" style="cursor:default;">
+                    <span class="cert-badge">🇺🇸</span>
+                    <span class="cert-code" style="background: rgba(0,136,255,0.15); color: #0088ff;">Registro FDA</span>
+                    <h4>Food & Drug Administration</h4>
+                    <p>
+                        Los dispositivos Enagic están registrados ante la <strong>FDA de Estados Unidos</strong>
+                        (Food and Drug Administration), la agencia reguladora de alimentos y medicamentos más
+                        exigente del mundo. Esto les permite su distribución legal como dispositivo de salud
+                        en territorio estadounidense.
+                    </p>
+                </div>
+
+                <div class="cert-card glass-card cert-wqa" style="cursor:default;">
+                    <span class="cert-badge">💧</span>
+                    <span class="cert-code" style="background: rgba(0,229,160,0.15); color: #00e5a0;">WQA Gold Seal</span>
+                    <h4>Water Quality Association</h4>
+                    <p>
+                        El <strong>Sello de Oro de la WQA</strong> certifica que el producto cumple con los
+                        estándares de la industria del tratamiento de agua. Verifica la seguridad estructural,
+                        la calidad del material y el rendimiento del sistema de filtración y electrólisis.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Additional certifications -->
+            <div class="info-cards animate-on-scroll" style="margin-top: 2rem;">
+                <div class="info-card glass-card" style="cursor:default;">
+                    <span class="card-icon">🇯🇵</span>
+                    <h4>Ministerio de Salud de Japón</h4>
+                    <p>Los ionizadores Kangen están aprobados como dispositivos médicos por el MHLW (Ministerio de Salud, Trabajo y Bienestar) de Japón desde los años 70. Más de 6.500 médicos japoneses los recomiendan.</p>
+                </div>
+                <div class="info-card glass-card" style="cursor:default;">
+                    <span class="card-icon">🏭</span>
+                    <h4>Fabricación Propia en Osaka</h4>
+                    <p>A diferencia de competidores que subcontratan, Enagic fabrica sus propios dispositivos en su planta de Osaka, Japón. Control total de calidad desde la materia prima hasta el producto final.</p>
+                </div>
+                <div class="info-card glass-card" style="cursor:default;">
+                    <span class="card-icon">♻️</span>
+                    <h4>Certificación Medioambiental</h4>
+                    <p>La tecnología Kangen elimina la necesidad de botellas de plástico. Un solo dispositivo puede evitar el consumo de más de 70.000 botellas de plástico durante su vida útil de 15-25 años.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ENAGIC — HISTORIA ===== -->
+    <section class="content-section" id="enagic">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">La Empresa</span>
+                <h2 class="section-title">Enagic: <span class="gradient-text">+48 Años de Excelencia</span></h2>
+                <p class="section-subtitle mx-auto">
+                    Fundada en 1974 en Japón, Enagic ha dedicado casi medio siglo a una sola misión:
+                    fabricar los mejores ionizadores de agua del mundo.
+                </p>
+            </div>
+
+            <div class="support-stats animate-on-scroll">
+                <div class="stat-card glass-card" style="cursor:default;">
+                    <span class="stat-number gradient-text">1974</span>
+                    <span class="stat-label">Fundación en Japón</span>
+                </div>
+                <div class="stat-card glass-card" style="cursor:default;">
+                    <span class="stat-number gradient-text">+48</span>
+                    <span class="stat-label">Años de experiencia</span>
+                </div>
+                <div class="stat-card glass-card" style="cursor:default;">
+                    <span class="stat-number gradient-text">6.500+</span>
+                    <span class="stat-label">Médicos en Japón lo recomiendan</span>
+                </div>
+                <div class="stat-card glass-card" style="cursor:default;">
+                    <span class="stat-number gradient-text">100+</span>
+                    <span class="stat-label">Países de distribución</span>
+                </div>
+            </div>
+
+            <div class="timeline animate-on-scroll">
+                <div class="timeline-item">
+                    <span class="timeline-year">1974</span>
+                    <h4>Fundación de Enagic</h4>
+                    <p>Se establece en Japón con la misión de desarrollar tecnología de ionización de agua de grado médico.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">1980s</span>
+                    <h4>Reconocimiento Médico Japonés</h4>
+                    <p>Los ionizadores de agua electrolizada son aprobados como dispositivos médicos por el Ministerio de Salud de Japón (MHLW) para uso en hospitales y clínicas.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">1990s</span>
+                    <h4>Uso Hospitalario Generalizado</h4>
+                    <p>Más de 100 hospitales japoneses adoptan la tecnología de agua electrolizada, especialmente el agua ácida pH 2.5 para desinfección y el agua alcalina para rehabilitación.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2003</span>
+                    <h4>Expansión Internacional</h4>
+                    <p>Enagic abre su sede en Los Ángeles, California, y comienza la distribución global de sus dispositivos.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2005</span>
+                    <h4>Certificación ISO 13485</h4>
+                    <p>La planta de fabricación de Osaka obtiene la certificación ISO 13485 para dispositivos médicos, consolidando su estatus de grado clínico.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2007</span>
+                    <h4>Sello de Oro WQA</h4>
+                    <p>La Water Quality Association otorga su prestigioso Gold Seal a los ionizadores Enagic, validando la calidad de filtración y purificación.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2010</span>
+                    <h4>Estudio Nakao et al.</h4>
+                    <p>Se publica el estudio clínico en el J Clin Biochem Nutr demostrando un aumento del 39% en la enzima antioxidante SOD con agua electrolizada.
+                    <a href="../../ciencia/diabetes/estudio_diabetes_colesterol.html" style="color: var(--accent); font-weight: 600;">Ver estudio →</a></p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2013</span>
+                    <h4>Estudio Song et al.</h4>
+                    <p>Publicación en J Lipid Research mostrando reducción significativa de colesterol LDL y total con agua hidrogenada.
+                    <a href="../../ciencia/diabetes/estudio_diabetes_colesterol.html" style="color: var(--accent); font-weight: 600;">Ver estudio →</a></p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2020s</span>
+                    <h4>Presencia Global en +100 Países</h4>
+                    <p>Enagic opera en más de 100 países con oficinas locales en Japón, EEUU, Europa, Asia, Oceanía, Oriente Medio y África. Más de 6.500 médicos japoneses recomiendan sus dispositivos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHY IT MATTERS ===== -->
+    <section class="content-section" style="background: var(--bg-section-alt);">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">Perspectiva</span>
+                <h2 class="section-title">¿Por qué todo esto <span class="gradient-text">importa?</span></h2>
+            </div>
+
+            <div class="info-cards animate-on-scroll">
+                <div class="info-card glass-card" style="cursor:default;">
+                    <span class="card-icon">⚖️</span>
+                    <h4>Diferencia vs. Competidores</h4>
+                    <p>Hay cientos de "ionizadores" baratos en Amazon sin ninguna certificación. Sin ISO 13485, sin registro FDA, sin Gold Seal. Ninguno garantiza la seguridad, el rendimiento ni la durabilidad que ofrece Enagic.</p>
+                </div>
+                <div class="info-card glass-card" style="cursor:default;">
+                    <span class="card-icon">🔧</span>
+                    <h4>Calidad de Materiales</h4>
+                    <p>Enagic usa placas sólidas de titanio recubiertas de platino (no malla). Esto garantiza una electrólisis uniforme, un ORP más negativo y una vida útil de 15-25 años sin degradación.</p>
+                </div>
+                <div class="info-card glass-card" style="cursor:default;">
+                    <span class="card-icon">💰</span>
+                    <h4>Inversión, No Gasto</h4>
+                    <p>Amortización media: 3-5 años. Después: agua premium gratuita de por vida. Comparado con comprar agua embotellada o filtros por ósmosis que necesitan recambios constantes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section style="padding: 60px 0;">
+        <div class="container">
+            <div class="cta-banner animate-on-scroll">
+                <div>
+                    <h2>Siguiente: Modelos de Ionizadores</h2>
+                    <p>Conoce los diferentes modelos Kangen: desde el SD501 familiar hasta el K8 de máximo rendimiento.</p>
+                </div>
+                <a href="../07-modelos/index.html" class="btn-white" style="text-decoration:none;">Módulo 07 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MODULE NAVIGATION ===== -->
+    <section style="padding: 30px 0;">
+        <div class="container">
+            <div class="module-nav">
+                <a href="../05-usos-practicos/index.html">← Módulo 05: Usos Prácticos</a>
+                <a href="../index.html">Índice General</a>
+                <a href="../07-modelos/index.html">Módulo 07: Modelos →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                💧 Agua<span style="color: var(--accent);">Kangen</span> — Módulo 06
+            </div>
+            <p class="footer-copy">© 2026 — Distribuidor Independiente Enagic</p>
+            <div class="footer-nav">
+                <a href="../index.html">Inicio</a>
+                <a href="../index.html#modulos">Módulos</a>
+                <a href="../../../index.html">Kangen Water</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+</html>

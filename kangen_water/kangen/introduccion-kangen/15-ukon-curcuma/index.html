@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukon: Cúrcuma Orgánica de Okinawa | Agua Kangen</title>
+    <meta name="description" content="Descubre Kangen Ukon, el suplemento definitivo de cúrcuma salvaje cultivada orgánicamente en Japón utilizando únicamente Agua Kangen.">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* ===== MODULE 15: UKON CURCUMA ===== */
+
+        :root {
+            --ukon-gold: #fbbf24;
+            --ukon-green: #10b981;
+        }
+
+        .hero-ukon {
+            position: relative;
+            padding: 100px 0 80px;
+            background: linear-gradient(135deg, rgba(15,23,42,1) 0%, rgba(217,119,6,0.15) 100%);
+            border-bottom: 1px solid rgba(2fbbf24,0.1);
+            overflow: hidden;
+        }
+        
+        .hero-ukon::after {
+            content: "🌿";
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 20rem;
+            opacity: 0.03;
+            z-index: 0;
+            transform: rotate(-15deg);
+        }
+
+        .ukon-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin: 6rem 0;
+        }
+
+        @media (min-width: 968px) {
+            .ukon-section {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .hero-image-container {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            position: relative;
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transform: scale(1.02);
+        }
+
+        .hero-image-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
+            pointer-events: none;
+        }
+
+        .ingredient-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .ingredient-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.03), transparent);
+            border: 1px solid rgba(251, 191, 36, 0.1);
+            padding: 2rem;
+            border-radius: 16px;
+            transition: var(--transition);
+        }
+
+        .ingredient-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(251, 191, 36, 0.4);
+            background: rgba(251, 191, 36, 0.05);
+        }
+
+        .ingredient-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: rgba(251, 191, 36, 0.1);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .ukon-capsule-section {
+            background: linear-gradient(to right, rgba(15,23,42,0.95), rgba(15,23,42,0.8));
+            padding: 6rem 0;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            margin: 4rem 0;
+            position: relative;
+        }
+
+        .highlight-text {
+            color: var(--ukon-gold);
+            font-weight: bold;
+        }
+
+        /* Module nav override */
+        .module-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 3rem;
+        }
+
+        .module-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.5);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: var(--transition);
+        }
+
+        .module-nav a:hover {
+            color: #fff;
+            border-color: rgba(251,191,36,0.3);
+            background: rgba(251,191,36,0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-brand">
+                <span class="logo-icon">💧</span>
+                <span class="logo-text">Agua<span>Kangen</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html">← Índice</a>
+                <a href="#origen">Origen Agrícola</a>
+                <a href="#capsula">Cápsula Viva</a>
+                <a href="#beneficios">Beneficios</a>
+            </div>
+            <button class="mobile-menu-btn" id="menuBtn">☰</button>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <header class="hero-ukon">
+        <div class="container relative z-10">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="sep">›</span>
+                <span>Módulo 15</span>
+            </div>
+            <span class="section-label" style="color: var(--ukon-gold);">El Compañero Perfecto</span>
+            <h1 class="subpage-title">
+                Kangen Ukon:<br>
+                <span style="color: var(--ukon-gold);">El Oro de Okinawa</span>
+            </h1>
+            <p class="subpage-subtitle">
+                Mientras que el Agua Kangen actúa como el vehículo antioxidante supremo de tu biología, 
+                Enagic ha creado el suplemento definitivo para acompañarlo: una cúrcuma salvaje cultivada sin químicos 
+                utilizando exclusivamente las propiedades del agua ionizada.
+            </p>
+        </div>
+    </header>
+
+    <main>
+        <!-- ===== 1. ORIGEN AGRÍCOLA ===== -->
+        <section class="container" id="origen">
+            <div class="ukon-section">
+                <div class="hero-image-container animate-on-scroll">
+                    <img src="../assets/ukon_farm.png" alt="Campos de cúrcuma Ukon en Okinawa Japón, agricultura ecológica">
+                </div>
+                
+                <div class="animate-on-scroll">
+                    <span class="section-label" style="color: var(--ukon-green); border-color: rgba(16,185,129,0.3);">Agricultura de Grado Médico</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Cultivado sin un solo <br><span style="color: var(--ukon-green);">Pesticida Químico</span></h2>
+                    
+                    <p class="text-slate-300 leading-relaxed mb-6 text-lg">
+                        Enagic es la única empresa del mundo que produce un suplemento natural utilizando <strong>Agua Kangen</strong> en todo su ciclo de vida agrícola. Las granjas Ukon están situadas en Okinawa, conocida mundialmente como una de las exclusivas <em class="highlight-text">Blue Zones (Zonas Azules)</em> de longevidad del planeta.
+                    </p>
+
+                    <ul class="feature-list" style="margin-top: 2rem;">
+                        <li><strong>pH 11.5 (Agua Fuerte Kangen):</strong> Se utiliza para lavar las raíces de cúrcuma, disolviendo cualquier rastro de aceite o polución ambiental sin químicos.</li>
+                        <li><strong>pH 2.5 (Agua Fuerte Ácida):</strong> Se usa para esterilizar tanto el equipo agrícola como el suelo, previniendo hongos ecológicamente.</li>
+                        <li><strong>Suelo Enriquecido:</strong> Abonado orgánicamente, rico en minerales autóctonos que dotan a esta cúrcuma salvaje de una potencia insuperable.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 2. LA CÁPSULA (THE CAPSULE) ===== -->
+        <section class="ukon-capsule-section" id="capsula">
+            <div class="container">
+                <div class="grid md:grid-cols-2 gap-12 align-items-center animate-on-scroll">
+                    <div>
+                        <span class="section-label" style="color: var(--ukon-gold);">Tecnología Patentada</span>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6">La Primera Cápsula <br><span class="highlight-text">100% Viva y Vegetal</span></h2>
+                        
+                        <p class="text-slate-300 leading-relaxed mb-6">
+                            La mayoría de suplementos de cúrcuma comerciales vienen en polvo, expuestos al aire y oxidados antes de que lleguen a tu estómago. Enagic ha patentado una <strong>cápsula blanda 100% vegetal</strong> (sin grasas animales, ni gelatinas bovinas).
+                        </p>
+                        
+                        <p class="text-slate-300 leading-relaxed">
+                            Más importante aún: el interior de la cápsula sella al vacío la curcumina suspendida en aceites esenciales y <strong>Agua Kangen antioxidante</strong>, garantizando que el ingrediente llegue vivo, no-oxidado y altamente biodisponible a tu intestino.
+                        </p>
+                    </div>
+
+                    <div class="hero-image-container">
+                        <img src="../assets/ukon_capsule.png" alt="Cápsulas premium Kangen Ukon de curcumina junto a agua">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 3. INGREDIENTES Y BENEFICIOS ===== -->
+        <section class="container" style="padding-bottom: 6rem;" id="beneficios">
+             <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl font-bold">Un Cóctel <span class="highlight-text">Ayurvédico</span> Insuperable</h2>
+                <p class="text-slate-400 mt-4 max-w-2xl mx-auto">
+                    Kangen Ukon Sigma no es solo cúrcuma. Es una sinergia biológica de elementos diseñados para desinflamar, proteger el hígado y potenciar la longevidad.
+                </p>
+            </div>
+
+            <div class="ingredient-grid animate-on-scroll">
+                <div class="ingredient-card">
+                    <div class="ingredient-icon">🌱</div>
+                    <h4 class="font-bold text-white mb-2">Curcumina Salvaje</h4>
+                    <p class="text-sm text-slate-400">Mezcla exclusiva de Ukon de Primavera (rico en aceites esenciales) y Ukon de Otoño (altamente concentrado en curcumina desinflamatoria).</p>
+                </div>
+
+                <div class="ingredient-card">
+                    <div class="ingredient-icon">🫒</div>
+                    <h4 class="font-bold text-white mb-2">Aceite de Oliva y Perilla</h4>
+                    <p class="text-sm text-slate-400">La curcumina es liposoluble. Estos aceites esenciales orgánicos garantizan que tu cuerpo absorba el 100% del compuesto, en lugar de desecharlo.</p>
+                </div>
+
+                <div class="ingredient-card">
+                    <div class="ingredient-icon">✨</div>
+                    <h4 class="font-bold text-white mb-2">Tocotrienol</h4>
+                    <p class="text-sm text-slate-400">Conocido como la "Súper Vitamina E", un antioxidante extremadamente potente que previene la degradación celular y fomenta el anti-envejecimiento.</p>
+                </div>
+
+                <div class="ingredient-card">
+                    <div class="ingredient-icon">🌼</div>
+                    <h4 class="font-bold text-white mb-2">Aceite de Semilla de Lino</h4>
+                    <p class="text-sm text-slate-400">Aporta ácidos grasos cardiosaludables (Omega-3), favoreciendo la salud circulatoria y actuando en sinergia con el Agua Kangen.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== MODULE NAVIGATION ===== -->
+        <section class="container" style="padding-bottom: 40px;">
+            <div class="module-nav">
+                <a href="../14-sectores-profesionales/index.html">← Módulo 14: Sectores Pro</a>
+                <a href="../index.html">Índice General</a>
+                <a href="../16-conclusion/index.html" style="color: var(--ukon-gold); border-color: var(--ukon-gold);">El Gran Final: Módulo 16 →</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                💧 Agua<span style="color: var(--accent);">Kangen</span> — Módulo 15
+            </div>
+            <p class="footer-copy">© 2026 — Distribuidor Independiente Enagic. Todos los derechos reservados.</p>
+            <div class="footer-nav">
+                <a href="../index.html">Inicio</a>
+                <a href="../index.html#modulos">Módulos</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+</html>

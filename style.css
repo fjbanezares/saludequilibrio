@@ -1,0 +1,363 @@
+/* 
+   SALUD EQUILIBRIO - PREMIUM DESIGN SYSTEM
+   Cutting-edge wellness website for Agua Kangen, Masajes, and Sanación
+*/
+
+:root {
+    /* Color Palette */
+    --deep-navy: #0a192f;
+    --kangen-blue: #0077b6;
+    --teal-glow: #2a9d8f;
+    --gold-accent: #d4af37;
+    --champagne: #f7e7ce;
+    --light-bg: #f8fafc;
+    --white: #ffffff;
+
+    /* Effects */
+    --glass: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --shadow-soft: 0 4px 30px rgba(0, 0, 0, 0.05);
+    --shadow-premium: 0 10px 50px rgba(0, 0, 0, 0.1);
+
+    /* Typography */
+    --font-header: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Transitions */
+    --transition-fast: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset and Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--light-bg);
+    color: var(--deep-navy);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* Typography Refinement */
+h1,
+h2,
+h3 {
+    font-family: var(--font-header);
+    line-height: 1.2;
+}
+
+p {
+    font-weight: 400;
+    opacity: 0.85;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--kangen-blue), var(--teal-glow));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Navigation Bar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition-fast);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px 50px;
+    box-shadow: var(--shadow-soft);
+}
+
+.logo {
+    font-family: var(--font-header);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--deep-navy);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--deep-navy);
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition-fast);
+}
+
+.nav-links a:hover {
+    color: var(--kangen-blue);
+}
+
+.btn-contact {
+    background: var(--kangen-blue);
+    color: white !important;
+    padding: 10px 25px;
+    border-radius: 50px;
+    transition: var(--transition-fast);
+}
+
+.btn-contact:hover {
+    background: var(--deep-navy);
+    transform: scale(1.05);
+}
+
+/* Hero Section - Immersive & Dynamic */
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(10, 25, 47, 0.6), rgba(10, 25, 47, 0.6)), url('assets/heart.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Parallax effect */
+    position: relative;
+    padding: 0 20px;
+    color: white;
+    overflow: hidden;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    filter: blur(15px);
+    /* Blurred heart to avoid distraction */
+    transform: scale(1.1);
+    /* Avoid white edges from blur */
+    z-index: 0;
+}
+
+.hero-visual {
+    display: none;
+    /* Removed in favor of full background */
+}
+
+.hero-content {
+    max-width: 900px;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 60px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#hero h1 {
+    font-size: 6.5rem;
+    margin-bottom: 20px;
+    letter-spacing: -3px;
+    line-height: 1;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.hero-tagline {
+    font-weight: 700;
+    letter-spacing: 6px;
+    color: var(--champagne);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* Improved Kangen Section styles */
+#kangen-detail {
+    background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.85)), url('assets/kangen.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 150px 0;
+}
+
+.kangen-content-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    padding: 60px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-premium);
+}
+
+/* Three Main Lines Section */
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title h2 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.grid-main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 50px 0;
+}
+
+.card-main {
+    position: relative;
+    padding: 60px 40px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px);
+    border-radius: 40px;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-slow);
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid var(--glass-border);
+}
+
+.card-main:hover {
+    transform: translateY(-20px) scale(1.02);
+    box-shadow: var(--shadow-premium);
+    background: white;
+}
+
+.card-main i {
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    display: block;
+}
+
+.card-main h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.card-main .badge {
+    background: var(--gold-accent);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+/* Specific Line Styling */
+.line-kangen {
+    border-top: 6px solid var(--kangen-blue);
+}
+
+.line-masaje {
+    border-top: 6px solid var(--gold-accent);
+}
+
+.line-sanacion {
+    border-top: 6px solid var(--teal-glow);
+}
+
+/* Other Projects / Arte */
+#proyectos {
+    background: var(--deep-navy);
+    color: white;
+    padding: 100px 50px;
+    border-radius: 60px 60px 0 0;
+}
+
+.arte-banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80&w=2000');
+    background-size: cover;
+    background-position: center;
+    padding: 80px;
+    border-radius: 40px;
+    text-align: center;
+    margin-top: 50px;
+    transition: var(--transition-fast);
+    cursor: pointer;
+}
+
+.arte-banner:hover {
+    transform: scale(1.02);
+    filter: brightness(1.2);
+}
+
+/* Footer & Contact */
+footer {
+    padding: 80px 50px;
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 100px;
+}
+
+.footer-brand h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.contact-list {
+    list-style: none;
+}
+
+.contact-list li {
+    margin-bottom: 15px;
+}
+
+.contact-list i {
+    color: var(--kangen-blue);
+    margin-right: 10px;
+}
+
+/* Utils */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 50px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .grid-main {
+        grid-template-columns: 1fr;
+    }
+
+    #hero h1 {
+        font-size: 3.5rem;
+    }
+
+    nav {
+        padding: 20px;
+    }
+}

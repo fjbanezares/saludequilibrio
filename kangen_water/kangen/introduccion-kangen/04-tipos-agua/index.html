@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los 5 Tipos de Agua — pH 2.5 a 11.5 | Agua Kangen</title>
+    <meta name="description" content="Descubre los 5 tipos de agua producidos por los ionizadores Kangen: desde el agua súper ácida desinfectante (pH 2.5) hasta la súper alcalina limpiadora (pH 11.5). Usos, aplicaciones y ciencia detrás de cada nivel.">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* ===== MODULE 04 — 5 TIPOS DE AGUA — SPECIFIC STYLES ===== */
+
+        /* pH Color System */
+        :root {
+            --ph-red: #ef4444;
+            --ph-red-glow: rgba(239,68,68,0.15);
+            --ph-yellow: #f59e0b;
+            --ph-yellow-glow: rgba(245,158,11,0.15);
+            --ph-neutral: #94a3b8;
+            --ph-neutral-glow: rgba(148,163,184,0.15);
+            --ph-blue: #0088ff;
+            --ph-blue-glow: rgba(0,136,255,0.15);
+            --ph-purple: #8b5cf6;
+            --ph-purple-glow: rgba(139,92,246,0.15);
+        }
+
+        /* Full-width pH Scale Visual */
+        .ph-scale-visual {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 3rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .ph-scale-segment {
+            padding: 2rem 1.2rem;
+            text-align: center;
+            cursor: default;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .ph-scale-segment:hover {
+            transform: scale(1.02);
+            z-index: 2;
+        }
+
+        .ph-scale-segment .ph-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .ph-scale-segment .ph-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+            display: block;
+        }
+
+        .ph-scale-segment .ph-potable {
+            font-size: 0.72rem;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .ph-red { background: var(--ph-red-glow); border-right: 1px solid rgba(239,68,68,0.2); }
+        .ph-red .ph-value { color: var(--ph-red); }
+        .ph-red .ph-potable { background: rgba(239,68,68,0.2); color: var(--ph-red); }
+
+        .ph-yellow { background: var(--ph-yellow-glow); border-right: 1px solid rgba(245,158,11,0.2); }
+        .ph-yellow .ph-value { color: var(--ph-yellow); }
+        .ph-yellow .ph-potable { background: rgba(245,158,11,0.2); color: var(--ph-yellow); }
+
+        .ph-neutral-seg { background: var(--ph-neutral-glow); border-right: 1px solid rgba(148,163,184,0.2); }
+        .ph-neutral-seg .ph-value { color: var(--ph-neutral); }
+        .ph-neutral-seg .ph-potable { background: rgba(148,163,184,0.2); color: var(--ph-neutral); }
+
+        .ph-blue-seg { background: var(--ph-blue-glow); border-right: 1px solid rgba(0,136,255,0.2); }
+        .ph-blue-seg .ph-value { color: var(--ph-blue); }
+        .ph-blue-seg .ph-potable { background: rgba(0,136,255,0.15); color: var(--ph-blue); }
+
+        .ph-purple { background: var(--ph-purple-glow); }
+        .ph-purple .ph-value { color: var(--ph-purple); }
+        .ph-purple .ph-potable { background: rgba(139,92,246,0.2); color: var(--ph-purple); }
+
+        /* Water Type Full Section */
+        .water-type-section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .water-type-section:nth-child(even) {
+            background: var(--bg-section-alt);
+        }
+
+        .water-type-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .water-type-badge {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .water-type-header h2 {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+        }
+
+        .water-type-header .wt-ph {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 1.1rem;
+        }
+
+        .water-type-header .wt-status {
+            font-size: 0.78rem;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            margin-top: 0.3rem;
+        }
+
+        /* Uses Grid */
+        .uses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
+            margin: 2rem 0;
+        }
+
+        .use-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 1.2rem;
+            border-radius: 14px;
+            transition: var(--transition);
+        }
+
+        .use-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .use-card .use-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .use-card h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .use-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Color-coded use cards */
+        .use-card-red { background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.15); }
+        .use-card-red:hover { background: rgba(239,68,68,0.1); }
+        .use-card-yellow { background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.15); }
+        .use-card-yellow:hover { background: rgba(245,158,11,0.1); }
+        .use-card-neutral { background: rgba(148,163,184,0.06); border: 1px solid rgba(148,163,184,0.15); }
+        .use-card-neutral:hover { background: rgba(148,163,184,0.1); }
+        .use-card-blue { background: rgba(0,136,255,0.06); border: 1px solid rgba(0,136,255,0.15); }
+        .use-card-blue:hover { background: rgba(0,136,255,0.1); }
+        .use-card-purple { background: rgba(139,92,246,0.06); border: 1px solid rgba(139,92,246,0.15); }
+        .use-card-purple:hover { background: rgba(139,92,246,0.1); }
+
+        /* Highlight Box */
+        .highlight-box {
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .highlight-box .hl-icon {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .highlight-box p {
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .hl-warning {
+            background: rgba(239,68,68,0.08);
+            border: 1px solid rgba(239,68,68,0.2);
+        }
+
+        .hl-info {
+            background: rgba(0,136,255,0.08);
+            border: 1px solid rgba(0,136,255,0.2);
+        }
+
+        .hl-success {
+            background: rgba(0,229,160,0.08);
+            border: 1px solid rgba(0,229,160,0.2);
+        }
+
+        /* Separator */
+        .type-separator {
+            width: 60px;
+            height: 4px;
+            border-radius: 2px;
+            margin: 0 auto;
+        }
+
+        /* Summary comparison */
+        .summary-comparison {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+
+        .summary-col {
+            text-align: center;
+            padding: 2rem 1rem;
+            border-radius: 16px;
+            transition: var(--transition);
+        }
+
+        .summary-col:hover {
+            transform: translateY(-4px);
+        }
+
+        .summary-col .sc-ph {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-col .sc-name {
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-col .sc-key {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Module nav */
+        .module-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-light);
+            margin-top: 3rem;
+        }
+
+        .module-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        .module-nav a:hover {
+            color: var(--accent);
+            border-color: var(--border-color);
+            background: var(--card-bg);
+        }
+
+        @media (max-width: 968px) {
+            .ph-scale-visual {
+                grid-template-columns: 1fr;
+            }
+            .summary-comparison {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .water-type-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .summary-comparison {
+                grid-template-columns: 1fr 1fr;
+            }
+            .uses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-brand">
+                <span class="logo-icon">💧</span>
+                <span class="logo-text">Agua<span>Kangen</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html">← Inicio</a>
+                <a href="#super-acida">pH 2.5</a>
+                <a href="#belleza">pH 6.0</a>
+                <a href="#neutra">pH 7.0</a>
+                <a href="#kangen">pH 8.5-9.5</a>
+                <a href="#super-alcalina">pH 11.5</a>
+                <a href="../index.html#modulos" class="btn-primary btn-sm">Módulos</a>
+            </div>
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+        </div>
+    </nav>
+
+    <!-- ===== SUBPAGE HERO ===== -->
+    <section class="subpage-hero">
+        <div class="glow-orb orb-1" style="opacity:0.15;"></div>
+        <div class="glow-orb orb-2" style="opacity:0.1;"></div>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="sep">›</span>
+                <span>Módulo 04</span>
+            </div>
+            <span class="section-label">Módulo 04 — Versatilidad Total</span>
+            <h1 class="subpage-title">
+                5 Tipos de Agua,<br>
+                <span class="gradient-text">Un Solo Dispositivo</span>
+            </h1>
+            <p class="subpage-subtitle">
+                Con solo pulsar un botón, los ionizadores Kangen producen 5 tipos de agua con pH
+                desde 2.5 hasta 11.5. Cada nivel tiene aplicaciones específicas respaldadas por la
+                ciencia: beber, cocinar, desinfectar, embellecer y limpiar.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== pH SCALE VISUAL ===== -->
+    <section style="padding: 0 0 40px; margin-top: -20px; position: relative; z-index: 2;">
+        <div class="container">
+            <div class="ph-scale-visual animate-on-scroll">
+                <div class="ph-scale-segment ph-red">
+                    <span class="ph-value">2.5</span>
+                    <span class="ph-name">Súper Ácida</span>
+                    <span class="ph-potable">No Potable</span>
+                </div>
+                <div class="ph-scale-segment ph-yellow">
+                    <span class="ph-value">6.0</span>
+                    <span class="ph-name">Agua de Belleza</span>
+                    <span class="ph-potable">No Potable</span>
+                </div>
+                <div class="ph-scale-segment ph-neutral-seg">
+                    <span class="ph-value">7.0</span>
+                    <span class="ph-name">Agua Neutra</span>
+                    <span class="ph-potable">✓ Potable</span>
+                </div>
+                <div class="ph-scale-segment ph-blue-seg">
+                    <span class="ph-value">8.5–9.5</span>
+                    <span class="ph-name">Agua Kangen®</span>
+                    <span class="ph-potable">✓ Potable</span>
+                </div>
+                <div class="ph-scale-segment ph-purple">
+                    <span class="ph-value">11.5</span>
+                    <span class="ph-name">Súper Alcalina</span>
+                    <span class="ph-potable">No Potable</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HERO IMAGE ===== -->
+    <section style="padding: 0 0 60px;">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content-image animate-on-scroll">
+                    <img src="../assets/ph_bottles.png" alt="Los 5 tipos de agua Kangen representados por botellas de colores" loading="lazy">
+                </div>
+                <div class="content-text animate-on-scroll">
+                    <span class="section-label">Un Ecosistema Completo</span>
+                    <h2>Todo lo que <span class="gradient-text">Necesitas en Casa</span></h2>
+                    <p>
+                        Imagina un solo dispositivo que reemplaza decenas de productos: agua para beber, tónico
+                        facial, desinfectante, desengrasante, eliminador de pesticidas, enjuague bucal y mucho más.
+                    </p>
+                    <p>
+                        Los ionizadores Kangen no solo producen agua para beber; generan un <strong>sistema completo
+                        de hidratación, higiene, belleza y limpieza</strong> que elimina la necesidad de productos
+                        químicos y plásticos de un solo uso. Y todo ello, con la calidad certificada ISO 13485
+                        de grado médico.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Un dispositivo sustituye una media de +30 productos del hogar</li>
+                        <li>Ahorro estimado de +1.124€ al año frente a comprar agua embotellada</li>
+                        <li>Elimina más de 70.000 botellas de plástico de por vida</li>
+                        <li>Certificación ISO 13485 y aprobación FDA como dispositivo médico</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- TIPO 1: AGUA SUPER ÁCIDA pH 2.5                -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="water-type-section" id="super-acida">
+        <div class="container">
+            <div class="water-type-header animate-on-scroll">
+                <div class="water-type-badge" style="background: var(--ph-red-glow); border: 2px solid var(--ph-red);">🔴</div>
+                <div>
+                    <span class="wt-ph" style="color: var(--ph-red);">pH 2.5 — Agua Súper Ácida</span>
+                    <h2>Desinfección <span style="color: var(--ph-red);">Hospitalaria</span> en tu Hogar</h2>
+                    <span class="wt-status" style="background: rgba(239,68,68,0.15); color: var(--ph-red);">⚠️ No potable — Uso externo y desinfección</span>
+                </div>
+            </div>
+
+            <div class="content-grid animate-on-scroll">
+                <div class="content-text">
+                    <p>
+                        El agua a pH 2.5 posee un extraordinario <strong>poder bactericida, virucida y fungicida</strong>.
+                        Esta agua se utiliza en hospitales japoneses desde hace décadas para la desinfección de
+                        instrumental quirúrgico y superficies, demostrando una eficacia comparable al hipoclorito
+                        de sodio pero sin los residuos tóxicos.
+                    </p>
+                    <p>
+                        Según estudios publicados en el <em>Journal of Hospital Infection</em>, el agua electrolizada
+                        ácida (EAW) elimina el <strong>99.9% de patógenos</strong> incluyendo MRSA, E. coli, Salmonella,
+                        y virus como el de la gripe, sin dejar residuos químicos nocivos. Es una herramienta de
+                        desinfección de grado clínico accesible desde tu cocina.
+                    </p>
+
+                    <div class="highlight-box hl-warning">
+                        <span class="hl-icon">⚠️</span>
+                        <p><strong>Importante:</strong> Esta agua <strong>nunca debe beberse</strong>. Su uso es estrictamente externo:
+                        desinfección de superficies, cuidado de heridas menores, higiene dental y tratamiento tópico.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="uses-grid">
+                        <div class="use-card use-card-red">
+                            <span class="use-icon">🦶</span>
+                            <div>
+                                <h4>Pie de Atleta</h4>
+                                <p>Aplicar directamente sobre la zona afectada 2-3 veces al día. Elimina hongos sin químicos agresivos.</p>
+                            </div>
+                        </div>
+                        <div class="use-card use-card-red">
+                            <span class="use-icon">🦷</span>
+                            <div>
+                                <h4>Higiene Bucal</h4>
+                                <p>Enjuague bucal natural. Elimina bacterias causantes de gingivitis, mal aliento y caries sin alcohol.</p>
+                            </div>
+                        </div>
+                        <div class="use-card use-card-red">
+                            <span class="use-icon">🩹</span>
+                            <div>
+                                <h4>Heridas Menores</h4>
+                                <p>Limpieza y desinfección de cortes superficiales, raspones y quemaduras leves. Acelera la cicatrización.</p>
+                            </div>
+                        </div>
+                        <div class="use-card use-card-red">
+                            <span class="use-icon">🧴</span>
+                            <div>
+                                <h4>Desinfectante General</h4>
+                                <p>Superficies de cocina, baño, pomos, tablas de cortar. Eliminación del 99.9% de patógenos sin tóxicos.</p>
+                            </div>
+                        </div>
+                        <div class="use-card use-card-red">
+                            <span class="use-icon">🐾</span>
+                            <div>
+                                <h4>Mascotas</h4>
+                                <p>Desinfección de comederos, camas y áreas de descanso. Limpieza de oídos y heridas menores en animales.</p>
+                            </div>
+                        </div>
+                        <div class="use-card use-card-red">
+                            <span class="use-icon">🪥</span>
+                            <div>
+                                <h4>Esterilización</h4>
+                                <p>Cepillos de dientes, esponjas, trapos de cocina, utensilios. Sanitización sin productos químicos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- TIPO 2: AGUA DE BELLEZA pH 6.0                 -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="water-type-section" id="belleza">
+        <div class="container">
+            <div class="water-type-header animate-on-scroll">
+                <div class="water-type-badge" style="background: var(--ph-yellow-glow); border: 2px solid var(--ph-yellow);">🟡</div>
+                <div>
+                    <span class="wt-ph" style="color: var(--ph-yellow);">pH 6.0 — Agua de Belleza</span>
+                    <h2>Tu <span style="color: var(--ph-yellow);">Ritual de Belleza</span> Natural</h2>
+                    <span class="wt-status" style="background: rgba(245,158,11,0.15); color: var(--ph-yellow);">🧖 No potable — Uso cosmético y estético</span>
+                </div>
+            </div>
+
+            <div class="content-grid animate-on-scroll">
+                <div class="content-text">
+                    <p>
+                        El pH natural de la piel sana oscila entre 4.5 y 6.0. Los jabones, geles de ducha comerciales
+                        y las aguas tratadas con cloro alteran este equilibrio, causando sequedad,
+                        irritación y envejecimiento prematuro. El agua de belleza Kangen a pH 6.0 está
+                        <strong>perfectamente sintonizada con el manto ácido protector de la piel</strong>.
+                    </p>
+                    <p>
+                        Investigaciones dermatológicas publicadas en el <em>Journal of Investigative Dermatology</em>
+                        confirman que mantener el pH ácido de la piel es crucial para la función barrera, la
+                        defensa antimicrobiana y la retención de hidratación. Al usar agua a pH 6.0, respetas
+                        la biología de la piel en lugar de agredirla.
+                    </p>
+
+                    <div class="highlight-box hl-info">
+                        <span class="hl-icon">💡</span>
+                        <p>El agua de belleza Kangen actúa como un <strong>tónico facial natural</strong> sin alcohol,
+                        sin perfumes, sin químicos. Sustituye limpiadores, tónicos y acondicionadores.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="uses-grid">
+                        <div class="use-card use-card-yellow">
+                            <span class="use-icon">💆</span>
+                            <div>
+                                <h4>Tónico Facial</h4>
+                                <p>Pulveriza en el rostro tras la limpieza. Cierra poros, tonifica y refresca sin productos químicos.</p>
+                            </div>
+                        </div>
+                        <div class="use-card use-card-yellow">
+                            <span class="use-icon">💇</span>
+                            <div>
+                                <h4>Acondicionador Capilar</h4>
+                                <p>Último aclarado tras el champú. El cabello queda suave, brillante y sin residuos de silicona.</p>
+                            </div>
+                        </div>
+                        <div class="use-card use-card-yellow">
+                            <span class="use-icon">🧖</span>
+                            <div>
+                                <h4>Baño Relajante</h4>
+                                <p>Añade a la bañera para un baño que hidrata la piel en lugar de resecarla con el cloro.</p>
+                            </div>
+                        </div>
+                        <div class="use-card use-card-yellow">
+                            <span class="use-icon">🌞</span>
+                            <div>
+                                <h4>After-Sun</h4>
+                                <p>Alivia quemaduras solares leves de forma natural. Refresca, calma y repara la piel expuesta.</p>
+                            </div>
+                        </div>
+                        <div class="use-card use-card-yellow">
+                            <span class="use-icon">🧴</span>
+                            <div>
+                                <h4>Eccemas y Piel Seca</h4>
+                                <p>Aplicar frecuentemente en zonas irritadas. Respeta y restaura la barrera cutánea natural.</p>
+                            </div>
+                        </div>
+                        <div class="use-card use-card-yellow">
+                            <span class="use-icon">👶</span>
+                            <div>
+                                <h4>Piel de Bebé</h4>
+                                <p>Ideal para limpiar y cuidar la piel sensible de los recién nacidos. Sin químicos ni fragancias.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- TIPO 3: AGUA NEUTRA pH 7.0                     -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="water-type-section" id="neutra">
+        <div class="container">
+            <div class="water-type-header animate-on-scroll">
+                <div class="water-type-badge" style="background: var(--ph-neutral-glow); border: 2px solid var(--ph-neutral);">⚪</div>
+                <div>
+                    <span class="wt-ph" style="color: var(--ph-neutral);">pH 7.0 — Agua Neutra (Limpia)</span>
+                    <h2>Pureza <span style="color: var(--ph-neutral);">Absoluta</span> sin Ionizar</h2>
+                    <span class="wt-status" style="background: rgba(148,163,184,0.15); color: var(--ph-neutral);">✓ Potable — Usos específicos</span>
+                </div>
+            </div>
+
+            <div class="content-grid animate-on-scroll">
+                <div class="content-text">
+                    <p>
+                        El agua neutra a pH 7.0 pasa por los filtros de alta calidad Kangen pero <strong>no se
+                        somete a electrólisis</strong>. El resultado es un agua purificada, libre de cloro,
+                        metales pesados y contaminantes, pero sin carga alcalina ni hidrógeno molecular añadido.
+                    </p>
+                    <p>
+                        Este nivel es esencial por una razón farmacológica: <strong>los medicamentos están diseñados
+                        para absorberse a un pH específico</strong>. Beber agua alcalina junto con ciertos
+                        medicamentos podría alterar su tasa de absorción gastrointestinal. Por eso, el agua neutra
+                        Kangen es la indicada para la toma de medicamentos, garantizando que funcionen como
+                        fueron diseñados.
+                    </p>
+
+                    <div class="highlight-box hl-success">
+                        <span class="hl-icon">✅</span>
+                        <p>El <strong>único tipo de agua Kangen recomendado para medicamentos</strong> y para fórmulas
+                        infantiles, donde la neutralidad del pH es crítica.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="uses-grid">
+                        <div class="use-card use-card-neutral">
+                            <span class="use-icon">💊</span>
+                            <div>
+                                <h4>Medicamentos</h4>
+                                <p>Tomar cualquier medicamento con agua neutra para no alterar su absorción farmacológica.</p>
+                            </div>
+                        </div>
+                        <div class="use-card use-card-neutral">
+                            <span class="use-icon">🍼</span>
+                            <div>
+                                <h4>Fórmulas Infantiles</h4>
+                                <p>Ideal para preparar leche de fórmula y papillas de bebé. pH neutro y libre de contaminantes.</p>
+                            </div>
+                        </div>
+                        <div class="use-card use-card-neutral">
+                            <span class="use-icon">🧊</span>
+                            <div>
+                                <h4>Cubitos de Hielo</h4>
+                                <p>Hielo puro sin cloro ni sabores extraños. Transparente y de excelente sabor.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- TIPO 4: AGUA KANGEN pH 8.5 - 9.5 ★ PRINCIPAL  -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="water-type-section" id="kangen">
+        <div class="container">
+            <div class="water-type-header animate-on-scroll">
+                <div class="water-type-badge" style="background: var(--ph-blue-glow); border: 2px solid var(--ph-blue);">🔵</div>
+                <div>
+                    <span class="wt-ph" style="color: var(--ph-blue);">pH 8.5 – 9.5 — Agua Kangen® Alcalina</span>
+                    <h2>El <span class="gradient-text">Corazón</span> del Sistema</h2>
+                    <span class="wt-status" style="background: rgba(0,136,255,0.15); color: var(--ph-blue);">✓ Potable — Uso diario ilimitado ★</span>
+                </div>
+            </div>
+
+            <div class="content-text animate-on-scroll" style="max-width: 900px;">
+                <p>
+                    Esta es el <strong>agua estrella</strong>: alcalina, antioxidante (ORP -400 a -800mV),
+                    rica en hidrógeno molecular (H₂) y micro-estructurada en clusters hexagonales de 5-6
+                    moléculas. Es el agua diseñada para la <strong>hidratación diaria de toda la familia</strong>.
+                </p>
+                <p>
+                    Estudios publicados en el <em>Journal of Clinical Biochemistry and Nutrition</em> (Nakao et al., 2010)
+                    demuestran que el consumo diario de 1.5-2L de agua electrolizada rica en hidrógeno produce un
+                    <strong>aumento del 39% en la enzima antioxidante SOD (Superóxido Dismutasa)</strong> en solo
+                    8 semanas, además de mejorar el perfil del colesterol HDL protector.
+                    <a href="../../ciencia/diabetes/estudio_diabetes_colesterol.html" style="color: var(--accent); font-weight: 600;">📊 Ver estudio detallado →</a>
+                </p>
+                <p>
+                    <strong>Protocolo de adaptación:</strong> Se recomienda comenzar con pH 8.5
+                    durante las dos primeras semanas, pasar a 9.0 las dos siguientes, y finalmente
+                    establecerse en pH 9.5 como agua de consumo habitual.
+                </p>
+            </div>
+
+            <div class="uses-grid animate-on-scroll">
+                <div class="use-card use-card-blue">
+                    <span class="use-icon">🥤</span>
+                    <div>
+                        <h4>Bebida Diaria</h4>
+                        <p>1.5 a 2 litros al día. La hidratación más completa: alcalina, antioxidante e hidrogenada.</p>
+                    </div>
+                </div>
+                <div class="use-card use-card-blue">
+                    <span class="use-icon">☕</span>
+                    <div>
+                        <h4>Café y Té</h4>
+                        <p>Extrae un sabor más profundo y aromático. Reduce la acidez natural del café hasta un 80%.</p>
+                    </div>
+                </div>
+                <div class="use-card use-card-blue">
+                    <span class="use-icon">🍲</span>
+                    <div>
+                        <h4>Cocinar</h4>
+                        <p>Sopas, caldos, arroces y pasta. Potencia los sabores y hace la comida más nutritiva y digestible.</p>
+                    </div>
+                </div>
+                <div class="use-card use-card-blue">
+                    <span class="use-icon">🌱</span>
+                    <div>
+                        <h4>Plantas y Huerto</h4>
+                        <p>Las plantas crecen más rápido, más fuertes y producen más flores con agua alcalina ionizada.</p>
+                    </div>
+                </div>
+                <div class="use-card use-card-blue">
+                    <span class="use-icon">🐕</span>
+                    <div>
+                        <h4>Mascotas</h4>
+                        <p>Agua de bebida para perros, gatos y otros animales. Mejora su vitalidad y la calidad de su pelaje.</p>
+                    </div>
+                </div>
+                <div class="use-card use-card-blue">
+                    <span class="use-icon">🏋️</span>
+                    <div>
+                        <h4>Deporte</h4>
+                        <p>Hidratación pre, durante y post ejercicio. Neutraliza el ácido láctico y acelera la recuperación.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box hl-info animate-on-scroll">
+                <span class="hl-icon">🔬</span>
+                <p><strong>Respaldo científico:</strong> Un segundo estudio (Song et al., 2013, <em>J Lipid Research</em>)
+                demostró que el consumo de apenas 0.9-1L diario de agua electrolizada redujo significativamente
+                los niveles de <strong>colesterol LDL y colesterol total</strong> en 10 semanas. El agua no solo
+                hidrata: interviene activamente en el metabolismo lipídico.
+                <a href="../../ciencia/diabetes/estudio_diabetes_colesterol.html" style="color: var(--accent); font-weight: 600;">📊 Ver análisis completo de Nakao (2010) y Song (2013) →</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- TIPO 5: AGUA SUPER ALCALINA pH 11.5            -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="water-type-section" id="super-alcalina">
+        <div class="container">
+            <div class="water-type-header animate-on-scroll">
+                <div class="water-type-badge" style="background: var(--ph-purple-glow); border: 2px solid var(--ph-purple);">🟣</div>
+                <div>
+                    <span class="wt-ph" style="color: var(--ph-purple);">pH 11.5 — Agua Súper Alcalina</span>
+                    <h2>El <span style="color: var(--ph-purple);">Desengrasante</span> Natural Definitivo</h2>
+                    <span class="wt-status" style="background: rgba(139,92,246,0.15); color: var(--ph-purple);">🧹 No potable — Limpieza y preparación de alimentos</span>
+                </div>
+            </div>
+
+            <div class="content-grid animate-on-scroll">
+                <div class="content-text">
+                    <p>
+                        El agua a pH 11.5 es un poderoso <strong>agente de limpieza natural y no tóxico</strong>.
+                        Su elevada alcalinidad le confiere propiedades emulsionantes que disuelven grasas y aceites
+                        sin necesidad de detergentes químicos. Es la alternativa ecológica definitiva a los
+                        desengrasantes industriales.
+                    </p>
+                    <p>
+                        Pero su aplicación más impactante es la <strong>eliminación de pesticidas, herbicidas y ceras
+                        de frutas y verduras</strong>. Estudios del Departamento de Agricultura de EE.UU. (USDA)
+                        muestran que el lavado convencional con agua del grifo solo elimina entre el 25-50% de
+                        los residuos de pesticidas. El agua alcalina a pH 11.5 alcanza una eliminación
+                        significativamente superior gracias a su capacidad para disolver los compuestos hidrofóbicos
+                        que protegen estos químicos.
+                    </p>
+
+                    <div class="highlight-box hl-warning">
+                        <span class="hl-icon">⚠️</span>
+                        <p><strong>Importante:</strong> El agua súper alcalina no es para beber. Su uso es exclusivamente
+                        para limpieza del hogar, preparación de alimentos (lavado y remojo) y como desengrasante natural.</p>
+                    </div>
+                </div>
+                <div class="content-image">
+                    <img src="../assets/vegetables_wash.png" alt="Frutas y verduras siendo lavadas con agua alcalina pH 11.5" loading="lazy">
+                </div>
+            </div>
+
+            <div class="uses-grid animate-on-scroll" style="margin-top: 2rem;">
+                <div class="use-card use-card-purple">
+                    <span class="use-icon">🍎</span>
+                    <div>
+                        <h4>Eliminar Pesticidas</h4>
+                        <p>Remoja frutas y verduras 10-15 minutos. Elimina pesticidas, herbicidas y ceras industriales.</p>
+                    </div>
+                </div>
+                <div class="use-card use-card-purple">
+                    <span class="use-icon">🍳</span>
+                    <div>
+                        <h4>Desengrasante de Cocina</h4>
+                        <p>Campana extractora, horno, sartenes quemadas. Disuelve la grasa incrustada sin esfuerzo.</p>
+                    </div>
+                </div>
+                <div class="use-card use-card-purple">
+                    <span class="use-icon">👕</span>
+                    <div>
+                        <h4>Manchas de Ropa</h4>
+                        <p>Pre-tratar manchas de café, vino, sangre, grasa. Mayor eficacia que los quitamanchas comerciales.</p>
+                    </div>
+                </div>
+                <div class="use-card use-card-purple">
+                    <span class="use-icon">🍽️</span>
+                    <div>
+                        <h4>Tabla de Cortar</h4>
+                        <p>Desinfecta y limpia tablas de madera y plástico, eliminando bacterias y olores de pescado o carne.</p>
+                    </div>
+                </div>
+                <div class="use-card use-card-purple">
+                    <span class="use-icon">🧹</span>
+                    <div>
+                        <h4>Suelos y Superficies</h4>
+                        <p>Limpieza de suelos, cristales y encimeras sin productos químicos. Brillo natural sin residuos.</p>
+                    </div>
+                </div>
+                <div class="use-card use-card-purple">
+                    <span class="use-icon">🌿</span>
+                    <div>
+                        <h4>Eco-Friendly</h4>
+                        <p>Sustituye lejía, amoniaco, desengrasantes y limpiacristales. 100% biodegradable, sin tóxicos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- RESUMEN COMPARATIVO                             -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="content-section">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">Visión General</span>
+                <h2 class="section-title">Los 5 Niveles <span class="gradient-text">en Resumen</span></h2>
+                <p class="section-subtitle mx-auto">
+                    Cada tipo de agua cumple una función específica. Un dispositivo, infinitas aplicaciones.
+                </p>
+            </div>
+
+            <div class="summary-comparison animate-on-scroll">
+                <div class="summary-col" style="background: var(--ph-red-glow); border: 1px solid rgba(239,68,68,0.2);">
+                    <span class="sc-ph" style="color: var(--ph-red);">2.5</span>
+                    <span class="sc-name" style="color: var(--ph-red);">Súper Ácida</span>
+                    <span class="sc-key">Desinfectante<br>Bactericida<br>Higiene bucal</span>
+                </div>
+                <div class="summary-col" style="background: var(--ph-yellow-glow); border: 1px solid rgba(245,158,11,0.2);">
+                    <span class="sc-ph" style="color: var(--ph-yellow);">6.0</span>
+                    <span class="sc-name" style="color: var(--ph-yellow);">Belleza</span>
+                    <span class="sc-key">Tónico facial<br>Cabello sedoso<br>Cuidado piel</span>
+                </div>
+                <div class="summary-col" style="background: var(--ph-neutral-glow); border: 1px solid rgba(148,163,184,0.2);">
+                    <span class="sc-ph" style="color: var(--ph-neutral);">7.0</span>
+                    <span class="sc-name" style="color: var(--ph-neutral);">Neutra</span>
+                    <span class="sc-key">Medicamentos<br>Fórmulas bebé<br>Agua purificada</span>
+                </div>
+                <div class="summary-col" style="background: var(--ph-blue-glow); border: 1px solid rgba(0,136,255,0.2);">
+                    <span class="sc-ph" style="color: var(--ph-blue);">8.5–9.5</span>
+                    <span class="sc-name" style="color: var(--ph-blue);">Kangen® ★</span>
+                    <span class="sc-key">Beber diario<br>Cocinar<br>Antioxidante</span>
+                </div>
+                <div class="summary-col" style="background: var(--ph-purple-glow); border: 1px solid rgba(139,92,246,0.2);">
+                    <span class="sc-ph" style="color: var(--ph-purple);">11.5</span>
+                    <span class="sc-name" style="color: var(--ph-purple);">Súper Alcalina</span>
+                    <span class="sc-key">Pesticidas<br>Desengrasante<br>Limpieza hogar</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA NEXT MODULE ===== -->
+    <section style="padding: 60px 0; background: var(--bg-section-alt);">
+        <div class="container">
+            <div class="cta-banner animate-on-scroll">
+                <div>
+                    <h2>Siguiente: Usos Prácticos</h2>
+                    <p>Guía detallada con protocolos paso a paso para cada tipo de agua: higiene, cocina, belleza y hogar.</p>
+                </div>
+                <a href="../05-usos-practicos/index.html" class="btn-white" style="text-decoration:none;">Módulo 05 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MODULE NAVIGATION ===== -->
+    <section style="padding: 30px 0;">
+        <div class="container">
+            <div class="module-nav">
+                <a href="../03-beneficios/index.html">← Módulo 03: Beneficios</a>
+                <a href="../index.html">Índice General</a>
+                <a href="../05-usos-practicos/index.html">Módulo 05: Usos Prácticos →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                💧 Agua<span style="color: var(--accent);">Kangen</span> — Módulo 04
+            </div>
+            <p class="footer-copy">© 2026 — Distribuidor Independiente Enagic</p>
+            <div class="footer-nav">
+                <a href="../index.html">Inicio</a>
+                <a href="../index.html#modulos">Módulos</a>
+                <a href="../../../index.html">Kangen Water</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+</html>

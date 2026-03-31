@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Qué es el Agua Kangen? — Electrólisis, Propiedades y Ciencia | Agua Kangen</title>
+    <meta name="description" content="Descubre qué es el Agua Kangen: agua alcalina, antioxidante, hidrogenada y micro-estructurada producida por electrólisis con placas de titanio-platino. Ciencia, propiedades y comparativa.">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* ===== MODULE 02 — SPECIFIC STYLES ===== */
+
+        /* 5 Properties Showcase */
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1px;
+            background: var(--border-light);
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 3rem 0;
+        }
+
+        .property-card {
+            background: var(--bg-section-alt);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .property-card:hover {
+            background: rgba(0,136,255,0.06);
+        }
+
+        .property-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--gradient-water);
+            transition: var(--transition);
+        }
+
+        .property-card:hover::after {
+            width: 60%;
+        }
+
+        .property-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .property-card h4 {
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .property-card p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Electrolysis Visual Section */
+        .electrolysis-diagram {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .electrolysis-diagram img {
+            width: 100%;
+            border-radius: 24px;
+        }
+
+        /* Comparison Table */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+        }
+
+        .comparison-table thead {
+            background: rgba(0,136,255,0.12);
+        }
+
+        .comparison-table th {
+            padding: 1rem 1.2rem;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            text-align: left;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .comparison-table td {
+            padding: 0.9rem 1.2rem;
+            border-top: 1px solid var(--border-light);
+            color: var(--text-muted);
+        }
+
+        .comparison-table tbody tr {
+            transition: var(--transition);
+        }
+
+        .comparison-table tbody tr:hover {
+            background: rgba(0,136,255,0.04);
+        }
+
+        .comparison-table .check {
+            color: var(--accent-warm);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .comparison-table .cross {
+            color: #ef4444;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .comparison-table .highlight-col {
+            background: rgba(0,136,255,0.06);
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* Microorganisms eliminated */
+        .eliminated-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .eliminated-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1rem;
+            background: rgba(239,68,68,0.06);
+            border: 1px solid rgba(239,68,68,0.15);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .eliminated-item:hover {
+            background: rgba(239,68,68,0.1);
+            transform: translateY(-2px);
+        }
+
+        .eliminated-item .elim-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Toxic elements */
+        .toxic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+
+        .toxic-item {
+            padding: 0.8rem 1rem;
+            background: rgba(255,193,7,0.06);
+            border: 1px solid rgba(255,193,7,0.15);
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .toxic-item:hover {
+            background: rgba(255,193,7,0.1);
+        }
+
+        /* ORP Section */
+        .orp-visual {
+            background: linear-gradient(135deg, rgba(0,136,255,0.08), rgba(0,210,255,0.04));
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .orp-scale {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin: 2rem auto;
+            max-width: 700px;
+            height: 50px;
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .orp-scale .orp-positive {
+            flex: 1;
+            background: linear-gradient(90deg, #ffd700, #ef4444);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #fff;
+        }
+
+        .orp-scale .orp-negative {
+            flex: 1;
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #fff;
+        }
+
+        .orp-labels {
+            display: flex;
+            justify-content: space-between;
+            max-width: 700px;
+            margin: 0.5rem auto 0;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .orp-marker {
+            display: inline-block;
+            background: var(--gradient-water);
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        /* Minerals Cards */
+        .minerals-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .mineral-card {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .mineral-card .mineral-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+            border: 2px solid var(--border-color);
+        }
+
+        .mineral-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mineral-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Summary Stats */
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .summary-stat {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .summary-stat .stat-big {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-stat .stat-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Module navigation */
+        .module-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-light);
+            margin-top: 3rem;
+        }
+
+        .module-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        .module-nav a:hover {
+            color: var(--accent);
+            border-color: var(--border-color);
+            background: var(--card-bg);
+        }
+
+        @media (max-width: 968px) {
+            .properties-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .minerals-row {
+                grid-template-columns: 1fr;
+            }
+            .summary-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .properties-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .summary-stats {
+                grid-template-columns: 1fr;
+            }
+            .eliminated-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-brand">
+                <span class="logo-icon">💧</span>
+                <span class="logo-text">Agua<span>Kangen</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html">← Inicio</a>
+                <a href="#electrolisis">Electrólisis</a>
+                <a href="#propiedades">Propiedades</a>
+                <a href="#placas">Placas</a>
+                <a href="#comparativa">Comparativa</a>
+                <a href="../index.html#modulos" class="btn-primary btn-sm">Todos los Módulos</a>
+            </div>
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+        </div>
+    </nav>
+
+    <!-- ===== SUBPAGE HERO ===== -->
+    <section class="subpage-hero">
+        <div class="glow-orb orb-1" style="opacity:0.15;"></div>
+        <div class="glow-orb orb-2" style="opacity:0.1;"></div>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="sep">›</span>
+                <span>Módulo 02</span>
+            </div>
+            <span class="section-label">Módulo 02 — Ciencia y Tecnología</span>
+            <h1 class="subpage-title">
+                ¿Qué es el<br>
+                <span class="gradient-text">Agua Kangen</span>?
+            </h1>
+            <p class="subpage-subtitle">
+                Agua producida por la innovadora tecnología de electrólisis de Enagic. Alcalina, antioxidante,
+                hidrogenada y micro-estructurada — un agua que va mucho más allá de la simple filtración.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== 5 PROPERTIES ===== -->
+    <section style="padding: 0 0 60px; margin-top: -20px; position: relative; z-index: 2;" id="propiedades">
+        <div class="container">
+            <div class="properties-grid animate-on-scroll">
+                <div class="property-card">
+                    <span class="property-icon">⚗️</span>
+                    <h4>Alcalina</h4>
+                    <p>pH 8.5 – 9.5 para beber. Contrarresta la acidificación del organismo y favorece el equilibrio natural.</p>
+                </div>
+                <div class="property-card">
+                    <span class="property-icon">🛡️</span>
+                    <h4>Antioxidante</h4>
+                    <p>ORP negativo (-400 a -800mV). Neutraliza radicales libres y combate el estrés oxidativo celular.</p>
+                </div>
+                <div class="property-card">
+                    <span class="property-icon">🔬</span>
+                    <h4>Micro-estructurada</h4>
+                    <p>Clusters de 5-6 moléculas vs. 10-13 del agua normal. Penetra las células con mayor facilidad.</p>
+                </div>
+                <div class="property-card">
+                    <span class="property-icon">💨</span>
+                    <h4>Hidrogenada</h4>
+                    <p>Rica en hidrógeno molecular (H₂). El antioxidante más pequeño y eficiente de la naturaleza.</p>
+                </div>
+                <div class="property-card">
+                    <span class="property-icon">❄️</span>
+                    <h4>Hexagonal</h4>
+                    <p>Estructura molecular hexagonal, la misma encontrada en los manantiales curativos del mundo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHAT IS KANGEN WATER ===== -->
+    <section class="content-section">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content-text animate-on-scroll">
+                    <span class="section-label">La Esencia</span>
+                    <h2>Más que Agua Filtrada: <span class="gradient-text">Agua Transformada</span></h2>
+                    <p>
+                        Agua Kangen® es un agua producida por la innovadora tecnología de <strong>electrólisis</strong>
+                        de Enagic. Estos dispositivos no sólo filtran el agua del grifo, sino que <strong>la potabilizan
+                        y producen 5 tipos de agua diferentes</strong>, gracias a su sistema de electrólisis con placas
+                        de titanio bañadas al 100% en platino.
+                    </p>
+                    <p>
+                        A diferencia de otros sistemas de filtración disponibles en el mercado —que eliminan incluso
+                        los minerales beneficiosos—, los ionizadores Kangen de Enagic mantienen los minerales intactos,
+                        proporcionando un agua de alta calidad que puede utilizarse para fines tan diversos como beber,
+                        cocinar, cuidar la belleza y la limpieza del hogar.
+                    </p>
+                    <p>
+                        El Agua Kangen® contiene varios minerales esenciales como el <strong>Calcio, el Potasio
+                        y el Magnesio</strong>. Con tan sólo pulsar un botón, podrá crear el agua que ayudará al
+                        cuidado de sus plantas, cocinar una deliciosa comida o limpiar la mancha más rebelde.
+                    </p>
+                </div>
+                <div class="content-image animate-on-scroll">
+                    <img src="../assets/kangen_machine.png" alt="Máquina ionizadora Kangen LeveLuk K8" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ELECTROLYSIS ===== -->
+    <section class="content-section" style="background: var(--bg-section-alt);" id="electrolisis">
+        <div class="container">
+            <div class="content-grid reverse">
+                <div class="content-text animate-on-scroll">
+                    <span class="section-label">El Proceso</span>
+                    <h2>La Electrólisis: <span class="gradient-text">Ciencia en Acción</span></h2>
+                    <p>
+                        La <strong>electrólisis del agua</strong> es un proceso científico en el que se hace pasar
+                        una corriente eléctrica a través del agua utilizando electrodos especiales. Este proceso
+                        separa el agua en dos corrientes:
+                    </p>
+                    <ul class="feature-list">
+                        <li><strong>Agua alcalina (cátodo):</strong> rica en minerales, iones OH⁻ e hidrógeno molecular. Es el agua para beber, cocinar y cuidar la salud.</li>
+                        <li><strong>Agua ácida (ánodo):</strong> con propiedades astringentes, bactericidas y desinfectantes. Ideal para limpieza, belleza y desinfección.</li>
+                    </ul>
+                    <p>
+                        Durante este proceso, el agua se reorganiza molecularmente, pasando de clusters grandes
+                        e irregulares (10-13 moléculas) a <strong>micro-clusters hexagonales de 5-6 moléculas</strong>,
+                        mucho más pequeños y biocompatibles con las células de nuestro organismo.
+                    </p>
+
+                    <blockquote>
+                        <p>
+                            La electrólisis no solo filtra: reestructura el agua a nivel molecular, creando
+                            un agua viva que hidrata, desintoxica y protege.
+                        </p>
+                    </blockquote>
+                </div>
+                <div class="electrolysis-diagram animate-on-scroll">
+                    <img src="../assets/electrolysis.png" alt="Diagrama del proceso de electrólisis del agua Kangen" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ORP — ANTIOXIDANTE ===== -->
+    <section class="content-section">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">Poder Antioxidante</span>
+                <h2 class="section-title">ORP Negativo: <span class="gradient-text">Antioxidante Natural</span></h2>
+                <p class="section-subtitle mx-auto">
+                    El potencial de Oxidación-Reducción (ORP) mide la capacidad del agua para oxidar o
+                    reducir. Un ORP negativo significa que el agua tiene capacidad antioxidante — combate
+                    los radicales libres que envejecen y enferman nuestras células.
+                </p>
+            </div>
+
+            <div class="orp-visual animate-on-scroll">
+                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Escala ORP (mV)</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+                    Cuanto más negativo, mayor poder antioxidante
+                </p>
+                <div class="orp-scale">
+                    <div class="orp-positive">+500 a +800 mV<br><small>Oxidante</small></div>
+                    <div class="orp-negative">-200 a -800 mV<br><small>Antioxidante</small></div>
+                </div>
+                <div class="orp-labels">
+                    <span>🥤 Refrescos, agua embotellada</span>
+                    <span>💧 Agua Kangen</span>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <span class="orp-marker">Agua Kangen: -400 a -800 mV</span>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 1rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    La mayoría de las aguas embotelladas y del grifo tienen un ORP positivo (+200 a +600 mV),
+                    lo que significa que <strong style="color: var(--text-main);">oxidan</strong> las células. El Agua Kangen, con su ORP fuertemente negativo,
+                    <strong style="color: var(--accent);">protege</strong> las células del daño oxidativo.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MICRO-CLUSTER / PLACAS ===== -->
+    <section class="content-section" style="background: var(--bg-section-alt);" id="placas">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content-image animate-on-scroll">
+                    <img src="../assets/clusters.png" alt="Comparativa de clusters moleculares — agua normal vs Kangen" loading="lazy">
+                </div>
+                <div class="content-text animate-on-scroll">
+                    <span class="section-label">Tecnología de Placas</span>
+                    <h2>Estructura <span class="gradient-text">Micro-Cluster</span></h2>
+                    <p>
+                        Los ionizadores Kangen de Enagic cuentan con unas <strong>placas de 100% Titanio bañadas
+                        en Platino</strong>, que cambian la estructura molecular presente en el agua del grifo
+                        (15 a 20 moléculas por cluster), transformándola en agrupaciones más pequeñas
+                        de <strong>5 a 6 moléculas por cluster</strong>.
+                    </p>
+                    <p>
+                        Gracias a este proceso nuestro cuerpo absorbe mejor las propiedades del agua,
+                        aumentando los niveles de hidratación. Las placas forradas (Mesh), empleadas en
+                        los demás ionizadores ofrecidos en el mercado, <strong>no consiguen obtener este resultado</strong>.
+                    </p>
+
+                    <div class="info-cards" style="grid-template-columns: 1fr 1fr;">
+                        <div class="info-card glass-card" style="cursor:default;">
+                            <span class="card-icon">🚫</span>
+                            <h4>Agua del Grifo</h4>
+                            <p>10-13 moléculas por cluster. Difícil absorción celular.</p>
+                        </div>
+                        <div class="info-card glass-card" style="cursor:default;">
+                            <span class="card-icon">✅</span>
+                            <h4>Agua Kangen</h4>
+                            <p>5-6 moléculas por cluster. Máxima penetración celular.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What it eliminates -->
+            <div style="margin-top: 5rem;" class="animate-on-scroll">
+                <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem;">¿Qué <span class="gradient-text">Microorganismos</span> Consigue Eliminar?</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                    El sistema de electrólisis Kangen elimina patógenos y contaminantes que otros sistemas dejan pasar:
+                </p>
+
+                <div class="eliminated-grid">
+                    <div class="eliminated-item">
+                        <span class="elim-icon">🦠</span>
+                        <span>Bacterias</span>
+                    </div>
+                    <div class="eliminated-item">
+                        <span class="elim-icon">🧫</span>
+                        <span>Virus</span>
+                    </div>
+                    <div class="eliminated-item">
+                        <span class="elim-icon">🔬</span>
+                        <span>Protozoos</span>
+                    </div>
+                    <div class="eliminated-item">
+                        <span class="elim-icon">🌿</span>
+                        <span>Quistes</span>
+                    </div>
+                    <div class="eliminated-item">
+                        <span class="elim-icon">🍄</span>
+                        <span>Hongos</span>
+                    </div>
+                    <div class="eliminated-item">
+                        <span class="elim-icon">🌊</span>
+                        <span>Algas</span>
+                    </div>
+                    <div class="eliminated-item">
+                        <span class="elim-icon">🧪</span>
+                        <span>Levaduras</span>
+                    </div>
+                    <div class="eliminated-item">
+                        <span class="elim-icon">💨</span>
+                        <span>Esporas</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toxic elements -->
+            <div style="margin-top: 3rem;" class="animate-on-scroll">
+                <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Elementos Tóxicos que <span class="gradient-text">Elimina</span></h3>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                    También filtra y neutraliza metales pesados y elementos químicos nocivos:
+                </p>
+                <div class="toxic-grid">
+                    <div class="toxic-item">⚠️ Azufre</div>
+                    <div class="toxic-item">⚠️ Silicio</div>
+                    <div class="toxic-item">⚠️ Cloro</div>
+                    <div class="toxic-item">⚠️ Flúor</div>
+                    <div class="toxic-item">⚠️ Cromo</div>
+                    <div class="toxic-item">⚠️ Cobre</div>
+                    <div class="toxic-item">⚠️ Bario</div>
+                    <div class="toxic-item">⚠️ Mercurio</div>
+                    <div class="toxic-item">⚠️ Arsénico</div>
+                    <div class="toxic-item">⚠️ Cadmio</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MINERALS ===== -->
+    <section class="content-section">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">Minerales Esenciales</span>
+                <h2 class="section-title"><span class="gradient-text">Minerales</span> que Preserva</h2>
+                <p class="section-subtitle mx-auto">
+                    A diferencia de otros sistemas que eliminan todo —incluido lo beneficioso—, Kangen
+                    preserva los minerales esenciales que su cuerpo necesita cada día.
+                </p>
+            </div>
+
+            <div class="minerals-row animate-on-scroll">
+                <div class="mineral-card glass-card" style="cursor:default;">
+                    <div class="mineral-icon" style="background: rgba(0,229,160,0.1); border-color: rgba(0,229,160,0.3);">🦴</div>
+                    <h4>Calcio</h4>
+                    <p>Fundamental para huesos, dientes y el funcionamiento del sistema nervioso. Previene la osteoporosis.</p>
+                </div>
+                <div class="mineral-card glass-card" style="cursor:default;">
+                    <div class="mineral-icon" style="background: rgba(0,136,255,0.1); border-color: rgba(0,136,255,0.3);">⚡</div>
+                    <h4>Potasio</h4>
+                    <p>Regula la presión arterial, el ritmo cardíaco y la contracción muscular. Esencial para el equilibrio celular.</p>
+                </div>
+                <div class="mineral-card glass-card" style="cursor:default;">
+                    <div class="mineral-icon" style="background: rgba(156,39,176,0.1); border-color: rgba(156,39,176,0.3);">💎</div>
+                    <h4>Magnesio</h4>
+                    <p>Interviene en más de 300 reacciones enzimáticas. Combate el estrés, mejora el sueño y la recuperación muscular.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HIDRATACIÓN PROFUNDA ===== -->
+    <section class="content-section" style="background: var(--bg-section-alt);">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content-text animate-on-scroll">
+                    <span class="section-label">Hidratación Celular</span>
+                    <h2>Hidrata <span class="gradient-text">Profundamente</span> las Células</h2>
+                    <p>
+                        La estructura micro-cluster del Agua Kangen permite que el agua penetre las membranas
+                        celulares con una eficiencia muy superior al agua del grifo o embotellada. Esto se
+                        traduce en tres beneficios fundamentales:
+                    </p>
+                    <ul class="feature-list">
+                        <li><strong>Hidrata profundamente las células:</strong> el agua llega donde otras aguas no pueden, nutriendo tejidos desde el interior.</li>
+                        <li><strong>Potencia la absorción de los nutrientes:</strong> al hidratar mejor las células, los nutrientes de los alimentos se absorben con mayor eficacia.</li>
+                        <li><strong>Elimina los residuos tóxicos de la actividad celular:</strong> facilita la evacuación de desechos metabólicos ácidos acumulados en los tejidos.</li>
+                    </ul>
+                    <blockquote>
+                        <p>
+                            Los ionizadores de Enagic no sólo le ayudarán a mantenerse hidratado y saludable,
+                            también le alentará a mantener su hogar limpio y brillante. ¡Descubra todo lo que
+                            los ionizadores de Kangen® pueden hacer por usted!
+                        </p>
+                    </blockquote>
+                </div>
+                <div class="content-image animate-on-scroll">
+                    <img src="../assets/hexagonal_water.png" alt="Estructura hexagonal del agua — hidratación celular profunda" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COMPARATIVE TABLE ===== -->
+    <section class="content-section" id="comparativa">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">Comparativa</span>
+                <h2 class="section-title"><span class="gradient-text">Agua Kangen</span> vs. Otras Aguas</h2>
+                <p class="section-subtitle mx-auto">
+                    No todas las aguas son iguales. Esta comparativa muestra por qué el Agua Kangen
+                    está en una categoría completamente diferente.
+                </p>
+            </div>
+
+            <div class="comparison-table-wrapper animate-on-scroll">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>Agua del Grifo</th>
+                            <th>Agua Embotellada</th>
+                            <th>Ósmosis Inversa</th>
+                            <th class="highlight-col">Agua Kangen®</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>pH Alcalino (8.5 – 9.5)</strong></td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="cross">✕</span></td>
+                            <td class="highlight-col"><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>ORP Negativo (antioxidante)</strong></td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="cross">✕</span></td>
+                            <td class="highlight-col"><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Micro-cluster (5-6 moléculas)</strong></td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="cross">✕</span></td>
+                            <td class="highlight-col"><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rica en Hidrógeno molecular</strong></td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="cross">✕</span></td>
+                            <td class="highlight-col"><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Preserva minerales esenciales</strong></td>
+                            <td>Parcial</td>
+                            <td>Variable</td>
+                            <td><span class="cross">✕</span> Los elimina</td>
+                            <td class="highlight-col"><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Elimina contaminantes tóxicos</strong></td>
+                            <td><span class="cross">✕</span></td>
+                            <td>Variable</td>
+                            <td><span class="check">✓</span></td>
+                            <td class="highlight-col"><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>5 tipos de agua en 1 dispositivo</strong></td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="cross">✕</span></td>
+                            <td class="highlight-col"><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sin plásticos/contaminación</strong></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="cross">✕</span> Microplásticos</td>
+                            <td><span class="check">✓</span></td>
+                            <td class="highlight-col"><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Certificación ISO médica</strong></td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="cross">✕</span></td>
+                            <td class="highlight-col"><span class="check">✓</span> ISO 13485</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SUMMARY STATS ===== -->
+    <section style="padding: 60px 0; background: var(--bg-section-alt);">
+        <div class="container">
+            <div class="summary-stats animate-on-scroll">
+                <div class="summary-stat glass-card" style="cursor:default;">
+                    <span class="stat-big gradient-text">5</span>
+                    <span class="stat-desc">Tipos de agua en<br>un solo dispositivo</span>
+                </div>
+                <div class="summary-stat glass-card" style="cursor:default;">
+                    <span class="stat-big gradient-text">5-6</span>
+                    <span class="stat-desc">Moléculas por<br>cluster hexagonal</span>
+                </div>
+                <div class="summary-stat glass-card" style="cursor:default;">
+                    <span class="stat-big gradient-text">-800</span>
+                    <span class="stat-desc">mV de ORP negativo<br>(antioxidante)</span>
+                </div>
+                <div class="summary-stat glass-card" style="cursor:default;">
+                    <span class="stat-big gradient-text">pH 9.5</span>
+                    <span class="stat-desc">Alcalinidad óptima<br>para beber</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 5 TYPES PREVIEW ===== -->
+    <section class="content-section">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">Produce 5 Aguas</span>
+                <h2 class="section-title">Un Dispositivo, <span class="gradient-text">5 Tipos de Agua</span></h2>
+                <p class="section-subtitle mx-auto">
+                    Cada tipo de agua producida por los ionizadores Kangen tiene aplicaciones específicas.
+                    Descúbrelas en profundidad en el módulo dedicado.
+                </p>
+            </div>
+
+            <div class="info-cards animate-on-scroll">
+                <div class="info-card glass-card" style="cursor:default; border-left: 3px solid #9c27b0;">
+                    <span class="card-icon">🟣</span>
+                    <h4>Agua Súper Alcalina</h4>
+                    <p>pH 11.5 — No potable. Limpieza profunda, eliminación de pesticidas y desengrasante.</p>
+                </div>
+                <div class="info-card glass-card" style="cursor:default; border-left: 3px solid #2196f3;">
+                    <span class="card-icon">🔵</span>
+                    <h4>Agua Kangen®</h4>
+                    <p>pH 8.5 – 9.5 — Potable. Para beber, cocinar, café, té, plantas y mascotas.</p>
+                </div>
+                <div class="info-card glass-card" style="cursor:default; border-left: 3px solid #4caf50;">
+                    <span class="card-icon">🟢</span>
+                    <h4>Agua Neutra</h4>
+                    <p>pH 7.0 — Potable. Ideal para preparar medicamentos y comida para bebés.</p>
+                </div>
+                <div class="info-card glass-card" style="cursor:default; border-left: 3px solid #ffc107;">
+                    <span class="card-icon">🟡</span>
+                    <h4>Agua de Belleza</h4>
+                    <p>pH 6.0 — No potable. Tónico facial, cuidado del cabello e hidratación de la piel.</p>
+                </div>
+                <div class="info-card glass-card" style="cursor:default; border-left: 3px solid #f44336;">
+                    <span class="card-icon">🔴</span>
+                    <h4>Agua Súper Ácida</h4>
+                    <p>pH 2.5 — No potable. Desinfectante, bactericida, higiene bucal y pie de atleta.</p>
+                </div>
+            </div>
+
+            <div class="text-center" style="margin-top: 2.5rem;">
+                <a href="../04-tipos-agua/index.html" class="btn-primary">Ver los 5 Tipos en Detalle →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section style="padding: 80px 0; background: var(--bg-section-alt);">
+        <div class="container">
+            <div class="cta-banner animate-on-scroll">
+                <div>
+                    <h2>Siguiente: Beneficios para la Salud</h2>
+                    <p>Descubre cómo el Agua Kangen desintoxica el intestino, reduce la grasa y potencia el rendimiento deportivo.</p>
+                </div>
+                <a href="../03-beneficios/index.html" class="btn-white" style="text-decoration:none;">Módulo 03 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MODULE NAVIGATION ===== -->
+    <section style="padding: 30px 0;">
+        <div class="container">
+            <div class="module-nav">
+                <a href="../01-hiromi-shinya/index.html">← Módulo 01: Dr. Shinya</a>
+                <a href="../index.html">Índice General</a>
+                <a href="../03-beneficios/index.html">Módulo 03: Beneficios →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                💧 Agua<span style="color: var(--accent);">Kangen</span> — Módulo 02
+            </div>
+            <p class="footer-copy">© 2026 — Distribuidor Independiente Enagic</p>
+            <div class="footer-nav">
+                <a href="../index.html">Inicio</a>
+                <a href="../index.html#modulos">Módulos</a>
+                <a href="../../../index.html">Kangen Water</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+</html>

@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelos de Ionizadores Kangen — Leveluk K8, SD501, Super 501 y Anespa | Agua Kangen</title>
+    <meta name="description" content="Conoce los modelos de ionizadores Kangen: K8 (8 placas, premium familiar), SD501 (el clásico), Super 501 (profesional) y Anespa DX (spa en casa). Ingeniería japonesa, titanio-platino, certificación ISO 13485.">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* ===== MODULE 07 — MODELOS — ASPIRATIONAL MARKETING STYLES ===== */
+
+        /* Hero lifestyle full-width */
+        .lifestyle-hero {
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+            margin: 0 0 3rem;
+            min-height: 450px;
+        }
+
+        .lifestyle-hero img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .lifestyle-hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 3rem;
+            background: linear-gradient(to top, rgba(5,12,24,0.95) 0%, rgba(5,12,24,0.6) 60%, transparent 100%);
+        }
+
+        .lifestyle-hero-overlay h2 {
+            font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .lifestyle-hero-overlay p {
+            color: rgba(255,255,255,0.85);
+            font-size: 1.05rem;
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        /* Product Showcase Card */
+        .model-showcase {
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .model-showcase-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 550px;
+        }
+
+        .model-showcase-image {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .model-showcase-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .model-showcase-image .model-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 2;
+        }
+
+        .model-showcase-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--card-bg);
+        }
+
+        .model-showcase-content .model-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            margin-bottom: 0.3rem;
+            line-height: 1.1;
+        }
+
+        .model-showcase-content .model-subtitle {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .model-showcase-content p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Specs grid */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0,136,255,0.06);
+            border: 1px solid rgba(0,136,255,0.1);
+            border-radius: 14px;
+        }
+
+        .spec-item .spec-value {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .spec-item .spec-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* Model Cards Grid (for smaller models) */
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .model-card {
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            background: var(--card-bg);
+        }
+
+        .model-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .model-card-header {
+            padding: 2rem;
+            position: relative;
+        }
+
+        .model-card-header .mc-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 0.3rem;
+        }
+
+        .model-card-header .mc-subtitle {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .model-card-header .mc-tag {
+            font-size: 0.75rem;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .model-card-body {
+            padding: 0 2rem 2rem;
+        }
+
+        .model-card-body p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .model-card-specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+        }
+
+        .mcs-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .mcs-item .mcs-icon {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Investment reframe section */
+        .reframe-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            margin: 3rem 0;
+        }
+
+        .reframe-bad {
+            padding: 2.5rem;
+            background: rgba(239,68,68,0.05);
+            border-right: 1px solid var(--border-color);
+        }
+
+        .reframe-good {
+            padding: 2.5rem;
+            background: rgba(0,229,160,0.05);
+        }
+
+        .reframe-bad h3, .reframe-good h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .reframe-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .reframe-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .reframe-list li .rl-icon {
+            flex-shrink: 0;
+            font-weight: 700;
+        }
+
+        /* Daily cost visual */
+        .daily-cost {
+            text-align: center;
+            padding: 3rem;
+            border-radius: 24px;
+            border: 2px solid var(--border-color);
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .daily-cost::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-water);
+        }
+
+        .daily-cost .dc-amount {
+            font-family: 'Outfit', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .daily-cost .dc-period {
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .daily-cost p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Comparisons strip */
+        .compare-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .compare-item {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            border-radius: 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-light);
+        }
+
+        .compare-item .ci-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .compare-item .ci-name {
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .compare-item .ci-cost {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 1.1rem;
+            display: block;
+        }
+
+        .compare-item .ci-note {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Module nav */
+        .module-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-light);
+            margin-top: 3rem;
+        }
+
+        .module-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        .module-nav a:hover {
+            color: var(--accent);
+            border-color: var(--border-color);
+            background: var(--card-bg);
+        }
+
+        @media (max-width: 968px) {
+            .model-showcase-hero {
+                grid-template-columns: 1fr;
+            }
+            .model-showcase-image {
+                height: 300px;
+            }
+            .models-grid {
+                grid-template-columns: 1fr;
+            }
+            .reframe-grid {
+                grid-template-columns: 1fr;
+            }
+            .reframe-bad {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+            .compare-strip {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .specs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .compare-strip {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-brand">
+                <span class="logo-icon">💧</span>
+                <span class="logo-text">Agua<span>Kangen</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html">← Inicio</a>
+                <a href="#k8">K8</a>
+                <a href="#otros">Otros Modelos</a>
+                <a href="#inversion">Inversión</a>
+                <a href="../index.html#modulos" class="btn-primary btn-sm">Módulos</a>
+            </div>
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+        </div>
+    </nav>
+
+    <!-- ===== SUBPAGE HERO ===== -->
+    <section class="subpage-hero">
+        <div class="glow-orb orb-1" style="opacity:0.15;"></div>
+        <div class="glow-orb orb-2" style="opacity:0.1;"></div>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="sep">›</span>
+                <span>Módulo 07</span>
+            </div>
+            <span class="section-label">Módulo 07 — Ingeniería Premium</span>
+            <h1 class="subpage-title">
+                Los Ionizadores<br>
+                <span class="gradient-text">Kangen</span>
+            </h1>
+            <p class="subpage-subtitle">
+                No compras un electrodoméstico. Adquieres un sistema médico certificado ISO 13485 que
+                protegerá la salud de tu familia durante los próximos 15-25 años. Fabricado en Japón
+                con placas sólidas de titanio recubiertas de platino.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== LIFESTYLE HERO ===== -->
+    <section style="padding: 0 0 0; margin-top: -20px; position: relative; z-index: 2;">
+        <div class="container">
+            <div class="lifestyle-hero animate-on-scroll">
+                <img src="../assets/family_lifestyle.png" alt="Familia disfrutando del Agua Kangen en su cocina" loading="lazy">
+                <div class="lifestyle-hero-overlay">
+                    <h2>Imagina que abres el grifo y <span class="gradient-text">sale salud</span></h2>
+                    <p>
+                        Imagina que cada vaso de agua que bebe tu familia es antioxidante, alcalina,
+                        hidrogenada y micro-clusterizada. Imagina eliminar la necesidad de comprar
+                        agua embotellada, tónicos, desinfectantes y desengrasantes. Eso es Kangen.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TECHNOLOGY CORE: TITANIUM PLATES ===== -->
+    <section class="content-section">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content-image animate-on-scroll">
+                    <img src="../assets/titanium_plates.png" alt="Placas de titanio recubiertas de platino en la cámara de electrólisis" loading="lazy">
+                </div>
+                <div class="content-text animate-on-scroll">
+                    <span class="section-label">El Corazón de la Máquina</span>
+                    <h2>Placas Sólidas de <span class="gradient-text">Titanio-Platino</span></h2>
+                    <p>
+                        Esta es la diferencia fundamental entre un ionizador Kangen y cualquier imitación
+                        barata. Las placas de electrólisis Enagic son <strong>bloques sólidos de titanio de
+                        grado médico, recubiertos con platino puro</strong> mediante un proceso de inmersión
+                        (dip coating) que garantiza uniformidad perfecta.
+                    </p>
+                    <p>
+                        Los competidores baratos usan "placas de malla" (rejilla de alambre recubierta),
+                        que ofrecen menor superficie de contacto, electrólisis desigual, degradación
+                        prematura y producción inconsistente de hidrógeno molecular. Es como comparar
+                        un bisturí quirúrgico con un cuchillo de cocina.
+                    </p>
+                    <ul class="feature-list">
+                        <li><strong>Titanio sólido</strong> — Máxima durabilidad (15-25 años sin degradación)</li>
+                        <li><strong>Platino puro</strong> — Catalizador perfecto para electrólisis uniforme</li>
+                        <li><strong>Mayor superficie</strong> — Más H₂ disuelto, ORP más negativo</li>
+                        <li><strong>Auto-limpieza</strong> — Sistema DARC que invierte la polaridad automáticamente</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- MODELO ESTRELLA: LEVELUK K8                     -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="content-section" style="background: var(--bg-section-alt);" id="k8">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">★ El Modelo Más Vendido</span>
+                <h2 class="section-title">Leveluk <span class="gradient-text">K8</span></h2>
+                <p class="section-subtitle mx-auto">
+                    El ionizador más avanzado y potente para el hogar. 8 placas de titanio-platino,
+                    la electrólisis más potente y la producción de H₂ más alta de la gama.
+                </p>
+            </div>
+
+            <div class="model-showcase animate-on-scroll">
+                <div class="model-showcase-hero">
+                    <div class="model-showcase-image">
+                        <img src="../assets/k8_product.png" alt="Leveluk K8 — El ionizador Kangen más avanzado" loading="lazy">
+                        <span class="model-badge" style="background: var(--gradient-water); color: #fff;">★ Recomendado</span>
+                    </div>
+                    <div class="model-showcase-content">
+                        <div class="model-name">Leveluk K8</div>
+                        <div class="model-subtitle">Mighty — La Potencia Definitiva</div>
+
+                        <p>
+                            Con <strong>8 placas sólidas de titanio-platino</strong>, el K8 es el ionizador
+                            más potente de la gama para uso residencial. Produce un flujo de agua más
+                            consistente, un ORP más profundamente negativo y una concentración de
+                            hidrógeno molecular más alta que cualquier otro modelo.
+                        </p>
+                        <p>
+                            Su pantalla LCD a color en tiempo real muestra el pH exacto, el flujo de
+                            agua y las indicaciones de mantenimiento. El sistema de voz multilíngue
+                            confirma cada selección de pH. Tecnología intuitiva al servicio de tu salud.
+                        </p>
+
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <span class="spec-value gradient-text">8</span>
+                                <span class="spec-label">Placas Titanio-Platino</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-value gradient-text">5</span>
+                                <span class="spec-label">Tipos de Agua</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-value gradient-text">230W</span>
+                                <span class="spec-label">Potencia Electrólisis</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-value gradient-text">pH 2.5</span>
+                                <span class="spec-label">Mínimo Ácido</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-value gradient-text">pH 11.5</span>
+                                <span class="spec-label">Máximo Alcalino</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-value gradient-text">15-25</span>
+                                <span class="spec-label">Años Vida Útil</span>
+                            </div>
+                        </div>
+
+                        <ul class="feature-list" style="margin-top: 1.5rem;">
+                            <li>Pantalla LCD color con indicación de pH en tiempo real</li>
+                            <li>Sistema de voz multilíngue (8 idiomas)</li>
+                            <li>Auto-limpieza DARC (Double Automatic Reverse Cleaning)</li>
+                            <li>Filtro de alto rendimiento con carbón activo</li>
+                            <li>Certificación ISO 13485 · Registro FDA · WQA Gold Seal</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- OTROS MODELOS                                   -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="content-section" id="otros">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">La Gama Completa</span>
+                <h2 class="section-title">Otros <span class="gradient-text">Modelos</span></h2>
+                <p class="section-subtitle mx-auto">
+                    Cada modelo está fabricado con los mismos estándares de calidad ISO 13485 y las
+                    mismas placas sólidas de titanio-platino. La diferencia está en la potencia y las prestaciones.
+                </p>
+            </div>
+
+            <div class="models-grid animate-on-scroll">
+                <!-- SD501 -->
+                <div class="model-card">
+                    <div class="model-card-header">
+                        <span class="mc-tag" style="background: rgba(0,136,255,0.15); color: var(--accent);">Clásico Veterano</span>
+                        <div class="mc-name">Leveluk SD501</div>
+                        <span class="mc-subtitle">El Más Vendido del Mundo</span>
+                    </div>
+                    <div class="model-card-body">
+                        <p>
+                            Con más de <strong>30 años en el mercado</strong>, el SD501 es el ionizador más
+                            vendido de la historia. 7 placas sólidas de titanio-platino, pantalla LCD,
+                            sistema de voz y producción completa de los 5 tipos de agua. Un clásico probado
+                            en millones de hogares en todo el mundo.
+                        </p>
+                        <div class="model-card-specs">
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> 7 placas titanio-platino</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> 5 tipos de agua</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> 150W electrólisis</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> Pantalla LCD</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> Auto-limpieza</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> Voz multilíngue</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SD501 Platinum -->
+                <div class="model-card">
+                    <div class="model-card-header">
+                        <span class="mc-tag" style="background: rgba(139,92,246,0.15); color: #8b5cf6;">Edición Premium</span>
+                        <div class="mc-name">SD501 Platinum</div>
+                        <span class="mc-subtitle">Elegancia y Rendimiento</span>
+                    </div>
+                    <div class="model-card-body">
+                        <p>
+                            La misma cámara de electrólisis del SD501 clásico envuelta en un acabado
+                            <strong>platinium de alta gama</strong>. Para quienes buscan que su ionizador
+                            se integre con el diseño de cocinas de lujo. Mismo rendimiento, estética superior.
+                        </p>
+                        <div class="model-card-specs">
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> 7 placas titanio-platino</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> 5 tipos de agua</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> Acabado premium</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> Pantalla LCD color</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> Auto-limpieza</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> Diseño de lujo</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Super 501 -->
+                <div class="model-card">
+                    <div class="model-card-header">
+                        <span class="mc-tag" style="background: rgba(245,158,11,0.15); color: #f59e0b;">Profesional</span>
+                        <div class="mc-name">Leveluk Super 501</div>
+                        <span class="mc-subtitle">Potencia Industrial</span>
+                    </div>
+                    <div class="model-card-body">
+                        <p>
+                            Diseñado para clínicas, restaurantes, spas y oficinas. Con <strong>12 placas</strong>
+                            y doble cámara de electrólisis, produce agua a mayor volumen y velocidad manteniendo
+                            un ORP y concentración de H₂ óptimos. La bestia del catálogo Enagic.
+                        </p>
+                        <div class="model-card-specs">
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> 12 placas titanio-platino</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> Doble cámara</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> Alto volumen</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> Uso profesional</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> Pantalla táctil</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> Producción continua</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- JRII -->
+                <div class="model-card">
+                    <div class="model-card-header">
+                        <span class="mc-tag" style="background: rgba(0,229,160,0.15); color: #00e5a0;">Compacto</span>
+                        <div class="mc-name">Leveluk JR II</div>
+                        <span class="mc-subtitle">Entrada al Mundo Kangen</span>
+                    </div>
+                    <div class="model-card-body">
+                        <p>
+                            El modelo de entrada para personas individuales o parejas. Con <strong>3 placas</strong>,
+                            produce agua alcalina pH 8.5-9.5 y agua ácida pH 6.0. Compacto, eficiente y el
+                            primer paso perfecto para experimentar la diferencia Kangen.
+                        </p>
+                        <div class="model-card-specs">
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> 3 placas titanio-platino</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> 3 tipos de agua</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> Compacto y ligero</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> Ideal para 1-2 personas</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> Económico</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> Misma certificación</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ANESPA DX -->
+            <div class="model-showcase animate-on-scroll" style="margin-top: 2rem;">
+                <div class="model-showcase-hero" style="min-height: auto;">
+                    <div class="model-showcase-content">
+                        <span class="section-label" style="margin-bottom: 1rem;">Exclusivo</span>
+                        <div class="model-name">Anespa DX</div>
+                        <div class="model-subtitle">Tu Spa en Casa — Agua Mineral para la Ducha</div>
+                        <p>
+                            El Anespa DX transforma tu ducha en una <strong>experiencia de spa con aguas
+                            termales</strong>. Filtra el cloro, los metales pesados y las impurezas del agua
+                            de red, y la enriquece con minerales naturales (calcio, magnesio, sodio) para
+                            crear una ducha que hidrata tu piel en lugar de resecarla.
+                        </p>
+                        <p>
+                            El resultado: piel más suave, cabello más brillante, menos irritación, menos
+                            sequedad. Es la diferencia que sientes desde la primera ducha.
+                        </p>
+                        <div class="model-card-specs" style="margin-top: 1rem;">
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> Filtra cloro 100%</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> Minerales naturales</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> Instalación fácil</div>
+                            <div class="mcs-item"><span class="mcs-icon">◆</span> Piel y cabello radiantes</div>
+                        </div>
+                    </div>
+                    <div class="model-showcase-image" style="background: linear-gradient(135deg, rgba(0,136,255,0.1), rgba(0,210,255,0.05)); display: flex; align-items: center; justify-content: center; min-height: 350px;">
+                        <div style="text-align: center; padding: 2rem;">
+                            <div style="font-size: 5rem; margin-bottom: 1rem;">🚿</div>
+                            <div style="font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 800;">Spa en Casa</div>
+                            <div style="color: var(--text-muted); margin-top: 0.5rem;">Aguas termales desde tu ducha</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- INVESTMENT REFRAME — MARKETING PROFUNDO         -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="content-section" style="background: var(--bg-section-alt);" id="inversion">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">Cambia tu Perspectiva</span>
+                <h2 class="section-title">No es un <span style="text-decoration: line-through; opacity: 0.5;">Gasto</span>. Es una <span class="gradient-text">Inversión en Salud</span></h2>
+                <p class="section-subtitle mx-auto">
+                    Nadie cuestiona el precio de un buen colchón donde duermes 8 horas al día. ¿Por qué
+                    cuestionarías invertir en el agua que constituye el 70% de tu cuerpo?
+                </p>
+            </div>
+
+            <!-- Daily Cost Visual -->
+            <div class="daily-cost glass-card animate-on-scroll" style="cursor:default;">
+                <div class="dc-amount gradient-text">~1,50€</div>
+                <span class="dc-period">al día para toda tu familia</span>
+                <p>
+                    El coste real de un ionizador Kangen, amortizado en sus 15-25 años de vida útil,
+                    es inferior a lo que pagas por un café al día. Pero en lugar de un café, le das a
+                    tu familia <strong>agua antioxidante, alcalina, hidrogenada ilimitada</strong>,
+                    además de desinfectante, tónico facial, acondicionador capilar y desengrasante natural.
+                    Todo incluido. Para siempre.
+                </p>
+            </div>
+
+            <!-- Reframe Comparison -->
+            <div class="reframe-grid animate-on-scroll">
+                <div class="reframe-bad">
+                    <h3 style="color: #ef4444;">❌ Lo que la gente piensa</h3>
+                    <ul class="reframe-list">
+                        <li><span class="rl-icon">✗</span> "Es caro" — porque lo compara con un filtro de 50€</li>
+                        <li><span class="rl-icon">✗</span> "Es otro cacharro más" — porque no conoce la tecnología</li>
+                        <li><span class="rl-icon">✗</span> "El agua es agua" — porque no sabe que el 75% de la población está crónicamente deshidratada</li>
+                        <li><span class="rl-icon">✗</span> "No necesito esto" — pero gasta 200€/mes en suplementos, cremas y productos de limpieza</li>
+                        <li><span class="rl-icon">✗</span> "Ya filtro mi agua" — pero su filtro no produce H₂, ni alcalinidad, ni ORP negativo</li>
+                    </ul>
+                </div>
+                <div class="reframe-good">
+                    <h3 style="color: #00e5a0;">✓ La realidad</h3>
+                    <ul class="reframe-list">
+                        <li><span class="rl-icon" style="color:#00e5a0;">✓</span> Es un <strong>dispositivo médico certificado</strong> con la misma norma que los equipos hospitalarios</li>
+                        <li><span class="rl-icon" style="color:#00e5a0;">✓</span> Dura <strong>15-25 años</strong> — más que tu coche, tu móvil y tu lavadora juntos</li>
+                        <li><span class="rl-icon" style="color:#00e5a0;">✓</span> Produce <strong>5 tipos de agua</strong> que sustituyen +30 productos del hogar</li>
+                        <li><span class="rl-icon" style="color:#00e5a0;">✓</span> El ahorro neto estimado es de <strong>+1.124€/año</strong> en agua embotellada y productos eliminados</li>
+                        <li><span class="rl-icon" style="color:#00e5a0;">✓</span> Eliminas +<strong>70.000 botellas de plástico</strong> del medio ambiente en su vida útil</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Comparisons -->
+            <div class="text-center animate-on-scroll" style="margin-top: 3rem;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Lo que la gente <span class="gradient-text">sí paga sin cuestionar</span></h3>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">Ponemos en perspectiva lo que consideramos "normal" gastar</p>
+            </div>
+
+            <div class="compare-strip animate-on-scroll">
+                <div class="compare-item">
+                    <span class="ci-icon">📱</span>
+                    <span class="ci-name">iPhone nuevo</span>
+                    <span class="ci-cost" style="color: #ef4444;">~1.200€</span>
+                    <span class="ci-note">cada 2-3 años</span>
+                </div>
+                <div class="compare-item">
+                    <span class="ci-icon">☕</span>
+                    <span class="ci-name">Cafés fuera</span>
+                    <span class="ci-cost" style="color: #ef4444;">~1.800€/año</span>
+                    <span class="ci-note">2 cafés × 365 días</span>
+                </div>
+                <div class="compare-item">
+                    <span class="ci-icon">🧴</span>
+                    <span class="ci-name">Cremas y cosmética</span>
+                    <span class="ci-cost" style="color: #ef4444;">~600€/año</span>
+                    <span class="ci-note">productos que Kangen sustituye</span>
+                </div>
+                <div class="compare-item" style="background: rgba(0,136,255,0.08); border-color: rgba(0,136,255,0.2);">
+                    <span class="ci-icon">💧</span>
+                    <span class="ci-name">Kangen K8</span>
+                    <span class="ci-cost gradient-text">~1,50€/día</span>
+                    <span class="ci-note">para toda la familia, 15-25 años</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EMOTIONAL CLOSE ===== -->
+    <section class="content-section">
+        <div class="container">
+            <div class="text-center animate-on-scroll" style="max-width: 800px; margin: 0 auto;">
+                <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); margin-bottom: 1.5rem;">
+                    La pregunta no es <em>"¿puedo permitírmelo?"</em><br>
+                    La pregunta es: <span class="gradient-text">"¿puedo permitirme NO tenerlo?"</span>
+                </h2>
+                <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                    Cada día que pasa bebiendo agua muerta, acidificada, clorada y sin antioxidantes
+                    es un día que tu cuerpo trabaja contra corriente. Cada día que tus hijos beben
+                    agua de plástico con microplásticos es un día que podrías evitar. La tecnología
+                    existe. La ciencia lo respalda. Los hospitales japoneses la usan desde los años 80.
+                    ¿A qué esperas?
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section style="padding: 60px 0; background: var(--bg-section-alt);">
+        <div class="container">
+            <div class="cta-banner animate-on-scroll" style="flex-direction: column; text-align: center;">
+                <div style="max-width: 700px;">
+                    <h2 style="font-size: 2rem; margin-bottom: 1rem;">🌊 ¿Listo para cambiar tu agua?</h2>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 1.05rem; margin-bottom: 1.5rem;">
+                        Si has llegado hasta aquí, ya sabes que esto es diferente. Contacta para una
+                        demostración gratuita del agua: la prueba está en el primer vaso.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MODULE NAVIGATION ===== -->
+    <section style="padding: 30px 0;">
+        <div class="container">
+            <div class="module-nav">
+                <a href="../06-dr-carpenter/index.html">← Módulo 06: Certificaciones</a>
+                <a href="../index.html">Índice General</a>
+                <a href="../08-negocio/index.html">Módulo 08: Oportunidad →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                💧 Agua<span style="color: var(--accent);">Kangen</span> — Módulo 07
+            </div>
+            <p class="footer-copy">© 2026 — Distribuidor Independiente Enagic</p>
+            <div class="footer-nav">
+                <a href="../index.html">Inicio</a>
+                <a href="../index.html#modulos">Módulos</a>
+                <a href="../../../index.html">Kangen Water</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+</html>

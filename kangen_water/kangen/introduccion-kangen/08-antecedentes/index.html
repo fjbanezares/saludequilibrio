@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antecedentes Históricos — De los Manantiales Milagrosos a la Ciencia | Agua Kangen</title>
+    <meta name="description" content="Descubre la historia del Agua Kangen: desde los manantiales de Lourdes, Tlacote y Nordenau hasta el descubrimiento del Hidrógeno Molecular por científicos japoneses y rusos.">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* ===== MODULE 08 — HISTORIA Y ANTECEDENTES ===== */
+
+        /* Mystical Hero Overlay */
+        .mystical-hero {
+            position: relative;
+            padding: 80px 0;
+            background: radial-gradient(circle at center, rgba(0,136,255,0.1) 0%, transparent 60%);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mystical-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 1;
+        }
+
+        .mystical-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Healing Springs Grid */
+        .springs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .spring-card {
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            min-height: 280px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            background: linear-gradient(145deg, var(--card-bg) 0%, rgba(5,12,24,1) 100%);
+        }
+
+        .spring-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0,136,255,0.4);
+            box-shadow: 0 10px 40px rgba(0,136,255,0.1);
+        }
+
+        .spring-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(0,136,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(30%, -30%);
+            transition: var(--transition);
+        }
+
+        .spring-card:hover::after {
+            background: radial-gradient(circle, rgba(0,136,255,0.2) 0%, transparent 70%);
+            transform: scale(1.2) translate(20%, -20%);
+        }
+
+        .spring-card .sc-country {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            color: var(--accent);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            z-index: 2;
+        }
+
+        .spring-card .sc-icon {
+            font-size: 3.5rem;
+            margin-bottom: auto; /* Pushes content down */
+            opacity: 0.8;
+            z-index: 2;
+        }
+
+        .spring-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            z-index: 2;
+            color: #fff;
+        }
+
+        .spring-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            z-index: 2;
+        }
+
+        /* Scientific Discovery Timeline style */
+        .discovery-path {
+            position: relative;
+            margin: 4rem 0;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .discovery-step {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .discovery-step:nth-child(even) {
+            flex-direction: row-reverse;
+            text-align: right;
+        }
+
+        .discovery-icon {
+            width: 80px;
+            height: 80px;
+            flex-shrink: 0;
+            background: rgba(0,136,255,0.1);
+            border: 1px solid rgba(0,136,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 0 20px rgba(0,136,255,0.1);
+            z-index: 2;
+            position: relative;
+        }
+
+        .discovery-step:nth-child(even) .discovery-icon {
+            background: rgba(245,158,11,0.1);
+            border-color: rgba(245,158,11,0.2);
+            box-shadow: 0 0 20px rgba(245,158,11,0.1);
+        }
+
+        .discovery-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .discovery-content .dc-year {
+            color: var(--accent);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .discovery-content p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+        
+        /* Vertical connector line for desktop */
+        @media (min-width: 769px) {
+            .discovery-path::before {
+                content: '';
+                position: absolute;
+                top: 40px;
+                bottom: 40px;
+                left: 50%;
+                width: 2px;
+                background: linear-gradient(to bottom, 
+                    rgba(0,136,255,0) 0%, 
+                    rgba(0,136,255,0.3) 20%, 
+                    rgba(245,158,11,0.3) 80%, 
+                    rgba(245,158,11,0) 100%);
+                transform: translateX(-50%);
+                z-index: 1;
+            }
+            .discovery-step {
+                width: 50%;
+                padding-right: 40px;
+                margin-left: 0;
+            }
+            .discovery-step:nth-child(even) {
+                margin-left: 50%;
+                padding-right: 0;
+                padding-left: 40px;
+                flex-direction: row;
+                text-align: left;
+            }
+            /* Adjust icon to sit on the line */
+            .discovery-step .discovery-icon {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Reframe Concept */
+        .myth-truth-box {
+            background: linear-gradient(135deg, rgba(239,68,68,0.05), rgba(0,229,160,0.05));
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .myth-truth-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .myth-truth-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            text-align: left;
+        }
+
+        .myth-col {
+            padding: 2rem;
+            background: rgba(239,68,68,0.05);
+            border-radius: 16px;
+            border: 1px dashed rgba(239,68,68,0.2);
+        }
+
+        .truth-col {
+            padding: 2rem;
+            background: rgba(0,229,160,0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(0,229,160,0.2);
+        }
+
+        .myth-truth-grid h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .myth-truth-grid p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Emotional Summary */
+        .emotional-summary {
+            padding: 4rem;
+            border-radius: 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .emotional-summary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-water);
+        }
+
+        .emotional-summary h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .emotional-summary p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Module nav */
+        .module-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-light);
+            margin-top: 3rem;
+        }
+
+        .module-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        .module-nav a:hover {
+            color: var(--accent);
+            border-color: var(--border-color);
+            background: var(--card-bg);
+        }
+
+        @media (max-width: 968px) {
+            .springs-grid {
+                grid-template-columns: 1fr;
+            }
+            .discovery-step {
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: 1.5rem;
+            }
+            .myth-truth-grid {
+                grid-template-columns: 1fr;
+            }
+            .emotional-summary {
+                padding: 2.5rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-brand">
+                <span class="logo-icon">💧</span>
+                <span class="logo-text">Agua<span>Kangen</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html">← Inicio</a>
+                <a href="#manantiales">Manantiales</a>
+                <a href="#ciencia">Descubrimiento</a>
+                <a href="#japon">Proyecto Japón</a>
+                <a href="../index.html#modulos" class="btn-primary btn-sm">Módulos</a>
+            </div>
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+        </div>
+    </nav>
+
+    <!-- ===== SUBPAGE HERO ===== -->
+    <section class="subpage-hero mystical-hero">
+        <div class="glow-orb orb-1" style="opacity:0.2;"></div>
+        <div class="glow-orb orb-2" style="opacity:0.15; background: #f59e0b;"></div>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="sep">›</span>
+                <span>Módulo 08</span>
+            </div>
+            <span class="section-label" style="color: #f59e0b;">Módulo 08 — De la Leyenda a la Ciencia</span>
+            <h1 class="subpage-title">
+                Los Manantiales Milagrosos:<br>
+                <span class="gradient-text">Antecedentes Históricos</span>
+            </h1>
+            <p class="subpage-subtitle">
+                Durante milenios, millones de personas han viajado largas distancias buscando la "fuente 
+                de la juventud". Hoy sabemos que no había magia en sus aguas, sino una composición 
+                bioquímica específica que la ciencia ha logrado replicar.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== 1. MANANTIALES DEL MUNDO ===== -->
+    <section class="content-section" id="manantiales">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">Aguas que Curan</span>
+                <h2 class="section-title">El Enigma de los <span class="gradient-text">Manantiales</span></h2>
+                <p class="section-subtitle mx-auto">
+                    A lo largo de la historia y a lo ancho del globo, existen lugares específicos reconocidos 
+                    mundialmente por los presuntos efectos curativos de sus aguas naturales. Millones de 
+                    testimonios respaldaban algo extraordinario.
+                </p>
+            </div>
+
+            <div class="springs-grid animate-on-scroll">
+                <div class="spring-card">
+                    <span class="sc-country">🇫🇷 Francia</span>
+                    <span class="sc-icon">⛪</span>
+                    <h3>Lourdes</h3>
+                    <p>
+                        El lugar sagrado europeo más famoso. Cada año, millones de peregrinos acuden a bañarse 
+                        y beber de su manantial, documentado por tener efectos inexplicables en la recuperación 
+                        física y celular de personas desahuciadas por la medicina tradicional.
+                    </p>
+                </div>
+                
+                <div class="spring-card">
+                    <span class="sc-country">🇲🇽 México</span>
+                    <span class="sc-icon">🏜️</span>
+                    <h3>Tlacote</h3>
+                    <p>
+                        En la década de 1990 cobró fama mundial atrayendo hasta a 10.000 personas diarias. 
+                        Informes locales y visitantes internacionales afirmaban mejoras espectaculares en 
+                        enfermedades metabólicas y crónicas simplemente al beber el agua del rancho.
+                    </p>
+                </div>
+
+                <div class="spring-card">
+                    <span class="sc-country">🇩🇪 Alemania</span>
+                    <span class="sc-icon">⛰️</span>
+                    <h3>Nordenau</h3>
+                    <p>
+                        Conocida en Europa central, la cueva de Nordenau produce un agua que ha sido 
+                        objeto de múltiples estudios clínicos. Investigadores notaron reducciones drásticas 
+                        en radicales libres y mejoras en la asimilación de azúcar en sangre.
+                    </p>
+                </div>
+
+                <div class="spring-card">
+                    <span class="sc-country">🇮🇳 India</span>
+                    <span class="sc-icon">🧘‍♂️</span>
+                    <h3>Nadana</h3>
+                    <p>
+                        En un pueblo cercano a Nueva Delhi, un pozo artesiano comenzó a reportar beneficios 
+                        rejuvenecedores en la década de los 90. Se consideró rápidamente agua medicinal 
+                        por su drástico impacto en afecciones de la piel y artritis.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 2. EL DESCUBRIMIENTO CIENTÍFICO ===== -->
+    <section class="content-section" style="background: var(--bg-section-alt);" id="ciencia">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label" style="color: #f59e0b;">El Secreto Revelado</span>
+                <h2 class="section-title">El Final del <span class="gradient-text">Misterio</span></h2>
+                <p class="section-subtitle mx-auto">
+                    ¿Qué tenían en común aguas separadas por miles de kilómetros y diferentes continentes?
+                </p>
+            </div>
+
+            <div class="myth-truth-box animate-on-scroll">
+                <div class="myth-truth-grid">
+                    <div class="myth-col">
+                        <h4 style="color: #ef4444;"><span style="font-size:1.5rem;">❌</span> La Leyenda</h4>
+                        <p>
+                            Durante siglos se creyó que estas aguas estaban bendecidas por divinidades locales, 
+                            extraterrestres o pura magia. La gente formaba colas interminables con garrafas, 
+                            creyendo que el agua curaba enfermedades por intervención divina.
+                        </p>
+                    </div>
+                    <div class="truth-col">
+                        <h4 style="color: #00e5a0;"><span style="font-size:1.5rem;">✓</span> La Ciencia (1950s)</h4>
+                        <p>
+                            Científicos rusos y japoneses recolectaron muestras in-situ de los 4 grandes manantiales. 
+                            El análisis químico reveló lo impensable: estas aguas compartían <strong>tres propiedades 
+                            bioquímicas 100% físicas y medibles, imposibles de encontrar en aguas potabilizadas modernas.</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The 3 Properties Discovered -->
+            <div class="content-grid animate-on-scroll" style="margin-top: 4rem;">
+                <div class="content-text">
+                    <span class="section-label">Análisis de Laboratorio</span>
+                    <h2>El Análisis Bioquímico de lo <span class="gradient-text">"Milagroso"</span></h2>
+                    
+                    <ul class="feature-list" style="margin-top: 2rem;">
+                        <li style="margin-bottom: 1.5rem;">
+                            <strong style="font-size:1.1rem; color:#0088ff;">1. Abundancia de Hidrógeno Molecular (H₂)</strong><br>
+                            El hidrógeno activo, un gas inestable disuelto en el agua. Resultó ser el antioxidante celular 
+                            más potente y selectivo del mundo natural, capaz de atravesar la barrera hematoencefálica.
+                        </li>
+                        <li style="margin-bottom: 1.5rem;">
+                            <strong style="font-size:1.1rem; color:#0088ff;">2. pH Ligeramente Alcalino (8.5 - 9.5)</strong><br>
+                            Gracias a la interacción con rocas volcánicas ricas en minerales, el agua contrarrestaba 
+                            asombrosamente la acidificación metabólica de los pacientes.
+                        </li>
+                        <li>
+                            <strong style="font-size:1.1rem; color:#0088ff;">3. Micro-estructuración Hexagonal</strong><br>
+                            Sometidas al magnetismo natural de la tierra, sus agrupaciones de agua eran mucho más pequeñas 
+                            (5-6 moléculas por cluster en vez de 15-20), lo que permitía penetrar en la pared celular humana instantáneamente.
+                        </li>
+                    </ul>
+                </div>
+                <!-- Using Hexagonal Water Image from Assets -->
+                <div class="content-image" style="display: flex; align-items: center; justify-content: center; background: rgba(0,136,255,0.05); border-radius: 20px; border: 1px solid rgba(0,136,255,0.1);">
+                    <img src="../assets/hexagonal_water.png" alt="Microestructura Hexagonal del Agua" style="max-width: 80%; drop-shadow: 0 0 20px rgba(0,136,255,0.3);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 3. EL PROYECTO JAPONÉS (TIMELINE) ===== -->
+    <section class="content-section" id="japon">
+        <div class="container">
+            <div class="text-center animate-on-scroll" style="margin-bottom: 4rem;">
+                <span class="section-label">Innovación</span>
+                <h2 class="section-title">El Proyecto <span class="gradient-text">Agua Funcional</span></h2>
+                <p class="section-subtitle mx-auto">
+                    Si el secreto era bioquímico... ¿Se podía fabricar bajo demanda en un laboratorio?
+                    Japón se propuso replicar la naturaleza.
+                </p>
+            </div>
+
+            <div class="discovery-path animate-on-scroll">
+                <div class="discovery-step">
+                    <div class="discovery-icon">🔬</div>
+                    <div class="discovery-content">
+                        <span class="dc-year">Años 1950 - El Origen</span>
+                        <h3>Descubrimiento de la Electrólisis</h3>
+                        <p>Tras analizar el agua de Lourdes, científicos rusos primero, y luego japoneses, 
+                        descubren que aplicando corriente directa controlada al agua purificada 
+                        (electrólisis) podrían separar el H2O, generando el tan valioso Hidrógeno Activo e 
+                        iones hidroxilos.</p>
+                    </div>
+                </div>
+
+                <div class="discovery-step">
+                    <div class="discovery-icon">🏥</div>
+                    <div class="discovery-content">
+                        <span class="dc-year">Años 1960 - Desarrollo Clínico</span>
+                        <h3>De la Naturaleza al Hospital</h3>
+                        <p>Se fabrican los primeros grandes "ionizadores médicos" en Japón. Equipos inmensos y costosos, 
+                        instalados exclusivamente en hospitales y clínicas del gobierno nipón para ayudar en tratamientos 
+                        de la piel, sistema digestivo y oncología.</p>
+                    </div>
+                </div>
+
+                <div class="discovery-step">
+                    <div class="discovery-icon">🏅</div>
+                    <div class="discovery-content">
+                        <span class="dc-year">Años 1970 - Consenso Médico</span>
+                        <h3>Aprobación del MHLW Japones</h3>
+                        <p>El Ministerio de Salud, Trabajo y Bienestar (MHLW) de Japón clasifica formalmente los 
+                        ionizadores de agua estacionaria como "Dispositivos Médicos" por sus beneficios 
+                        medibles frente a condiciones gastrointestinales y de hiperacidez.</p>
+                    </div>
+                </div>
+
+                <div class="discovery-step">
+                    <div class="discovery-icon">🏠</div>
+                    <div class="discovery-content">
+                        <span class="dc-year">1974 - La Revolución</span>
+                        <h3>Nace Enagic (El Concepto Kangen)</h3>
+                        <p>Hironari Oshiro funda Enagic con una visión radical: comprimir la inmensa tecnología 
+                        electrolítica hospitalaria japonesa en un dispositivo del tamaño de una cafetera. 
+                        <strong>Llamó al agua generada "Kangen", una palabra japonesa que significa "Retorno al Origen"</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EMOTIONAL SUMMARY ===== -->
+    <section class="content-section" style="background: var(--bg-section-alt);">
+        <div class="container">
+            <!-- Using Family Lifestyle image to tie history to home use -->
+            <div class="content-grid animate-on-scroll" style="margin-bottom: 4rem;">
+                <div class="content-image">
+                    <img src="../assets/family_lifestyle.png" alt="Disfrutando del Agua Kangen en el hogar moderno" style="border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+                </div>
+                <div class="content-text" style="display: flex; flex-direction: column; justify-content: center;">
+                    <h2 style="font-size: clamp(2rem, 3.5vw, 2.5rem); margin-bottom: 1.5rem; line-height: 1.2;">
+                        El <span class="gradient-text">Retorno al Origen</span><br>en Tu Propio Hogar
+                    </h2>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-muted);">
+                        El problema de las aguas milagrosas es biológico: el <strong>Hidrógeno Molecular (H₂) 
+                        es un gas inestable</strong>. Tras extraerlo del manantial de Lourdes o Tlacote, 
+                        el H₂ se evapora en botellas en pocas horas. No se puede envasar. No se puede enviar 
+                        en botellas de plástico a tu país.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); margin-top: 1rem;">
+                        <strong>Para beber agua milagrosa, debías estar parado frente a la fuente.</strong>
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #fff; margin-top: 1rem; border-left: 3px solid var(--accent); padding-left: 1rem;">
+                        Los dispositivos Enagic solucionaron el problema para la humanidad. Tu máquina Kangen 
+                        <em>es el manantial</em>. Fabrica el Hidrógeno Molecular al instante, para que lo bebas 
+                        fresco, activo y poderoso, en el vaso de tu propia cocina.
+                    </p>
+                </div>
+            </div>
+
+            <div class="emotional-summary animate-on-scroll">
+                <h2>No Tienes que Viajar a Lourdes.</h2>
+                <p>
+                    Ya no necesitas peregrinar miles de kilómetros ni conformarte con agua industrial, 
+                    muerta y embotellada en plástico. Más de medio siglo de ciencia y tecnología médica 
+                    japonesa te permiten abrir el grifo y que tu familia beba de la fuente más pura, 
+                    antioxidante e hidratante del planeta. Y lo llamamos <strong>Agua Kangen®</strong>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section style="padding: 60px 0;">
+        <div class="container">
+            <div class="cta-banner animate-on-scroll">
+                <div>
+                    <h2>Siguiente: La Opinión de los Especialistas</h2>
+                    <p>Descubre qué dijeron el Premio Nobel Otto Warburg, el Jefe de Cirugía del FBI y otros expertos médicos sobre la hiperacidez y el Agua Kangen.</p>
+                </div>
+                <a href="../09-especialistas/index.html" class="btn-white" style="text-decoration:none;">Módulo 09 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MODULE NAVIGATION ===== -->
+    <section style="padding: 30px 0;">
+        <div class="container">
+            <div class="module-nav">
+                <a href="../07-modelos/index.html">← Módulo 07: Modelos</a>
+                <a href="../index.html">Índice General</a>
+                <a href="../09-especialistas/index.html">Módulo 09: Especialistas →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                💧 Agua<span style="color: var(--accent);">Kangen</span> — Módulo 08
+            </div>
+            <p class="footer-copy">© 2026 — Distribuidor Independiente Enagic. Todos los derechos reservados.</p>
+            <div class="footer-nav">
+                <a href="../index.html">Inicio</a>
+                <a href="../index.html#modulos">Módulos</a>
+                <a href="../../../index.html">Kangen Water</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+</html>

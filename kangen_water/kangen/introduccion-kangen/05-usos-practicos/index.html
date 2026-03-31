@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usos Prácticos — Guía Completa del Agua Kangen en tu Día a Día | Agua Kangen</title>
+    <meta name="description" content="Guía práctica con protocolos paso a paso para los 5 tipos de agua Kangen: cocina, belleza, higiene, limpieza, mascotas, plantas, deporte y salud. Sustituye más de 30 productos del hogar.">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* ===== MODULE 05 — USOS PRÁCTICOS — SPECIFIC STYLES ===== */
+
+        /* Protocol Cards */
+        .protocol-card {
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 2rem 0;
+            transition: var(--transition);
+        }
+
+        .protocol-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .protocol-header {
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .protocol-header .proto-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .protocol-header h3 {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .protocol-header .proto-ph {
+            margin-left: auto;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 4px 14px;
+            border-radius: 20px;
+            flex-shrink: 0;
+        }
+
+        .protocol-body {
+            padding: 0 2rem 2rem;
+        }
+
+        .protocol-steps {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .protocol-steps li {
+            counter-increment: step-counter;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .protocol-steps li:last-child {
+            border-bottom: none;
+        }
+
+        .protocol-steps li::before {
+            content: counter(step-counter);
+            background: var(--gradient-water);
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.75rem;
+            min-width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .protocol-tip {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .protocol-tip .tip-icon {
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+
+        /* Category color themes */
+        .proto-health { background: rgba(0,136,255,0.06); border: 1px solid rgba(0,136,255,0.15); }
+        .proto-health .protocol-header { background: rgba(0,136,255,0.08); }
+        .proto-health .proto-ph { background: rgba(0,136,255,0.15); color: var(--accent); }
+        .proto-health .protocol-tip { background: rgba(0,136,255,0.06); border: 1px solid rgba(0,136,255,0.1); }
+
+        .proto-kitchen { background: rgba(139,92,246,0.06); border: 1px solid rgba(139,92,246,0.15); }
+        .proto-kitchen .protocol-header { background: rgba(139,92,246,0.08); }
+        .proto-kitchen .proto-ph { background: rgba(139,92,246,0.15); color: #8b5cf6; }
+        .proto-kitchen .protocol-tip { background: rgba(139,92,246,0.06); border: 1px solid rgba(139,92,246,0.1); }
+
+        .proto-beauty { background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.15); }
+        .proto-beauty .protocol-header { background: rgba(245,158,11,0.08); }
+        .proto-beauty .proto-ph { background: rgba(245,158,11,0.15); color: #f59e0b; }
+        .proto-beauty .protocol-tip { background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.1); }
+
+        .proto-hygiene { background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.15); }
+        .proto-hygiene .protocol-header { background: rgba(239,68,68,0.08); }
+        .proto-hygiene .proto-ph { background: rgba(239,68,68,0.15); color: #ef4444; }
+        .proto-hygiene .protocol-tip { background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.1); }
+
+        .proto-clean { background: rgba(0,229,160,0.06); border: 1px solid rgba(0,229,160,0.15); }
+        .proto-clean .protocol-header { background: rgba(0,229,160,0.08); }
+        .proto-clean .proto-ph { background: rgba(0,229,160,0.15); color: #00e5a0; }
+        .proto-clean .protocol-tip { background: rgba(0,229,160,0.06); border: 1px solid rgba(0,229,160,0.1); }
+
+        /* Protocol Grid Layout */
+        .protocols-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .protocols-layout .protocol-card {
+            margin: 0;
+        }
+
+        /* Quick Reference Cheatsheet */
+        .cheatsheet {
+            overflow-x: auto;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            margin: 2rem 0;
+        }
+
+        .cheatsheet table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+
+        .cheatsheet th {
+            padding: 0.9rem 1rem;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            text-align: left;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .cheatsheet td {
+            padding: 0.7rem 1rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-muted);
+        }
+
+        .cheatsheet tbody tr {
+            transition: var(--transition);
+        }
+
+        .cheatsheet tbody tr:hover {
+            background: rgba(0,136,255,0.04);
+        }
+
+        .cheatsheet .ph-tag {
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 2px 10px;
+            border-radius: 12px;
+        }
+
+        /* Products replaced section */
+        .replaced-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.8rem;
+            margin: 2rem 0;
+        }
+
+        .replaced-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            background: rgba(239,68,68,0.06);
+            border: 1px solid rgba(239,68,68,0.12);
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .replaced-item:hover {
+            background: rgba(239,68,68,0.1);
+        }
+
+        .replaced-item .strike {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        /* Module nav */
+        .module-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-light);
+            margin-top: 3rem;
+        }
+
+        .module-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        .module-nav a:hover {
+            color: var(--accent);
+            border-color: var(--border-color);
+            background: var(--card-bg);
+        }
+
+        @media (max-width: 968px) {
+            .protocols-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-brand">
+                <span class="logo-icon">💧</span>
+                <span class="logo-text">Agua<span>Kangen</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html">← Inicio</a>
+                <a href="#salud">Salud</a>
+                <a href="#cocina">Cocina</a>
+                <a href="#belleza">Belleza</a>
+                <a href="#higiene">Higiene</a>
+                <a href="#limpieza">Limpieza</a>
+                <a href="../index.html#modulos" class="btn-primary btn-sm">Módulos</a>
+            </div>
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+        </div>
+    </nav>
+
+    <!-- ===== SUBPAGE HERO ===== -->
+    <section class="subpage-hero">
+        <div class="glow-orb orb-1" style="opacity:0.15;"></div>
+        <div class="glow-orb orb-2" style="opacity:0.1;"></div>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="sep">›</span>
+                <span>Módulo 05</span>
+            </div>
+            <span class="section-label">Módulo 05 — Guía Práctica</span>
+            <h1 class="subpage-title">
+                Usos Prácticos<br>
+                <span class="gradient-text">Paso a Paso</span>
+            </h1>
+            <p class="subpage-subtitle">
+                Protocolos detallados para aplicar cada tipo de agua en tu rutina diaria:
+                salud, cocina, belleza, higiene y limpieza del hogar. Sustituye más de 30 productos
+                químicos por un solo dispositivo.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== INTRO ===== -->
+    <section class="content-section">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content-image animate-on-scroll">
+                    <img src="../assets/kitchen_uses.png" alt="Usos prácticos del Agua Kangen en la cocina" loading="lazy">
+                </div>
+                <div class="content-text animate-on-scroll">
+                    <span class="section-label">Más que Agua para Beber</span>
+                    <h2>Un Dispositivo, <span class="gradient-text">+30 Productos Sustituidos</span></h2>
+                    <p>
+                        La mayoría de las personas asocian el Agua Kangen con "agua para beber". Pero la
+                        realidad es mucho más amplia: los 5 tipos de agua producidos por los ionizadores Kangen
+                        reemplazan <strong>decenas de productos comerciales</strong> que usas a diario en la cocina,
+                        el baño, el tocador y la limpieza del hogar.
+                    </p>
+                    <p>
+                        Cada protocolo está diseñado para que cualquier persona, sin conocimientos previos,
+                        pueda <strong>aplicar el tipo de agua correcto de la forma correcta</strong>. Es tan
+                        sencillo como pulsar un botón y seguir las instrucciones.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Protocolos por categoría: salud, cocina, belleza, higiene, limpieza</li>
+                        <li>Cada uso indica el nivel de pH correcto</li>
+                        <li>Instrucciones paso a paso para máxima eficacia</li>
+                        <li>Respaldados por prácticas utilizadas en Japón desde hace +40 años</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- CATEGORÍA 1: SALUD — pH 8.5-9.5               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="content-section" style="background: var(--bg-section-alt);" id="salud">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">🔵 pH 8.5 – 9.5</span>
+                <h2 class="section-title">Protocolos de <span class="gradient-text">Salud</span></h2>
+                <p class="section-subtitle mx-auto">
+                    Protocolos de hidratación y bienestar para toda la familia. El agua alcalina ionizada
+                    como base de un estilo de vida saludable.
+                </p>
+            </div>
+
+            <div class="protocols-layout animate-on-scroll">
+                <div class="protocol-card proto-health">
+                    <div class="protocol-header">
+                        <span class="proto-icon">🥤</span>
+                        <h3>Hidratación Diaria</h3>
+                        <span class="proto-ph">pH 9.5</span>
+                    </div>
+                    <div class="protocol-body">
+                        <ol class="protocol-steps">
+                            <li><strong>Primera semana:</strong> Beber pH 8.5, empezando con 1 vaso al despertar en ayunas.</li>
+                            <li><strong>Semana 2-3:</strong> Subir a pH 9.0, aumentar a 4-6 vasos distribuidos en el día.</li>
+                            <li><strong>Desde semana 4:</strong> Establecer pH 9.5 como agua habitual. Meta: 1.5-2L diarios.</li>
+                            <li>Beber el primer vaso de la mañana 30 minutos antes del desayuno.</li>
+                            <li>No beber agua alcalina con medicamentos — usar agua neutra pH 7.0.</li>
+                        </ol>
+                        <div class="protocol-tip">
+                            <span class="tip-icon">💡</span>
+                            <span>Una adaptación gradual previene posibles molestias digestivas iniciales por la desintoxicación.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="protocol-card proto-health">
+                    <div class="protocol-header">
+                        <span class="proto-icon">🏋️</span>
+                        <h3>Rendimiento Deportivo</h3>
+                        <span class="proto-ph">pH 9.5</span>
+                    </div>
+                    <div class="protocol-body">
+                        <ol class="protocol-steps">
+                            <li><strong>Pre-ejercicio:</strong> Beber 500ml de agua pH 9.5 ~ 30 minutos antes de entrenar.</li>
+                            <li><strong>Durante:</strong> Sorbos pequeños cada 15-20 minutos. Lleva una botella de cristal o acero.</li>
+                            <li><strong>Post-ejercicio:</strong> Rehidratar con 500ml-1L en las 2 horas posteriores.</li>
+                            <li>El agua alcalina neutraliza el ácido láctico producido durante el esfuerzo intenso.</li>
+                        </ol>
+                        <div class="protocol-tip">
+                            <span class="tip-icon">⚡</span>
+                            <span>Los micro-clusters penetran las células musculares 6x más rápido que el agua convencional.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="protocol-card proto-health">
+                    <div class="protocol-header">
+                        <span class="proto-icon">🐕</span>
+                        <h3>Mascotas</h3>
+                        <span class="proto-ph">pH 8.5-9.0</span>
+                    </div>
+                    <div class="protocol-body">
+                        <ol class="protocol-steps">
+                            <li>Llenar el bebedero con agua Kangen pH 8.5 inicialmente.</li>
+                            <li>Si el animal la acepta bien, subir al cabo de una semana a pH 9.0.</li>
+                            <li>Cambiar el agua todos los días para mantener la frescura y las propiedades antioxidantes.</li>
+                        </ol>
+                        <div class="protocol-tip">
+                            <span class="tip-icon">🐾</span>
+                            <span>Propietarios reportan mejoras visibles en pelaje, energía y problemas digestivos en sus mascotas.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="protocol-card proto-health">
+                    <div class="protocol-header">
+                        <span class="proto-icon">🌱</span>
+                        <h3>Plantas y Huerto</h3>
+                        <span class="proto-ph">pH 9.0-9.5</span>
+                    </div>
+                    <div class="protocol-body">
+                        <ol class="protocol-steps">
+                            <li>Regar con agua pH 9.0 para plantas de interior y pH 9.5 para huerto.</li>
+                            <li>Para flores: pulverizar pétalos y hojas con agua pH 6.0 (belleza) para mayor brillo.</li>
+                            <li>Para semilleros: germinar en agua pH 9.0 acelera la brotación.</li>
+                        </ol>
+                        <div class="protocol-tip">
+                            <span class="tip-icon">🌻</span>
+                            <span>Las plantas crecen más rápido, producen más flores y se muestran más resistentes a plagas.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- CATEGORÍA 2: COCINA — pH 8.5-9.5 / 11.5       -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="content-section" id="cocina">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">🔵🟣 pH 8.5-9.5 y pH 11.5</span>
+                <h2 class="section-title">Protocolos de <span class="gradient-text">Cocina</span></h2>
+                <p class="section-subtitle mx-auto">
+                    Cocina más saludable, más sabrosa y más limpia. Desde preparar tus verduras
+                    hasta hacer el café perfecto.
+                </p>
+            </div>
+
+            <div class="protocols-layout animate-on-scroll">
+                <div class="protocol-card proto-kitchen">
+                    <div class="protocol-header">
+                        <span class="proto-icon">🍎</span>
+                        <h3>Lavar Frutas y Verduras</h3>
+                        <span class="proto-ph">pH 11.5</span>
+                    </div>
+                    <div class="protocol-body">
+                        <ol class="protocol-steps">
+                            <li>Llenar un recipiente amplio con agua pH 11.5 (súper alcalina).</li>
+                            <li>Sumergir las frutas y verduras durante <strong>10-15 minutos</strong>.</li>
+                            <li>Observar cómo el agua se torna amarillenta/oscura — son los pesticidas disolviéndose.</li>
+                            <li>Aclarar con agua Kangen pH 8.5-9.5 antes de consumir.</li>
+                        </ol>
+                        <div class="protocol-tip">
+                            <span class="tip-icon">⚠️</span>
+                            <span>Es impactante ver la cantidad de residuos que se desprenden, especialmente de fresas, uvas y manzanas.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="protocol-card proto-kitchen">
+                    <div class="protocol-header">
+                        <span class="proto-icon">☕</span>
+                        <h3>Café y Té Premium</h3>
+                        <span class="proto-ph">pH 9.5</span>
+                    </div>
+                    <div class="protocol-body">
+                        <ol class="protocol-steps">
+                            <li>Calentar agua Kangen pH 9.5 hasta la temperatura deseada (no hervir en exceso).</li>
+                            <li>Preparar el café o té como habitualmente.</li>
+                            <li>Notar la diferencia: sabor más suave, aroma más profundo, menor acidez estomacal.</li>
+                        </ol>
+                        <div class="protocol-tip">
+                            <span class="tip-icon">☕</span>
+                            <span>Puedes usar hasta un 20% menos de café en grano al extraer más sabor con el agua micro-clusterizada.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="protocol-card proto-kitchen">
+                    <div class="protocol-header">
+                        <span class="proto-icon">🍲</span>
+                        <h3>Sopas, Arroces y Pasta</h3>
+                        <span class="proto-ph">pH 9.0-9.5</span>
+                    </div>
+                    <div class="protocol-body">
+                        <ol class="protocol-steps">
+                            <li>Usar agua Kangen pH 9.0-9.5 para hervir pasta, arroz y legumbres.</li>
+                            <li>Los granos absorben mejor el agua, quedando más tiernos y suaves.</li>
+                            <li>En sopas y caldos, los vegetales liberan más nutrientes al caldo.</li>
+                        </ol>
+                        <div class="protocol-tip">
+                            <span class="tip-icon">🍳</span>
+                            <span>Remojar legumbres secas 8h en pH 9.5 reduce el tiempo de cocción y mejora la digestión.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="protocol-card proto-kitchen">
+                    <div class="protocol-header">
+                        <span class="proto-icon">🥩</span>
+                        <h3>Preparar Carnes y Pescados</h3>
+                        <span class="proto-ph">pH 11.5 → 2.5</span>
+                    </div>
+                    <div class="protocol-body">
+                        <ol class="protocol-steps">
+                            <li>Remojar la carne o pescado 10 min en agua pH 11.5 para eliminar sabor a sangre y grasas oxidadas.</li>
+                            <li>Aclarar con agua pH 2.5 para desinfectar la superficie del alimento.</li>
+                            <li>Enjuagar finalmente con agua neutra pH 7.0 antes de cocinar.</li>
+                        </ol>
+                        <div class="protocol-tip">
+                            <span class="tip-icon">🔬</span>
+                            <span>Este protocolo triple (11.5→2.5→7.0) es el utilizado en cocinas profesionales japonesas.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- CATEGORÍA 3: BELLEZA — pH 6.0                  -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="content-section" style="background: var(--bg-section-alt);" id="belleza">
+        <div class="container">
+            <div class="content-grid" style="margin-bottom: 3rem;">
+                <div class="content-text animate-on-scroll">
+                    <span class="section-label">🟡 pH 6.0</span>
+                    <h2>Protocolos de <span class="gradient-text">Belleza</span></h2>
+                    <p>
+                        El agua de belleza a pH 6.0 está sintonizada con el <strong>manto ácido natural de la piel</strong>
+                        (pH 4.5-6.0). A diferencia de los tónicos comerciales que contienen alcohol, perfumes y
+                        conservantes, el agua Kangen de belleza es 100% natural, sin residuos y sin aditivos.
+                    </p>
+                    <p>
+                        Estudios dermatológicos publicados en el <em>International Journal of Cosmetic Science</em>
+                        confirman que la hidratación con agua a pH ligeramente ácido mejora la retención de humedad
+                        epidérmica, la elasticidad cutánea y la defensa antimicrobiana de la piel.
+                    </p>
+                </div>
+                <div class="content-image animate-on-scroll">
+                    <img src="../assets/beauty_skincare.png" alt="Ritual de belleza con Agua Kangen pH 6.0" loading="lazy">
+                </div>
+            </div>
+
+            <div class="protocols-layout animate-on-scroll">
+                <div class="protocol-card proto-beauty">
+                    <div class="protocol-header">
+                        <span class="proto-icon">💆</span>
+                        <h3>Tónico Facial Diario</h3>
+                        <span class="proto-ph">pH 6.0</span>
+                    </div>
+                    <div class="protocol-body">
+                        <ol class="protocol-steps">
+                            <li>Llenar un pulverizador de cristal con agua Kangen pH 6.0.</li>
+                            <li>Limpiar el rostro como siempre (con agua Kangen pH 8.5 o jabón suave).</li>
+                            <li>Pulverizar el agua de belleza sobre el rostro y cuello.</li>
+                            <li>Dejar secar al aire o dar toques suaves con un paño limpio.</li>
+                            <li>Aplicar crema hidratante habitual sobre la piel todavía húmeda.</li>
+                        </ol>
+                        <div class="protocol-tip">
+                            <span class="tip-icon">✨</span>
+                            <span>Úsalo mañana y noche. Cierra los poros, tonifica y prepara la piel para absorber mejor la crema.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="protocol-card proto-beauty">
+                    <div class="protocol-header">
+                        <span class="proto-icon">💇</span>
+                        <h3>Acondicionador Capilar</h3>
+                        <span class="proto-ph">pH 6.0</span>
+                    </div>
+                    <div class="protocol-body">
+                        <ol class="protocol-steps">
+                            <li>Lavar el cabello con champú como siempre (idealmente con agua pH 8.5).</li>
+                            <li>Aclarar bien el champú.</li>
+                            <li>Como último aclarado, usar agua pH 6.0 generosamente sobre todo el cabello.</li>
+                            <li>No aclarar después — dejar que actúe.</li>
+                        </ol>
+                        <div class="protocol-tip">
+                            <span class="tip-icon">💎</span>
+                            <span>El pH ácido aplana las cutículas del cabello, resultando un pelo más suave, brillante y sin encrespamiento.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="protocol-card proto-beauty">
+                    <div class="protocol-header">
+                        <span class="proto-icon">🌞</span>
+                        <h3>Quemaduras Solares</h3>
+                        <span class="proto-ph">pH 11.5 ↔ 6.0</span>
+                    </div>
+                    <div class="protocol-body">
+                        <ol class="protocol-steps">
+                            <li>Pulverizar la zona quemada con agua pH 11.5 para calmar y limpiar.</li>
+                            <li>Esperar 2 minutos.</li>
+                            <li>Pulverizar encima agua pH 6.0 para cerrar la piel y proteger.</li>
+                            <li>Repetir alternando 11.5 y 6.0 varias veces al día.</li>
+                        </ol>
+                        <div class="protocol-tip">
+                            <span class="tip-icon">🌿</span>
+                            <span>La alternancia alcalino-ácido acelera el proceso natural de reparación de la piel.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="protocol-card proto-beauty">
+                    <div class="protocol-header">
+                        <span class="proto-icon">🧖</span>
+                        <h3>Eccema y Piel Irritada</h3>
+                        <span class="proto-ph">pH 6.0 + pH 2.5</span>
+                    </div>
+                    <div class="protocol-body">
+                        <ol class="protocol-steps">
+                            <li>Limpiar la zona afectada con agua pH 2.5 (desinfecta sin irritar).</li>
+                            <li>Dejar secar al aire 1-2 minutos.</li>
+                            <li>Pulverizar con agua pH 6.0 para hidratar y proteger la barrera cutánea.</li>
+                            <li>Repetir 3-4 veces al día. Constancia es clave.</li>
+                        </ol>
+                        <div class="protocol-tip">
+                            <span class="tip-icon">💡</span>
+                            <span>El protocolo dual ácido (2.5 desinfecta) + belleza (6.0 protege) es el usado en clínicas dermatológicas japonesas.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- CATEGORÍA 4: HIGIENE — pH 2.5                  -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="content-section" id="higiene">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">🔴 pH 2.5</span>
+                <h2 class="section-title">Protocolos de <span class="gradient-text">Higiene y Desinfección</span></h2>
+                <p class="section-subtitle mx-auto">
+                    El agua súper ácida a pH 2.5 es un potente desinfectante natural, bactericida y
+                    fungicida, con eficacia probada en entornos hospitalarios japoneses desde los años 90.
+                </p>
+            </div>
+
+            <div class="protocols-layout animate-on-scroll">
+                <div class="protocol-card proto-hygiene">
+                    <div class="protocol-header">
+                        <span class="proto-icon">🦶</span>
+                        <h3>Pie de Atleta</h3>
+                        <span class="proto-ph">pH 2.5</span>
+                    </div>
+                    <div class="protocol-body">
+                        <ol class="protocol-steps">
+                            <li>Lavar bien los pies con agua y jabón neutro.</li>
+                            <li>Secar completamente.</li>
+                            <li>Sumergir los pies en un barreño con agua pH 2.5 durante <strong>15-20 minutos</strong>.</li>
+                            <li>Secar al aire — no frotar con toalla.</li>
+                            <li>Repetir 2 veces al día hasta que la infección desaparezca.</li>
+                        </ol>
+                        <div class="protocol-tip">
+                            <span class="tip-icon">🔬</span>
+                            <span>El pH 2.5 destruye hongos y esporas sin recurrir a cremas antimicóticas con químicos.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="protocol-card proto-hygiene">
+                    <div class="protocol-header">
+                        <span class="proto-icon">🦷</span>
+                        <h3>Enjuague Bucal</h3>
+                        <span class="proto-ph">pH 2.5</span>
+                    </div>
+                    <div class="protocol-body">
+                        <ol class="protocol-steps">
+                            <li>Tras el cepillado habitual, tomar un sorbo de agua pH 2.5.</li>
+                            <li>Enjuagar durante 30-60 segundos, haciendo gárgaras.</li>
+                            <li><strong>¡No tragar!</strong> Escupir completamente.</li>
+                            <li>Enjuagar con agua neutra pH 7.0 para neutralizar la acidez.</li>
+                            <li>Ideal mañana y noche. Para más detalle, ver nuestro <a href="../../ph25/protocolo_colutorio_dental_kangen/index.html" style="color: var(--accent); font-weight: 600;">protocolo dental completo →</a></li>
+                        </ol>
+                        <div class="protocol-tip">
+                            <span class="tip-icon">🦷</span>
+                            <span>Elimina bacterias causantes de gingivitis, halitosis y caries. Sin alcohol, sin flúor, sin colorantes.</span>
+                        </div>
+                        <div class="protocol-tip" style="margin-top: 0.5rem;">
+                            <span class="tip-icon">⚠️</span>
+                            <span><strong>Protección del esmalte:</strong> Tras el enjuague con pH 2.5, es fundamental beber agua neutra o alcalina
+                            al poco tiempo para restablecer el pH bucal y evitar que la acidez residual pueda afectar al esmalte dental.
+                            <a href="../../ph25/protocolo_colutorio_dental_kangen/landing.html" style="color: var(--accent); font-weight: 600;">Lee por qué es imprescindible este paso →</a></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="protocol-card proto-hygiene">
+                    <div class="protocol-header">
+                        <span class="proto-icon">🩹</span>
+                        <h3>Heridas y Raspones</h3>
+                        <span class="proto-ph">pH 2.5</span>
+                    </div>
+                    <div class="protocol-body">
+                        <ol class="protocol-steps">
+                            <li>Lavar la herida con agua ph 11.5 para limpiar en profundidad.</li>
+                            <li>Pulverizar agua pH 2.5 sobre la herida para desinfectar.</li>
+                            <li>Dejar secar al aire.</li>
+                            <li>Repetir 3-4 veces al día sin tapar la herida si es superficial.</li>
+                        </ol>
+                        <div class="protocol-tip">
+                            <span class="tip-icon">✅</span>
+                            <span>Protocolo: limpiar (11.5) + desinfectar (2.5). Sin betadine ni alcohol que retrasan la cicatrización.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="protocol-card proto-hygiene">
+                    <div class="protocol-header">
+                        <span class="proto-icon">🪥</span>
+                        <h3>Desinfectar Objetos</h3>
+                        <span class="proto-ph">pH 2.5</span>
+                    </div>
+                    <div class="protocol-body">
+                        <ol class="protocol-steps">
+                            <li>Sumergir cepillos de dientes, esponjas y trapos en agua pH 2.5 durante 5 minutos.</li>
+                            <li>Aclarar con agua neutra.</li>
+                            <li>Para teléfonos móviles: pulverizar un paño con pH 2.5 y limpiar la superficie.</li>
+                        </ol>
+                        <div class="protocol-tip">
+                            <span class="tip-icon">📱</span>
+                            <span>Ideal para objetos que tocamos constantemente: móvil, llaves, gafas, pomos de puerta.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- CATEGORÍA 5: LIMPIEZA — pH 11.5                -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="content-section" style="background: var(--bg-section-alt);" id="limpieza">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">🟣 pH 11.5</span>
+                <h2 class="section-title">Protocolos de <span class="gradient-text">Limpieza del Hogar</span></h2>
+                <p class="section-subtitle mx-auto">
+                    El agua súper alcalina disuelve grasas sin detergentes, limpia cristales sin dejar marcas
+                    y deshazte de productos químicos tóxicos para siempre.
+                </p>
+            </div>
+
+            <div class="protocols-layout animate-on-scroll">
+                <div class="protocol-card proto-clean">
+                    <div class="protocol-header">
+                        <span class="proto-icon">🍳</span>
+                        <h3>Desengrasante de Cocina</h3>
+                        <span class="proto-ph">pH 11.5</span>
+                    </div>
+                    <div class="protocol-body">
+                        <ol class="protocol-steps">
+                            <li>Llenar un pulverizador con agua pH 11.5.</li>
+                            <li>Pulverizar sobre la campana extractora, horno o encimera grasosa.</li>
+                            <li>Esperar 2-3 minutos para que emulsione la grasa.</li>
+                            <li>Pasar un paño — la grasa se disuelve sin esfuerzo.</li>
+                            <li>Para sartenes incrustadas: remojar 30 min en pH 11.5.</li>
+                        </ol>
+                        <div class="protocol-tip">
+                            <span class="tip-icon">🌿</span>
+                            <span>Sustituye por completo a Fairy, desengrasantes y lejías. Cero residuos químicos, 100% ecológico.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="protocol-card proto-clean">
+                    <div class="protocol-header">
+                        <span class="proto-icon">👕</span>
+                        <h3>Quitamanchas de Ropa</h3>
+                        <span class="proto-ph">pH 11.5</span>
+                    </div>
+                    <div class="protocol-body">
+                        <ol class="protocol-steps">
+                            <li>Aplicar agua pH 11.5 directamente sobre la mancha (café, vino, sangre, grasa).</li>
+                            <li>Frotar suavemente y dejar actuar 10-15 minutos.</li>
+                            <li>Lavar la prenda normalmente.</li>
+                            <li>Para manchas difíciles: remojar la prenda completa en pH 11.5 durante 1 hora antes del lavado.</li>
+                        </ol>
+                        <div class="protocol-tip">
+                            <span class="tip-icon">👕</span>
+                            <span>Funciona especialmente bien en manchas orgánicas frescas. Actuar rápido mejora resultados.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="protocol-card proto-clean">
+                    <div class="protocol-header">
+                        <span class="proto-icon">🪟</span>
+                        <h3>Cristales y Espejos</h3>
+                        <span class="proto-ph">pH 11.5</span>
+                    </div>
+                    <div class="protocol-body">
+                        <ol class="protocol-steps">
+                            <li>Pulverizar agua pH 11.5 sobre cristales o espejos.</li>
+                            <li>Pasar un paño de microfibra limpio.</li>
+                            <li>Resultado: brillo sin marcas, sin rayas, sin químicos.</li>
+                        </ol>
+                        <div class="protocol-tip">
+                            <span class="tip-icon">✨</span>
+                            <span>Sin amoníaco ni limpiacristales comerciales. Mejor resultado, cero toxicidad.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="protocol-card proto-clean">
+                    <div class="protocol-header">
+                        <span class="proto-icon">🧹</span>
+                        <h3>Suelos y Superficies</h3>
+                        <span class="proto-ph">pH 11.5</span>
+                    </div>
+                    <div class="protocol-body">
+                        <ol class="protocol-steps">
+                            <li>Añadir 500ml de agua pH 11.5 al cubo de fregona.</li>
+                            <li>Fregar como habitualmente — sin añadir jabón ni detergente.</li>
+                            <li>Los suelos quedan limpios, brillantes y libres de residuos químicos.</li>
+                            <li>Seguro para parquet, mármol, gres y cerámicos.</li>
+                        </ol>
+                        <div class="protocol-tip">
+                            <span class="tip-icon">🏠</span>
+                            <span>Hogares con niños y mascotas se benefician enormemente de un suelo sin residuos de lejía o detergente.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- CHEATSHEET DE REFERENCIA RÁPIDA                -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="content-section">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">Tabla de Referencia</span>
+                <h2 class="section-title"><span class="gradient-text">Cheatsheet</span> Rápido</h2>
+                <p class="section-subtitle mx-auto">
+                    Imprime esta tabla y pégala en tu nevera. Todo lo que necesitas saber de un vistazo.
+                </p>
+            </div>
+
+            <div class="cheatsheet animate-on-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Uso</th>
+                            <th>pH</th>
+                            <th>Modo de Empleo</th>
+                            <th>Frecuencia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Beber (diario)</strong></td>
+                            <td><span class="ph-tag" style="background:rgba(0,136,255,0.15);color:#0088ff;">pH 9.5</span></td>
+                            <td>1.5-2L al día, primer vaso en ayunas</td>
+                            <td>Diario</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Café / Té</strong></td>
+                            <td><span class="ph-tag" style="background:rgba(0,136,255,0.15);color:#0088ff;">pH 9.5</span></td>
+                            <td>Calentar sin hervir en exceso</td>
+                            <td>A gusto</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cocinar</strong></td>
+                            <td><span class="ph-tag" style="background:rgba(0,136,255,0.15);color:#0088ff;">pH 9.0-9.5</span></td>
+                            <td>Hervir pasta, arroz, sopas</td>
+                            <td>A gusto</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Medicamentos</strong></td>
+                            <td><span class="ph-tag" style="background:rgba(148,163,184,0.15);color:#94a3b8;">pH 7.0</span></td>
+                            <td>Tomar pastillas solo con agua neutra</td>
+                            <td>Cada toma</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tónico facial</strong></td>
+                            <td><span class="ph-tag" style="background:rgba(245,158,11,0.15);color:#f59e0b;">pH 6.0</span></td>
+                            <td>Pulverizar rostro y cuello</td>
+                            <td>2x/día</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cabello</strong></td>
+                            <td><span class="ph-tag" style="background:rgba(245,158,11,0.15);color:#f59e0b;">pH 6.0</span></td>
+                            <td>Último aclarado post-champú</td>
+                            <td>Cada lavado</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Enjuague bucal</strong></td>
+                            <td><span class="ph-tag" style="background:rgba(239,68,68,0.15);color:#ef4444;">pH 2.5</span></td>
+                            <td>Enjuagar 30-60s, escupir, aclarar 7.0</td>
+                            <td>2x/día</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pie de atleta</strong></td>
+                            <td><span class="ph-tag" style="background:rgba(239,68,68,0.15);color:#ef4444;">pH 2.5</span></td>
+                            <td>Remojar pies 15-20 min</td>
+                            <td>2x/día</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lavar verduras</strong></td>
+                            <td><span class="ph-tag" style="background:rgba(139,92,246,0.15);color:#8b5cf6;">pH 11.5</span></td>
+                            <td>Remojar 10-15 min, aclarar con 8.5</td>
+                            <td>Cada compra</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Desengrasante</strong></td>
+                            <td><span class="ph-tag" style="background:rgba(139,92,246,0.15);color:#8b5cf6;">pH 11.5</span></td>
+                            <td>Pulverizar, esperar 2-3 min, pasar paño</td>
+                            <td>Según uso</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cristales</strong></td>
+                            <td><span class="ph-tag" style="background:rgba(139,92,246,0.15);color:#8b5cf6;">pH 11.5</span></td>
+                            <td>Pulverizar + paño microfibra</td>
+                            <td>Semanal</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRODUCTS REPLACED ===== -->
+    <section class="content-section" style="background: var(--bg-section-alt);">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">Adiós a los Químicos</span>
+                <h2 class="section-title">Productos que <span class="gradient-text">Ya No Necesitas</span></h2>
+                <p class="section-subtitle mx-auto">
+                    Cada uno de estos productos contiene químicos que contaminan tu hogar, tu cuerpo
+                    y el medio ambiente. Kangen los sustituye todos por agua pura.
+                </p>
+            </div>
+
+            <div class="replaced-grid animate-on-scroll">
+                <div class="replaced-item">❌ <span class="strike">Lejía doméstica</span></div>
+                <div class="replaced-item">❌ <span class="strike">Desengrasantes</span></div>
+                <div class="replaced-item">❌ <span class="strike">Limpiacristales</span></div>
+                <div class="replaced-item">❌ <span class="strike">Quitamanchas</span></div>
+                <div class="replaced-item">❌ <span class="strike">Amoníaco</span></div>
+                <div class="replaced-item">❌ <span class="strike">Enjuague bucal</span></div>
+                <div class="replaced-item">❌ <span class="strike">Tónico facial</span></div>
+                <div class="replaced-item">❌ <span class="strike">Acondicionador capilar</span></div>
+                <div class="replaced-item">❌ <span class="strike">Agua embotellada</span></div>
+                <div class="replaced-item">❌ <span class="strike">Detergente suelos</span></div>
+                <div class="replaced-item">❌ <span class="strike">Limpia-hornos</span></div>
+                <div class="replaced-item">❌ <span class="strike">Desinfectante superficies</span></div>
+                <div class="replaced-item">❌ <span class="strike">Crema antimicótica</span></div>
+                <div class="replaced-item">❌ <span class="strike">Agua con filtro jarra</span></div>
+                <div class="replaced-item">❌ <span class="strike">Spray after-sun</span></div>
+                <div class="replaced-item">❌ <span class="strike">Lavado de pesticidas</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section style="padding: 60px 0;">
+        <div class="container">
+            <div class="cta-banner animate-on-scroll">
+                <div>
+                    <h2>Siguiente: Dr. Carpenter y Certificaciones</h2>
+                    <p>Descubre las certificaciones ISO 13485, la aprobación FDA y la experiencia clínica del Dr. Carpenter.</p>
+                </div>
+                <a href="../06-dr-carpenter/index.html" class="btn-white" style="text-decoration:none;">Módulo 06 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MODULE NAVIGATION ===== -->
+    <section style="padding: 30px 0;">
+        <div class="container">
+            <div class="module-nav">
+                <a href="../04-tipos-agua/index.html">← Módulo 04: 5 Tipos</a>
+                <a href="../index.html">Índice General</a>
+                <a href="../06-dr-carpenter/index.html">Módulo 06: Dr. Carpenter →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                💧 Agua<span style="color: var(--accent);">Kangen</span> — Módulo 05
+            </div>
+            <p class="footer-copy">© 2026 — Distribuidor Independiente Enagic</p>
+            <div class="footer-nav">
+                <a href="../index.html">Inicio</a>
+                <a href="../index.html#modulos">Módulos</a>
+                <a href="../../../index.html">Kangen Water</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+</html>

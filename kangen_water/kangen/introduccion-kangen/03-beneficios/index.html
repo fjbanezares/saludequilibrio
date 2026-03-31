@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beneficios para la Salud — Desintoxicación, Deporte y Vitalidad | Agua Kangen</title>
+    <meta name="description" content="Descubre los beneficios del Agua Kangen para tu salud: desintoxicación intestinal, eliminación de ácidos y grasa, rendimiento deportivo, hidratación celular profunda y rejuvenecimiento.">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* ===== MODULE 03 — BENEFICIOS — SPECIFIC STYLES ===== */
+
+        /* Big Impact Numbers */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .impact-card {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .impact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 3px;
+            background: var(--gradient-water);
+            border-radius: 0 0 3px 3px;
+        }
+
+        .impact-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .impact-unit {
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Benefits Showcase - Large Cards */
+        .benefit-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            margin: 3rem 0;
+        }
+
+        .benefit-showcase-image {
+            overflow: hidden;
+            min-height: 400px;
+        }
+
+        .benefit-showcase-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-slow);
+        }
+
+        .benefit-showcase-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .benefit-showcase-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--card-bg);
+        }
+
+        .benefit-showcase-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-showcase-content p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Before/After visual */
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin: 2.5rem 0;
+        }
+
+        .ba-card {
+            padding: 2rem;
+            text-align: center;
+            border-radius: 16px;
+        }
+
+        .ba-card.before {
+            background: rgba(239,68,68,0.08);
+            border: 1px solid rgba(239,68,68,0.2);
+        }
+
+        .ba-card.after {
+            background: rgba(0,229,160,0.08);
+            border: 1px solid rgba(0,229,160,0.2);
+        }
+
+        .ba-card .ba-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .ba-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .ba-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .ba-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+            font-weight: 900;
+        }
+
+        /* Acid/Fat mechanism */
+        .mechanism-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .mechanism-step {
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .mechanism-step::after {
+            content: '→';
+            position: absolute;
+            right: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: 900;
+        }
+
+        .mechanism-step:last-child::after {
+            display: none;
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-water);
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.85rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.8rem;
+        }
+
+        .mechanism-step h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .mechanism-step p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Sport Benefits Grid */
+        .sport-benefits {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .sport-card {
+            padding: 2rem;
+            text-align: center;
+            border-left: 3px solid transparent;
+            transition: var(--transition);
+        }
+
+        .sport-card:hover {
+            border-left-color: var(--accent);
+        }
+
+        .sport-card .sport-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .sport-card h4 {
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sport-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Skin / Beauty benefits */
+        .beauty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .beauty-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1rem 1.2rem;
+            background: rgba(156,39,176,0.06);
+            border: 1px solid rgba(156,39,176,0.15);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .beauty-item:hover {
+            background: rgba(156,39,176,0.1);
+            transform: translateY(-2px);
+        }
+
+        .beauty-item .beauty-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Quote card special */
+        .quote-card-large {
+            background: linear-gradient(135deg, rgba(0,136,255,0.1), rgba(0,210,255,0.05));
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            margin: 3rem 0;
+        }
+
+        .quote-card-large::before {
+            content: '"';
+            font-size: 8rem;
+            font-family: Georgia, serif;
+            color: var(--accent);
+            opacity: 0.1;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            line-height: 1;
+        }
+
+        .quote-card-large p {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-main);
+            line-height: 1.8;
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-card-large cite {
+            display: block;
+            margin-top: 1rem;
+            color: var(--accent);
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        /* Module navigation */
+        .module-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-light);
+            margin-top: 3rem;
+        }
+
+        .module-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        .module-nav a:hover {
+            color: var(--accent);
+            border-color: var(--border-color);
+            background: var(--card-bg);
+        }
+
+        @media (max-width: 968px) {
+            .impact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .benefit-showcase {
+                grid-template-columns: 1fr;
+            }
+            .benefit-showcase-image {
+                min-height: 250px;
+            }
+            .mechanism-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .mechanism-step::after {
+                display: none;
+            }
+            .sport-benefits {
+                grid-template-columns: 1fr;
+            }
+            .before-after {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .ba-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-brand">
+                <span class="logo-icon">💧</span>
+                <span class="logo-text">Agua<span>Kangen</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html">← Inicio</a>
+                <a href="#intestino">Intestino</a>
+                <a href="#grasa">Grasa y Ácidos</a>
+                <a href="#deporte">Deporte</a>
+                <a href="#piel">Piel</a>
+                <a href="../index.html#modulos" class="btn-primary btn-sm">Todos los Módulos</a>
+            </div>
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+        </div>
+    </nav>
+
+    <!-- ===== SUBPAGE HERO ===== -->
+    <section class="subpage-hero">
+        <div class="glow-orb orb-1" style="opacity:0.15;"></div>
+        <div class="glow-orb orb-2" style="opacity:0.1;"></div>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="sep">›</span>
+                <span>Módulo 03</span>
+            </div>
+            <span class="section-label">Módulo 03 — Salud y Bienestar</span>
+            <h1 class="subpage-title">
+                Beneficios para<br>
+                <span class="gradient-text">tu Salud</span>
+            </h1>
+            <p class="subpage-subtitle">
+                Desintoxicación intestinal profunda, eliminación de ácidos y grasa acumulada,
+                rendimiento deportivo superior, rejuvenecimiento celular y una piel radiante.
+                Descubre lo que el Agua Kangen puede hacer por tu organismo.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== IMPACT NUMBERS ===== -->
+    <section style="padding: 0 0 40px; margin-top: -20px; position: relative; z-index: 2;">
+        <div class="container">
+            <div class="impact-grid animate-on-scroll">
+                <div class="impact-card glass-card" style="cursor:default;">
+                    <span class="impact-number gradient-text">3</span>
+                    <span class="impact-unit">meses</span>
+                    <span class="impact-label">Para observar mejoras<br>intestinales visibles</span>
+                </div>
+                <div class="impact-card glass-card" style="cursor:default;">
+                    <span class="impact-number gradient-text">6x</span>
+                    <span class="impact-unit">más hidratación</span>
+                    <span class="impact-label">Penetración celular vs.<br>agua convencional</span>
+                </div>
+                <div class="impact-card glass-card" style="cursor:default;">
+                    <span class="impact-number gradient-text">-800</span>
+                    <span class="impact-unit">mV ORP</span>
+                    <span class="impact-label">Máximo potencial<br>antioxidante</span>
+                </div>
+                <div class="impact-card glass-card" style="cursor:default;">
+                    <span class="impact-number gradient-text">pH 9.5</span>
+                    <span class="impact-unit">alcalino</span>
+                    <span class="impact-label">Contrarresta acidez<br>y estrés oxidativo</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BENEFIT 1: INTESTINO ===== -->
+    <section class="content-section" id="intestino">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">Beneficio Principal</span>
+                <h2 class="section-title">Desintoxica el <span class="gradient-text">Intestino</span></h2>
+            </div>
+
+            <div class="quote-card-large animate-on-scroll">
+                <p>
+                    Un colon limpio y saludable es uno de los precursores para obtener una salud óptima.
+                    La gran mayoría de las dolencias del cuerpo y las enfermedades son originadas por
+                    contar con un colon ácido y sucio.
+                </p>
+                <cite>— Dr. Hiromi Shinya, Pionero de la Colonoscopia Moderna</cite>
+            </div>
+
+            <div class="benefit-showcase animate-on-scroll">
+                <div class="benefit-showcase-image">
+                    <img src="../assets/intestine.png" alt="Intestino saludable hidratado con Agua Kangen" loading="lazy">
+                </div>
+                <div class="benefit-showcase-content">
+                    <span class="section-label" style="margin-bottom: 1rem;">La Limpieza Interior</span>
+                    <h3>Tu Intestino es la <span class="gradient-text">Base de tu Salud</span></h3>
+                    <p>
+                        Es importante que el intestino grueso esté limpio. La proteína animal, los productos lácteos,
+                        el alcohol, los alimentos refinados, las grasas saturadas producen una sustancia pegajosa que
+                        se adhiere a la pared del intestino, formando una barrera que <strong>impide la absorción de
+                        los nutrientes</strong>.
+                    </p>
+                    <p>
+                        Los médicos afirman que contar con el <strong>intestino grueso contaminado contribuye al
+                        desarrollo de muchas enfermedades y discapacidades</strong>. Consumiendo Agua Kangen, podemos
+                        hidratar nuestro cuerpo y limpiar el intestino grueso en unos pocos meses.
+                    </p>
+                    <ul class="feature-list">
+                        <li>La falta de energía y la obesidad pueden mejorar con esta limpieza</li>
+                        <li>Las náuseas y enfermedades de la piel se ven beneficiadas</li>
+                        <li>Resultados visibles por colonoscopia en 3 meses</li>
+                        <li>Sin necesidad de productos caros ni procedimientos dolorosos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Before / After -->
+            <div class="text-center animate-on-scroll" style="margin-top: 3rem;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">3 Meses de Tratamiento con <span class="gradient-text">Agua Kangen</span></h3>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">Cambios observados mediante colonoscopia por el Dr. Hiromi Shinya</p>
+            </div>
+
+            <div class="before-after animate-on-scroll">
+                <div class="ba-card before">
+                    <span class="ba-icon">😰</span>
+                    <h4 style="color: #ef4444;">ANTES</h4>
+                    <p>Paredes intestinales oscurecidas, recubiertas de sustancia pegajosa. Vellosidades aplastadas e inflamadas. Absorción de nutrientes comprometida.</p>
+                </div>
+                <span class="ba-arrow">→</span>
+                <div class="ba-card after">
+                    <span class="ba-icon">✨</span>
+                    <h4 style="color: #00e5a0;">DESPUÉS</h4>
+                    <p>Paredes rosadas y limpias. Vellosidades erguidas y saludables. Absorción óptima de nutrientes. Flora intestinal equilibrada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BENEFIT 2: GRASA Y ÁCIDOS ===== -->
+    <section class="content-section" style="background: var(--bg-section-alt);" id="grasa">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content-image animate-on-scroll">
+                    <img src="../assets/detox_body.png" alt="El cuerpo eliminando toxinas ácidas con agua alcalina" loading="lazy">
+                </div>
+                <div class="content-text animate-on-scroll">
+                    <span class="section-label">Mecanismo Detox</span>
+                    <h2>Elimina Ácidos y <span class="gradient-text">Reduce la Grasa</span></h2>
+                    <p>
+                        El consumo de Agua Kangen ayuda a <strong>eliminar los ácidos acumulados en el organismo</strong>,
+                        reduciendo directamente la cantidad de grasa almacenada. ¿Por qué existe esta conexión?
+                        Porque nuestro cuerpo utiliza la grasa como mecanismo de defensa contra la acidez.
+                    </p>
+                    <p>
+                        Cuando el organismo está acidificado —por la dieta, el estrés, la contaminación, el
+                        sedentarismo— genera capas de grasa para <strong>encapsular los ácidos tóxicos</strong> y
+                        evitar que dañen los órganos vitales. Al neutralizar esos ácidos con agua alcalina,
+                        el cuerpo ya no necesita esa grasa protectora y la libera de forma natural.
+                    </p>
+                    <blockquote>
+                        <p>
+                            No es una dieta. Es la eliminación de la causa raíz: la acidificación.
+                            Cuando eliminas los ácidos, tu cuerpo libera la grasa que ya no necesita.
+                        </p>
+                    </blockquote>
+                </div>
+            </div>
+
+            <!-- Mechanism Steps -->
+            <div class="animate-on-scroll" style="margin-top: 4rem;">
+                <h3 class="text-center" style="font-size: 1.5rem; margin-bottom: 2rem;">
+                    El Ciclo <span class="gradient-text">Ácido → Grasa → Liberación</span>
+                </h3>
+                <div class="mechanism-steps">
+                    <div class="mechanism-step glass-card" style="cursor:default;">
+                        <div class="step-number">1</div>
+                        <h4>Acidificación</h4>
+                        <p>Dieta ácida, estrés, polución y bebidas acidifican el organismo.</p>
+                    </div>
+                    <div class="mechanism-step glass-card" style="cursor:default;">
+                        <div class="step-number">2</div>
+                        <h4>Grasa Protectora</h4>
+                        <p>El cuerpo genera grasa para encapsular los ácidos tóxicos y proteger los órganos.</p>
+                    </div>
+                    <div class="mechanism-step glass-card" style="cursor:default;">
+                        <div class="step-number">3</div>
+                        <h4>Agua Kangen</h4>
+                        <p>El agua alcalina neutraliza los ácidos, haciendo bicarbonatos que limpian la sangre.</p>
+                    </div>
+                    <div class="mechanism-step glass-card" style="cursor:default;">
+                        <div class="step-number">4</div>
+                        <h4>Liberación</h4>
+                        <p>Sin ácidos que encapsular, el cuerpo libera la grasa acumulada de forma natural.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BENEFIT 3: DEPORTE ===== -->
+    <section class="content-section" id="deporte">
+        <div class="container">
+            <div class="benefit-showcase animate-on-scroll" style="direction: rtl;">
+                <div class="benefit-showcase-image" style="direction: ltr;">
+                    <img src="../assets/athlete.png" alt="Deportista de alto rendimiento con hidratación Kangen" loading="lazy">
+                </div>
+                <div class="benefit-showcase-content" style="direction: ltr;">
+                    <span class="section-label" style="margin-bottom: 1rem;">Rendimiento Deportivo</span>
+                    <h3>Su Efecto en <span class="gradient-text">Deportistas</span></h3>
+                    <p>
+                        El ejercicio intenso genera grandes cantidades de ácido láctico y radicales libres.
+                        El Agua Kangen, con su estructura micro-cluster y su alto poder antioxidante,
+                        ofrece ventajas que ninguna otra hidratación puede igualar.
+                    </p>
+                    <p>
+                        Los deportistas profesionales que consumen Agua Kangen reportan una
+                        <strong>recuperación significativamente más rápida</strong>, menos calambres,
+                        mayor resistencia y una sensación general de energía sostenida durante el
+                        entrenamiento y la competición.
+                    </p>
+                </div>
+            </div>
+
+            <div class="sport-benefits animate-on-scroll">
+                <div class="sport-card glass-card" style="cursor:default;">
+                    <span class="sport-icon">⚡</span>
+                    <h4>Mayor Energía</h4>
+                    <p>El Agua Kangen aumenta el oxígeno en sangre, proporcionando energía celular sostenida sin picos ni crashes.</p>
+                </div>
+                <div class="sport-card glass-card" style="cursor:default;">
+                    <span class="sport-icon">🛡️</span>
+                    <h4>Antiinflamatorio</h4>
+                    <p>El hidrógeno molecular reduce la inflamación post-ejercicio, acelerándo la recuperación muscular y articular.</p>
+                </div>
+                <div class="sport-card glass-card" style="cursor:default;">
+                    <span class="sport-icon">💧</span>
+                    <h4>Absorción Rápida</h4>
+                    <p>Los micro-clusters penetran las células 6 veces más rápido, rehidratando tejidos musculares al instante.</p>
+                </div>
+                <div class="sport-card glass-card" style="cursor:default;">
+                    <span class="sport-icon">🏋️</span>
+                    <h4>Mayor Rendimiento</h4>
+                    <p>Neutraliza el ácido láctico durante el esfuerzo, permitiendo sesiones más largas y potentes.</p>
+                </div>
+                <div class="sport-card glass-card" style="cursor:default;">
+                    <span class="sport-icon">🔄</span>
+                    <h4>Recuperación Rápida</h4>
+                    <p>Reduce el tiempo de recuperación entre entrenamientos, permitiendo mayor frecuencia e intensidad.</p>
+                </div>
+                <div class="sport-card glass-card" style="cursor:default;">
+                    <span class="sport-icon">🧬</span>
+                    <h4>Reduce Radicales Libres</h4>
+                    <p>El ORP negativo neutraliza el estrés oxidativo generado por el ejercicio intenso, protegiendo las células.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BENEFIT 4: PIEL Y DERMATITIS ===== -->
+    <section class="content-section" style="background: var(--bg-section-alt);" id="piel">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content-text animate-on-scroll">
+                    <span class="section-label">Piel y Bienestar</span>
+                    <h2>Ayuda en Casos de <span class="gradient-text">Dermatitis y Más</span></h2>
+                    <p>
+                        El Agua Kangen es usada para ayudar a aliviar casos graves de <strong>dermatitis atópica</strong>.
+                        La combinación de agua alcalina para beber (pH 8.5-9.5) con agua ácida para uso tópico
+                        (pH 2.5-6.0) crea un protocolo completo de cuidado de la piel desde dentro y desde fuera.
+                    </p>
+                    <p>
+                        <span style="background: rgba(255,193,7,0.15); border: 1px solid rgba(255,193,7,0.3); padding: 2px 6px; border-radius: 6px; font-size: 0.88rem;" title="🔗 TODO: Enlazar al futuro capítulo de Ciencia con estudios detallados">📌 Existen diversos estudios científicos publicados
+                        en revistas revisadas por pares que observan una <strong>correlación positiva entre la
+                        ingesta de agua hidrogenada y la mejora del terreno biológico en pacientes
+                        oncológicos</strong>, especialmente en relación con la reducción del estrés oxidativo celular.
+                        En nuestro futuro módulo dedicado a la Ciencia, profundizaremos en estos estudios con
+                        detalle y referencias bibliográficas.</span>
+                    </p>
+                    <p>
+                        La piel, como órgano más grande del cuerpo, refleja directamente el estado de salud
+                        interior — y el Agua Kangen trabaja en ambos frentes: hidratación interna con agua
+                        alcalina y cuidado externo con agua ácida.
+                    </p>
+
+                    <div class="beauty-grid">
+                        <div class="beauty-item">
+                            <span class="beauty-icon">✨</span>
+                            <span>Dermatitis atópica</span>
+                        </div>
+                        <div class="beauty-item">
+                            <span class="beauty-icon">🌿</span>
+                            <span>Psoriasis</span>
+                        </div>
+                        <div class="beauty-item">
+                            <span class="beauty-icon">💎</span>
+                            <span>Acné y eccemas</span>
+                        </div>
+                        <div class="beauty-item">
+                            <span class="beauty-icon">🧴</span>
+                            <span>Hidratación profunda</span>
+                        </div>
+                        <div class="beauty-item">
+                            <span class="beauty-icon">🩹</span>
+                            <span>Cicatrización</span>
+                        </div>
+                        <div class="beauty-item">
+                            <span class="beauty-icon">🦶</span>
+                            <span>Hongos y pie de atleta</span>
+                        </div>
+                        <div class="beauty-item">
+                            <span class="beauty-icon">💆</span>
+                            <span>Cabello suave y brillante</span>
+                        </div>
+                        <div class="beauty-item">
+                            <span class="beauty-icon">🧖</span>
+                            <span>Anti-celulitis</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-image animate-on-scroll">
+                    <img src="../assets/hero_water.png" alt="Agua pura con propiedades beneficiosas para la piel" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BENEFIT 5: PREVENTIVE ===== -->
+    <section class="content-section">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">Prevención Proactiva</span>
+                <h2 class="section-title">Previene y Repara los <span class="gradient-text">Daños Metabólicos</span></h2>
+                <p class="section-subtitle mx-auto">
+                    El Agua Kangen no es un medicamento. Es un cambio de hábito que trabaja en la causa raíz
+                    de la mayoría de las enfermedades modernas: la acidificación y la deshidratación celular.
+                </p>
+            </div>
+
+            <div class="info-cards animate-on-scroll">
+                <div class="info-card glass-card" style="cursor:default;">
+                    <span class="card-icon">🫀</span>
+                    <h4>Sistema Cardiovascular</h4>
+                    <p>La alcalinidad mantiene la fluidez sanguínea y reduce la oxidación del colesterol LDL que endurece las arterias.</p>
+                </div>
+                <div class="info-card glass-card" style="cursor:default;">
+                    <span class="card-icon">🧠</span>
+                    <h4>Sistema Nervioso</h4>
+                    <p>El hidrógeno molecular cruza la barrera hematoencefálica, protegiendo las neuronas del estrés oxidativo.</p>
+                </div>
+                <div class="info-card glass-card" style="cursor:default;">
+                    <span class="card-icon">🦴</span>
+                    <h4>Sistema Óseo</h4>
+                    <p>La alcalinidad reduce la necesidad del cuerpo de extraer calcio de los huesos para neutralizar ácidos.</p>
+                </div>
+                <div class="info-card glass-card" style="cursor:default;">
+                    <span class="card-icon">🫁</span>
+                    <h4>Sistema Respiratorio</h4>
+                    <p>Mayor oxigenación sanguínea gracias al pH alcalino. Las células reciben más O₂ y eliminan CO₂ más eficientemente.</p>
+                </div>
+                <div class="info-card glass-card" style="cursor:default;">
+                    <span class="card-icon">🛡️</span>
+                    <h4>Sistema Inmunológico</h4>
+                    <p>Un organismo alcalino e hidratado tiene defensas más activas. Los antioxidantes del H₂ potencian la respuesta inmune.</p>
+                </div>
+                <div class="info-card glass-card" style="cursor:default;">
+                    <span class="card-icon">⏳</span>
+                    <h4>Anti-envejecimiento</h4>
+                    <p>Cada célula hidratada correctamente envejece más lento. El ORP negativo combate directamente el estrés oxidativo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SUMMARY INSIGHT ===== -->
+    <section style="padding: 80px 0; background: var(--bg-section-alt);">
+        <div class="container">
+            <div class="cta-banner animate-on-scroll" style="flex-direction: column; text-align: center;">
+                <div style="max-width: 700px;">
+                    <h2 style="font-size: 2rem; margin-bottom: 1rem;">🌊 Cambia tu Agua, Cambia tu Vida</h2>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 0;">
+                        Alimentos, estrés, polución, bebidas… diariamente agredimos al organismo y
+                        deterioramos nuestra salud, poco a poco. Podemos contrarrestar esta acidificación
+                        consumiendo Agua Kangen alcalina, hidrogenada, antioxidante y súper hidratante
+                        para toda la familia.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA NEXT MODULE ===== -->
+    <section style="padding: 60px 0;">
+        <div class="container">
+            <div class="cta-banner animate-on-scroll">
+                <div>
+                    <h2>Siguiente: Los 5 Tipos de Agua</h2>
+                    <p>Descubre cada uno de los 5 niveles de pH producidos por los ionizadores Kangen y sus aplicaciones específicas.</p>
+                </div>
+                <a href="../04-tipos-agua/index.html" class="btn-white" style="text-decoration:none;">Módulo 04 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MODULE NAVIGATION ===== -->
+    <section style="padding: 30px 0;">
+        <div class="container">
+            <div class="module-nav">
+                <a href="../02-que-es-agua-kangen/index.html">← Módulo 02: Agua Kangen</a>
+                <a href="../index.html">Índice General</a>
+                <a href="../04-tipos-agua/index.html">Módulo 04: 5 Tipos de Agua →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                💧 Agua<span style="color: var(--accent);">Kangen</span> — Módulo 03
+            </div>
+            <p class="footer-copy">© 2026 — Distribuidor Independiente Enagic</p>
+            <div class="footer-nav">
+                <a href="../index.html">Inicio</a>
+                <a href="../index.html#modulos">Módulos</a>
+                <a href="../../../index.html">Kangen Water</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+</html>

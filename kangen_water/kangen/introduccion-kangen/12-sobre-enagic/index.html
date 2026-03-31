@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Enagic: El Estándar Oro de la Industria | Agua Kangen</title>
+    <meta name="description" content="Descubre el origen, la certificación médica y la filosofía japonesa detrás de Enagic, la única empresa avalada por más de 6.500 médicos preventivos.">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* ===== MODULE 12: ENAGIC & THE GOLD STANDARD ===== */
+
+        .hero-enagic {
+            position: relative;
+            padding: 100px 0 80px;
+            background: radial-gradient(circle at 80% 20%, rgba(0, 85, 255, 0.15), transparent 50%);
+            border-bottom: 1px solid var(--border-light);
+            overflow: hidden;
+        }
+
+        .hero-enagic::after {
+            content: "🇯🇵";
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 20rem;
+            opacity: 0.03;
+            z-index: 0;
+            transform: rotate(15deg);
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+            position: relative;
+            padding: 3rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+            }
+            .timeline-grid::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 50%;
+                width: 2px;
+                background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+                transform: translateX(-50%);
+            }
+        }
+
+        .oem-section {
+            background: linear-gradient(to right, rgba(5,12,24,0.95), rgba(5,12,24,0.8)), url('../assets/enagic_factory.png') center/cover fixed;
+            padding: 6rem 0;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            margin: 4rem 0;
+        }
+
+        .medical-endorsement {
+            background: linear-gradient(145deg, rgba(255, 215, 0, 0.05), transparent);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 24px;
+            padding: 4rem;
+            margin: 4rem 0;
+            position: relative;
+        }
+
+        .medical-endorsement::before {
+            content: '🏅';
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 6rem;
+            opacity: 0.1;
+        }
+
+        .medical-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,215,0,0.2);
+            padding-top: 3rem;
+        }
+
+        .stat-box {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: #ffd700;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .oshiro-card {
+            display: flex;
+            flex-direction: column;
+            border-radius: 24px;
+            overflow: hidden;
+            background: var(--card-bg);
+            border: 1px solid var(--border-light);
+            margin: 5rem 0;
+        }
+
+        @media (min-width: 968px) {
+            .oshiro-card {
+                flex-direction: row;
+            }
+        }
+
+        .oshiro-image {
+            flex: 0 0 45%;
+            position: relative;
+            min-height: 400px;
+        }
+
+        .oshiro-image img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .oshiro-content {
+            padding: 4rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .three-healths {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .health-pillar {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.02);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 12px 12px 0;
+        }
+
+        .health-pillar.financial { border-color: #00e5a0; }
+        .health-pillar.mental { border-color: #bfa15f; }
+
+        .debate-section {
+            margin: 6rem 0;
+        }
+
+        .debate-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .debate-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .objection-card {
+            background: linear-gradient(135deg, rgba(239,68,68,0.05), transparent);
+            border: 1px solid rgba(239,68,68,0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: var(--transition);
+        }
+
+        .objection-card:hover {
+            border-color: rgba(239,68,68,0.4);
+            transform: translateY(-5px);
+        }
+
+        .objection-title {
+            color: #ef4444;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .objection-response {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .module-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-light);
+            margin-top: 3rem;
+        }
+
+        .module-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        .module-nav a:hover {
+            color: var(--accent);
+            border-color: var(--border-color);
+            background: var(--card-bg);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-brand">
+                <span class="logo-icon">💧</span>
+                <span class="logo-text">Agua<span>Kangen</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html">← Inicio</a>
+                <a href="#oem">Fabricación OEM</a>
+                <a href="#medico">Aval Médico</a>
+                <a href="#escepticos">Escépticos</a>
+                <a href="../index.html#modulos" class="btn-primary btn-sm">Módulos</a>
+            </div>
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <header class="hero-enagic">
+        <div class="container relative z-10">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="sep">›</span>
+                <span>Módulo 12</span>
+            </div>
+            <span class="section-label">Fundación y Excelencia</span>
+            <h1 class="subpage-title">
+                Enagic International:<br>
+                <span class="gradient-text">El Estándar que Otros Imitan</span>
+            </h1>
+            <p class="subpage-subtitle">
+                Cuando alguien cuestiona la tecnología Kangen, la respuesta no radica en folletos publicitarios, 
+                sino en una herencia de medio siglo de ingeniería médica japonesa. No estamos hablando de un filtro 
+                de agua casero; estamos hablando de la única empresa avalada por el Ministerio de Salud de Japón.
+            </p>
+        </div>
+    </header>
+
+    <main>
+        <!-- ===== 1. OEM FACTORY (THE JAPANESE SECRET) ===== -->
+        <section class="oem-section" id="oem">
+            <div class="container">
+                <div class="grid md:grid-cols-2 gap-12 align-items-center">
+                    <div class="animate-on-scroll">
+                        <span class="section-label">Control Absoluto</span>
+                        <h2 class="section-title text-white">Fabricación <span style="color:#3b82f6;">OEM</span>: Sin Atajos</h2>
+                        <p class="text-slate-300 text-lg mb-6 leading-relaxed">
+                            Hoy en día, casi todos los competidores abaratan costes subcontratando piezas a fábricas genéricas 
+                            en China o Corea, limitándose a ensamblarlas y ponerles su logotipo. 
+                        </p>
+                        <p class="text-slate-300 text-lg mb-8 leading-relaxed">
+                            Enagic es uno de los pocos fabricantes <strong>OEM (Original Equipment Manufacturer)</strong> que quedan en el mundo. 
+                            Desde su planta en Osaka, Japón, controlan milimétricamente cada fase: desde la fundición del titanio de 
+                            grado quirúrgico hasta la programación de los microchips, el ensamblaje y el embalaje. 
+                        </p>
+                        <ul class="feature-list" style="color: #fff;">
+                            <li><strong>Placas Sólidas (No Malla):</strong> Máxima superficie de contacto sin el riesgo mortal de desprender metales pesados en tu agua debido a la corrosión.</li>
+                            <li><strong>Baño en Platino Médico:</strong> Conductividad eléctrica perfecta y sostenida durante 25 años.</li>
+                            <li><strong>Artesanía Industrial:</strong> Cada máquina es ensamblada de principio a fin por un mismo técnico especializado, inspeccionando cada junta.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 2. EL AVAL MÉDICO (THE ENDORSEMENT) ===== -->
+        <section class="container" id="medico">
+            <div class="medical-endorsement animate-on-scroll">
+                <div class="text-center mb-10">
+                    <span class="section-label" style="color: #bfa15f; border-color: rgba(191, 161, 95, 0.3);">Certificación de Grado Médico</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Lo que la Competencia <span style="color: #ffd700;">No Puede Comprar</span></h2>
+                    <p class="text-slate-400 max-w-3xl mx-auto text-lg">
+                        Cualquiera puede crear una página web atractiva, pero las certificaciones médicas a nivel estatal y 
+                        las aprobaciones de asociaciones preventivas requieren décadas de pruebas clínicas irrefutables.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div>
+                        <h4 class="font-bold text-xl mb-3 text-white">Asociación Japonesa de Medicina Preventiva (JAPA)</h4>
+                        <p class="text-slate-400 leading-relaxed mb-6">
+                            La JAPA está compuesta por más de <strong>6.500 médicos preventivos</strong> especializados en enfermedades 
+                            propias del estilo de vida adulto en Japón. Enagic es la <strong>ÚNICA</strong> empresa de la industria del 
+                            agua que ha recibido su aval incondicional por los amplios beneficios clínicos del Agua Kangen sobre el 
+                            estrés oxidativo y el equilibrio gastrointestinal.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-xl mb-3 text-white">Sello de Oro de WQA y Norma ISO 13485</h4>
+                        <p class="text-slate-400 leading-relaxed mb-6">
+                            La certificación ISO 13485 es la norma mundial para dispositivos médicos. Si un dispositivo no la tiene, 
+                            legalmente es un electrodoméstico preventivo sin regulación clínica. Enagic cuenta con ella, sumada al 
+                            exclusivo <strong>Gold Seal de la Water Quality Association</strong>, garantizando que los materiales que entran 
+                            en contacto con tu agua son seguros, probados y no emiten lixiviados tóxicos con el tiempo.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="medical-stats">
+                    <div class="stat-box">
+                        <div class="stat-number">6,500+</div>
+                        <div class="text-slate-400 text-sm font-bold uppercase tracking-wider">Médicos Respaldando</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">13485</div>
+                        <div class="text-slate-400 text-sm font-bold uppercase tracking-wider">ISO Dispositivo Médico</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">50</div>
+                        <div class="text-slate-400 text-sm font-bold uppercase tracking-wider">Años de Liderazgo</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 3. OSHIRO & THE 3 HEALTHS ===== -->
+        <section class="container">
+            <div class="oshiro-card animate-on-scroll">
+                <div class="oshiro-image">
+                    <img src="../assets/hironari_oshiro.png" alt="Hironari Oshiro, CEO y fundador visionario de Enagic">
+                </div>
+                <div class="oshiro-content">
+                    <span class="section-label">La Mentalidad del Fundador</span>
+                    <h2 class="text-3xl font-bold mb-6">El Concepto de <br><span class="gradient-text">Salud Verdadera</span></h2>
+                    <p class="text-slate-400 mb-6">
+                        Mr. Hironari Oshiro fundó Enagic en 1974 bajo una filosofía compasiva y profundamente arraigada 
+                        en la cultura japonesa de servicio y equilibrio. Su visión no era simplemente comercializar filtros 
+                        de agua, sino estructurar un vehículo para devolver el control vital a las familias a través de tres pilares.
+                    </p>
+                    
+                    <div class="three-healths">
+                        <div class="health-pillar">
+                            <div class="text-3xl">💧</div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">1. Salud Física Real</h4>
+                                <p class="text-sm text-slate-400 m-0">Consolidar un entorno interno limpio y alcalino, utilizando la hidratación rica en hidrógeno para frenar el declive oxidativo constante provocado por el entorno.</p>
+                            </div>
+                        </div>
+                        <div class="health-pillar financial">
+                            <div class="text-3xl">💹</div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">2. Salud Financiera</h4>
+                                <p class="text-sm text-slate-400 m-0">Un modelo patentado de venta directa donde la inversión publicitaria no va a agencias ni supermercados, sino que recompensa directamente a los usuarios que transforman la vida de otros.</p>
+                            </div>
+                        </div>
+                        <div class="health-pillar mental">
+                            <div class="text-3xl">🧘‍♂️</div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">3. Paz Mental</h4>
+                                <p class="text-sm text-slate-400 m-0">La tranquilidad profunda que surge de saber que tu biología está protegida, tus finanzas están en equilibrio y posees una herramienta médica garantizada para durar décadas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 4. DEBATE Y RESPUESTAS (MARKETING DE GUERRILLA) ===== -->
+        <section class="container debate-section" id="escepticos">
+            <div class="text-center mb-12">
+                <span class="section-label" style="color:#ef4444; border-color: rgba(239,68,68,0.3);">Argumentario Definitivo</span>
+                <h2 class="section-title">Cómo Desmontar a un <span style="color:#ef4444;">Escéptico</span></h2>
+                <p class="section-subtitle mx-auto">
+                    A menudo tus amigos o familiares, condicionados por el marketing masivo, compararán tecnología de 
+                    grado médico con jarras filtrantes. Aquí tienes las balas argumentales basadas en ciencia y sentido común.
+                </p>
+            </div>
+
+            <div class="debate-grid">
+                <!-- Objeción 1 -->
+                <div class="objection-card animate-on-scroll">
+                    <div class="objection-title">
+                        <span>❌</span> "He visto máquinas de este tipo por 500€ en Amazon o AliExpress, hacen lo mismo."
+                    </div>
+                    <div class="objection-response">
+                        <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                            <strong>Respuesta Inmediata:</strong> "¿Permitirías que el cirujano te operara con un bisturí oxidado comprado en AliExpress?"
+                        </p>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            <strong>El Dato Técnico:</strong> Para generar electrólisis y separar el agua, el motor necesita metales pesados. 
+                            Las imitaciones baratas utilizan titanio de baja densidad en forma de <em>malla</em>. Cuando se aplica corriente a una malla 
+                            corriente debajo del agua, esta se degrada y libera toxinas y metales pesados <em>directamente al vaso que te vas a beber</em>.
+                            Enagic usa titanio sólido macizo revestido de platino en bloque, diseñado para 25 años sin filtraciones. No pagas por la marca, pagas por no envenenarte.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Objeción 2 -->
+                <div class="objection-card animate-on-scroll">
+                    <div class="objection-title">
+                        <span>❌</span> "Es que es simplemente agua, pagar tanto por agua es un lujo ridículo."
+                    </div>
+                    <div class="objection-response">
+                        <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                            <strong>Respuesta Inmediata:</strong> "No compras agua. Compras un generador de Hidrógeno Molecular antioxidante inagotable."
+                        </p>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            <strong>El Dato Técnico:</strong> La gente se gasta tranquilamente miles de euros en coches que pierden la mitad de su valor al salir 
+                            del concesionario, en seguros médicos que solo usan cuando ya están enfermos, y en suplementos ineficientes. El Agua Kangen hidrogenada interviene en el 70% de tu composición biológica diaria, regulando el daño celular del estilo de vida moderno desde la prevención. Es la inversión preventiva más rentable y matemática que existe.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Objeción 3 -->
+                <div class="objection-card animate-on-scroll">
+                    <div class="objection-title">
+                        <span>❌</span> "Esto me suena a estafa piramidal porque no los venden en tiendas comerciales."
+                    </div>
+                    <div class="objection-response">
+                        <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                            <strong>Respuesta Inmediata:</strong> "Las pirámides son ilegales. Enagic es un gigante japonés corporativo consolidado hace 50 años y regulado internacionalmente."
+                        </p>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            <strong>El Dato Técnico:</strong> Una estafa piramidal no fabrica productos físicos galardonados ni recibe ISO médicos de gobiernos de primer mundo. 
+                            La razón por la que no está en el supermercado es porque requiere <em>educación</em>. Si ves un equipo de 4.000€ en un estante junto a un filtro de plástico de 30€ sin que nadie te explique el estrés oxidativo, no lo comprarás. El modelo de Venta Directa (Direct Sales, NO MLM) de Enagic compensa económicamente a quienes dedican su tiempo a educar a otras familias en salud real, en lugar de pagar a canales de televisión corporativos por anuncios.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Objeción 4 -->
+                <div class="objection-card animate-on-scroll">
+                    <div class="objection-title">
+                        <span>❌</span> "Mi médico me ha dicho que el cuerpo regula su propio pH y que el agua alcalina es un mito comercial."
+                    </div>
+                    <div class="objection-response">
+                        <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                            <strong>Respuesta Inmediata:</strong> "Y tu médico tiene razón en la primera parte. Tu cuerpo regula el pH de la sangre a 7.365 a cualquier precio. La pregunta es: ¿Cuál es ese precio?"
+                        </p>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            <strong>El Dato Técnico:</strong> Efectivamente, el estómago generará ácido y la sangre no variará su pH. Sin embargo, para compensar una dieta altamente ácida (azúcar, estrés, lácteos, carnes), el cuerpo extrae robos minerales masivos de tus huesos (calcio) y estresa tus riñones. Beber agua electro-alcalina (rica en electrones) actúa como un donante masivo que aporta los buffers necesarios de forma <em>gratuita</em> al cuerpo, sin agotar el banco metabólico, previniendo el deterioro celular silencioso. Es homeostasis apoyada.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== MODULE NAVIGATION ===== -->
+        <section style="padding: 30px 0;">
+            <div class="container">
+                <div class="module-nav">
+                    <a href="../11-rentabilidad/index.html">← Módulo 11: Rentabilidad</a>
+                    <a href="../index.html">Índice General</a>
+                    <a href="../13-lavado-cerebro/index.html">Módulo 13: Lavado de Cerebro →</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                💧 Agua<span style="color: var(--accent);">Kangen</span> — Módulo 12
+            </div>
+            <p class="footer-copy">© 2026 — Distribuidor Independiente Enagic. Todos los derechos reservados.</p>
+            <div class="footer-nav">
+                <a href="../index.html">Inicio</a>
+                <a href="../index.html#modulos">Módulos</a>
+                <a href="../../../index.html">Kangen Water</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+</html>

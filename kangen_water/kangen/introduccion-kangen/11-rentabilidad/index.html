@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rentabilidad, Ahorro e Impacto Ecológico | Agua Kangen</title>
+    <meta name="description" content="Descubre por qué un ionizador Kangen es la mejor inversión financiera y ecológica que puedes hacer. Elimina plásticos, químicos tóxicos y ahorra miles de euros.">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* ===== MODULE 11 — RENTABILIDAD Y AHORRO ===== */
+
+        /* Image Mask for Watermark Removal */
+        .image-mask {
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            border: 1px solid var(--border-color);
+            line-height: 0;
+            background: var(--bg-section-alt);
+        }
+
+        .image-mask img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            /* Escalado del 4% para esconder sutilmente la marca de agua típica de la IA en la esquina inferior derecha */
+            transform: scale(1.04);
+        }
+
+        /* Financial Hero Wrapper */
+        .financial-hero {
+            position: relative;
+            margin: 3rem 0;
+            border-radius: 24px;
+            overflow: hidden;
+            min-height: 450px;
+        }
+
+        .financial-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(5,12,24,0.95) 0%, rgba(5,12,24,0.7) 50%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem;
+        }
+
+        .financial-hero-overlay h2 {
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            margin-bottom: 1rem;
+            max-width: 600px;
+            line-height: 1.2;
+        }
+
+        .financial-hero-overlay p {
+            color: rgba(255,255,255,0.85);
+            font-size: 1.15rem;
+            max-width: 500px;
+            line-height: 1.8;
+        }
+
+        /* Math Comparison Boxes */
+        .math-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .math-card {
+            padding: 2.5rem;
+            border-radius: 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .math-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .math-card-header h3 {
+            font-size: 1.4rem;
+            margin: 0;
+        }
+
+        .math-card-header span {
+            font-size: 2rem;
+        }
+
+        .cost-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .cost-row strong {
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .cost-total {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px dashed rgba(255,255,255,0.1);
+            text-align: right;
+        }
+
+        .cost-total span {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .cost-total .total-amount {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin: 0;
+            line-height: 1;
+        }
+
+        .math-card.bad-deal .total-amount { color: #ef4444; text-shadow: 0 0 20px rgba(239,68,68,0.3); }
+        .math-card.good-deal .total-amount { color: #00e5a0; text-shadow: 0 0 20px rgba(0,229,160,0.3); }
+
+        /* Multipurpose Section */
+        .multipurpose-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            align-items: center;
+            margin: 5rem 0;
+        }
+
+        .mp-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mp-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .mp-icon {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--accent);
+        }
+
+        .mp-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .mp-text p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Eco Stats Strip */
+        .eco-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .eco-stat {
+            padding: 2rem 1rem;
+            border-radius: 16px;
+            background: linear-gradient(180deg, rgba(0,229,160,0.05), transparent);
+            border: 1px solid rgba(0,229,160,0.1);
+        }
+
+        .eco-number {
+            display: block;
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #00e5a0;
+            margin-bottom: 0.5rem;
+        }
+
+        .eco-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Ocean Hero Wrapper */
+        .ocean-hero {
+            position: relative;
+            margin: 3rem 0;
+            border-radius: 24px;
+            overflow: hidden;
+            min-height: 450px;
+        }
+
+        .ocean-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(5,12,24,0.95) 0%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            text-align: center;
+            padding: 4rem;
+        }
+
+        .ocean-hero-overlay h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            margin-bottom: 1rem;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        /* Module nav */
+        .module-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-light);
+            margin-top: 3rem;
+        }
+
+        .module-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        .module-nav a:hover {
+            color: var(--accent);
+            border-color: var(--border-color);
+            background: var(--card-bg);
+        }
+
+        @media (max-width: 968px) {
+            .financial-hero-overlay { padding: 2rem; }
+            .math-grid { grid-template-columns: 1fr; }
+            .multipurpose-grid { grid-template-columns: 1fr; }
+            .eco-strip { grid-template-columns: 1fr; }
+            .ocean-hero-overlay { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-brand">
+                <span class="logo-icon">💧</span>
+                <span class="logo-text">Agua<span>Kangen</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html">← Inicio</a>
+                <a href="#economia">Matemáticas</a>
+                <a href="#hogar">El Hogar</a>
+                <a href="#ecologia">Planeta</a>
+                <a href="../index.html#modulos" class="btn-primary btn-sm">Módulos</a>
+            </div>
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+        </div>
+    </nav>
+
+    <!-- ===== SUBPAGE HERO ===== -->
+    <section class="subpage-hero">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="sep">›</span>
+                <span>Módulo 11</span>
+            </div>
+            <span class="section-label">Inteligencia Financiera</span>
+            <h1 class="subpage-title">
+                Rentabilidad:<br>
+                <span class="gradient-text">El Coste de la Salud</span>
+            </h1>
+            <p class="subpage-subtitle">
+                Los mayores engaños comerciales prosperan porque no hacemos las matemáticas a largo plazo. 
+                Hoy vamos a sacar la calculadora y exponer por qué comprar agua envasada no solo arruina 
+                tu fisiología, sino que devora silenciosamente tus finanzas.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== 1. EL HERO FINANCIERO ===== -->
+    <section style="padding-top: 0;" id="economia">
+        <div class="container">
+            <div class="financial-hero image-mask animate-on-scroll">
+                <img src="../assets/inversion_financiera.jpg" alt="Calculadora financiera e inversión en salud">
+                <div class="financial-hero-overlay">
+                    <h2>Los Números <span class="gradient-text">No Mienten</span></h2>
+                    <p>
+                        "Es demasiado caro para mí" es la respuesta emocional de quien compara el dispositivo 
+                        médico Kangen con un filtro Brita de supermercado, en lugar de compararlo con el gasto 
+                        acumulado en botellas de agua y químicos durante 20 años.
+                    </p>
+                </div>
+            </div>
+
+            <!-- MATH COMPARISON -->
+            <div class="math-grid animate-on-scroll">
+                <div class="math-card bad-deal">
+                    <div class="math-card-header">
+                        <h3>La Ilusión del Plástico</h3>
+                        <span>🛒</span>
+                    </div>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem;">
+                        Familia promedio (4 personas), consumiendo 1.5 litros diarios de agua embotellada de gama media (0,40€/litro):
+                    </p>
+                    <div class="cost-row">
+                        <span>Gasto Diario (6 litros)</span>
+                        <strong>2,40 €</strong>
+                    </div>
+                    <div class="cost-row">
+                        <span>Gasto Mensual</span>
+                        <strong>72,00 €</strong>
+                    </div>
+                    <div class="cost-row">
+                        <span>Gasto Anual</span>
+                        <strong>864,00 €</strong>
+                    </div>
+                    <div class="cost-total">
+                        <span>Coste a 20 años (Vida útil Kangen)</span>
+                        <p class="total-amount">17.280 €</p>
+                    </div>
+                    <p style="margin-top: 1.5rem; font-size: 0.85rem; color: #ef4444; text-align: right;">*Cálculo conservador. No incluye inflación ni coste en medicamentos o desengrasantes semanales.*</p>
+                </div>
+
+                <div class="math-card good-deal">
+                    <div class="math-card-header">
+                        <h3>La Inversión Kangen</h3>
+                        <span>💧</span>
+                    </div>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem;">
+                        Adquisición del modelo premium Leveluk K8. Vida útil garantizada con placas sólidas de 15 a 25 años.
+                    </p>
+                    <div class="cost-row">
+                        <span>Inversión Inicial Aproximada</span>
+                        <strong>~ 4.800 €</strong>
+                    </div>
+                    <div class="cost-row">
+                        <span>Reemplazo de filtros (anual)</span>
+                        <strong>~ 100,00 €</strong>
+                    </div>
+                    <div class="cost-row">
+                        <span>Limpieza profunda E-Cleaning (anual)</span>
+                        <strong>~ 40,00 €</strong>
+                    </div>
+                    <div class="cost-total">
+                        <span>Coste Total Previsto a 20 Años</span>
+                        <p class="total-amount" style="font-size: 2.2rem;">~ 7.600 €</p>
+                    </div>
+                    <p style="margin-top: 1.5rem; font-size: 0.95rem; color: #00e5a0; text-align: right; font-weight: 700;">Ahorro Neto Real: + 9.680 €</p>
+                </div>
+            </div>
+            
+            <div class="text-center animate-on-scroll" style="margin-bottom: 4rem;">
+                <p style="font-size: 1.25rem; line-height: 1.7; color: rgba(255,255,255,0.9); max-width: 800px; margin: 0 auto;">
+                    Estás perdiendo <strong>más de 9.000 euros en los próximos 20 años</strong> pagando 
+                    por el privilegio de beber agua de calidad dudosa, conservada en plástico expuesto al sol, muerta 
+                    y desprovista de potencial antioxidante vivo.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 2. EL HOGAR TOXINS-FREE ===== -->
+    <section class="content-section" style="background: var(--bg-section-alt);" id="hogar">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">Ahorro Multiuso</span>
+                <h2 class="section-title">El Hogar <span class="gradient-text">Libre de Tóxicos</span></h2>
+                <p class="section-subtitle mx-auto">
+                    Si te sorprendieron los 9.680€ de ahorro sólo en agua para beber, el verdadero poder 
+                    financiero de un ionizador médico se despliega cuando anula tus compras en el supermercado.
+                </p>
+            </div>
+
+            <div class="multipurpose-grid animate-on-scroll">
+                <!-- Imagen aportada por el usuario -->
+                <div class="image-mask" style="border-radius: 20px;">
+                    <img src="../assets/ahorro_hogar.jpg" alt="Tres botellas multiusos elegantes sustituyendo a químicos">
+                </div>
+                
+                <div class="mp-content">
+                    <ul class="mp-list">
+                        <li class="mp-item">
+                            <div class="mp-icon">✨</div>
+                            <div class="mp-text">
+                                <h4>Agua Fuerte (pH 2.5) — El Desinfectante</h4>
+                                <p>Sustituye la lejía, el enjuague bucal químico, el alcohol de curar, desinfectantes de manos, friegasuelos y jabones fungicidas. Poder bactericida documentado de grado hospitalario en solo 30 segundos, totalmente ecológico y sin emanar gases tóxicos en casa.</p>
+                            </div>
+                        </li>
+                        <li class="mp-item">
+                            <div class="mp-icon">👩</div>
+                            <div class="mp-text">
+                                <h4>Agua de Belleza (pH 6.0) — La Cosmética</h4>
+                                <p>El pH exacto de la piel huamana. Actúa como un tónico facial premium astringente, cerrando los poros. Sustituye al agua micelar, tónicos de marca (que cuestan 20€ el bote), acondicionadores de cabello ligeros y sprays refrescantes para quemaduras solares leves.</p>
+                            </div>
+                        </li>
+                        <li class="mp-item">
+                            <div class="mp-icon">🧽</div>
+                            <div class="mp-text">
+                                <h4>Agua Súper Alcalina (pH 11.5) — El Disolvente</h4>
+                                <p>Extremadamente reductora. Emulsiona los aceites y las grasas. Sustituye al KH7, quitagrasas de cocina, detergentes fuertes para ollas incrustadas, limpiacristales e incluso detergentes de lavadora de uso diario. Además de ser la cura absoluta y natural tras limpiar frutas de pesticidas oleosos.</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(0, 229, 160, 0.05); border-left: 4px solid #00e5a0; border-radius: 0 12px 12px 0;">
+                        <p style="margin: 0; color: #fff;">
+                            <strong>Ahorro Estimado Adicional:</strong> El gasto medio de un hogar español en limpieza del hogar y parafarmacia básica asciende a 30-40€ mensuales. <strong style="color:#00e5a0;">Eso suma otros +8.000€ a 20 años</strong>, elevando el ahorro total de la máquina a cifras de escándalo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 3. IMPACTO ECOLÓGICO (OCEAN HERO) ===== -->
+    <section class="content-section" style="padding-bottom: 80px;" id="ecologia">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label" style="color:#00e5a0;">Conciencia Colectiva</span>
+                <h2 class="section-title">El Impacto sobre el <span class="gradient-text">Planeta</span></h2>
+            </div>
+            
+            <div class="ocean-hero image-mask animate-on-scroll">
+                <img src="../assets/impacto_ecologico.jpg" alt="Vaso de agua puro frente al océano limpio">
+                <div class="ocean-hero-overlay">
+                    <h2>Tu Dinero Dejará de Financiar la <span style="color:#00e5a0;">Contaminación Mundial</span></h2>
+                </div>
+            </div>
+
+            <div class="eco-strip animate-on-scroll">
+                <div class="eco-stat">
+                    <span class="eco-number">10.000</span>
+                    <span class="eco-label">Botellas de plástico de 1.5L que dejarás de tirar al mar cada década.</span>
+                </div>
+                <div class="eco-stat">
+                    <span class="eco-number">0 L</span>
+                    <span class="eco-label">De lejía, amoniaco o químicos cáusticos vertidos al desagüe público.</span>
+                </div>
+                <div class="eco-stat">
+                    <span class="eco-number">100%</span>
+                    <span class="eco-label">Sostenible. Utilizas tecnología de electrólisis y sales naturales minerales.</span>
+                </div>
+            </div>
+
+            <div class="text-center animate-on-scroll" style="max-width: 800px; margin: 0 auto;">
+                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-muted);">
+                    Si todos los argumentos fisiológicos expuestos en los módulos anteriores no logran conmoverte, o si crees 
+                    que los +9.000€ de ahorro matemático no son reales... piensa en los microplásticos. La salud del planeta ya 
+                    nos está avisando. El modelo es insostenible. Esta es la revolución definitiva de higiene y consumo sensato 
+                    para esta década.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA / NEXT MODULE ===== -->
+    <section style="padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); background: var(--bg-section-alt);">
+        <div class="container">
+            <div class="cta-banner animate-on-scroll">
+                <div>
+                    <h2>Siguiente: Sobre Enagic</h2>
+                    <p>Ahora que la ciencia y la economía están claras, exploremos qué empresa y qué visión lideran este movimiento a nivel global.</p>
+                </div>
+                <a href="../12-sobre-enagic/index.html" class="btn-white" style="text-decoration:none;">Módulo 12 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MODULE NAVIGATION ===== -->
+    <section style="padding: 30px 0;">
+        <div class="container">
+            <div class="module-nav">
+                <a href="../10-equilibrio-ph/index.html">← Módulo 10: Equilibrio del pH</a>
+                <a href="../index.html">Índice General</a>
+                <a href="../12-sobre-enagic/index.html">Módulo 12: Sobre Enagic →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                💧 Agua<span style="color: var(--accent);">Kangen</span> — Módulo 11
+            </div>
+            <p class="footer-copy">© 2026 — Distribuidor Independiente Enagic. Todos los derechos reservados.</p>
+            <div class="footer-nav">
+                <a href="../index.html">Inicio</a>
+                <a href="../index.html#modulos">Módulos</a>
+                <a href="../../../index.html">Kangen Water</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+</html>

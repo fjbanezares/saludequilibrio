@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equilibrio del pH y el Estómago — La Ciencia Metabólica | Agua Kangen</title>
+    <meta name="description" content="Descubre cómo el estómago procesa el agua alcalina, la producción de bicarbonato en sangre y cómo el Agua Kangen actúa como una inversión directa en tu sistema metabólico.">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* ===== MODULE 10 — EQUILIBRIO DEL PH ===== */
+
+        /* Chemical Reaction Box */
+        .reaction-box {
+            background: linear-gradient(145deg, rgba(0, 136, 255, 0.05), rgba(0, 238, 255, 0.02));
+            border: 1px solid rgba(0, 136, 255, 0.2);
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reaction-box::before {
+            content: '🔬';
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-size: 8rem;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .formula-display {
+            font-family: 'Outfit', monospace;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 2rem 0;
+            z-index: 1;
+            position: relative;
+        }
+
+        .formula-part {
+            padding: 10px 20px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .formula-result {
+            color: #00eeff;
+            background: rgba(0, 238, 255, 0.1);
+            border-color: rgba(0, 238, 255, 0.3);
+            text-shadow: 0 0 15px rgba(0, 238, 255, 0.5);
+        }
+
+        .formula-explanation {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+            text-align: left;
+            z-index: 1;
+            position: relative;
+        }
+
+        .fe-item h4 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(0, 136, 255, 0.2);
+            padding-bottom: 0.5rem;
+        }
+
+        .fe-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Bank Account Metaphor */
+        .bank-metaphor {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            margin: 4rem 0;
+        }
+
+        .bank-col {
+            padding: 3rem;
+            position: relative;
+        }
+
+        .bank-acid {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.05), transparent);
+            border-right: 1px solid var(--border-color);
+        }
+
+        .bank-alkaline {
+            background: linear-gradient(135deg, transparent, rgba(0, 229, 160, 0.05));
+        }
+
+        .bank-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+
+        .bank-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .bank-acid .bank-icon {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .bank-alkaline .bank-icon {
+            background: rgba(0, 229, 160, 0.1);
+            color: #00e5a0;
+        }
+
+        .bank-col h3 {
+            font-size: 1.6rem;
+            margin: 0;
+        }
+
+        .bank-col p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .bank-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .bank-list li {
+            padding: 10px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+        }
+
+        .bank-acid .bank-list li span:last-child { color: #ef4444; }
+        .bank-alkaline .bank-list li span:last-child { color: #00e5a0; }
+
+        /* Objection Box */
+        .objection-box {
+            padding: 2.5rem;
+            border-radius: 20px;
+            background: var(--card-bg);
+            border-left: 4px solid var(--accent);
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .objection-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1rem;
+        }
+
+        .objection-header h3 {
+            color: #fff;
+            margin: 0;
+            font-size: 1.3rem;
+        }
+
+        .objection-box p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Deep Investment Section */
+        .deep-investment {
+            text-align: center;
+            max-width: 800px;
+            margin: 5rem auto 2rem;
+        }
+
+        .deep-investment h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .deep-investment p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Module nav */
+        .module-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-light);
+            margin-top: 3rem;
+        }
+
+        .module-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        .module-nav a:hover {
+            color: var(--accent);
+            border-color: var(--border-color);
+            background: var(--card-bg);
+        }
+
+        @media (max-width: 968px) {
+            .formula-explanation {
+                grid-template-columns: 1fr;
+            }
+            .bank-metaphor {
+                grid-template-columns: 1fr;
+            }
+            .bank-acid {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-brand">
+                <span class="logo-icon">💧</span>
+                <span class="logo-text">Agua<span>Kangen</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html">← Inicio</a>
+                <a href="#paradoja">La Paradoja</a>
+                <a href="#ciencia">Fisiología Real</a>
+                <a href="#banco">Tu Banco Metabólico</a>
+                <a href="../index.html#modulos" class="btn-primary btn-sm">Módulos</a>
+            </div>
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+        </div>
+    </nav>
+
+    <!-- ===== SUBPAGE HERO ===== -->
+    <section class="subpage-hero">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="sep">›</span>
+                <span>Módulo 10</span>
+            </div>
+            <span class="section-label">Fisiología y Prevención</span>
+            <h1 class="subpage-title">
+                El Equilibrio del pH:<br>
+                <span class="gradient-text">El Lenguaje de tu Cuerpo</span>
+            </h1>
+            <p class="subpage-subtitle">
+                No compramos una máquina por el simple hecho de beber agua de calidad. Lo hacemos 
+                porque nuestro entorno nos está robando nuestras reservas alcalinas cada minuto, y 
+                necesitamos una herramienta infalible para recuperarlas. 
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== 1. LA GRAN OBJECIÓN (EL ESTÓMAGO) ===== -->
+    <section class="content-section" id="paradoja">
+        <div class="container">
+            <div class="objection-box animate-on-scroll">
+                <div class="objection-header">
+                    <span style="font-size: 2rem;">🤔</span>
+                    <h3>La Gran Pregunta del Escéptico</h3>
+                </div>
+                <p>
+                    <em>"Si el ácido de nuestro estómago tiene un pH extremadamente ácido (entre 1.5 y 3.0 para digerir comida), 
+                    entonces el agua alcalina (pH 9.5) se neutralizará en el momento en que toque el estómago, haciéndola inútil."</em>
+                </p>
+            </div>
+
+            <div class="content-grid animate-on-scroll" style="margin-top: 4rem;">
+                <div class="content-text">
+                    <span class="section-label">Desmontando el Mito</span>
+                    <h2>El Estómago NO es <span class="gradient-text">una "Bolsa de Ácido"</span></h2>
+                    <p>
+                        Este es el argumento más común de los escépticos y, sorprendentemente, de algunos profesionales 
+                        médicos no actualizados en fisiología nutricional. Se imaginan el estómago como un tanque lleno de ácido de batería 
+                        esperando neutralizar todo lo que entra.
+                    </p>
+                    <p>
+                        <strong>Falso.</strong> La realidad fisiológica es mucho más sofisticada. El estómago es un órgano que 
+                        está vacío y neutro la mayor parte del tiempo, y <em>fabrica</em> ácido clorhídrico <strong>sólo bajo demanda</strong>, 
+                        es decir, cuando detecta alimento o un cambio de pH y necesita digerir.
+                    </p>
+                    <p>
+                        Cuando bebes Agua Kangen (pH 9.5), el pH del estómago se eleva. El cuerpo inmediatamente detecta esto y ordena a 
+                        las células parietales de la pared gástrica que bombeen ácido clorhídrico (HCl) para devolver el nivel a la normalidad 
+                        alcalina que necesita la digestión fisiológica. Y aquí es donde ocurre el milagro metabólico.
+                    </p>
+                </div>
+                <div class="content-image" style="display:flex; align-items:center;">
+                    <img src="../assets/body_detox.png" alt="Sistema digestivo y equilibrio alcalino" loading="lazy" style="border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 2. LA CIENCIA Y FÓRMULA QUÍMICA ===== -->
+    <section class="content-section" style="background: var(--bg-section-alt);" id="ciencia">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">Fisiología Contrastada</span>
+                <h2 class="section-title">El Subproducto de la <span class="gradient-text">Salud</span></h2>
+                <p class="section-subtitle mx-auto">
+                    ¿De dónde saca el cuerpo el ácido clorhídrico? No lo inventa de la nada. 
+                    Tus tejidos lo fabrican combinando agua, dióxido de carbono y la sal de tu sangre.
+                </p>
+            </div>
+
+            <div class="reaction-box animate-on-scroll">
+                <p style="color: var(--text-muted); margin-bottom: 1rem;">La reacción química en la pared celular del estómago (Dr. Sang Whang):</p>
+                <div class="formula-display">
+                    <div class="formula-part">H₂O</div>
+                    <span>+</span>
+                    <div class="formula-part">CO₂</div>
+                    <span>+</span>
+                    <div class="formula-part">NaCl</div>
+                    <span>=</span>
+                    <div class="formula-part" style="border-style: dashed;">HCl</div>
+                    <span>+</span>
+                    <div class="formula-part formula-result">NaHCO₃</div>
+                </div>
+                
+                <div class="formula-explanation">
+                    <div class="fe-item">
+                        <h4>Ácido Clorhídrico (HCl)</h4>
+                        <p>
+                            Este es el ácido gástrico que se produce. Es <strong>segregado hacia adentro del estómago</strong> para 
+                            cumplir su función de digestión y neutralización del agua alcalina que acabamos de beber.
+                        </p>
+                    </div>
+                    <div class="fe-item">
+                        <h4 style="color: #00eeff; border-bottom-color: rgba(0,238,255,0.3);">Bicarbonato de Sodio (NaHCO₃)</h4>
+                        <p>
+                            ¡Aquí está el secreto! Por cada molécula de ácido generada hacia el estómago, se produce una molécula equivalente 
+                            del buffer alcalino más importante del cuerpo. <strong>Este bicarbonato va directamente a tu torrente sanguíneo.</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center animate-on-scroll" style="max-width: 850px; margin: 0 auto;">
+                <p style="font-size: 1.25rem; line-height: 1.7; color: rgba(255,255,255,0.9);">
+                    En resumen: <strong>No bebes agua alcalina para alterar mágicamente tu sangre</strong> (los pulmones y riñones regulan la sangre estrictamente a pH 7.365). 
+                    Bebes agua alcalina para provocar fisiológicamente que tu propio estómago segregue una ola natural de <strong>bicarbonatos estabilizadores hacia tu torrente sanguíneo</strong>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 3. LA BANCA METABÓLICA (HOMEOSTASIS) ===== -->
+    <section class="content-section" id="banco">
+        <div class="container">
+            <div class="content-grid animate-on-scroll">
+                <div class="content-image" style="display:flex; align-items:center;">
+                    <img src="../assets/ph_scale.png" alt="Escala de pH y homeostasis" loading="lazy" style="border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+                </div>
+                <div class="content-text">
+                    <span class="section-label">Homeostasis Estricta</span>
+                    <h2>Sangre Humana: <span class="gradient-text">pH 7.365</span></h2>
+                    <p>
+                        Tu cuerpo es una máquina perfecta empeñada en una sola supervivencia a corto plazo: mantener tu sangre exactamente 
+                        entre 7.35 y 7.45. Si baja de 7.20 o sube de 7.60, mueres. 
+                    </p>
+                    <p>
+                        Pero vivimos en un entorno profundamente ácido: el estrés mental segrega cortisol (ácido), procesar carne y azúcares deja ceniza (ácida), los refrescos 
+                        tienen un pH de 2.5. Para mantener la sangre intacta a 7.365, el cuerpo debe realizar un esfuerzo extremo. 
+                    </p>
+                    <p style="color: #fff; font-weight: 500;">¿Cuál es ese esfuerzo?</p>
+                    <p>
+                        Tu cuerpo debe <strong>robar reservas alcalinas (Calcio, Magnesio) de tus huesos, dientes y tejidos</strong> para neutralizar la acidez circundante. 
+                        Es lo que el Nobel de Medicina Otto Warburg y miles de endocrinos denuncian como el entorno ideal para patologías degenerativas.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bank-metaphor animate-on-scroll">
+                <div class="bank-col bank-acid">
+                    <div class="bank-header">
+                        <div class="bank-icon">↓</div>
+                        <h3>Retiros Metabólicos</h3>
+                    </div>
+                    <p>Cada vez que hacemos algo que acidifica el cuerpo, estamos <strong>robando minerales o castigando los riñones</strong> para que tamponen la acidez de la sangre.</p>
+                    <ul class="bank-list">
+                        <li><span>Estrés prolongado y Cortisol</span> <span>- Alto coste</span></li>
+                        <li><span>Refrescos o Bebidas Carbonatadas</span> <span>- Muy Alto coste</span></li>
+                        <li><span>Azúcar procesado y harinas refinadas</span> <span>- Alto coste</span></li>
+                        <li><span>Carnes rojas en exceso y lácteos</span> <span>- Coste medio</span></li>
+                    </ul>
+                </div>
+                <div class="bank-col bank-alkaline">
+                    <div class="bank-header">
+                        <div class="bank-icon">↑</div>
+                        <h3>Depósitos (Inversión Kangen)</h3>
+                    </div>
+                    <p>Cada vez que bebes Agua Kangen, inyectas cargas de H₂ y fuerzas la producción de bicarbonatos en sangre, <strong>depositando salud en tus reservas y aliviando a tus riñones</strong>.</p>
+                    <ul class="bank-list">
+                        <li><span>Agua Kangen (pH 9.5) rica en H₂</span> <span>+ Aporte Máximo</span></li>
+                        <li><span>Vegetales frescos de hojas verdes</span> <span>+ Aporte Alto</span></li>
+                        <li><span>Respiración profunda (eliminar CO₂)</span> <span>+ Aporte Medio</span></li>
+                        <li><span>Descanso y relajación celular</span> <span>+ Aporte Medio</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 4. DEEP INVESTMENT MARKETING CLOSE ===== -->
+    <section class="content-section" style="background: var(--bg-section-alt);">
+        <div class="container">
+            <div class="deep-investment animate-on-scroll">
+                <h2>No Vendes la Moto. <span class="gradient-text">Proteges el Capital Biológico.</span></h2>
+                <p>
+                    Míralo de esta forma: un ionizador médico Enagic no es una compra. Es establecer un fondo de 
+                    inversión indexado para la biología de tu familia durante los próximos 15 a 25 años. 
+                </p>
+                <p>
+                    No puedes controlar el estrés emocional del día a día, la polución o la acidez natural de la 
+                    vida moderna. Lo que sí puedes controlar es proporcionarle a tu cuerpo, cada vez que bebes 
+                    simplemente agua, <strong>el arsenal defensivo de alcalinidad y antioxidantes que frenará 
+                    el deterioro fisiológico celular</strong>. 
+                </p>
+                <div style="margin-top: 3rem;">
+                    <span style="display: block; font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.5rem; letter-spacing: 2px;">
+                        ESTO ES INVERTIR EN PREVENCIÓN ACTIVA.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA / NEXT MODULE ===== -->
+    <section style="padding: 60px 0;">
+        <div class="container">
+            <div class="cta-banner animate-on-scroll">
+                <div>
+                    <h2>Siguiente: Rentabilidad y Ahorro Ecológico</h2>
+                    <p>Ahora que entendemos la inversión biológica, veamos la inversión económica real. Cifras matemáticas que demuestran cómo la máquina se paga sola en meses.</p>
+                </div>
+                <a href="../11-rentabilidad/index.html" class="btn-white" style="text-decoration:none;">Módulo 11 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MODULE NAVIGATION ===== -->
+    <section style="padding: 30px 0;">
+        <div class="container">
+            <div class="module-nav">
+                <a href="../09-especialistas/index.html">← Módulo 09: Especialistas</a>
+                <a href="../index.html">Índice General</a>
+                <a href="../11-rentabilidad/index.html">Módulo 11: Rentabilidad →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                💧 Agua<span style="color: var(--accent);">Kangen</span> — Módulo 10
+            </div>
+            <p class="footer-copy">© 2026 — Distribuidor Independiente Enagic. Todos los derechos reservados.</p>
+            <div class="footer-nav">
+                <a href="../index.html">Inicio</a>
+                <a href="../index.html#modulos">Módulos</a>
+                <a href="../../../index.html">Kangen Water</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+</html>

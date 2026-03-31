@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Hiromi Shinya — El Agua Buena | Agua Kangen</title>
+    <meta name="description" content="Descubre al Dr. Hiromi Shinya, pionero de la colonoscopia moderna, y su respaldo al Agua Kangen como el agua ideal para la salud digestiva y el bienestar general.">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* ===== MODULE-SPECIFIC STYLES ===== */
+        .doctor-hero-bg {
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(0,136,255,0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 30%, rgba(0,210,255,0.08) 0%, transparent 40%);
+            z-index: 0;
+        }
+
+        .profile-section {
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 3.5rem;
+            align-items: start;
+        }
+
+        .profile-card {
+            position: sticky;
+            top: 100px;
+        }
+
+        .profile-photo {
+            width: 100%;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .profile-meta {
+            padding: 1.5rem;
+            border-radius: 16px;
+        }
+
+        .profile-meta h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .profile-meta .role {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .meta-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .meta-list li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .meta-list li .meta-icon {
+            font-size: 1rem;
+            width: 24px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .profile-body h2 {
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-body p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.85;
+            margin-bottom: 1.3rem;
+        }
+
+        .profile-body .highlight-text {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .quote-block {
+            background: linear-gradient(135deg, rgba(0,136,255,0.08) 0%, rgba(0,210,255,0.04) 100%);
+            border-left: 4px solid var(--accent);
+            border-radius: 0 16px 16px 0;
+            padding: 2rem 2.5rem;
+            margin: 2.5rem 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: '"';
+            font-size: 5rem;
+            font-family: Georgia, serif;
+            color: var(--accent);
+            opacity: 0.2;
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            line-height: 1;
+        }
+
+        .quote-block p {
+            font-style: italic;
+            color: var(--text-main) !important;
+            font-size: 1.1rem !important;
+            line-height: 1.7 !important;
+            margin-bottom: 0.8rem !important;
+        }
+
+        .quote-block cite {
+            color: var(--accent);
+            font-style: normal;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+            margin: 2rem 0;
+        }
+
+        .credential-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 1.2rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            transition: var(--transition);
+        }
+
+        .credential-item:hover {
+            background: var(--card-bg);
+            border-color: var(--border-color);
+            transform: translateY(-2px);
+        }
+
+        .credential-item .cred-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .credential-item h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .credential-item p {
+            font-size: 0.85rem !important;
+            color: var(--text-muted);
+            margin-bottom: 0 !important;
+            line-height: 1.5 !important;
+        }
+
+        /* Books Section */
+        .books-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .book-showcase-card {
+            padding: 2rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-showcase-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-water);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .book-showcase-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .book-number {
+            display: inline-block;
+            background: rgba(0,136,255,0.1);
+            color: var(--accent);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .book-showcase-card .book-emoji {
+            font-size: 3.5rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .book-showcase-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.6rem;
+            line-height: 1.3;
+        }
+
+        .book-showcase-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Key Insight */
+        .insight-banner {
+            background: var(--gradient-water);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .insight-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+        }
+
+        .insight-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -10%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+
+        .insight-banner h3 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .insight-banner p {
+            color: rgba(255,255,255,0.9) !important;
+            font-size: 1.1rem !important;
+            max-width: 700px;
+            margin: 0 auto !important;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Enzymes explanation */
+        .enzyme-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .enzyme-card {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .enzyme-card .enzyme-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+            background: rgba(0,136,255,0.1);
+            border: 1px solid rgba(0,136,255,0.2);
+        }
+
+        .enzyme-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .enzyme-card p {
+            font-size: 0.88rem !important;
+            line-height: 1.6 !important;
+        }
+
+        /* Navigation between modules */
+        .module-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-light);
+            margin-top: 3rem;
+        }
+
+        .module-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        .module-nav a:hover {
+            color: var(--accent);
+            border-color: var(--border-color);
+            background: var(--card-bg);
+        }
+
+        @media (max-width: 968px) {
+            .profile-section {
+                grid-template-columns: 1fr;
+            }
+            .profile-card {
+                position: static;
+                max-width: 340px;
+                margin: 0 auto;
+            }
+            .credentials-grid {
+                grid-template-columns: 1fr;
+            }
+            .enzyme-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-brand">
+                <span class="logo-icon">💧</span>
+                <span class="logo-text">Agua<span>Kangen</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html">← Inicio</a>
+                <a href="#biografia">Biografía</a>
+                <a href="#libros">Libros</a>
+                <a href="#legado">Legado</a>
+                <a href="../index.html#modulos" class="btn-primary btn-sm">Todos los Módulos</a>
+            </div>
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+        </div>
+    </nav>
+
+    <!-- ===== SUBPAGE HERO ===== -->
+    <section class="subpage-hero">
+        <div class="doctor-hero-bg"></div>
+        <div class="glow-orb orb-1" style="opacity:0.15;"></div>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="sep">›</span>
+                <span>Módulo 01</span>
+            </div>
+            <span class="section-label">Módulo 01 — Respaldo Científico</span>
+            <h1 class="subpage-title">
+                El Agua Buena<br>
+                <span class="gradient-text">Dr. Hiromi Shinya</span>
+            </h1>
+            <p class="subpage-subtitle">
+                Pionero de la colonoscopia moderna, cirujano de fama mundial y defensor del Agua Kangen
+                como pilar fundamental de la salud digestiva. Su obra ha transformado la medicina preventiva global.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== MAIN CONTENT: BIOGRAPHY ===== -->
+    <section class="content-section" id="biografia">
+        <div class="container">
+            <div class="profile-section">
+                <!-- Left: Profile Card (sticky) -->
+                <div class="profile-card animate-on-scroll">
+                    <img src="../assets/dr_shinya.png" alt="Ilustración del Dr. Hiromi Shinya" class="profile-photo" loading="lazy">
+                    <div class="profile-meta glass-card" style="cursor: default;">
+                        <h3>Dr. Hiromi Shinya</h3>
+                        <span class="role">Cirujano y Gastroenterólogo</span>
+                        <ul class="meta-list">
+                            <li><span class="meta-icon">🇯🇵</span> Nacionalidad japonesa</li>
+                            <li><span class="meta-icon">🎓</span> +50 años de experiencia</li>
+                            <li><span class="meta-icon">🏥</span> Hospital Beth Israel, NY</li>
+                            <li><span class="meta-icon">👑</span> Médico de la Familia Imperial</li>
+                            <li><span class="meta-icon">📍</span> Consulta: Tokyo y Nueva York</li>
+                            <li><span class="meta-icon">🏆</span> Pionero de la colonoscopia</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right: Content -->
+                <div class="profile-body">
+
+                    <!-- Bio Section -->
+                    <div class="animate-on-scroll">
+                        <h2>El Pionero que <span class="gradient-text">Revolucionó</span> la Medicina Digestiva</h2>
+                        <p>
+                            El Doctor Hiromi Shinya es reconocido mundialmente como <span class="highlight-text">pionero en la creación de 
+                            técnicas modernas para la colonoscopia</span>. Es un cirujano profesional de nacionalidad japonesa, 
+                            con más de 50 años de experiencia en el campo de la medicina. Realizó la primera cirugía de colon 
+                            no invasivo, y usando su propia creación —la colonoscopia— descubrió la posibilidad de examinar 
+                            y operar el colon sin incisión abdominal.
+                        </p>
+                        <p>
+                            Se formó dentro del campo de la medicina en centros educativos tanto en Japón como en EE.UU. 
+                            Es <span class="highlight-text">profesor clínico de cirugía en el Albert Einstein College de Medicina</span> y 
+                            Jefe de la Unidad de Endoscopia del Hospital Beth Israel en Nueva York. Además, es asesor en el 
+                            Hospital Maeda y Vicepresidente de la Asociación Médica de Japón en los EE.UU., y pasa consulta 
+                            como digestivo en Tokio (Japón).
+                        </p>
+                    </div>
+
+                    <!-- Credentials Grid -->
+                    <div class="credentials-grid animate-on-scroll">
+                        <div class="credential-item">
+                            <span class="cred-icon">🎓</span>
+                            <div>
+                                <h4>Albert Einstein College</h4>
+                                <p>Profesor clínico de cirugía</p>
+                            </div>
+                        </div>
+                        <div class="credential-item">
+                            <span class="cred-icon">🏥</span>
+                            <div>
+                                <h4>Hospital Beth Israel</h4>
+                                <p>Jefe de Endoscopia, Nueva York</p>
+                            </div>
+                        </div>
+                        <div class="credential-item">
+                            <span class="cred-icon">🇯🇵</span>
+                            <div>
+                                <h4>Asociación Médica de Japón</h4>
+                                <p>Vicepresidente en EE.UU.</p>
+                            </div>
+                        </div>
+                        <div class="credential-item">
+                            <span class="cred-icon">👑</span>
+                            <div>
+                                <h4>Familia Imperial de Japón</h4>
+                                <p>Médico personal y consultor</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="animate-on-scroll">
+                        <p>
+                            Tras 50 años, su profesión sigue activa y la practica diariamente. Pasa consulta la mitad del año 
+                            en Nueva York, y la otra mitad en Tokio. El Dr. Hiromi Shinya es <span class="highlight-text">uno de los 
+                            médicos más importantes en Japón</span>, y trata a los miembros de la familia imperial de Japón, 
+                            así como a los altos cargos del gobierno. En los EE.UU. también trata a grandes celebridades 
+                            y presidentes.
+                        </p>
+                    </div>
+
+                    <!-- Key Quote -->
+                    <div class="quote-block animate-on-scroll">
+                        <p>
+                            Un colon limpio y saludable es uno de los precursores para obtener una salud óptima. 
+                            La gran mayoría de las dolencias del cuerpo y las enfermedades son originadas por contar 
+                            con un colon ácido y sucio.
+                        </p>
+                        <cite>— Dr. Hiromi Shinya</cite>
+                    </div>
+
+                    <!-- Kangen Connection -->
+                    <div class="animate-on-scroll">
+                        <h2>Su Relación con el <span class="gradient-text">Agua Kangen</span></h2>
+                        <p>
+                            A lo largo de décadas de práctica médica y decenas de miles de colonoscopias realizadas, 
+                            el Dr. Shinya observó un patrón claro: <span class="highlight-text">los pacientes que consumían agua alcalina ionizada 
+                            presentaban un colon significativamente más limpio y saludable</span> que aquellos que bebían 
+                            agua convencional o embotellada.
+                        </p>
+                        <p>
+                            Esta observación le llevó a recomendar el Agua Kangen como parte fundamental de su 
+                            programa de salud digestiva. En sus libros, el Dr. Shinya explica cómo el agua de calidad 
+                            es determinante para mantener el equilibrio enzimático del organismo y prevenir la 
+                            acumulación de toxinas en el intestino grueso.
+                        </p>
+                    </div>
+
+                    <!-- Insight Banner -->
+                    <div class="insight-banner animate-on-scroll">
+                        <h3>💧 Agua Kangen es el único agua mencionada en sus libros</h3>
+                        <p>
+                            En las cuatro obras fundamentales del Dr. Shinya, el Agua Kangen es la única agua 
+                            específicamente nombrada y recomendada para la salud digestiva y el bienestar general.
+                        </p>
+                    </div>
+
+                    <!-- Enzymes Explanation -->
+                    <div class="animate-on-scroll">
+                        <h2>La Teoría de la <span class="gradient-text">Enzima Madre</span></h2>
+                        <p>
+                            El Dr. Shinya desarrolló una teoría revolucionaria: existe una <span class="highlight-text">"enzima madre" 
+                            o enzima prodigiosa</span> que es la base de todas las enzimas del organismo. Cuando esta 
+                            enzima se agota por un estilo de vida inadecuado —mala alimentación, estrés, contaminación, 
+                            agua de mala calidad— el cuerpo pierde su capacidad de autoreparación.
+                        </p>
+                    </div>
+
+                    <div class="enzyme-cards animate-on-scroll">
+                        <div class="enzyme-card glass-card" style="cursor:default;">
+                            <div class="enzyme-icon">🧬</div>
+                            <h4>Enzima Madre</h4>
+                            <p>Base de todas las enzimas del cuerpo. Fundamental para la autoreparación celular.</p>
+                        </div>
+                        <div class="enzyme-card glass-card" style="cursor:default;">
+                            <div class="enzyme-icon">💧</div>
+                            <h4>Agua de Calidad</h4>
+                            <p>El agua alcalina ionizada protege y preserva las enzimas del organismo.</p>
+                        </div>
+                        <div class="enzyme-card glass-card" style="cursor:default;">
+                            <div class="enzyme-icon">🛡️</div>
+                            <h4>Prevención</h4>
+                            <p>Un organismo con enzimas saludables combate enfermedades con mayor eficacia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BOOKS SECTION ===== -->
+    <section class="content-section" style="background: var(--bg-section-alt);" id="libros">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">Lecturas Recomendadas</span>
+                <h2 class="section-title">Los Libros del <span class="gradient-text">Dr. Shinya</span></h2>
+                <p class="section-subtitle mx-auto">
+                    Cuatro obras esenciales que revelan la conexión entre la calidad del agua, las enzimas 
+                    y la salud óptima. El Agua Kangen es mencionada en todas ellas.
+                </p>
+            </div>
+
+            <div class="books-showcase animate-on-scroll">
+                <div class="book-showcase-card glass-card" style="cursor:default;">
+                    <span class="book-number">Libro 1</span>
+                    <span class="book-emoji">📘</span>
+                    <h4>La Enzima Prodigiosa</h4>
+                    <p>
+                        La obra maestra del Dr. Shinya. Revela cómo una dieta basada en enzimas y agua de calidad 
+                        puede transformar la salud. Best-seller mundial con millones de copias vendidas.
+                    </p>
+                </div>
+                <div class="book-showcase-card glass-card" style="cursor:default;">
+                    <span class="book-number">Libro 2</span>
+                    <span class="book-emoji">📗</span>
+                    <h4>La Enzima Prodigiosa 2</h4>
+                    <p>
+                        Profundiza en los conceptos del primer libro, con nuevas investigaciones sobre la 
+                        conexión entre el agua ionizada, la flora intestinal y la longevidad saludable.
+                    </p>
+                </div>
+                <div class="book-showcase-card glass-card" style="cursor:default;">
+                    <span class="book-number">Libro 3</span>
+                    <span class="book-emoji">📙</span>
+                    <h4>La Enzima para Rejuvenecer</h4>
+                    <p>
+                        Explora el envejecimiento desde la perspectiva enzimática. Cómo el agua alcalina 
+                        contribuye a ralentizar el proceso de envejecimiento celular de forma natural.
+                    </p>
+                </div>
+                <div class="book-showcase-card glass-card" style="cursor:default;">
+                    <span class="book-number">Libro 4</span>
+                    <span class="book-emoji">📕</span>
+                    <h4>El Factor Microbio</h4>
+                    <p>
+                        La última gran obra que conecta la microbiota intestinal con la salud global. 
+                        El agua de calidad como medio ideal para el equilibrio del ecosistema microbiano.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Content Grid: Books Image + Text -->
+            <div class="content-grid" style="margin-top: 4rem;">
+                <div class="content-image animate-on-scroll">
+                    <img src="../assets/books.png" alt="Libros recomendados por el Dr. Shinya" loading="lazy">
+                </div>
+                <div class="content-text animate-on-scroll">
+                    <h3>¿Por qué son imprescindibles?</h3>
+                    <p>
+                        Los libros del Dr. Shinya no son simples manuales de salud. Son el resultado de más de 
+                        50 años de práctica clínica y más de <strong>300.000 colonoscopias realizadas</strong>, 
+                        lo que lo convierte en una de las voces más autorizadas del mundo en salud digestiva.
+                    </p>
+                    <p>
+                        A través de sus obras, demuestra que la calidad del agua que bebemos determina 
+                        directamente la salud de nuestro intestino, la vitalidad de nuestras enzimas y, 
+                        en consecuencia, nuestra capacidad de resistir enfermedades y envejecer con 
+                        dignidad y energía.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Más de 300.000 colonoscopias como evidencia clínica</li>
+                        <li>Best-sellers traducidos a decenas de idiomas</li>
+                        <li>Agua Kangen como única agua recomendada por nombre</li>
+                        <li>Teoría de la enzima madre validada por décadas de práctica</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LEGACY SECTION ===== -->
+    <section class="content-section" id="legado">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label">Su Legado</span>
+                <h2 class="section-title">Un Legado de <span class="gradient-text">Salud Preventiva</span></h2>
+                <p class="section-subtitle mx-auto">
+                    El impacto del Dr. Shinya trasciende la medicina. Su visión ha redefinido cómo millones 
+                    de personas entienden la relación entre el agua, la alimentación y la salud.
+                </p>
+            </div>
+
+            <div class="content-grid animate-on-scroll">
+                <div class="content-text">
+                    <h3>Los 7 Pilares del Dr. Shinya</h3>
+                    <p>
+                        El programa de salud del Dr. Shinya se basa en principios sencillos pero poderosos, 
+                        accesibles para cualquier persona que desee transformar su bienestar:
+                    </p>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4>1. Agua de Calidad</h4>
+                            <p>Beber agua alcalina ionizada (Kangen) como base de la hidratación diaria.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2. Dieta Rica en Enzimas</h4>
+                            <p>85% vegetales, 15% proteínas animales. Alimentos frescos y sin procesar.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>3. Ejercicio Moderado</h4>
+                            <p>Actividad física regular sin excesos, para oxigenar los tejidos.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>4. Descanso Adecuado</h4>
+                            <p>Dormir entre 6-8 horas, acostándose antes de medianoche.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>5. Eliminación Regular</h4>
+                            <p>Mantener un colon limpio a través de la hidratación y la fibra natural.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>6. Respiración y Meditación</h4>
+                            <p>Prácticas de relajación para reducir el estrés y la acidificación.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>7. Alegría y Gratitud</h4>
+                            <p>Una actitud positiva como componente esencial de la salud holística.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-text">
+                    <h3>Lo que las Colonoscopias Revelaron</h3>
+                    <p>
+                        A lo largo de su carrera, el Dr. Shinya ha realizado más de 300.000 colonoscopias, 
+                        una cifra sin precedentes en la historia de la medicina. Esta experiencia única le 
+                        permitió observar patrones que ningún otro médico había documentado:
+                    </p>
+                    <div class="quote-block">
+                        <p>
+                            Los pacientes que bebían agua Kangen y seguían una dieta rica en enzimas 
+                            presentaban un intestino visiblemente más limpio, con vellosidades intestinales 
+                            sanas y rosadas, frente a los intestinos oscurecidos y contaminados de quienes 
+                            bebían agua de mala calidad.
+                        </p>
+                        <cite>— Observación clínica del Dr. Shinya</cite>
+                    </div>
+                    <p>
+                        Esta evidencia clínica directa —no teórica, sino visual y comprobable— es uno de los 
+                        argumentos más poderosos a favor del Agua Kangen. No se trata de promesas vacías, 
+                        sino de <span class="highlight-text">décadas de observación médica rigurosa</span> por parte 
+                        de uno de los cirujanos más respetados del mundo.
+                    </p>
+                    <div class="insight-banner" style="margin-top: 2rem;">
+                        <h3 style="font-size: 1.4rem;">🔬 3 Meses de Agua Kangen</h3>
+                        <p style="font-size: 1rem !important;">
+                            El Dr. Shinya documenta que, en tan solo 3 meses de consumo regular de 
+                            Agua Kangen, se puede apreciar una mejora significativa en el estado del 
+                            intestino, visible mediante colonoscopia.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section style="padding: 80px 0; background: var(--bg-section-alt);">
+        <div class="container">
+            <div class="cta-banner animate-on-scroll">
+                <div>
+                    <h2>¿Quieres saber más?</h2>
+                    <p>Continúa con el siguiente módulo: Descubre qué es exactamente el Agua Kangen y cómo funciona.</p>
+                </div>
+                <a href="../02-que-es-agua-kangen/index.html" class="btn-white" style="text-decoration:none;">Siguiente Módulo →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MODULE NAVIGATION ===== -->
+    <section style="padding: 30px 0;">
+        <div class="container">
+            <div class="module-nav">
+                <a href="../index.html">← Volver al Índice</a>
+                <a href="../02-que-es-agua-kangen/index.html">Módulo 02: Agua Kangen →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                💧 Agua<span style="color: var(--accent);">Kangen</span> — Módulo 01
+            </div>
+            <p class="footer-copy">© 2026 — Distribuidor Independiente Enagic</p>
+            <div class="footer-nav">
+                <a href="../index.html">Inicio</a>
+                <a href="../index.html#modulos">Módulos</a>
+                <a href="../../../index.html">Kangen Water</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+</html>

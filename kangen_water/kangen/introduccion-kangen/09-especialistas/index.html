@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opinión de Especialistas Médicos | Agua Kangen</title>
+    <meta name="description" content="El Dr. Otto Warburg (Premio Nobel) y otros especialistas mundiales en gastroenterología, neurología y cirugía sobre el impacto de la hidratación alcalina en el cuerpo humano.">
+    <link rel="stylesheet" href="../style.css">
+    
+    <!-- BLUE BORDERS CSS OVERRIDES FOR THIS CHAPTER -->
+    <style>
+        /* Ambient floating orbs - slightly more cyan/blue */
+        .glow-orb.orb-1 {
+            background: radial-gradient(circle, rgba(0, 136, 255, 0.25) 0%, rgba(0, 136, 255, 0) 70%);
+        }
+
+        .glow-orb.orb-2 {
+            background: radial-gradient(circle, rgba(0, 238, 255, 0.15) 0%, rgba(0, 238, 255, 0) 70%);
+        }
+
+        /* Glass Cards - keeping dark theme but with blue/cyan watery borders */
+        .glass-card {
+            border: 1px solid rgba(0, 136, 255, 0.25);
+            box-shadow: 0 8px 32px rgba(0, 136, 255, 0.05);
+            transition: var(--transition);
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(0, 238, 255, 0.5);
+            box-shadow: 0 10px 40px rgba(0, 238, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .subpage-hero {
+            padding-bottom: 3rem;
+        }
+
+        .water-highlight {
+            color: #00eeff;
+            text-shadow: 0 0 20px rgba(0, 238, 255, 0.4);
+        }
+
+        /* Quotes Section */
+        .quote-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .expert-card {
+            padding: 3rem;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .expert-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            font-family: Georgia, serif;
+            font-size: 10rem;
+            line-height: 1;
+            color: rgba(255,255,255,0.03);
+            z-index: 0;
+        }
+
+        .expert-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            z-index: 1;
+        }
+
+        .expert-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(0,136,255,0.2), rgba(0,238,255,0.2));
+            border: 2px solid rgba(0,238,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+
+        .expert-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+            color: #fff;
+        }
+
+        .expert-info .expert-title {
+            color: #00eeff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .expert-quote {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.85);
+            font-style: italic;
+            z-index: 1;
+            margin-bottom: auto; /* Push tags to bottom */
+        }
+        
+        .expert-tags {
+            margin-top: 2rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            z-index: 1;
+        }
+        
+        .expert-tags span {
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.1);
+            color: #ccc;
+        }
+
+        /* Warburg Special Section */
+        .nobel-section {
+            background: linear-gradient(145deg, rgba(255, 215, 0, 0.03), rgba(0, 136, 255, 0.1));
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 30px;
+            padding: 4rem;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nobel-badge {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0.2;
+            transform: rotate(15deg);
+        }
+
+        .nobel-badge span:first-child {
+            font-size: 6rem;
+        }
+
+        .nobel-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .nobel-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .nobel-quote {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            color: #ffd700;
+            font-style: italic;
+            border-left: 4px solid #ffd700;
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        /* Freedom CTA */
+        .freedom-cta {
+            text-align: center;
+            padding: 6rem 2rem;
+            margin: 4rem auto;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .freedom-cta h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .freedom-cta p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Module nav */
+        .module-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 3rem;
+        }
+
+        .module-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: var(--transition);
+        }
+
+        .module-nav a:hover {
+            color: #00eeff;
+            border-color: rgba(0,238,255,0.4);
+            background: rgba(0,238,255,0.05);
+        }
+
+        @media (max-width: 968px) {
+            .quote-grid {
+                grid-template-columns: 1fr;
+            }
+            .nobel-section {
+                padding: 2.5rem;
+            }
+            .nobel-badge {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-brand">
+                <span class="logo-icon" style="color:#00eeff; text-shadow:0 0 10px rgba(0,238,255,0.5);">💧</span>
+                <span class="logo-text">Agua<span>Kangen</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html">← Inicio</a>
+                <a href="#nobel">El Nobel</a>
+                <a href="#especialistas">Los Especialistas</a>
+                <a href="#libertad">Tu Libertad</a>
+                <a href="../index.html#modulos" class="btn-primary btn-sm">Módulos</a>
+            </div>
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+        </div>
+    </nav>
+
+    <!-- ===== SUBPAGE HERO ===== -->
+    <section class="subpage-hero">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="sep">›</span>
+                <span>Módulo 09</span>
+            </div>
+            <span class="section-label" style="color: #00eeff;">Aval Científico y Médico</span>
+            <h1 class="subpage-title">
+                La Ciencia Habla:<br>
+                <span class="water-highlight">Titanes de la Medicina</span>
+            </h1>
+            <p class="subpage-subtitle">
+                No confíes en promesas de marketing vacías. Escucha a los profesionales médicos más 
+                respetados del mundo: premios Nobel, jefes de cirugía de Harvard y pioneros de la 
+                gastroenterología. Lo que tu cuerpo necesita no es un misterio biológico.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== 1. EL PREMIO NOBEL (OTTO WARBURG) ===== -->
+    <section class="content-section" id="nobel">
+        <div class="container">
+            <div class="nobel-section animate-on-scroll">
+                <div class="nobel-badge">
+                    <span>🏅</span>
+                    <span style="font-family:'Outfit'; font-weight:800; font-size:1.5rem; color:#ffd700;">1931</span>
+                </div>
+                <div class="nobel-content">
+                    <span class="section-label" style="color: #ffd700; border-color: rgba(255,215,0,0.3);">Premio Nobel de Fisiología</span>
+                    <h2>Dr. Otto Heinrich Warburg</h2>
+                    <p style="font-size: 1.15rem; color: rgba(255,255,255,0.85); line-height: 1.7;">
+                        El Dr. Otto Warburg, uno de los bioquímicos más brillantes del siglo XX, ganó el Premio Nobel en 1931 por descubrir 
+                        la naturaleza y el modo de acción de la enzima respiratoria celular. Su trabajo demostró conclusively que la <strong>raíz de 
+                        la mutación celular (incluyendo el cáncer) está vinculada a un entorno ácido y privado de oxígeno</strong>.
+                    </p>
+
+                    <div class="nobel-quote">
+                        "Todas las enfermedades son ácidas y donde hay oxígeno y alcalinidad, no puede existir enfermedad, incluido el cáncer. 
+                        Privar a una célula del 35% de su oxígeno durante 48 horas puede convertirla en cancerosa."
+                    </div>
+
+                    <p style="color: var(--text-muted); line-height: 1.6;">
+                        <strong>La Perspectiva Kangen:</strong> Aunque la ciencia ha avanzado, el principio básico de Warburg sigue 
+                        siendo irrefutable: un cuerpo correctamente oxigenado y en equilibrio alcalino posee defensas inquebrantables. 
+                        Los micro-clusters y el pH del Agua Kangen logran exactamente esto a nivel celular profundo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 2. EXPERTOS MUNDIALES ===== -->
+    <section class="content-section" id="especialistas">
+        <div class="container">
+            <div class="text-center animate-on-scroll">
+                <span class="section-label water-highlight" style="border-color: rgba(0,238,255,0.3);">Consenso Global</span>
+                <h2 class="section-title">En la Vanguardia de la <span class="water-highlight">Medicina</span></h2>
+                <p class="section-subtitle mx-auto">
+                    Miles de médicos en Japón recetan Agua Kangen, y grandes autoridades occidentales se suman 
+                    al cambio de paradigma: prevenir antes que curar.
+                </p>
+            </div>
+
+            <div class="quote-grid animate-on-scroll">
+                <!-- Dr. Filtzer -->
+                <div class="expert-card glass-card">
+                    <div class="expert-header">
+                        <div class="expert-avatar text-center">👨‍⚕️</div>
+                        <div class="expert-info">
+                            <h3>Dr. Horst Filtzer</h3>
+                            <span class="expert-title">Cirujano Vascular · Harvard Medical School</span>
+                        </div>
+                    </div>
+                    <p class="expert-quote">
+                        "Como jefe de cirugía en el Hospital de Cambridge (afiliado a Harvard), siempre fui profundamente escéptico respecto a las aguas milagrosas. Sin embargo, tras analizar clínicamente el agua Kangen, <strong>estoy convencido de que es el agua más valiosa que puede consumir un ser humano</strong>. Es un paso adelante increíble en la nutrición moderna."
+                    </p>
+                    <div class="expert-tags">
+                        <span>Cirugía Vascular</span>
+                        <span>Harvard</span>
+                        <span>Nutrición Avanzada</span>
+                    </div>
+                </div>
+
+                <!-- Dr. Hiromi Shinya -->
+                <div class="expert-card glass-card">
+                    <div class="expert-header">
+                        <div class="expert-avatar">🔬</div>
+                        <div class="expert-info">
+                            <h3>Dr. Hiromi Shinya</h3>
+                            <span class="expert-title">Inventor de la colonoscopia no invasiva</span>
+                        </div>
+                    </div>
+                    <p class="expert-quote">
+                        "Tengo más de 300.000 estudios endoscópicos a mis espaldas y puedo afirmar con absoluta seguridad que <strong>el estado de tu intestino dicta el estado de tu inmunidad</strong>. Recomiendo a todos mis pacientes beber un mínimo de 1,5 a 2 litros diarios de Agua Kangen para limpiar el tracto gastrointestinal y prevenir enfermedades degenerativas."
+                    </p>
+                    <div class="expert-tags">
+                        <span>Gastroenterología</span>
+                        <span>Prevención</span>
+                        <span>Sistema Inmune</span>
+                    </div>
+                </div>
+
+                <!-- Dr. Corinne Allen -->
+                <div class="expert-card glass-card">
+                    <div class="expert-header">
+                        <div class="expert-avatar" style="background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(0,238,255,0.2)); border-color: rgba(139,92,246,0.3);">🧠</div>
+                        <div class="expert-info">
+                            <h3>Dra. Corinne Allen</h3>
+                            <span class="expert-title">Neurocientífica Internacional</span>
+                        </div>
+                    </div>
+                    <p class="expert-quote">
+                        "El cerebro es 80% agua. El estrés metabólico, el autismo e incluso el Alzheimer están estrechamente relacionados con la inflamación celular y la deshidratación del cerebro. <strong>El Agua Kangen, gracias a sus micro-agrupaciones y su inmenso poder antioxidante, penetra directamente en las células gliales</strong>, neutralizando los radicales libres y la inflamación de manera asombrosa."
+                    </p>
+                    <div class="expert-tags">
+                        <span>Neurología</span>
+                        <span>Hidratación Cerebral</span>
+                        <span>Daño Oxidativo</span>
+                    </div>
+                </div>
+
+                <!-- Dr. Dave Carpenter -->
+                <div class="expert-card glass-card">
+                    <div class="expert-header">
+                        <div class="expert-avatar" style="background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(0,238,255,0.2)); border-color: rgba(16,185,129,0.3);">🩺</div>
+                        <div class="expert-info">
+                            <h3>Dr. Michael Carpenter</h3>
+                            <span class="expert-title">Medicina Funcional y Preventiva</span>
+                        </div>
+                    </div>
+                    <p class="expert-quote">
+                        "A mis pacientes siempre se los digo de manera directa: si sólo cambias una cosa en tu vida para mejorar tu salud profunda, haz que sea el agua que bebes. <strong>La acidez de nuestro estrés diario nos destruye. El Agua Kangen hidrogenada te reestructura</strong>."
+                    </p>
+                    <div class="expert-tags">
+                        <span>Medicina Preventiva</span>
+                        <span>Equilibrio Ácido/Base</span>
+                        <span>Módulo 06</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== THE FREEDOM CTA (Emotional & Subtle Marketing) ===== -->
+    <section class="content-section" style="background: rgba(0,180,255,0.03);" id="libertad">
+        <div class="container">
+            <div class="freedom-cta animate-on-scroll">
+                <h2>Date el Permiso y la Libertad de <span class="water-highlight">Beber la Mejor Agua del Mundo</span></h2>
+                
+                <p>
+                    Pasamos años buscando el suplemento ideal, la dieta perfecta o el estilo de vida 
+                    definitivo. Nos preocupamos por comer orgánico y ejercitarnos, pero aceptamos beber 
+                    agua muerta, estancada en botellas de plástico que desprenden químicos a altas temperaturas, 
+                    oxidada e intrínsecamente ácida.
+                </p>
+
+                <p style="color: #fff; font-size: 1.25rem;">
+                    <strong>¿Qué precio tiene la libertad física?</strong>
+                </p>
+
+                <p>
+                    La libertad celular significa no estar a merced de la acidez crónica. Significa que, con el 
+                    simple gesto de abrir un grifo en tu cocina, le estás brindando a tu sangre, a tus músculos y 
+                    al cerebro de tus hijos un torrente de antioxidantes activos y alcalinidad balanceada avalados 
+                    por los mayores expertos mundiales en salud. 
+                </p>
+                <p style="font-style: italic; color: var(--accent); margin-top: 2rem; font-size: 1.1rem;">
+                    Tú tienes el poder de elegir con qué hidratar la máquina más perfecta de la creación: tu cuerpo.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA / NEXT MODULE ===== -->
+    <section style="padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <div class="cta-banner animate-on-scroll" style="background: linear-gradient(90deg, rgba(0,70,120,0.8), rgba(0,160,200,0.6)); border: 1px solid rgba(0,238,255,0.3);">
+                <div>
+                    <h2 style="color: #fff;">Siguiente: El Equilibrio del pH</h2>
+                    <p style="color: rgba(255,255,255,0.9);">Si los médicos insisten tanto en la alcalinidad... ¿Qué es exactamente el pH y cómo regula la acidez de tu estómago?</p>
+                </div>
+                <a href="../10-equilibrio-ph/index.html" class="btn-white" style="color: #004678; text-decoration:none;">Módulo 10 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MODULE NAVIGATION ===== -->
+    <section style="padding: 30px 0;">
+        <div class="container">
+            <div class="module-nav">
+                <a href="../08-antecedentes/index.html">← Módulo 08: Antecedentes</a>
+                <a href="../index.html">Índice General</a>
+                <a href="../10-equilibrio-ph/index.html">Módulo 10: Equilibrio del pH →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                💧 Agua<span style="color: var(--accent);">Kangen</span> — Módulo 09
+            </div>
+            <p class="footer-copy" style="color: rgba(255,255,255,0.5);">© 2026 — Distribuidor Independiente Enagic. Todos los derechos reservados.</p>
+            <div class="footer-nav">
+                <a href="../index.html">Inicio</a>
+                <a href="../index.html#modulos">Módulos</a>
+                <a href="../../../index.html">Kangen Water</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+</html>
