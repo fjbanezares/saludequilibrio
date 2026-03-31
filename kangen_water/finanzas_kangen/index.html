@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Matemática Implacable | Finanzas Kangen para tu Familia</title>
+    <meta name="description" content="Descubre por qué el litro de Agua Kangen cuesta solo 0,039€ y cómo una familia de 4 puede ahorrar más de 80.000€ en 30 años frente al agua embotellada.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #030712;
+            --bg-card: rgba(15, 23, 42, 0.7);
+            --gold: #fbbf24;
+            --gold-dim: rgba(251, 191, 36, 0.15);
+            --cyan: #22d3ee;
+            --emerald: #34d399;
+            --red: #f87171;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border: rgba(255,255,255,0.08);
+        }
+
+        body {
+            background: var(--bg-deep);
+            color: var(--text);
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* ===== HERO (Split Layout — Image as Star) ===== */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-deep);
+        }
+
+        @media (max-width: 968px) {
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+                padding-top: 100px;
+            }
+        }
+
+        .hero-content {
+            padding: 80px 60px 80px 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        @media (max-width: 968px) {
+            .hero-content {
+                padding: 40px 24px;
+                text-align: center;
+            }
+        }
+
+        .hero-image-showcase {
+            position: relative;
+            height: 100%;
+            min-height: 500px;
+            overflow: hidden;
+        }
+
+        .hero-image-showcase img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: contrast(1.15) saturate(1.1);
+        }
+
+        .hero-image-showcase::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, var(--bg-deep) 0%, rgba(3,7,18,0.3) 30%, transparent 100%);
+            pointer-events: none;
+        }
+
+        @media (max-width: 968px) {
+            .hero-image-showcase {
+                min-height: 350px;
+            }
+            .hero-image-showcase::after {
+                background: linear-gradient(to top, var(--bg-deep) 0%, transparent 50%);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            border: 1px solid rgba(251,191,36,0.4);
+            background: rgba(251,191,36,0.1);
+            color: var(--gold);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 .price {
+            display: block;
+            color: var(--gold);
+            font-size: clamp(4rem, 9vw, 7rem);
+            text-shadow: 0 0 60px rgba(251,191,36,0.4);
+            margin-top: 0.2em;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 550px;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 968px) {
+            .hero p { margin: 0 auto; }
+        }
+
+        /* ===== STAT STRIP ===== */
+        .stat-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            margin: -60px auto 0;
+            position: relative; z-index: 20;
+            max-width: 900px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid var(--border);
+        }
+
+        .stat-item:last-child { border-right: none; }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .stat-strip { grid-template-columns: repeat(2, 1fr); }
+            .stat-item { border-bottom: 1px solid var(--border); }
+        }
+
+        /* ===== SECTIONS ===== */
+        section { padding: 100px 0; }
+
+        .section-label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--cyan);
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.15;
+        }
+
+        /* ===== THE FORMULA ===== */
+        .formula-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .formula-grid { grid-template-columns: 1fr; }
+        }
+
+        .formula-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .formula-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 40px rgba(251,191,36,0.1);
+        }
+
+        .formula-emoji { font-size: 3rem; margin-bottom: 1rem; }
+
+        .formula-num {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .formula-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .formula-desc {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.5;
+        }
+
+        /* ===== COMPARISON TABLE ===== */
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 3rem;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        }
+
+        .comparison-table thead th {
+            background: rgba(15, 23, 42, 0.95);
+            color: #fff;
+            font-weight: 700;
+            padding: 1.2rem 1rem;
+            text-align: center;
+            font-size: 1rem;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .comparison-table thead th:first-child { text-align: left; }
+
+        .comparison-table tbody td {
+            padding: 1rem;
+            text-align: center;
+            font-size: 1rem;
+            border-bottom: 1px solid var(--border);
+            background: rgba(15, 23, 42, 0.5);
+            color: var(--text);
+        }
+
+        .comparison-table tbody td:first-child {
+            text-align: left;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .comparison-table tbody tr:last-child td { border-bottom: none; }
+
+        .comparison-table .kangen-col {
+            color: var(--gold);
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .comparison-table .red { color: var(--red); font-weight: 700; }
+
+        /* ===== SAVINGS CHART (CSS bar chart) ===== */
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 3rem;
+        }
+
+        .bar-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .bar-label {
+            width: 80px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .bar-track {
+            flex: 1;
+            height: 36px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #fff;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bar-fill.gold { background: linear-gradient(90deg, rgba(251,191,36,0.3), var(--gold)); }
+        .bar-fill.cyan { background: linear-gradient(90deg, rgba(34,211,238,0.3), var(--cyan)); color: #000; }
+
+        /* ===== IMAGE SECTION ===== */
+        .full-image-section {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .full-image-section img {
+            width: 100%;
+            display: block;
+            max-height: 500px;
+            object-fit: cover;
+        }
+
+        .full-image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(3,7,18,0.95) 0%, rgba(3,7,18,0.5) 50%, rgba(3,7,18,0.95) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .overlay-quote {
+            max-width: 700px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .overlay-quote blockquote {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* ===== COST BREAKDOWN ===== */
+        .cost-breakdown {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .cost-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 3rem;
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            transition: all 0.4s ease;
+        }
+
+        .cost-item:hover {
+            border-color: var(--gold);
+            transform: translateX(10px);
+            box-shadow: -10px 10px 40px rgba(0,0,0,0.5);
+            background: rgba(15, 23, 42, 0.9);
+        }
+
+        .cost-icon {
+            font-size: 3.5rem;
+            line-height: 1;
+            background: rgba(15,23,42,0.8);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 100px;
+        }
+
+        .cost-icon-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex-shrink: 0;
+            min-width: 100px;
+        }
+
+        .cost-icon-group .cost-icon {
+            padding: 1rem;
+            font-size: 2.5rem;
+        }
+
+        .cost-content h3 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .cost-content p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+        }
+
+        .cost-content strong { color: var(--gold); }
+
+        @media (max-width: 768px) {
+            .cost-item {
+                flex-direction: column;
+                padding: 2rem;
+            }
+        }
+
+        /* ===== SCENARIO CARDS ===== */
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .scenario-grid { grid-template-columns: 1fr; }
+        }
+
+        .scenario-card {
+            border-radius: 20px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scenario-card.bezoya {
+            background: linear-gradient(135deg, rgba(248,113,113,0.1), rgba(15,23,42,0.8));
+            border: 1px solid rgba(248,113,113,0.3);
+        }
+
+        .scenario-card.premium {
+            background: linear-gradient(135deg, rgba(251,191,36,0.1), rgba(15,23,42,0.8));
+            border: 1px solid rgba(251,191,36,0.3);
+        }
+
+        .scenario-price {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .scenario-card.bezoya .scenario-price { color: var(--red); }
+        .scenario-card.premium .scenario-price { color: var(--gold); }
+
+        /* ===== CTA ===== */
+        .cta-section {
+            text-align: center;
+            padding: 100px 0;
+            background: radial-gradient(circle at center, rgba(251,191,36,0.08) 0%, transparent 60%);
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #f59e0b);
+            color: #000;
+            font-weight: 800;
+            font-size: 1.3rem;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(251,191,36,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 50px rgba(251,191,36,0.5);
+        }
+
+        /* ===== REVEAL ANIMATION ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== NAVBAR ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            background: rgba(3,7,18,0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-weight: 900;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-brand span { color: var(--gold); }
+
+        .nav-links a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-left: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: #fff; }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <div class="container nav-inner">
+            <a href="../kangen/pagina_base/index.html" class="nav-brand">💧 Finanzas<span>Kangen</span></a>
+            <div class="nav-links">
+                <a href="../kangen/pagina_base/index.html">← Ecosistema</a>
+                <a href="#formula">La Fórmula</a>
+                <a href="#comparativa">Comparativa</a>
+                <a href="#ahorro">Ahorro a 30 años</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Análisis Financiero Real — Familia de 4</div>
+            <h1>
+                Un Litro de Salud por
+                <span class="price">0,039€</span>
+            </h1>
+            <p>La matemática no engaña. Mientras pagas 0,50€ por un litro de agua estancada en plástico derivado del petróleo, tu dispositivo médico japonés produce agua antioxidante, hidrogenada y de grado clínico de forma ilimitada. Es más barato que el agua del grifo.</p>
+        </div>
+        <div class="hero-image-showcase">
+            <img src="money_water.png" alt="Grifo de cocina moderno del que fluye agua que se convierte en monedas de euro y billetes, simbolizando el ahorro y la libertad financiera">
+        </div>
+    </header>
+
+    <!-- ===== STAT STRIP ===== -->
+    <div class="container">
+        <div class="stat-strip">
+            <div class="stat-item">
+                <div class="stat-value">4.200€</div>
+                <div class="stat-label">Inversión Única</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">30 años</div>
+                <div class="stat-label">Vida Útil Mínima</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">175.200</div>
+                <div class="stat-label">Litros Producidos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" style="color: var(--emerald);">80.700€</div>
+                <div class="stat-label">Ahorro Total (vs Bezoya)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== THE FORMULA ===== -->
+    <section id="formula">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">La Aritmética Brutal</span>
+                <h2>¿De Dónde Sale el <span style="color:var(--gold)">0,039€ por Litro</span>?</h2>
+                <p style="color: var(--text-muted); max-width: 700px; font-size: 1.1rem;">Una familia de 4 personas, bebiendo 4 litros diarios cada una (4 personas × 4 litros × 365 días), produce 5.840 litros de agua viva al año. Durante los 30 años de vida útil mínima de la máquina: 175.200 litros.</p>
+            </div>
+
+            <div class="formula-grid">
+                <div class="formula-card reveal">
+                    <div class="formula-emoji">⚙️</div>
+                    <div class="formula-num">0,024€</div>
+                    <div class="formula-label">Coste de la Máquina por Litro</div>
+                    <div class="formula-desc">4.200€ de inversión divididos entre 175.200 litros que producirá durante su vida útil de 30 años.</div>
+                </div>
+                <div class="formula-card reveal" style="transition-delay: 0.15s;">
+                    <div class="formula-emoji">🔄</div>
+                    <div class="formula-num">0,015€</div>
+                    <div class="formula-label">Coste Filtro por Litro</div>
+                    <div class="formula-desc">Un filtro de 90€ dura 6.000 litros. El recambio es el único gasto recurrente, y es irrisoriamente barato.</div>
+                </div>
+                <div class="formula-card reveal" style="transition-delay: 0.3s;">
+                    <div class="formula-emoji">💧</div>
+                    <div class="formula-num" style="color: var(--emerald);">0,039€</div>
+                    <div class="formula-label">Coste Total por Litro</div>
+                    <div class="formula-desc">Sumando máquina + filtros: menos de 4 céntimos por un litro de agua antioxidante, hidrogenada y de grado médico certificado ISO 13485. Compáralo con cualquier alternativa del mercado.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== IMAGE BREAK: ECOLOGICAL IMPACT ===== -->
+    <div class="full-image-section">
+        <img src="plastic_vs_ocean.png" alt="Contraste entre montaña de plástico y océano limpio">
+        <div class="full-image-overlay">
+            <div class="overlay-quote">
+                <blockquote>"Cada botella de plástico que no compras es un acto de amor hacia el planeta que heredarán tus hijos."</blockquote>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== COMPARISON TABLE ===== -->
+    <section id="comparativa" style="background: rgba(15,23,42,0.3);">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">La Tabla de la Verdad</span>
+                <h2>Kangen vs. El Resto del <span style="color:var(--red)">Mercado</span></h2>
+                <p style="color: var(--text-muted); max-width: 700px; font-size: 1.1rem;">Estas no son cifras inventadas. Son precios reales de mercado español 2024-2026 aplicados a una familia de 4 personas consumiendo 5.840 litros anuales. Juzga tú mismo.</p>
+            </div>
+
+            <table class="comparison-table reveal" style="transition-delay: 0.2s;">
+                <thead>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>🏆 Kangen</th>
+                        <th>Plástico Comercial</th>
+                        <th>Cristal Comercial</th>
+                        <th>Agua "Premium"</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Precio por litro</td>
+                        <td class="kangen-col">0,039€</td>
+                        <td class="red">0,50€</td>
+                        <td class="red">1,00€</td>
+                        <td class="red">3–5€</td>
+                    </tr>
+                    <tr>
+                        <td>Coste anual (familia de 4)</td>
+                        <td class="kangen-col">228€*</td>
+                        <td class="red">2.920€</td>
+                        <td class="red">5.840€</td>
+                        <td class="red">17.520–29.200€</td>
+                    </tr>
+                    <tr>
+                        <td>Coste a 30 años</td>
+                        <td class="kangen-col">6.840€*</td>
+                        <td class="red">87.600€</td>
+                        <td class="red">175.200€</td>
+                        <td class="red">525.600–876.000€</td>
+                    </tr>
+                    <tr>
+                        <td>Hidrógeno Molecular (H2)</td>
+                        <td class="kangen-col">✅ Activo</td>
+                        <td>❌ Ninguno</td>
+                        <td>❌ Ninguno</td>
+                        <td>❌ Ninguno</td>
+                    </tr>
+                    <tr>
+                        <td>ORP (Antioxidante)</td>
+                        <td class="kangen-col">✅ -400 a -800mV</td>
+                        <td>❌ +200mV (oxidante)</td>
+                        <td>❌ +250mV (oxidante)</td>
+                        <td>❌ +150mV (oxidante)</td>
+                    </tr>
+                    <tr>
+                        <td>Microplásticos / BPA</td>
+                        <td class="kangen-col">✅ Cero</td>
+                        <td>⚠️ Plástico PET</td>
+                        <td>✅ Sin Plástico</td>
+                        <td>✅ Vidrio (a menudo)</td>
+                    </tr>
+                    <tr>
+                        <td>Certificación Médica</td>
+                        <td class="kangen-col">✅ ISO 13485</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem;">* Incluye coste amortizado de la máquina (4.200€) + filtros recurrentes (90€/6.000L). Sin incluir ahorro adicional en desinfectantes, cosméticos y productos de limpieza sustituidos.</p>
+        </div>
+    </section>
+
+    <!-- ===== HIDDEN COSTS (MOVED UP AND EXPANDED) ===== -->
+    <section>
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">Lo que el Excel NO Contabiliza</span>
+                <h2>El Verdadero Precio del <span style="color:var(--red)">Agua Embotellada</span></h2>
+                <p style="color: var(--text-muted); max-width: 800px; font-size: 1.1rem;">Nuestra estimación matemática a 30 años es sumamente conservadora. La cruda realidad financiera es mucho peor cuando sumamos el esfuerzo físico, la logística constante y el desgaste biológico que sufres semana tras semana sin darte cuenta.</p>
+            </div>
+
+            <div class="cost-breakdown reveal" style="transition-delay: 0.2s;">
+                <!-- Tiempo -->
+                <div class="cost-item">
+                    <div class="cost-icon">⏱️</div>
+                    <div class="cost-content">
+                        <h3>El Robo de tu Tiempo Libre</h3>
+                        <p>¿A cuánto cotizas tu hora durante el fin de semana? Si valoramos tu tiempo en unos muy razonables <strong>30€/hora</strong>, invertir tiempo semanal en planificar ir al supermercado, aparcar, hacer cola, pagar y conducir de vuelta, equivale a <strong>cientos (o miles) de euros de "coste de tiempo" anual</strong> tirados a la basura exclusivamente por la necesidad de cargar agua.</p>
+                    </div>
+                </div>
+
+                <!-- Transporte -->
+                <div class="cost-item">
+                    <div class="cost-icon-group">
+                        <span class="cost-icon">💲</span>
+                        <span class="cost-icon">🛞</span>
+                    </div>
+                    <div class="cost-content">
+                        <h3>Desgaste Mecánico y Combustible</h3>
+                        <p>Los trayectos de carga constante pesan en la factura de tu vehículo. Tirando muy por lo bajo, asumiendo un coste de <strong>10€ cada 100km</strong> (contabilizando gasolina, desgaste de ruedas, aceite y mantenimiento natural) —una cifra tan baja que ni un coche básico de tercera categoría consigue igualar— estás añadiendo un sobrecoste oculto masivo a un producto que ya es caro en sí mismo.</p>
+                    </div>
+                </div>
+
+                <!-- Esfuerzo Físico -->
+                <div class="cost-item">
+                    <div class="cost-icon">🏋️</div>
+                    <div class="cost-content">
+                        <h3>La Incomodidad de las Cargas Pesadas</h3>
+                        <p>¿Cuánta energía física innecesaria consumes? Imagina coger al menos dos cajas de agua de 6 litros (<strong>pesando 6 kilos en cada mano, sumando 12 kilos de carga</strong>), transportarlas desde el estante al carrito, levantarlas a la cinta, meterlas en el maletero del coche, y luego cargar con ese peso por las escaleras o al ascensor hasta tu cocina. Es una logística primitiva, agotadora y absurda teniendo un grifo en tu hogar que podría darte la excelencia.</p>
+                    </div>
+                </div>
+
+                <!-- Salud y Microplásticos -->
+                <div class="cost-item">
+                    <div class="cost-icon">⚠️</div>
+                    <div class="cost-content">
+                        <h3>Agua Estancada y Microplásticos</h3>
+                        <p>El agua embotellada se procesa y envasa semanas (o meses) atrás. Estás bebiendo agua "muerta" y estancada de baja calidad en envases PET, expuesta a largos viajes, almacenes e insolación térmica que diluyen <strong>microplásticos</strong> en la bebida diaria de tu familia. El verdadero <strong>coste de oportunidad</strong> de perjudicar la biología familiar y NO beber el mejor agua del mundo cada día es, francamente, incalculable.</p>
+                    </div>
+                </div>
+
+                <!-- Alternativas -->
+                <div class="cost-item">
+                    <div class="cost-icon">🧴</div>
+                    <div class="cost-content">
+                        <h3>Sustitución de Productos Químicos Externos</h3>
+                        <p>Tu equipo médico no solo produce agua para beber. Gracias a sus pH extremos, produces ilimitadamente pH 11.5 (fuerte desengrasante) y pH 2.5 (ácido hipocloroso esterilizante). Esto permite a una familia eliminar de su cesta de la compra los desengrasantes, lejías, tónicos faciales, colutorios y limpiadores químicos, añadiendo otros <strong>400€ a 500€ extra de ahorro real cada año</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SCENARIOS: BEZOYA vs SOLÁN ===== -->
+    <section>
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">Los Dos Escenarios</span>
+                <h2>Tu Futuro a <span style="color:var(--gold)">30 Años Vista</span></h2>
+                <p style="color: var(--text-muted); max-width: 700px; font-size: 1.1rem;">Estos cálculos son deliberadamente conservadores: no contamos el ahorro en productos de limpieza, gasolina para ir al supermercado, tiempo, ni el impacto en salud. Solo agua pura frente a agua embotellada. Y aun así, los números hablan solos.</p>
+            </div>
+
+            <div class="scenario-grid">
+                <div class="scenario-card bezoya reveal">
+                    <p style="color: var(--red); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 1rem;">Escenario Conservador</p>
+                    <p style="font-weight: 600; font-size: 1.2rem; margin-bottom: 0.5rem;">Agua en Plástico Típica (0,50€/L)</p>
+                    <div class="scenario-price">80.700€</div>
+                    <p style="color: var(--text-muted);">de ahorro acumulado en 30 años</p>
+                    <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 1.5rem 0;">
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Ahorro anual: <strong style="color: var(--text);">2.690€</strong></p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">ROI de la inversión: <strong style="color: var(--emerald);">62,7%</strong></p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Recuperas la inversión en: <strong style="color: var(--text);">1 año y 7 meses</strong></p>
+                </div>
+
+                <div class="scenario-card premium reveal" style="transition-delay: 0.15s;">
+                    <p style="color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 1rem;">Escenario Realista</p>
+                    <p style="font-weight: 600; font-size: 1.2rem; margin-bottom: 0.5rem;">Agua en Cristal Premium (1€/L)</p>
+                    <div class="scenario-price">168.300€</div>
+                    <p style="color: var(--text-muted);">de ahorro acumulado en 30 años</p>
+                    <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 1.5rem 0;">
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Ahorro anual: <strong style="color: var(--text);">5.610€</strong></p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">ROI de la inversión: <strong style="color: var(--emerald);">130,8%</strong></p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Recuperas la inversión en: <strong style="color: var(--text);">9 meses</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SAVINGS TIMELINE (BAR CHART) ===== -->
+    <section id="ahorro" style="background: rgba(15,23,42,0.3);">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">Acumulación de Ahorro</span>
+                <h2>El Efecto <span style="color:var(--gold)">Bola de Nieve</span></h2>
+                <p style="color:var(--text-muted); max-width: 700px; font-size: 1.1rem;">Cada año que pasa, el ahorro se acumula y se amplifica. Esta es la progresión real con los datos estimando un precio de mercado típico de 0,50€/L para formatos medios de plástico.</p>
+            </div>
+
+            <div class="bar-chart reveal" style="transition-delay: 0.2s;">
+                <div class="bar-row">
+                    <div class="bar-label">Año 1</div>
+                    <div class="bar-track"><div class="bar-fill gold" style="width: 3.3%;">2.690€</div></div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Año 3</div>
+                    <div class="bar-track"><div class="bar-fill gold" style="width: 10%;">8.070€</div></div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Año 5</div>
+                    <div class="bar-track"><div class="bar-fill gold" style="width: 16.7%;">13.450€</div></div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Año 10</div>
+                    <div class="bar-track"><div class="bar-fill gold" style="width: 33.3%;">26.900€</div></div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Año 15</div>
+                    <div class="bar-track"><div class="bar-fill gold" style="width: 50%;">40.350€</div></div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Año 20</div>
+                    <div class="bar-track"><div class="bar-fill gold" style="width: 66.6%;">53.800€</div></div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Año 25</div>
+                    <div class="bar-track"><div class="bar-fill gold" style="width: 83.3%;">67.250€</div></div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Año 30</div>
+                    <div class="bar-track"><div class="bar-fill cyan" style="width: 100%;">80.700€</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-section">
+        <div class="container reveal">
+            <h2 style="font-size: clamp(2rem, 5vw, 3.5rem);">Los Números No Mienten.<br><span style="color:var(--gold);">Tu Grifo Sí Puede Cambiar.</span></h2>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 1.5rem auto 2.5rem; font-size: 1.1rem;">
+                Solicita una demostración con mediadores ORP clínicos y comprueba con tus propios ojos la diferencia entre agua oxidante y agua antioxidante.
+            </p>
+            <a href="../kangen/pagina_base/index.html" class="cta-btn">Solicitar Demo Gratuita</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 — Distribuidor Independiente Enagic. Datos extraídos de estimaciones conservadoras. Precios de mercado español 2024-2026. La inversión incluye máquina K8 + filtros recurrentes.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

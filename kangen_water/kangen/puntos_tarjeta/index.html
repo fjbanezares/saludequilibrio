@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razones de Peso | 23 Claves de Salud Kangen</title>
+    <meta name="description" content="Descubre respuestas fundamentadas y rigurosas sobre los beneficios del Agua Kangen, contestando punto por punto a las 23 claves de nuestra tarjeta de presentación.">
+    <!-- Reutilizamos el estilo estético premium -->
+    <link rel="stylesheet" href="../introduccion-kangen/style.css">
+    <style>
+        /* AESTHETIC FOR FAQ/POINTS ACCORDION */
+        body {
+            background-color: #050a12;
+            color: #e2e8f0;
+        }
+
+        .points-hero {
+            background: linear-gradient(135deg, rgba(5,10,18,0.95), rgba(16, 185, 129, 0.15)), url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80') center/cover;
+            padding: 120px 0 80px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+
+        .points-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(5, 10, 18, 0.85);
+            z-index: 1;
+        }
+
+        .points-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .accordion-container {
+            max-width: 900px;
+            margin: 4rem auto;
+        }
+
+        /* ACCORDION STYLES */
+        details.qa-block {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        details.qa-block[open] {
+            border-color: rgba(52, 211, 153, 0.4);
+            background: rgba(15, 23, 42, 0.9);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 10px rgba(52,211,153,0.05);
+        }
+
+        summary.q-header {
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            list-style: none; /* Hide default arrow */
+            user-select: none;
+            position: relative;
+        }
+
+        summary.q-header::-webkit-details-marker {
+            display: none; /* Chrome/Safari */
+        }
+
+        summary.q-header::after {
+            content: '+';
+            position: absolute;
+            right: 2rem;
+            font-size: 2rem;
+            color: rgba(255,255,255,0.4);
+            transition: transform 0.3s ease, color 0.3s ease;
+            font-weight: 300;
+        }
+
+        details.qa-block[open] summary.q-header::after {
+            content: '−';
+            color: #34d399;
+            transform: rotate(180deg);
+        }
+
+        .q-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        .q-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #f8fafc;
+            line-height: 1.4;
+            flex-grow: 1;
+            padding-right: 2rem;
+        }
+
+        details.qa-block[open] .q-title {
+            color: #34d399; /* Emerald text when open */
+        }
+
+        .a-content {
+            padding: 0 2rem 2rem 5.3rem; /* Aligned with text, skipping icon */
+            animation: fadeInDown 0.4s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .a-content p {
+            color: rgba(255,255,255,0.75);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .a-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .a-content strong {
+            color: #fff;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 2px;
+        }
+
+        /* Disclaimer box */
+        .disclaimer-box {
+            background: rgba(239, 68, 68, 0.05);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .disclaimer-box p {
+            color: #fca5a5;
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            summary.q-header {
+                padding: 1.2rem;
+                gap: 1rem;
+            }
+            .q-title {
+                font-size: 1.1rem;
+            }
+            .a-content {
+                padding: 0 1.2rem 1.5rem 1.2rem;
+            }
+            summary.q-header::after {
+                right: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FIXED NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="../pagina_base/index.html" class="nav-brand">
+                <span class="logo-icon">💧</span>
+                <span class="logo-text">Salud<span>Kangen</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="../pagina_base/index.html">← Atrás</a>
+                <a href="../introduccion-kangen/index.html">16 Módulos</a>
+            </div>
+            <button class="mobile-menu-btn" id="menuBtn">☰</button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="points-hero">
+        <div class="container">
+            <span class="text-emerald-400 font-bold tracking-widest uppercase text-xs sm:text-sm mb-4 block animate-on-scroll">Argumentario Científico, Ético y Profesional</span>
+            <h1 class="text-4xl md:text-6xl font-black text-white mb-6 leading-tight mt-6 animate-on-scroll" style="transition-delay: 0.1s;">
+                Las 23 Claves de<br>
+                <span style="color: #34d399;">Tu Transformación</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed animate-on-scroll" style="transition-delay: 0.2s;">
+                Cada punto de nuestra tarjeta de presentación no es un truco publicitario; es una afirmación fundamentada en biología celular, electrólisis e investigación clínica. Abre cada apartado para descubrir el rigor detrás de la promesa.
+            </p>
+        </div>
+    </header>
+
+    <main class="container py-10">
+        
+        <div class="accordion-container">
+
+            <!-- 1 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">⏳</span>
+                    <span class="q-title">¿Te gustaría vivir más años con mejor calidad de vida?</span>
+                </summary>
+                <div class="a-content">
+                    <p>La "calidad de vida" a nivel celular se mide por la capacidad del cuerpo para frenar la oxidación provocada por el estrés, la contaminación y la alimentación procesada. El <strong>Agua Kangen</strong> aporta Hidrógeno Molecular (H2), un antioxidante excepcionalmente pequeño que neutraliza proactivamente los radicales libres. Al reducir la carga oxidativa recurrente, tu cuerpo puede concentrar su energía en regenerarse en lugar de defenderse, fomentando una vitalidad duradera.</p>
+                </div>
+            </details>
+
+            <!-- 2 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">💰</span>
+                    <span class="q-title">¿Te gustaría ahorrar dinero, tiempo y esfuerzo cada día?</span>
+                </summary>
+                <div class="a-content">
+                    <p>Un dispositivo ionizador previene la compra de miles de litros de agua embotellada anuales. Además, al generar <strong>Agua Fuerte Kangen (pH 11.5)</strong> y <strong>Agua Fuerte Ácida (pH 2.5)</strong>, se sustituye gran parte de los desengrasantes, detergentes y desinfectantes del hogar. El retorno de inversión es matemático y progresivo, ahorrándote cargar pesadas botellas plásticas del supermercado semana tras semana.</p>
+                </div>
+            </details>
+
+            <!-- 3 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">☯️</span>
+                    <span class="q-title">Mereces el confort y el cuidado que has estado buscando.</span>
+                </summary>
+                <div class="a-content">
+                    <p>Tener un surtidor de bienestar inagotable en tu cocina altera drásticamente la comodidad de tu hogar. No se trata solo de agua para beber, sino de <strong>transformar un suministro básico en una experiencia clínica preventiva</strong>, accesible las 24 horas del día con solo pulsar un botón. Es el epítome del autocuidado consciente.</p>
+                </div>
+            </details>
+
+            <!-- 4 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">❤️</span>
+                    <span class="q-title">Lujo y placer sencillamente al alcance de tu mano, la vida es un regalo en sí mismo.</span>
+                </summary>
+                <div class="a-content">
+                    <p>El verdadero lujo no es poseer objetos estáticos que se deprecian, sino invertir en el motor biológico que te permite disfrutar la vida: <strong>tu cuerpo</strong>. Beber agua fresca, rica en electrones y microestructurada aporta una ligereza y un sabor incomparable frente al agua oxidada y estancada embotellada. Es un ritual diario de placer y vitalidad biológica.</p>
+                </div>
+            </details>
+
+            <!-- 5 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">🌊</span>
+                    <span class="q-title">¿Quieres sentirte renovado y desintoxicado, mientras limpias tu organismo de forma natural?</span>
+                </summary>
+                <div class="a-content">
+                    <p>El cuerpo posee un sistema perfecto para desintoxicarse (hígado, riñones, piel). Sin embargo, se sobrecarga ante la toxicidad extrema del entorno moderno. Consumir agua altamente alcalina y antioxidante fomenta el <strong>arrastre de desechos metabólicos ácidos</strong> a través de las vías naturales de excreción del cuerpo, asistiendo (no forzando biológicamente) a una limpieza sostenida sin la agresión fisiológica de los clásicos laxantes artificiales.</p>
+                </div>
+            </details>
+
+            <!-- 6 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">⚡</span>
+                    <span class="q-title">¿Te gustaría hidratarte hasta 6 veces más rápido y revitalizar cada célula de tu cuerpo?</span>
+                </summary>
+                <div class="a-content">
+                    <p>El proceso de electrólisis altera la agrupación molecular del agua. El agua de grifo estancada posee grandes "clústers" moleculares (racimos) que dificultan la absorción celular masiva, causando pesadez estomacal. El Agua Kangen, ionizada al entrar en contacto con placas de platino, forma racimos moleculares más pequeños de <strong>estructura hexagonal</strong>. Al ser menores, penetran las membranas acuaporinas celulares con mucha mayor celeridad, asegurando una hidratación profunda casi de inmediato.</p>
+                </div>
+            </details>
+
+            <!-- 7 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">💪🏻</span>
+                    <span class="q-title">Descubre una vida llena de vitalidad y bienestar con esta tecnología rejuvenecedora.</span>
+                </summary>
+                <div class="a-content">
+                    <p>El envejecimiento prematuro y la pérdida de vitalidad son sinónimos del daño oxidativo por radicales libres y la falta metabólica de electrones. El <strong>Potencial de Óxido-Reducción negativo (-ORP)</strong> masivo del dispositivo Kangen entrega electrones directamente para neutralizar ese daño celular, asistiendo activamente a frenar el proceso de desgaste crónico diario.</p>
+                </div>
+            </details>
+
+            <!-- 8 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">🫧</span>
+                    <span class="q-title">Hidrátate profundamente y purifica tu organismo de forma natural.</span>
+                </summary>
+                <div class="a-content">
+                    <p>La hidratación profunda significa que el agua no se queda simplemente en tu intestino "encharcando" o causando hinchazón, sino que irriga el núcleo celular arrastrando los metabolitos ácidos producidos por el esfuerzo físico. Esta irrigación asistida devuelve el tejido blando y fascial a su estado natural libre de viscosidades tóxicas.</p>
+                </div>
+            </details>
+
+            <!-- 9 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">🕉</span>
+                    <span class="q-title">Te alcalinizarás reforzando tus defensas, protegiendo tu salud y tus huesos.</span>
+                </summary>
+                <div class="a-content">
+                    <p>Tu flujo sanguíneo no varía de pH, se mantiene celosamente en 7.365. No obstante, frente a una dieta altamente ácida y generadora de estrés, tu cuerpo necesita utilizar "buffers" (amortiguadores químicos) para conservar ese pH seguro en la sangre. Trágicamente, utiliza el calcio de tus propios huesos para estabilizar la emergencia, debilitándolos a largo plazo. Consumir agua <strong>ionizada y rica en minerales electroactivos</strong> dona a tu sangre esos amortiguadores alcalinos de forma gratuita, protegiendo así tu densidad ósea estructural.</p>
+                </div>
+            </details>
+
+            <!-- 10 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">🧚‍♀️</span>
+                    <span class="q-title">Limpia toxinas de tus alimentos y crea un hogar libre de químicos.</span>
+                </summary>
+                <div class="a-content">
+                    <p>Generando Agua Fuerte Kangen (pH 11.5), obtienes un fluido con <strong>extraordinaria capacidad emulsionante sin químicos</strong>. Es capaz de descomponer herbicidas y pesticidas basados en queroseno presentes en la agricultura moderna, que el agua de grifo sencillamente resbala sin llegar a arrastrar. Es limpieza alimentaria garantizada y una sustitución radical de desengrasantes domésticos de base sintética.</p>
+                </div>
+            </details>
+
+            <!-- 11 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">💎</span>
+                    <span class="q-title">Cuida de tus seres queridos. Ten tu piel luminosa y tu pelo suave, también el de tu mascota.</span>
+                </summary>
+                <div class="a-content">
+                    <p>La piel humana y el cabello, junto al de perros y gatos, mantienen naturalmente un manto ligeramente ácido para prevenir la sobrefloración bacteriana. La máquina produce su propio <strong>Agua de Belleza ligera (pH 6.0)</strong> actuando como el más selecto de los tónicos faciales astringentes para recuperar el equilibrio dérmico, lo cual reduce imperfecciones, cierra poros y aporta una suavidad natural sin derivados químicos que resequen la epidermis.</p>
+                </div>
+            </details>
+
+            <!-- 12 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">🌍</span>
+                    <span class="q-title">Vive en armonía con el planeta reduciendo el uso de plásticos y productos nocivos.</span>
+                </summary>
+                <div class="a-content">
+                    <p>Cada vez que recargas en tu domicilio una botella de cristal u otro material reutilizable con agua libre de contaminantes orgánicos, estás privando directamente a la macro-industria de fabricar y desechar otro envase de <strong>plástico petroquímico y disruptor endocrino (BPA)</strong> de un solo uso en nuestro océano y acuíferos. Se calcula que un dispositivo ahorra más de 70.000 recipientes plásticos durante su vida útil.</p>
+                </div>
+            </details>
+
+            <!-- 13 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">🧑‍⚕️</span>
+                    <span class="q-title">Con más de 60 años de investigación en Japón y certificaciones médicas ISO 13485.</span>
+                </summary>
+                <div class="a-content">
+                    <p>Enagic es fabricante integral OEM. Posee la exclusiva certificación gubernamental japonesa <strong>ISO 13485 (Dispositivo Médico Registrado)</strong>. Fue adoptada inicialmente en decenas de los mejores hospitales nipones hace más de una generación para tratar condiciones dérmicas extremas con pH ácido bajo, demostrando que detrás no hay publicidad de pseudociencia, sino ciencia hospitalaria estructurada de grado clínico.</p>
+                </div>
+            </details>
+
+            <!-- 14 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">🙏</span>
+                    <span class="q-title">Únete al movimiento hacia una vida más saludable y plena. Esta tecnología transforma vidas.</span>
+                </summary>
+                <div class="a-content">
+                    <p>La adopción del Agua Kangen mundialmente no ha funcionado financiando anuncios. Funciona por prescripción ética empírica. Es un movimiento global enfocado literalmente en revertir la epidemia endémica de acidez y desnutrición molecular. El usuario final siente una verdadera y mensurable oleada de equilibrio en el funcionamiento celular, lo cual cambia fundamentalmente la percepción de control de su propia salud corporal.</p>
+                </div>
+            </details>
+
+            <!-- 15 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">💰</span>
+                    <span class="q-title">Oportunidad de negocio y distribución disponible; salud financiera.</span>
+                </summary>
+                <div class="a-content">
+                    <p>A través de su patentado y ético <strong>modelo de "8 puntos de comisión directa"</strong>, Enagic rompe con la intermediación comercial masiva, devolviendo gran parte de la riqueza de distribución a las familias que difunden y asisten a otros gratuitamente en tomar consciencia sobre biología del agua y bienestar celular a nivel global. Es un modelo colaborativo sin techos artificiales ni stock obligatorio.</p>
+                </div>
+            </details>
+
+            <!-- 16 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">😍</span>
+                    <span class="q-title">Una maravilla que no solo transforma tu salud, sino también tu bienestar financiero.</span>
+                </summary>
+                <div class="a-content">
+                    <p>El estrés derivado de las preocupaciones monetarias se conoce clínicamente como un oxidante devastador en sí mismo, incrementando drásticamente la síntesis celular de hormonas de agotamiento como el cortisol. Recuperar el control de la <strong>salud financiera paralela a tu salud integral sistémica</strong> completa lo que en Enagic conocemos como "True Health": Libre de deudas, libre de oxidación fisiológica y en serenidad metal biológicamente amparada.</p>
+                </div>
+            </details>
+
+            <!-- 17 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">🫂</span>
+                    <span class="q-title">Únete a mi equipo, no esperes más a usar lo mejor del mundo, quiérete y date salud.</span>
+                </summary>
+                <div class="a-content">
+                    <p>Al unirte no realizas simplemente una adquisición electrónica, sino que penetras en una comunidad constante de experimentadores, familias y mentores educados a la hora de preservar el mantenimiento vitalicio de los dispositivos y optimizar rutinas preventivas diarias en pos de vivir desconectado de la cultura farmacéutico-comercial sistemática que te necesita crónicamente agotado.</p>
+                </div>
+            </details>
+
+            <!-- 18 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">🎯</span>
+                    <span class="q-title">Mi objetivo es ayudarte a mejorar tu bienestar primero, para juntos crear un mundo mejor.</span>
+                </summary>
+                <div class="a-content">
+                    <p>El proceso no es nunca netamente económico transaccional. La compasión radical fundamenta mi aproximación distributiva. El éxito individual es estéril, el éxito al erradicar falsos paradigmas dañinos de la deshidratación artificial corporativa sobre cientos de familias se magnifica y perpetúa un ciclo virtuoso que mejora colectivamente la existencia global y compasiva en sí misma.</p>
+                </div>
+            </details>
+
+            <!-- 19 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">🇯🇵</span>
+                    <span class="q-title">Dispositivo Médico Japonés. Somos cerca de un 70% agua.</span>
+                </summary>
+                <div class="a-content">
+                    <p>El peso y funcionalidad volumétrica cerebral y cardíaca superan biológicamente el asombroso <strong>75% hídrico</strong>. Considerar el líquido como una variable fisiológica carente de importancia y consumir líquidos genéricos alterados es un trágico fallo lógico. La tecnología japonesa lo trata con un rigor clínico acorde al ser humano, elevando su calidad a grado médico para nutrir biológicamente el elemento más preponderantemente determinante en tu supervivencia anatómica global diaria.</p>
+                </div>
+            </details>
+
+            <!-- 20 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">🩺</span>
+                    <span class="q-title">El doctor Shinya, máximo experto en colón da una solución a la limpieza celular y del colon.</span>
+                </summary>
+                <div class="a-content">
+                    <p>Pionero y co-creador de la extirpación endoscópica, el <strong>Dr. Shinya</strong> posee decenas de miles de documentos endoscópicos evidenciando correlaciones incontrovertibles de la dieta acídica contra la mucosa del interior bio-intestinal. Sus exhaustivas dietas de regeneramiento basal ordenaban expresamente beber cantidades copiosas y bien medidas estrictamente con Agua Kangen como co-adyuvante enzimático natural obligatorio.</p>
+                </div>
+            </details>
+
+            <!-- 21 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">🤗</span>
+                    <span class="q-title">¡No esperes más! Da el primer paso hacia un cambio real en tu vida.</span>
+                </summary>
+                <div class="a-content">
+                    <p>Habiendo internalizado todos estos conocimientos preventivos clínicos demostrados, conformarse nuevamente con una hidratación sub-estándar o estancada implica decidir sistemáticamente sobre el castigo continuo asimilado en silencio por tus estructuras celulares biológicas diurnamente.</p>
+                </div>
+            </details>
+
+            <!-- 22 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">🔥</span>
+                    <span class="q-title">Solicita tu demo gratuita sin compromiso.</span>
+                </summary>
+                <div class="a-content">
+                    <p>Tú mides la temperatura vital observando la reacción microscópica biológica real de un ensayo. Yo aplico las gotas calibradoras de O.R.P. o tintura roja de tornasol frente a tus ojos transparentemente en mi domo educativo presencial u online para medir frente a tu percepción óptica sin alteraciones el potencial oxidativo del agua genérica comercial contrapuesto al chorro antioxidante real empírico de Kangen. Empírico, mesurado e irreversible.</p>
+                </div>
+            </details>
+
+            <!-- 23 -->
+            <details class="qa-block animate-on-scroll">
+                <summary class="q-header">
+                    <span class="q-icon">❤️</span>
+                    <span class="q-title">¡Descubre cómo puedes transformar tu bienestar desde hoy!</span>
+                </summary>
+                <div class="a-content">
+                    <p>Asciende, recupera facultades que olvidaste debido al adormecimiento metabólico endémico de nuestra era, instaura un escudo de protección enérgico contra un desgaste innecesario en tu organismo interior por fin y reconecta inmediatamente tu bienestar al control humano activo que todos siempre fuimos destinados a ostentar de verdad con cada respiración sin miedo.</p>
+                </div>
+            </details>
+
+            <!-- AVISO LEGAL RIGUROSO -->
+            <div class="disclaimer-box animate-on-scroll">
+                <p><strong>Aviso Expreso de Exención de Responsabilidades Clínico-Legales:</strong> Ni la corporación Enagic System ni la entidad de distribución pretenden realizar diagnósticos de afecciones preexistentes. No sustituye la prescripción de profesionales sanitarios amparados. El Agua Kangen y su matriz no emiten garantías deterministas referidas al concepto clínico de la curación o de su erradicación. Su principio insalvable y verídico documentado en biología se fundamenta en dotar a un organismo en estrés crónico perenne de donaciones hidro-eléctricas masivas pro-homeostasis metabólicas, potenciado por ser extremadamente preventiva biológicamente.</p>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER NAV -->
+    <div class="text-center py-10 border-t border-slate-800">
+        <a href="../pagina_base/index.html" class="inline-block bg-transparent border-2 border-slate-700 text-slate-300 font-bold px-8 py-3 rounded-full hover:bg-slate-800 hover:text-white transition-all shadow-lg hover:shadow-xl">
+            Volver al Ecosistema 🌊
+        </a>
+    </div>
+
+    <!-- Integración JS Animaciones Básicas -->
+    <script>
+        // Custom simple reveal script since we are not loading the full introductions JS here to avoid interference
+        document.addEventListener("DOMContentLoaded", () => {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            elements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                observer.observe(el);
+            });
+            
+            // Auto close other accordions
+            const details = document.querySelectorAll('details.qa-block');
+            details.forEach((targetDetail) => {
+                targetDetail.addEventListener('click', () => {
+                    details.forEach((detail) => {
+                        if (detail !== targetDetail) {
+                            detail.removeAttribute('open');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
