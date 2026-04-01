@@ -1,248 +1,308 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salud Integral con Agua Kangen® | Portal Oficial</title>
-    <meta name="description" content="Bienvenido a la tecnología médica japonesa que hidrata a nivel celular y transforma el entorno familiar. Explora nuestros recursos, ciencia y testimonios.">
-    <!-- Reutilizamos el estilo estético premium de la introducción -->
-    <link rel="stylesheet" href="../introduccion-kangen/style.css">
+    <title>Kangen® | El Mejor Agua del Mundo</title>
+    <meta name="description" content="Redefine tu salud celular. Agua alcalina ionizada rica en hidrógeno.">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        kangen: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            900: '#134e4a',
+                            950: '#042f2e',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        /* AESTHETIC OVERRIDES FOR CENTRAL LANDING */
-        .portal-hero {
-            background: linear-gradient(135deg, rgba(5,10,18,0.9), rgba(14, 165, 233, 0.1)), url('https://images.unsplash.com/photo-1549317336-206569e8475c?auto=format&fit=crop&q=80') center/cover;
-            padding: 120px 0 100px;
-            text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            position: relative;
+        body { 
+            background-color: #020617; /* Slate 950 Deep Space */
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        
+        .glass-nav {
+            background: rgba(2, 6, 23, 0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .portal-hero::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 50% 100%, rgba(14, 165, 233, 0.2) 0%, transparent 60%);
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 0%, rgba(20, 184, 166, 0.15) 0%, rgba(2, 6, 23, 0) 50%),
+                        radial-gradient(circle at 80% 80%, rgba(14, 165, 233, 0.1) 0%, rgba(2, 6, 23, 0) 50%);
         }
 
-        .hub-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0 8rem;
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #2dd4bf, #3b82f6);
         }
 
-        .hub-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.5));
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 3rem 2rem;
-            text-align: center;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        .text-gradient-gold {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #fbbf24, #f59e0b);
         }
 
-        .hub-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(14, 165, 233, 0.5);
-            background: rgba(14, 165, 233, 0.05);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4), inset 0 0 20px rgba(14, 165, 233, 0.1);
+        .module-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.6) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .hub-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            display: inline-block;
+        .module-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(45, 212, 191, 0.4);
+            box-shadow: 0 20px 40px -10px rgba(45, 212, 191, 0.15), inset 0 0 20px rgba(45, 212, 191, 0.05);
         }
 
-        .hub-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #fff;
-            margin-bottom: 1rem;
+        .module-icon-wrap {
+            background: linear-gradient(135deg, rgba(45, 212, 191, 0.2), rgba(14, 165, 233, 0.2));
+            border: 1px solid rgba(45, 212, 191, 0.3);
         }
 
-        .hub-desc {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            flex-grow: 1;
-        }
-
-        .hub-btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 50px;
-            color: #fff;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .hub-card:hover .hub-btn {
-            background: rgba(14, 165, 233, 0.2);
-            border-color: rgba(14, 165, 233, 0.6);
-            color: #fff;
-        }
-
-        /* Coming soon status */
         .status-soon {
+            background: linear-gradient(to right, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Ambient Orbs */
+        .ambient-orb {
             position: absolute;
-            top: 15px;
-            right: -30px;
-            background: #f59e0b;
-            color: #000;
-            font-size: 0.75rem;
-            font-weight: bold;
-            padding: 5px 30px;
-            transform: rotate(45deg);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.5;
+            animation: float 8s infinite alternate;
         }
     </style>
 </head>
-<body style="background: #050a12;">
+<body class="antialiased selection:bg-kangen-500 selection:text-white">
 
-    <!-- FIXED NAVBAR -->
-    <nav class="navbar" id="navbar">
-        <div class="container nav-inner">
-            <a href="#" class="nav-brand">
-                <span class="logo-icon">💧</span>
-                <span class="logo-text">Salud<span>Kangen</span></span>
+    <!-- Ambient Background -->
+    <div class="ambient-orb w-[500px] h-[500px] bg-kangen-900/30 top-[-20%] left-[-10%]"></div>
+    <div class="ambient-orb w-[600px] h-[600px] bg-blue-900/20 bottom-[10%] right-[-10%]" style="animation-delay: -4s;"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            <a href="#" class="flex items-center gap-3 group">
+                <span class="text-3xl filter drop-shadow-[0_0_10px_rgba(45,212,191,0.5)] group-hover:scale-110 transition-transform">💧</span>
+                <span class="font-serif font-bold text-2xl tracking-wide text-white">Kangen<span class="text-kangen-400 font-sans font-light">Ecosystem</span></span>
             </a>
-            <div class="nav-links">
-                <a href="#ecosistema">El Ecosistema</a>
-                <a href="../puntos_tarjeta/index.html">Preguntas Frecuentes</a>
-                <a href="#contacto" class="btn-primary btn-sm">Demo Gratuita</a>
+            <div class="hidden md:flex space-x-8 items-center text-sm font-medium text-slate-300 tracking-wide">
+                <a href="#filosofia" class="hover:text-white transition-colors">Filosofía</a>
+                <a href="#modulos" class="hover:text-white transition-colors">Módulos</a>
+                <a href="#contacto" class="px-6 py-2.5 rounded-full border border-white/20 hover:bg-white hover:text-slate-900 transition-all">
+                    Agendar Demo
+                </a>
             </div>
         </div>
     </nav>
 
-    <!-- PORTAL HERO -->
-    <header class="portal-hero">
-        <div class="container relative z-10 animate-on-scroll">
-            <span class="pro-badge mb-4 display-inline-block px-4 py-2 rounded-full border border-blue-500/30 text-blue-400 bg-blue-500/10 uppercase tracking-widest text-xs font-bold">Distribuidor Independiente Enagic</span>
-            <h1 class="text-5xl md:text-7xl font-black text-white mb-6 leading-tight mt-6">
-                Eleva tu Vida <br>
-                <span class="gradient-text">Gota a Gota</span>
-            </h1>
-            <p class="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-10">
-                Bienvenido al portal integral de Salud Kangen. Descubre por qué un simple dispositivo médico japonés de la matriz de Enagic tiene el poder de proteger tu biología, redefinir tu hidratación y liberar tu hogar de químicos tóxicos.
-            </p>
-            <div class="flex flex-wrap gap-4 justify-center">
-                <a href="../introduccion-kangen/index.html" class="btn-primary shadow-[0_0_30px_rgba(14,165,233,0.3)]">Comenzar el Viaje Principal</a>
-                <a href="#ecosistema" class="btn-secondary">Explorar las Áreas</a>
+    <!-- Master Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center justify-center pt-32 pb-20 px-4 hero-gradient">
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700/50 text-kangen-400 text-xs font-bold tracking-widest uppercase mb-8 backdrop-blur-sm animate-pulse-slow">
+                <span class="w-2 h-2 rounded-full bg-kangen-400"></span> Dispositivo Médico Certificado ISO 13485
             </div>
-        </div>
-    </header>
-
-    <!-- HUB NAVIGATION CARDS -->
-    <main class="container py-10" id="ecosistema">
-        <div class="text-center mt-12 animate-on-scroll">
-            <span class="text-blue-500 font-bold tracking-widest uppercase text-sm mb-4 block">Centro de Comando</span>
-            <h2 class="text-4xl font-bold text-white">Descubre todo el Ecosistema</h2>
-        </div>
-
-        <div class="hub-grid">
             
-            <!-- TARJETA: RESPUESTAS RÁPIDAS (NUEVA) -->
-            <div class="hub-card animate-on-scroll" style="transition-delay: 0.1s;">
-                <span class="hub-icon">❓</span>
-                <h3 class="hub-title">Las 23 Razones de Peso</h3>
-                <p class="hub-desc">
-                    Respuestas rigurosas a las preguntas más frecuentes sobre hidratación, detoxificación celular, longevidad y el ahorro medioambiental del dispositivo.
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-8 leading-[1.1] tracking-tight">
+                No eres lo que comes,<br>
+                <span class="text-gradient">eres lo que bebes.</span>
+            </h1>
+            
+            <div class="max-w-3xl mx-auto space-y-6 text-lg md:text-xl text-slate-300 font-light leading-relaxed mb-12">
+                <p>
+                    Piensa en esto por un segundo: <strong class="text-white font-normal">el 70% de tu cuerpo es literal y físicamente agua</strong>. Tu sangre, tu cerebro, cada célula de tus músculos e intestinos flota y opera en un medio acuoso. Y, sin embargo, nos conformamos con darle a nuestra máquina biológica más perfecta un combustible muerto, ácido, empaquetado en plástico y desprovisto de carga eléctrica.
                 </p>
-                <a href="../puntos_tarjeta/index.html" class="hub-btn">Leer Argumentario →</a>
+                <p class="text-xl md:text-2xl font-serif italic text-slate-100">
+                    Te mereces algo mejor. Tu familia se merece algo mejor.
+                </p>
+                <p>
+                    Mereces beber directamente de una fuente que restaura tu homeostasis. Un agua cargada de <strong class="text-kangen-400 font-normal">hidrógeno molecular antioxidante</strong> capaz de penetrar la pared celular, neutralizar el envejecimiento oxidativo y purificar tu organismo desde los cimientos. No es un lujo; es el estándar de vida que la tecnología japonesa ha puesto a tu alcance.
+                </p>
             </div>
 
-            <!-- TARJETA: INTRODUCCIÓN GENERAL -->
-            <div class="hub-card animate-on-scroll" style="transition-delay: 0.2s;">
-                <span class="hub-icon">📚</span>
-                <h3 class="hub-title">El Viaje de 16 Módulos</h3>
-                <p class="hub-desc">
-                    El curso definitivo y estructurado para comprender cómo la oxidación afecta a tu cuerpo y cómo el Hidrógeno Molecular lo frena.
-                </p>
-                <a href="../introduccion-kangen/index.html" class="hub-btn">Acceder al Curso →</a>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <a href="#modulos" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-kangen-500 to-blue-600 text-white font-bold text-lg hover:shadow-[0_0_30px_rgba(45,212,191,0.4)] hover:scale-105 transition-all">
+                    Adentrarse en el Ecosistema ↓
+                </a>
             </div>
-
-            <!-- TARJETA: CIENCIA CLÍNICA -->
-            <div class="hub-card animate-on-scroll" style="transition-delay: 0.3s;">
-                <span class="hub-icon">🔬</span>
-                <h3 class="hub-title">Evidencia Clínica</h3>
-                <p class="hub-desc">
-                    Sumérgete en estudios revisados por pares sobre el impacto del agua rica en Hidrógeno (H2) en la diabetes, estrés oxidativo y perfil lipídico.
-                </p>
-                <a href="../ciencia/diabetes/estudio_diabeter_colesterolv3.html" class="hub-btn">Ver Estudios →</a>
-            </div>
-
-            <!-- TARJETA: PROTOCOLO DENTAL -->
-            <div class="hub-card animate-on-scroll" style="transition-delay: 0.4s;">
-                <span class="hub-icon">🦷</span>
-                <h3 class="hub-title">Protocolo pH 2.5 Dental</h3>
-                <p class="hub-desc">
-                    Sustituye colutorios abrasivos. Descubre cómo el poder bactericida del Ácido Hipocloroso puede revertir la enfermedad periodontal sin dañar tu flora benéfica.
-                </p>
-                <a href="../ph25/protocolo_colutorio_dental_kangen/landing.html" class="hub-btn">Ver Protocolo →</a>
-            </div>
-
-            <!-- TARJETA: RENTABILIDAD / INVERSION -->
-            <div class="hub-card animate-on-scroll" style="transition-delay: 0.5s;">
-                <span class="hub-icon">💶</span>
-                <h3 class="hub-title">Inversión y Retorno</h3>
-                <p class="hub-desc">
-                    Desglosamos las matemáticas detrás del dispositivo. Cómo ahorrar dinero, eliminar el costo del agua embotellada y la oportunidad financiera global de Enagic.
-                </p>
-                <a href="../../finanzas_kangen/index.html" class="hub-btn">Analizar Números →</a>
-            </div>
-
-            <!-- TARJETA: MANTENIMIENTO -->
-            <div class="hub-card animate-on-scroll border-dashed border-slate-700 opacity-80" style="transition-delay: 0.6s;">
-                <div class="status-soon">Próximamente</div>
-                <span class="hub-icon">🛠️</span>
-                <h3 class="hub-title">Centro de Mantenimiento</h3>
-                <p class="hub-desc">
-                    Guías en vídeo y paso a paso para el E-Cleaning mensual, recambios de filtro y asegurar que tu dispositivo alcance su garantía de 25 años.
-                </p>
-                <a href="#" class="hub-btn opacity-50 cursor-not-allowed" onclick="return false;">En Desarrollo</a>
-            </div>
-
-            <!-- TARJETA: TESTIMONIOS -->
-            <div class="hub-card animate-on-scroll border-dashed border-slate-700 opacity-80" style="transition-delay: 0.7s;">
-                <div class="status-soon">Próximamente</div>
-                <span class="hub-icon">💬</span>
-                <h3 class="hub-title">Casos de Éxito</h3>
-                <p class="hub-desc">
-                    Documentación de familias, atletas y pacientes que han transformado sus vidas (y sus analíticas) integrando esta tecnología en su rutina diaria.
-                </p>
-                <a href="#" class="hub-btn opacity-50 cursor-not-allowed" onclick="return false;">En Desarrollo</a>
-            </div>
-
         </div>
+    </section>
 
-        <!-- CALL TO ACTION FINAL -->
-        <div class="text-center my-24 p-12 rounded-[2rem] bg-gradient-to-r from-blue-900/40 to-cyan-900/20 border border-blue-500/20 shadow-2xl animate-on-scroll" id="contacto">
-            <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Tu Biología No Puede Esperar</h2>
-            <p class="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
-                No confíes en las promesas, confía en la experimentación directa. Solicita una demostración gratuita con nuestro equipo y mide por ti mismo la alcalinidad, la pureza y el nivel de Hidrógeno con medidores clínicos.
-            </p>
-            <a href="mailto:tu-email@ejemplo.com" class="inline-block bg-white text-blue-900 font-bold px-8 py-4 rounded-full text-lg shadow-[0_10px_30px_rgba(255,255,255,0.2)] hover:scale-105 transition-transform">
-                Solicitar Demostración y Prueba
-            </a>
-            <p class="mt-6 text-sm text-slate-500">Un Asesor se pondrá en contacto contigo sin compromiso de adquisición.</p>
+    <!-- Main Navigation Grid -->
+    <section id="modulos" class="py-24 px-4 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="text-center mb-20 animate-on-scroll">
+                <h2 class="text-3xl md:text-5xl font-serif font-bold text-white mb-4">El Centro de Mando</h2>
+                <p class="text-slate-400 text-lg max-w-2xl mx-auto">Navega por nuestras áreas de especialidad. Desde la introducción anatómica hasta los desgloces financieros exhaustivos.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- 1. INTRODUCCIÓN -->
+                <a href="../introduccion-kangen/index.html" class="group block h-full">
+                    <div class="module-card rounded-3xl p-8 h-full flex flex-col relative overflow-hidden text-left">
+                        <div class="absolute -right-10 -top-10 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition-all"></div>
+                        <div class="module-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-6 text-white shadow-lg">
+                            📖
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">La Introducción</h3>
+                        <p class="text-slate-400 leading-relaxed mb-8 flex-grow text-sm">
+                            El curso definitivo de 16 módulos. Descubre paso a paso por qué nos oxidamos, el paradigma alcalino y el viaje hacia la salud preventiva y longeva.
+                        </p>
+                        <div class="flex items-center text-kangen-400 font-semibold text-sm group-hover:text-white transition-colors">
+                            Iniciar el Viaje <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 2. CIENCIA -->
+                <a href="../ciencia/index.html" class="group block h-full">
+                    <div class="module-card rounded-3xl p-8 h-full flex flex-col relative overflow-hidden text-left">
+                        <div class="absolute -right-10 -top-10 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all"></div>
+                        <div class="module-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-6 text-white shadow-lg">
+                            🔬
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Evidencia Clínica</h3>
+                        <p class="text-slate-400 leading-relaxed mb-8 flex-grow text-sm">
+                            Nuestra gran base de datos de 100 estudios científicos indexados, análisis sobre diabetes, función renal y la superioridad del H2 frente a la isquemia.
+                        </p>
+                        <div class="flex items-center text-blue-400 font-semibold text-sm group-hover:text-white transition-colors">
+                            Exigir el Rigor <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 3. PREGUNTAS FRECUENTES -->
+                <a href="../puntos_tarjeta/index.html" class="group block h-full">
+                    <div class="module-card rounded-3xl p-8 h-full flex flex-col relative overflow-hidden text-left">
+                        <div class="absolute -right-10 -top-10 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl group-hover:bg-amber-500/20 transition-all"></div>
+                        <div class="module-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-6 text-white shadow-lg">
+                            ❓
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Las 23 Razones</h3>
+                        <p class="text-slate-400 leading-relaxed mb-8 flex-grow text-sm">
+                            Respuestas asertivas, lógicas y transparentes a las dudas comerciales. Desde la comparación con la ósmosis hasta la estructura hexagonal pura.
+                        </p>
+                        <div class="flex items-center text-amber-400 font-semibold text-sm group-hover:text-white transition-colors">
+                            Leer Argumentario <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 4. FINANZAS HOGAR -->
+                <a href="../../finanzas_kangen/index.html" class="group block h-full">
+                    <div class="module-card rounded-3xl p-8 h-full flex flex-col relative overflow-hidden text-left">
+                        <div class="absolute -right-10 -top-10 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all"></div>
+                        <div class="module-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-6 text-white shadow-lg border-emerald-500/30" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.2));">
+                            💶
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">ROI Familiar</h3>
+                        <p class="text-slate-400 leading-relaxed mb-8 flex-grow text-sm">
+                            Los números no mienten. El desglose exhaustivo de cómo la máquina se amortiza pagándote 0,039€/L y destruyendo el inmenso coste logístico oculto del supermercado.
+                        </p>
+                        <div class="flex items-center text-emerald-400 font-semibold text-sm group-hover:text-white transition-colors">
+                            Analizar Mis Finanzas <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 5. FINANZAS B2B -->
+                <a href="../../finanzas_restaurante_kangen/index.html" class="group block h-full">
+                    <div class="module-card rounded-3xl p-8 h-full flex flex-col relative overflow-hidden text-left">
+                        <div class="absolute -right-10 -top-10 w-32 h-32 bg-gold-500/10 rounded-full blur-2xl group-hover:bg-gold-500/20 transition-all"></div>
+                        <div class="module-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-6 text-white shadow-lg border-gold-500/30" style="background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(245, 158, 11, 0.2));">
+                            🍽️
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">HORECA Dinámico</h3>
+                        <p class="text-slate-400 leading-relaxed mb-8 flex-grow text-sm">
+                            El arma secreta de la restauración. Auditoría corporativa enseñando cómo pasar de 36.000€ a 1.400€ de coste anual recuperando el margen operativo en mesa de tu restaurante.
+                        </p>
+                        <div class="flex items-center text-gold-400 font-semibold text-sm group-hover:text-white transition-colors">
+                            Salvar mi Margen <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 6. CASOS DE ÉXITO & TESTIMONIOS -->
+                <div class="module-card border-none bg-slate-900 overflow-hidden relative rounded-3xl p-8 h-full flex flex-col text-left justify-center items-center text-center opacity-80">
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1555529902-5261145633bf?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
+                    <span class="text-sm font-bold tracking-widest uppercase status-soon mb-4">Próximamente</span>
+                    <div class="text-5xl mb-4 grayscale">💬</div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Casos de Éxito Reales</h3>
+                    <p class="text-slate-500 leading-relaxed mb-6 flex-grow text-sm">
+                        Miles de vidas y analíticas de sangre transformadas en todo el mundo. La prueba biológica humana en fase de recopilación y montaje.
+                    </p>
+                </div>
+
+            </div>
         </div>
+    </section>
 
-    </main>
+    <!-- High End CTA -->
+    <section id="contacto" class="py-24 px-4 relative z-10">
+        <div class="max-w-5xl mx-auto bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 rounded-[3rem] p-10 md:p-20 text-center relative overflow-hidden shadow-2xl">
+            <div class="absolute inset-0 background-noise opacity-20"></div>
+            <div class="relative z-10">
+                <span class="text-5xl mb-6 block">🩺</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6">No exijas fe. Exige Medición Clínica.</h2>
+                <p class="text-xl text-slate-300 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                    Sabemos que en la era de los falsos milagros de internet, el rigor es lo único que importa. Déjanos ir a tu hogar u oficina con reactivos médicos y medidores de ORP para que el agua que bebes confiese su verdad.
+                </p>
+                <button class="inline-flex items-center justify-center px-10 py-5 rounded-full bg-white text-slate-900 font-bold text-lg hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:scale-105 transition-all">
+                    Solicitar Auditoría Domiciliaria Gratuita
+                </button>
+            </div>
+        </div>
+    </section>
 
-    <footer class="text-center py-10 border-t border-white/5 opacity-60">
-        <p class="text-sm">© 2026 Distribuidor Independiente Enagic. Las afirmaciones en este portal están sujetas a estudios clínicos de evidencia, el Agua Kangen apoya la homeostasis corporal previniendo daño oxidativo.</p>
+    <!-- Minimalist Footer -->
+    <footer class="py-12 border-t border-slate-800 text-center text-slate-500 text-sm relative z-10">
+        <div class="max-w-4xl mx-auto px-4">
+            <p class="mb-4">© 2026 Distribuidor Independiente Enagic. Promoviendo la homeostasis celular global.</p>
+            <p class="font-light text-xs max-w-2xl mx-auto opacity-60">Las declaraciones en este portal están extraídas de la literatura médica disponible. Este dispositivo cuenta con certificación europea e ISO médica (13485). Consulta siempre a tu especialista frente a patologías graves subyacentes.</p>
+        </div>
     </footer>
 
-    <!-- Utilizar archivo de scroll animation existente -->
-    <script src="../introduccion-kangen/main.js"></script>
 </body>
 </html>

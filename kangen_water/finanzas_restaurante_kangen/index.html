@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rentabilidad HORECA | Kangen para Restaurantes y Hostelería</title>
+    <meta name="description" content="Descubre cómo transformar el gasto de agua de tu restaurante en puro margen de beneficio. Reduce costes, elimina químicos y eleva la imagen de tu negocio.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #030712;
+            --bg-card: rgba(15, 23, 42, 0.7);
+            --gold: #fbbf24;
+            --gold-dim: rgba(251, 191, 36, 0.15);
+            --cyan: #22d3ee;
+            --emerald: #34d399;
+            --red: #f87171;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border: rgba(255,255,255,0.08);
+        }
+
+        body {
+            background: var(--bg-deep);
+            color: var(--text);
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* ===== HERO (Split Layout) ===== */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-deep);
+        }
+
+        @media (max-width: 968px) {
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+                padding-top: 100px;
+            }
+        }
+
+        .hero-content {
+            padding: 80px 60px 80px 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        @media (max-width: 968px) {
+            .hero-content {
+                padding: 40px 24px;
+                text-align: center;
+            }
+        }
+
+        .hero-image-showcase {
+            position: relative;
+            height: 100%;
+            min-height: 500px;
+            overflow: hidden;
+        }
+
+        .hero-image-showcase img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: contrast(1.1) saturate(1.1);
+        }
+
+        .hero-image-showcase::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, var(--bg-deep) 0%, rgba(3,7,18,0.3) 30%, transparent 100%);
+            pointer-events: none;
+        }
+
+        @media (max-width: 968px) {
+            .hero-image-showcase { min-height: 350px; }
+            .hero-image-showcase::after {
+                background: linear-gradient(to top, var(--bg-deep) 0%, transparent 50%);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            border: 1px solid rgba(251,191,36,0.4);
+            background: rgba(251,191,36,0.1);
+            color: var(--gold);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.3rem, 4.5vw, 4.2rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1.5px;
+        }
+
+        .hero h1 .price {
+            display: block;
+            color: var(--gold);
+            font-size: clamp(3rem, 8vw, 6rem);
+            text-shadow: 0 0 60px rgba(251,191,36,0.4);
+            margin-top: 0.2em;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 550px;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 968px) { .hero p { margin: 0 auto; } }
+
+        /* ===== STAT STRIP ===== */
+        .stat-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            margin: -60px auto 0;
+            position: relative; z-index: 20;
+            max-width: 900px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid var(--border);
+        }
+
+        .stat-item:last-child { border-right: none; }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .stat-strip { grid-template-columns: repeat(2, 1fr); }
+            .stat-item { border-bottom: 1px solid var(--border); }
+        }
+
+        /* ===== SECTIONS ===== */
+        section { padding: 100px 0; }
+
+        .section-label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--cyan);
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.15;
+        }
+
+        /* ===== THE FORMULA ===== */
+        .formula-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) { .formula-grid { grid-template-columns: 1fr; } }
+
+        .formula-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .formula-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 40px rgba(251,191,36,0.1);
+        }
+
+        .formula-emoji { font-size: 3rem; margin-bottom: 1rem; }
+        .formula-num { font-size: 2.5rem; font-weight: 900; color: var(--gold); margin-bottom: 0.5rem; }
+        .formula-label { font-size: 0.9rem; color: var(--text-muted); font-weight: 600; }
+        .formula-desc { margin-top: 1rem; font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+        /* ===== IMAGE SECTION ===== */
+        .full-image-section {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .full-image-section img {
+            width: 100%;
+            display: block;
+            max-height: 600px;
+            object-fit: cover;
+        }
+
+        .full-image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(3,7,18,0.95) 0%, rgba(3,7,18,0.4) 50%, rgba(3,7,18,0.95) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .overlay-quote {
+            max-width: 800px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .overlay-quote blockquote {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* ===== SCENARIO CARDS ===== */
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) { .scenario-grid { grid-template-columns: 1fr; } }
+
+        .scenario-card {
+            border-radius: 20px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scenario-card.bezoya {
+            background: linear-gradient(135deg, rgba(248,113,113,0.1), rgba(15,23,42,0.8));
+            border: 1px solid rgba(248,113,113,0.3);
+        }
+
+        .scenario-card.premium {
+            background: linear-gradient(135deg, rgba(251,191,36,0.1), rgba(15,23,42,0.8));
+            border: 1px solid rgba(251,191,36,0.3);
+        }
+
+        .scenario-price {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .scenario-card.bezoya .scenario-price { color: var(--red); }
+        .scenario-card.premium .scenario-price { color: var(--gold); }
+
+        /* ===== COST BREAKDOWN ===== */
+        .cost-breakdown {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .cost-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 3rem;
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            transition: all 0.4s ease;
+        }
+
+        .cost-item:hover {
+            border-color: var(--gold);
+            transform: translateX(10px);
+            box-shadow: -10px 10px 40px rgba(0,0,0,0.5);
+            background: rgba(15, 23, 42, 0.9);
+        }
+
+        .cost-icon {
+            font-size: 3.5rem;
+            line-height: 1;
+            background: rgba(15,23,42,0.8);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 100px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .cost-content h3 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .cost-content p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+        }
+
+        .cost-content strong { color: var(--gold); }
+
+        @media (max-width: 768px) {
+            .cost-item {
+                flex-direction: column;
+                padding: 2rem;
+            }
+        }
+
+        /* ===== CTA ===== */
+        .cta-section {
+            text-align: center;
+            padding: 100px 0;
+            background: radial-gradient(circle at center, rgba(251,191,36,0.08) 0%, transparent 60%);
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #f59e0b);
+            color: #000;
+            font-weight: 800;
+            font-size: 1.3rem;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(251,191,36,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 50px rgba(251,191,36,0.5);
+        }
+
+        /* ===== REVEAL ANIMATION ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ===== NAVBAR ===== */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 16px 0;
+            background: rgba(3,7,18,0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+        .nav-brand { font-weight: 900; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
+        .nav-brand span { color: var(--gold); }
+        .nav-links a {
+            color: var(--text-muted); font-size: 0.9rem; font-weight: 500; margin-left: 1.5rem; transition: color 0.3s;
+        }
+        .nav-links a:hover { color: #fff; }
+
+        footer {
+            text-align: center; padding: 3rem 0; border-top: 1px solid var(--border);
+            color: var(--text-muted); font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <div class="container nav-inner">
+            <a href="../kangen/pagina_base/index.html" class="nav-brand">💧 HORECA<span>Kangen</span></a>
+            <div class="nav-links">
+                <a href="../kangen/pagina_base/index.html">← Ecosistema</a>
+                <a href="#rentabilidad">Rentabilidad</a>
+                <a href="#costes-ocultos">Logística</a>
+                <a href="#contacto">Contacto HORECA</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Análisis B2B — Restaurantes y Hostelería</div>
+            <h1>
+                El Gasto en Agua es Ahora tu Mayor
+                <span class="price">Margen Neto</span>
+            </h1>
+            <p>La matemática es implacable. Deja de perder decenas de miles de euros comprando botellas pesadas a 1€ que ocupan espacio y energía términca. Sirve agua de lujo, purificada, hidrogenada y antioxidante producida in-situ por <strong>0,039€</strong> el litro.</p>
+        </div>
+        <div class="hero-image-showcase">
+            <img src="hero.png" alt="Servicio en mesa de agua purificada Kangen en un restaurante de lujo">
+        </div>
+    </header>
+
+    <!-- ===== STAT STRIP ===== -->
+    <div class="container">
+        <div class="stat-strip">
+            <div class="stat-item">
+                <div class="stat-value">0,039€</div>
+                <div class="stat-label">Coste Real por Litro</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">~98%</div>
+                <div class="stat-label">Margen de Beneficio Estimado</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">0 m²</div>
+                <div class="stat-label">Espacio de Almacén Requerido</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" style="color: var(--emerald);">100%</div>
+                <div class="stat-label">Libre de Plástico (PET)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== THE FORMULA ===== -->
+    <section id="rentabilidad">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">El Modelo de Negocio HORECA</span>
+                <h2>Convierte un Gasto en <span style="color:var(--gold)">Ingreso Puro</span></h2>
+                <p style="color: var(--text-muted); max-width: 800px; font-size: 1.1rem;">Imagina un restaurante que sirve una media de 100 litros de agua al día (100 comensales x 1 litro). Repite eso 365 días al año. Comprar agua embotellada "premium" se come tu margen operativo directamente.</p>
+            </div>
+
+            <div class="scenario-grid">
+                <div class="scenario-card bezoya reveal">
+                    <p style="color: var(--red); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 1rem;">Modelo Tradicional (Agua Embotellada)</p>
+                    <p style="font-weight: 600; font-size: 1.2rem; margin-bottom: 0.5rem;">Cálculo: 1€ coste/botella × 100/día × 365 días</p>
+                    <div class="scenario-price">- 36.500€</div>
+                    <p style="color: var(--text-muted);">Gasto ANUAL en compras a proveedores de agua.</p>
+                    <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 1.5rem 0;">
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Coste de enfriadores y neveras: <strong style="color: var(--red);">Muy Alto.</strong></p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Gestión de residuos y envases: <strong style="color: var(--red);">Terrible.</strong></p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Calidad percibida: <strong style="color: var(--text);">Estándar. Agua muerta embotellada hace meses.</strong></p>
+                </div>
+
+                <div class="scenario-card premium reveal" style="transition-delay: 0.15s;">
+                    <p style="color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 1rem;">Modelo de Salud Kangen</p>
+                    <p style="font-weight: 600; font-size: 1.2rem; margin-bottom: 0.5rem;">Cálculo: 0,039€ coste/litro × 100/día × 365 días</p>
+                    <div class="scenario-price">- 1.423€</div>
+                    <p style="color: var(--text-muted);">Gasto ANUAL de producción incluyendo máquina/filtros.</p>
+                    <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 1.5rem 0;">
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Ahorro neto directo de capital: <strong style="color: var(--gold);">+ 35.000€ extra de margen.</strong></p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">ROI de la inversión inicial: <strong style="color: var(--emerald);">Inmediato (1 mes).</strong></p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Calidad percibida: <strong style="color: var(--text);">Agua viva, antioxidante, de Km Cero real.</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== IMAGE BREAK: CHEF HYGIENE ===== -->
+    <div class="full-image-section">
+        <img src="chef.png" alt="Chef profesional en una cocina moderna lavando verduras frescas orgánicas bajo el grifo de agua">
+        <div class="full-image-overlay">
+            <div class="overlay-quote">
+                <blockquote>"La calidad de un establecimiento Michelin no solo reside en cómo cocina los alimentos, sino en la pureza del agua con la que los lava y prepara."</blockquote>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== HIDDEN HOSTELRY COSTS ===== -->
+    <section id="costes-ocultos">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label">El Talón de Aquiles de la Hostelería</span>
+                <h2>Los Costes <span style="color:var(--red)">Ocultos</span> de la Logística del Agua</h2>
+                <p style="color: var(--text-muted); max-width: 800px; font-size: 1.1rem;">Los miles de euros de diferencia en inventario de agua son solo la punta del iceberg. El impacto real en tu cuenta de explotación (P&L) radica en la inmensa fricción logística que el modelo de "Agua Embotellada" impone a tu restaurante.</p>
+            </div>
+
+            <div class="cost-breakdown reveal" style="transition-delay: 0.2s;">
+                <!-- Almacenaje -->
+                <div class="cost-item">
+                    <div class="cost-icon">📦</div>
+                    <div class="cost-content">
+                        <h3>El Metraje Cuadrado Perdido</h3>
+                        <p>¿A cuánto pagas el metro cuadrado de tu local? Dedicar preciosos metros de almacén a apilar palés de botellas llenas y acumular cajas sucias de botellas vacías para el retorno al proveedor, es un desperdicio criminal de espacio. Kangen requiere literalmente <strong>cero metros de almacén</strong>.</p>
+                    </div>
+                </div>
+
+                <!-- Electricidad -->
+                <div class="cost-item">
+                    <div class="cost-icon">❄️</div>
+                    <div class="cost-content">
+                        <h3>La Factura Eléctrica Constante</h3>
+                        <p>Pre-enfriar cientos de botellas de agua o garrafas diariamente exige neveras industriales funcionando al 100% de potencia bruta ininterrumpidamente. Kangen permite almacenar botellas de cristal de servicio ya higienizadas; puedes usar hielo purificado para enfriar en el acto o tener solo un frigorífico de servicio en sala, reduciendo el <strong>costo energético mensual a la mitad</strong>.</p>
+                    </div>
+                </div>
+
+                <!-- Personal -->
+                <div class="cost-item">
+                    <div class="cost-icon">🏃</div>
+                    <div class="cost-content">
+                        <h3>El Esfuerzo Vital de tu Plantilla</h3>
+                        <p>Horas de camareros transportando cajas pesadísimas de cristal desde el oscuro almacén o sótano hacia las neveras de servicio del salón, con el riesgo continuo de roturas y accidentes laborales. <strong>Elimina el sobreesfuerzo</strong>. El agua fluye directamente en la zona de pase.</p>
+                    </div>
+                </div>
+
+                <!-- Limpieza (Bono) -->
+                <div class="cost-item">
+                    <div class="cost-icon">🧴</div>
+                    <div class="cost-content">
+                        <h3>Sustitución Total de Químicos Industriales</h3>
+                        <p>Éste es el secreto final: tu dispositivo Enagic produce <strong>pH 11.5</strong>. Es un emulsionante tan fuerte que deshace grasas puras de freidoras y campanas extractoras mejor que el desengrasante químico, sin tóxicos. Al mismo tiempo produce <strong>pH 2.5</strong> (Ácido Hipocloroso), autorizado por los ministerios sanitarios mundiales para desinfectar tablas, cuchillos y salmonella en segundos. Puedes <strong>cancelar tus contratos millonarios con distribuidores químicos</strong>.</p>
+                    </div>
+                </div>
+
+                <!-- Branding -->
+                <div class="cost-item">
+                    <div class="cost-icon">⭐</div>
+                    <div class="cost-content">
+                        <h3>Estatus, Salud y Branding Sostenible</h3>
+                        <p>Los clientes actuales buscan sostenibilidad extrema. Servir "Agua filtrada premium, hidrogenada in situ, libre de tóxicos y PET" en tu botella de cristal grabada con tu logo es una fuerte declaración de estatus. Vendes salud, vendes Km Cero, y eliminas tu inmensa huella de carbono logística de un plumazo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-section" id="contacto">
+        <div class="container reveal">
+            <h2 style="font-size: clamp(1.8rem, 4vw, 3rem);">El Negocio de la Hostelería Va de Márgenes.<br><span style="color:var(--gold);">Gana Donde Antes Perdías.</span></h2>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 1.5rem auto 2.5rem; font-size: 1.1rem;">
+                Las grandes cadenas y estrellas Michelin ya están realizando la transición tecnológica en sus cocinas y salas. Solicita una auditoría sobre el coste del agua en tu negocio; te instalamos una unidad de prueba sin compromiso.
+            </p>
+            <a href="../../kangen/pagina_base/index.html" class="cta-btn">Solicitar Auditoría B2B</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 — Distribuidor Independiente Enagic Division HORECA. Datos ilustrativos basados en medias de restauración nacionales.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

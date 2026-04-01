@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciencia y Respaldo Médico | Portal Kangen</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        
+        /* Premium Background Gradients */
+        .bg-gradient-clinical {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Subtle Medical Cross Background Pattern */
+        .bg-pattern {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-200">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md border-b border-slate-200 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="../pagina_base/index.html" class="flex items-center gap-2 text-slate-500 hover:text-blue-600 font-medium transition-colors">
+                    <span>←</span> Volver al Portal Principal
+                </a>
+                <div class="font-bold text-lg tracking-tight text-slate-800 flex items-center gap-2">
+                    <span class="text-blue-600">🔬</span> Centro de Investigación
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-clinical overflow-hidden text-center px-4">
+        <!-- Abstract Background Circles -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-blue-500/10 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-3xl -z-10"></div>
+        
+        <div class="max-w-4xl mx-auto relative z-10">
+            <span class="inline-block py-1 px-3 rounded-full bg-blue-900/50 text-blue-200 text-sm font-semibold tracking-wider uppercase mb-6 border border-blue-700/50 backdrop-blur-sm">
+                Rigor y Evidencia
+            </span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight tracking-tight">
+                La Verdadera Ciencia tras la <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Hidratación Avanzada</span>
+            </h1>
+            <p class="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-light">
+                Continuamente se realizan experimentos científicos y ensayos clínicos (<em>in vivo</em> e <em>in vitro</em>) a nivel mundial para evaluar cómo inciden el agua alcalina y el Hidrógeno molecular (H2) en la biología humana. Hasta ahora, <strong class="text-white font-medium">los resultados publicados en las revistas médicas más prestigiosas son excepcionalmente positivos</strong>, demostrando capacidades antioxidantes y terapéuticas reales.
+            </p>
+        </div>
+    </header>
+
+    <!-- Grid de Módulos Científicos -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20 pb-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Card 1: 100 Estudios (El Repositorio Base) -->
+            <a href="100 estudios/index.html" class="block group">
+                <div class="card-hover bg-white rounded-3xl p-8 h-full border border-slate-200 shadow-sm relative overflow-hidden flex flex-col">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -z-10 transition-transform group-hover:scale-110"></div>
+                    <div class="text-5xl mb-6">📚</div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">Base de Datos: 100 Estudios</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6 flex-grow">
+                        Directorio interactivo con 100 <em>papers</em> e investigaciones revisadas por pares (Peer-Reviewed) sobre los efectos metabólicos y preventivos del H2 en múltiples patologías.
+                    </p>
+                    <div class="flex items-center text-blue-600 font-semibold text-sm">
+                        Acceder al Repositorio <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 2: Peligro de Ósmosis -->
+            <a href="peligro_osmosis/cuidado_osmosis.html" class="block group">
+                <div class="card-hover bg-white rounded-3xl p-8 h-full border border-slate-200 shadow-sm relative overflow-hidden flex flex-col">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-bl-full -z-10 transition-transform group-hover:scale-110"></div>
+                    <div class="text-5xl mb-6">⚠️</div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-orange-600 transition-colors">El Peligro de la Ósmosis</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6 flex-grow">
+                        Análisis detallado apoyado en advertencias de la OMS sobre la desmineralización, agua muerta ácida (hipotónica) y por qué los filtros puros o la "gota milagrosa" no bastan.
+                    </p>
+                    <div class="flex items-center text-orange-600 font-semibold text-sm">
+                        Leer Advertencia Médica <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
+                    </div>
+                </div>
+            </a>
+
+             <!-- Card 3: Informe Filtzer -->
+            <a href="informe_filtzer/filtzer.html" class="block group">
+                <div class="card-hover bg-slate-900 rounded-3xl p-8 h-full border border-slate-800 shadow-lg relative overflow-hidden flex flex-col text-white">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-900/40 rounded-bl-full -z-10 transition-transform group-hover:scale-110"></div>
+                    <div class="text-5xl mb-6">👨‍⚕️</div>
+                    <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Informe Dr. Filtzer</h3>
+                    <p class="text-slate-300 leading-relaxed mb-6 flex-grow">
+                        De escéptico a defensor. Descubre cómo el Jefe del Hospital de Asuntos de Veteranos de Harvard quedó convencido por puros datos tras ver cómo el agua salvaba células Beta en diabéticos.
+                    </p>
+                    <div class="flex items-center text-cyan-400 font-semibold text-sm">
+                        Leer Resumen Clínico <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 4: Nefrología y Riñones -->
+            <a href="enfermedad_renal_cuidado/enfermedad_renal.html" class="block group">
+                <div class="card-hover bg-white rounded-3xl p-8 h-full border border-slate-200 shadow-sm relative overflow-hidden flex flex-col">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-bl-full -z-10 transition-transform group-hover:scale-110"></div>
+                    <div class="text-5xl mb-6">🩺</div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-emerald-600 transition-colors">Precauciones Renales</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6 flex-grow">
+                        Desmintiendo mitos agresivos comerciales. Guía basada en nefrología sobre el protocolo exacto post-diálisis y cuándo utilizar exclusivamente el "Agua Limpia pH 7.0".
+                    </p>
+                    <div class="flex items-center text-emerald-600 font-semibold text-sm">
+                        Revisar Protocolo <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
+                    </div>
+                </div>
+            </a>
+
+             <!-- Card 5: Diabetes (Aislado) -->
+            <a href="diabetes/estudio_diabeter_colesterolv3.html" class="block group">
+                <div class="card-hover bg-white rounded-3xl p-8 h-full border border-slate-200 shadow-sm relative overflow-hidden flex flex-col">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-50 rounded-bl-full -z-10 transition-transform group-hover:scale-110"></div>
+                    <div class="text-5xl mb-6">🩸</div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-purple-600 transition-colors">Diabetes y Colesterol</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6 flex-grow">
+                        Accede al reporte independiente sobre cómo la reducción drástica de especies de oxígeno activo mejora el panel lipídico y la respuesta insulínica.
+                    </p>
+                    <div class="flex items-center text-purple-600 font-semibold text-sm">
+                        Ver Marcadores Clínicos <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <!-- Footer Trust Section -->
+    <footer class="bg-white border-t border-slate-200 py-16 text-center px-4 bg-pattern">
+        <div class="max-w-2xl mx-auto">
+            <h4 class="text-xl font-serif font-bold text-slate-800 mb-4">Nuestro Compromiso Bioético</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">
+                Ninguno de los estudios presentados en este portal pretende sustituir la evaluación de un facultativo médico. Somos defensores de la homeostasis inducida por estilo de vida y pureza preventiva celular. Todo protocolo curativo o intervención primaria debe ser autorizada por el especialista responsable de su historia clínica.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>

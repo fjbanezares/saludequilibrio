@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe Interactivo: Agua Kangen y Salud Renal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chosen Palette: Warm Neutrals with Soft Sky Blue Accents -->
+    <!-- Application Structure Plan: The SPA uses a clean, vertical scroll "dashboard" layout. It starts with an executive summary to set the context. Then, it uses interactive tabs to separate the "Alkaline" debate from the "Clean Water (pH 7)" protocol requested by the user, ensuring clear distinction. A visual pH chart follows to explain the science of why alkaline water doesn't drastically change body pH. Finally, it provides clear, actionable nephrology guidelines. This structure moves the user from myth-busting to scientific explanation, and finally to practical, safe usage (the pH 7 protocol). -->
+    <!-- Visualization & Content Choices: 1. Interactive Tabs: To separate the friend's claims (Alkalinity) from the user's hypothesis (Filtration). 2. Horizontal Bar Chart (Chart.js): To visualize the pH scale of the human body vs. the water, making the abstract concept of 'biological buffering' easy to understand. NO SVG used; using Unicode emojis for visual grouping. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: #FAFAF9;
+            color: #292524;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        @media (max-width: 640px) {
+            .chart-container {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        <header class="text-center mb-12">
+            <div class="text-6xl mb-4">💧🔬⚖️</div>
+            <h1 class="text-4xl md:text-5xl font-bold text-stone-800 mb-4 tracking-tight">Agua Kangen y tus Riñones</h1>
+            <p class="text-xl text-stone-600 max-w-3xl mx-auto leading-relaxed">
+                Un análisis basado en evidencia científica sobre los efectos del agua ionizada, el debate sobre la
+                alcalinidad y el potencial del "Protocolo de Agua Limpia" (pH 7).
+            </p>
+        </header>
+
+        <section class="bg-white rounded-2xl shadow-sm border border-stone-200 p-6 md:p-8 mb-10">
+            <h2 class="text-2xl font-semibold text-stone-800 mb-4">Contexto del Informe</h2>
+            <p class="text-stone-600 leading-relaxed mb-4">
+                Este panel interactivo explora la relación entre el agua tratada (conocida comercialmente como agua
+                Kangen) y la salud renal. Abordaremos las dudas comunes, analizaremos las posturas de instituciones
+                médicas (como UCI Health y expertos en nefrología) y evaluaremos tu propuesta específica: ¿Qué pasa si
+                usamos la máquina solo para filtrar y obtener agua limpia (pH 7) sin alcalinizarla?
+            </p>
+            <p class="text-stone-600 leading-relaxed font-medium">
+                Explora las pestañas a continuación para separar los mitos comerciales de la realidad biológica.
+            </p>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-stone-800 mb-6 text-center">Análisis de Protocolos de Agua</h2>
+
+            <div class="flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-4 mb-6">
+                <button id="btn-alkaline"
+                    class="px-6 py-3 rounded-full font-medium transition-all duration-200 bg-sky-600 text-white shadow-md focus:outline-none ring-2 ring-sky-600 ring-offset-2">
+                    🧪 El Debate Alcalino (pH 8.5 - 9.5)
+                </button>
+                <button id="btn-clean"
+                    class="px-6 py-3 rounded-full font-medium transition-all duration-200 bg-stone-200 text-stone-700 hover:bg-stone-300 focus:outline-none">
+                    🛡️ Protocolo "Agua Limpia" (pH 7.0)
+                </button>
+            </div>
+
+            <div id="content-alkaline"
+                class="bg-white rounded-2xl shadow-sm border border-stone-200 p-6 md:p-8 transition-opacity duration-300">
+                <h3 class="text-xl font-bold text-sky-700 mb-4">Lo que dice la ciencia sobre el Agua Alcalina</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-100">
+                        <div class="text-2xl mb-2">❌</div>
+                        <h4 class="font-semibold text-stone-800 mb-2">Mito: "Previene cálculos renales"</h4>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            Un estudio de <strong>UCI Health</strong> concluyó que el agua alcalina comercial es poco
+                            probable que prevenga los cálculos renales. Su contenido alcalino real es demasiado bajo
+                            para elevar el pH de la orina de forma relevante comparado con medicamentos recetados (como
+                            el citrato de potasio).
+                        </p>
+                    </div>
+                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-100">
+                        <div class="text-2xl mb-2">👨‍⚕️</div>
+                        <h4 class="font-semibold text-stone-800 mb-2">Opinión Médica (Nefrología)</h4>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            Según consultas en <strong>Newtral</strong>, los nefrólogos advierten que subir el pH del
+                            agua artificialmente no demuestra beneficios reales. De hecho, se desaconseja su consumo
+                            continuado y exclusivo por falta de estudios a largo plazo, especialmente en riñones
+                            enfermos.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-6 p-4 bg-orange-50 text-orange-800 rounded-lg border border-orange-200 text-sm">
+                    <strong>Conclusión sobre la alcalinidad:</strong> Tu amiga tiene razón. El cuerpo humano regula su
+                    propio pH (homeostasis) de forma extremadamente estricta. Beber agua alcalina no "alcaliniza" tu
+                    cuerpo, ya que el ácido del estómago la neutraliza inmediatamente.
+                </div>
+            </div>
+
+            <div id="content-clean"
+                class="bg-white rounded-2xl shadow-sm border border-stone-200 p-6 md:p-8 hidden transition-opacity duration-300">
+                <h3 class="text-xl font-bold text-teal-700 mb-4">Tu Hipótesis: El Protocolo de Filtrado (pH 7.0)</h3>
+                <p class="text-stone-600 mb-6 leading-relaxed">
+                    Tienes mucha intuición clínica. Si descartamos la función de "ionización alcalina" y utilizamos la
+                    máquina puramente por su <strong>sistema de filtración de alta calidad (Agua Limpia a pH
+                        7.0)</strong>, el panorama cambia por completo.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-teal-50 p-4 rounded-xl border border-teal-100 text-center">
+                        <div class="text-3xl mb-2">🚫🔬</div>
+                        <h4 class="font-semibold text-stone-800 text-sm">Eliminación de Microplásticos</h4>
+                        <p class="text-stone-600 text-xs mt-2">Los filtros de carbón activo de alta densidad atrapan
+                            partículas físicas que, de otro modo, el riñón tendría que procesar.</p>
+                    </div>
+                    <div class="bg-teal-50 p-4 rounded-xl border border-teal-100 text-center">
+                        <div class="text-3xl mb-2">⛓️</div>
+                        <h4 class="font-semibold text-stone-800 text-sm">Reducción de Metales Pesados</h4>
+                        <p class="text-stone-600 text-xs mt-2">Disminuye la carga de plomo, cloro y otros contaminantes
+                            del agua del grifo, reduciendo el estrés tóxico renal.</p>
+                    </div>
+                    <div class="bg-teal-50 p-4 rounded-xl border border-teal-100 text-center">
+                        <div class="text-3xl mb-2">⚖️</div>
+                        <h4 class="font-semibold text-stone-800 text-sm">pH Neutro Seguro</h4>
+                        <p class="text-stone-600 text-xs mt-2">Al mantenerse en pH 7.0, no interfiere con la digestión
+                            gástrica ni genera falsas expectativas sobre el pH de la sangre o la orina.</p>
+                    </div>
+                </div>
+                <div class="mt-6 p-4 bg-teal-50 text-teal-900 rounded-lg border border-teal-200 text-sm">
+                    <strong>Veredicto:</strong> Este es un protocolo excelente. Para alguien con problemas renales,
+                    beber agua 100% libre de toxinas pero con un pH natural (7.0) es la mejor manera de aprovechar la
+                    inversión de la máquina sin los riesgos no estudiados de la alcalinización extrema.
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white rounded-2xl shadow-sm border border-stone-200 p-6 md:p-8 mb-12">
+            <h2 class="text-2xl font-semibold text-stone-800 mb-4">La Realidad Biológica del pH</h2>
+            <p class="text-stone-600 mb-6 leading-relaxed text-sm">
+                El gráfico interactivo a continuación ilustra por qué el agua alcalina tiene poco impacto en un riñón
+                enfermo. Observa la diferencia extrema entre el ácido de tu estómago (que neutraliza el agua) y el
+                estrecho margen en el que la sangre debe mantenerse.
+            </p>
+
+            <div class="chart-container">
+                <canvas id="phChart"></canvas>
+            </div>
+        </section>
+
+        <section class="bg-stone-800 text-stone-100 rounded-2xl shadow-lg p-6 md:p-8">
+            <h2 class="text-2xl font-semibold mb-6 flex items-center">
+                <span class="mr-3 text-3xl">📋</span> Recomendaciones Finales
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-medium text-sky-400 mb-3">Si tienes riñones sanos:</h3>
+                    <ul class="space-y-3 text-sm text-stone-300">
+                        <li class="flex items-start"><span class="mr-2">✔️</span> Puedes usar la máquina. La filtración
+                            es excelente.</li>
+                        <li class="flex items-start"><span class="mr-2">✔️</span> El agua alcalina es segura para la
+                            mayoría, pero no la veas como una "cura mágica".</li>
+                        <li class="flex items-start"><span class="mr-2">✔️</span> Mantén un consumo abundante de agua
+                            (2-3 litros diarios) independientemente del pH.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium text-orange-400 mb-3">Si tienes problemas renales (Cálculos,
+                        Insuficiencia):</h3>
+                    <ul class="space-y-3 text-sm text-stone-300">
+                        <li class="flex items-start"><span class="mr-2">⚠️</span> <strong>Evita el agua
+                                alcalina</strong> (pH > 8.0) como tratamiento sin permiso de tu nefrólogo.</li>
+                        <li class="flex items-start"><span class="mr-2">✅</span> <strong>Aplica tu "Protocolo de Agua
+                                Limpia":</strong> Usa la configuración "Clean Water" (pH 7.0) de tu máquina. Esto
+                            elimina contaminantes sin alterar tu química digestiva.</li>
+                        <li class="flex items-start"><span class="mr-2">🏥</span> Consulta siempre con tu especialista
+                            sobre tu límite de ingesta de líquidos diarios.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const btnAlkaline = document.getElementById('btn-alkaline');
+            const btnClean = document.getElementById('btn-clean');
+            const contentAlkaline = document.getElementById('content-alkaline');
+            const contentClean = document.getElementById('content-clean');
+
+            function switchTab(tab) {
+                if (tab === 'alkaline') {
+
+                    btnAlkaline.className = "px-6 py-3 rounded-full font-medium transition-all duration-200 bg-sky-600 text-white shadow-md focus:outline-none ring-2 ring-sky-600 ring-offset-2";
+                    btnClean.className = "px-6 py-3 rounded-full font-medium transition-all duration-200 bg-stone-200 text-stone-700 hover:bg-stone-300 focus:outline-none";
+
+                    contentAlkaline.classList.remove('hidden');
+                    contentClean.classList.add('hidden');
+                } else {
+
+                    btnClean.className = "px-6 py-3 rounded-full font-medium transition-all duration-200 bg-teal-600 text-white shadow-md focus:outline-none ring-2 ring-teal-600 ring-offset-2";
+                    btnAlkaline.className = "px-6 py-3 rounded-full font-medium transition-all duration-200 bg-stone-200 text-stone-700 hover:bg-stone-300 focus:outline-none";
+
+                    contentClean.classList.remove('hidden');
+                    contentAlkaline.classList.add('hidden');
+                }
+            }
+
+            btnAlkaline.addEventListener('click', () => switchTab('alkaline'));
+            btnClean.addEventListener('click', () => switchTab('clean'));
+
+
+            const ctx = document.getElementById('phChart').getContext('2d');
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Ácido Estomacal (Destruye alcalinidad)',
+                        'Agua Limpia Protocolo (Neutro)',
+                        'Sangre Humana (Rígidamente controlada)',
+                        'Agua Kangen Comercial'
+                    ],
+                    datasets: [{
+                        label: 'Nivel de pH',
+                        data: [2.0, 7.0, 7.4, 9.0],
+                        backgroundColor: [
+                            'rgba(249, 115, 22, 0.7)',
+                            'rgba(20, 184, 166, 0.7)',
+                            'rgba(239, 68, 68, 0.7)',
+                            'rgba(14, 165, 233, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgb(234, 88, 12)',
+                            'rgb(13, 148, 136)',
+                            'rgb(220, 38, 38)',
+                            'rgb(2, 132, 199)'
+                        ],
+                        borderWidth: 1,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.x !== null) {
+                                        label += context.parsed.x;
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            min: 0,
+                            max: 14,
+                            title: {
+                                display: true,
+                                text: 'Escala de pH (0 Ácido - 14 Alcalino)',
+                                color: '#57534e'
+                            },
+                            grid: {
+                                color: '#e7e5e4'
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                callback: function (value, index, values) {
+                                    const label = this.getLabelForValue(value);
+                                    if (label.length > 20) {
+                                        return label.substr(0, 20) + '...';
+                                    } else {
+                                        return label;
+                                    }
+                                },
+                                color: '#44403c',
+                                font: {
+                                    weight: '500'
+                                }
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
