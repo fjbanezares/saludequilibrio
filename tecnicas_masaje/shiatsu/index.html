@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructura Energética: Shiatsu | Salud Equilibrio</title>
+    <meta name="description" content="Domina todos los canales y meridianos en Shiatsu. Un viaje profundo para desbloquear el flujo vital.">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Bodoni Moda', 'serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            400: '#d4af37',
+                        },
+                        zen: '#0a0a0a',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            color: #d1d5db;
+        }
+
+        .meridian-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            padding: 2.5rem;
+            border-radius: 2rem;
+            height: 100%;
+        }
+
+        .meridian-card:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-8px);
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(5, 5, 5, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .timeline-bullet {
+            width: 8px;
+            height: 8px;
+            background: #d4af37;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-gold-400/30 selection:text-white">
+
+    <!-- Sub Navigation -->
+    <nav class="fixed w-full z-50 nav-blur">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4 group">
+                <span class="text-gold-400 text-xs tracking-[5px] uppercase font-bold opacity-80 group-hover:opacity-100 transition-opacity">← Especialidades</span>
+            </a>
+            <div class="font-outfit font-bold text-lg tracking-widest text-white uppercase opacity-90 leading-none">
+                Shiatsu <span class="text-gold-400 font-light">Estructural</span>
+            </div>
+            <div class="hidden md:flex gap-8 items-center text-[9px] tracking-[4px] uppercase font-bold text-gray-500">
+                <a href="#meridianos" class="text-white">Canales</a>
+                <a href="#procedimiento" class="hover:text-gold-400 transition-colors">Técnica</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Master Hero -->
+    <section class="relative pt-64 pb-32 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div class="space-y-12 animate-fade-in">
+                <span class="inline-block text-gold-400 text-xs font-bold tracking-[6px] uppercase mb-10 opacity-70">El Flujo del Ki</span>
+                <h1 class="text-6xl md:text-8xl font-serif italic text-white leading-tight">Mapa de los <br>Canales</h1>
+                <p class="text-lg md:text-xl text-gray-500 font-light leading-relaxed max-w-xl">
+                    En Shiatsu, el cuerpo no es una masa muscular aislada, sino un entramado de rutas energéticas o meridianos. Al presionar cada punto, reconectamos con el sistema nervioso central y reajustamos la homeostasis.
+                </p>
+                <div class="flex items-center gap-6">
+                    <div class="w-12 h-12 rounded-full border border-gold-400/30 flex items-center justify-center text-gold-400 animate-float text-xl">
+                        ☯
+                    </div>
+                    <span class="text-[10px] tracking-[4px] uppercase font-bold text-gray-400">Restauración Total</span>
+                </div>
+            </div>
+            
+            <div class="relative">
+                <div class="absolute inset-x-0 -top-20 bottom-0 bg-gold-400/5 blur-[100px] rounded-full"></div>
+                <img src="https://images.unsplash.com/photo-1610444391696-6b2db39b7d8d?auto=format&fit=crop&q=80" alt="Body drawing with acupuncture points" class="relative rounded-[3rem] border border-white/5 shadow-2xl opacity-80">
+            </div>
+        </div>
+    </section>
+
+    <!-- Meridian Grid -->
+    <section id="meridianos" class="py-32 px-6 bg-zen border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <header class="text-center mb-32 max-w-2xl mx-auto">
+                <h2 class="text-4xl font-serif italic text-white mb-8 leading-tight">Los 12 Canales Principales</h2>
+                <p class="text-sm text-gray-500 font-light leading-relaxed">
+                    Repasamos el sistema completo de meridianos. Cada uno está vinculado a un órgano y una esfera emocional-fisiológica específica.
+                </p>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- PULMÓN -->
+                <div class="meridian-card">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="text-xs tracking-[5px] text-gray-600 uppercase font-black">Lung / Met</span>
+                        <div class="timeline-bullet"></div>
+                    </div>
+                    <h4 class="text-2xl font-serif italic text-white mb-4">Pulmón</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed font-light mb-6">
+                        Gobierna la respiración y la energía defensiva. Se vincula con la tristeza, el desapego y la asimilación del aire puro.
+                    </p>
+                    <div class="text-[10px] tracking-[2px] font-bold text-gold-400 uppercase">3:00 - 5:00 AM</div>
+                </div>
+
+                <!-- IG -->
+                <div class="meridian-card">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="text-xs tracking-[5px] text-gray-600 uppercase font-black">Intestino Grueso</span>
+                        <div class="timeline-bullet"></div>
+                    </div>
+                    <h4 class="text-2xl font-serif italic text-white mb-4">I. Grueso</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed font-light mb-6">
+                        Encargado de la eliminación física y emocional. Su desequilibrio se traduce en estreñimiento o dificultad para soltar el pasado.
+                    </p>
+                    <div class="text-[10px] tracking-[2px] font-bold text-gold-400 uppercase">5:00 - 7:00 AM</div>
+                </div>
+
+                <!-- ESTÓMAGO -->
+                <div class="meridian-card">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="text-xs tracking-[5px] text-gray-600 uppercase font-black">Stomach / Tierra</span>
+                        <div class="timeline-bullet"></div>
+                    </div>
+                    <h4 class="text-2xl font-serif italic text-white mb-4">Estómago</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed font-light mb-6">
+                        Procesa no solo alimentos, sino información y emociones. Se vincula con la nutrición y la estabilidad mental.
+                    </p>
+                    <div class="text-[10px] tracking-[2px] font-bold text-gold-400 uppercase">7:00 - 9:00 AM</div>
+                </div>
+
+                <!-- More can be added here -->
+                <div class="meridian-card bg-white/5 border-dashed border-white/20 flex flex-col justify-center items-center text-center">
+                    <h4 class="text-sm font-bold tracking-[3px] text-gray-500 uppercase mb-4">Continuando el Recorrido...</h4>
+                    <p class="text-xs text-gray-600 font-light max-w-[200px]">Corazón, Vejiga, Riñón, Pericardio, Hígado y Vesícula Biliar en desarrollo.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center text-xs tracking-widest text-gray-600">
+        <p>© 2026 Salud Equilibrio. El Mapa del Cuerpo Humano.</p>
+    </footer>
+
+</body>
+
+</html>

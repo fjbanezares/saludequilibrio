@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Especialidades de Masaje | Salud Equilibrio</title>
+    <meta name="description" content="Domina las técnicas ancestrales de masaje. Shiatsu para el flujjo energético y Masaje Thai para la elongación física.">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Bodoni Moda', 'serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            400: '#d4af37',
+                        },
+                        zen: '#0a0a0a',
+                    },
+                    animation: {
+                        'float': 'float 8s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            color: #d1d5db;
+        }
+
+        .massage-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+
+        .massage-card:hover {
+            transform: scale(1.02);
+            border-color: rgba(212, 175, 55, 0.4);
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8);
+        }
+
+        .massage-card:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.6) saturate(1.2);
+        }
+
+        .massage-card img {
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: brightness(0.4) saturate(0.8);
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(5, 5, 5, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-gold-400/30 selection:text-white">
+
+    <!-- Sub Navigation -->
+    <nav class="fixed w-full z-50 nav-blur">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4 group">
+                <span class="text-gold-400 text-xs tracking-[5px] uppercase font-bold opacity-80 group-hover:opacity-100 transition-opacity">← Menú Principal</span>
+            </a>
+            <div class="font-outfit font-bold text-lg tracking-widest text-white uppercase opacity-90 leading-none">
+                Masaje <span class="text-gold-400 font-light">Ancestral</span>
+            </div>
+            <div class="hidden md:flex gap-8 items-center text-[9px] tracking-[4px] uppercase font-bold text-gray-500">
+                <a href="#tecnicas" class="text-white">Especialidades</a>
+                <a href="../#contacto" class="hover:text-gold-400 transition-colors">Agendar Sesión</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content Section -->
+    <section class="min-h-screen pt-40 pb-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            
+            <header class="text-center mb-32 max-w-3xl mx-auto">
+                <span class="inline-block text-gold-400 text-xs font-bold tracking-[6px] uppercase mb-10 opacity-70">Dos Caminos, Una Sanación</span>
+                <h1 class="text-5xl md:text-7xl font-serif italic text-white mb-10 leading-tight">El Tacto Consciente</h1>
+                <p class="text-lg text-gray-500 font-light leading-relaxed">
+                    Las manos no solo presionan; escuchan. Nuestras especialidades combinan el rigor anatómico con la sensibilidad energética para desbloquear los nudos de la vida.
+                </p>
+                <div class="w-16 h-[1px] bg-gold-400/30 mx-auto mt-16"></div>
+            </header>
+
+            <div id="tecnicas" class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- SHIATSU CARD -->
+                <a href="shiatsu/index.html" class="group block h-full">
+                    <div class="massage-card rounded-[3rem] h-[600px] relative flex items-end">
+                        <img src="https://images.unsplash.com/photo-1544161515-4ae6ce6ea8a8?auto=format&fit=crop&q=80" alt="Shiatsu Massage Technique" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+                        <div class="relative z-10 p-12 w-full">
+                            <span class="text-[9px] font-bold tracking-[4px] text-gold-400 uppercase mb-4 block">Presión Digital • Zen</span>
+                            <h3 class="text-5xl font-serif italic text-white mb-6">Shiatsu</h3>
+                            <p class="text-sm text-gray-300 leading-relaxed max-w-sm mb-10">
+                                Un viaje introspectivo a través del sistema de meridianos. Equilibramos canales energéticos para restaurar el flujo vital.
+                            </p>
+                            <div class="flex items-center gap-4 text-white text-[10px] font-bold tracking-[3px] uppercase">
+                                Ver los Canales <span class="w-6 h-6 rounded-full border border-white/20 flex items-center justify-center text-[10px] group-hover:scale-110 transition-transform">→</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- THAI CARD -->
+                <a href="thai/index.html" class="group block h-full">
+                    <div class="massage-card rounded-[3rem] h-[600px] relative flex items-end">
+                        <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80" alt="Thai Massage stretching" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+                        <div class="relative z-10 p-12 w-full">
+                            <span class="text-[9px] font-bold tracking-[4px] text-gold-400 uppercase mb-4 block">Yoga Asistido • Sen</span>
+                            <h3 class="text-5xl font-serif italic text-white mb-6">Masaje Thai</h3>
+                            <p class="text-sm text-gray-300 leading-relaxed max-w-sm mb-10">
+                                Estiramientos profundos y elongación estructural. Liberamos fascias y articulaciones mediante el ritmo meditativo tailandés.
+                            </p>
+                            <div class="flex items-center gap-4 text-white text-[10px] font-bold tracking-[3px] uppercase">
+                                Ver Técnicas <span class="w-6 h-6 rounded-full border border-white/20 flex items-center justify-center text-[10px] group-hover:scale-110 transition-transform">→</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center text-xs tracking-widest text-gray-600">
+        <p>© 2026 Salud Equilibrio. Técnica y Filosofía.</p>
+    </footer>
+
+</body>
+
+</html>

@@ -1,284 +1,221 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salud Equilibrio | Wellness de Vanguardia</title>
-    <meta name="description"
-        content="Especialistas en Salud Óptima: Distribuidores de Kangen, Masaje Terapéutico y Gestión de Emociones.">
-
+    <title>Salud Equilibrio | Portal de Sanación Integral</title>
+    <meta name="description" content="Un espacio dedicado a la restauración biológica, energética y física del ser. Kangen, Sanación Zen y Técnicas Ancestrales de Masaje.">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Bodoni Moda', 'serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        healing: {
+                            50: '#f8faf9',
+                            100: '#eef2f1',
+                            200: '#dde5e3',
+                            500: '#4a6760', /* Forest Zen */
+                            900: '#1a2422',
+                        },
+                        gold: {
+                            400: '#d4af37',
+                            500: '#c5a028',
+                        },
+                        zen: '#0a0a0a',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1.5s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #050505;
+            color: #d1d5db;
+            overflow-x: hidden;
+        }
+
+        .hero-mask {
+            background: radial-gradient(circle at 50% 50%, rgba(74, 103, 96, 0.15) 0%, rgba(5, 5, 5, 0) 70%);
+        }
+
+        .portal-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .portal-card:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-12px);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(5, 5, 5, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .separator {
+            width: 1px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.3), transparent);
+        }
+    </style>
 </head>
 
-<body>
+<body class="antialiased font-sans selection:bg-gold-400/30 selection:text-white">
 
-    <!-- Navigation -->
-    <nav id="navbar">
-        <a href="#" class="logo">Salud<span class="text-gradient">Equilibrio</span></a>
-        <ul class="nav-links">
-            <li><a href="#hero">Inicio</a></li>
-            <li><a href="#kangen">Agua Kangen</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#proyectos">Proyectos</a></li>
-            <li><a href="#contact" class="btn-contact">Contacto</a></li>
-        </ul>
+    <!-- Global Navigation -->
+    <nav class="fixed w-full z-50 nav-blur">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-4 group">
+                <div class="w-10 h-10 rounded-full border border-gold-400/30 flex items-center justify-center text-gold-400 group-hover:scale-110 transition-transform">
+                    ॐ
+                </div>
+                <span class="font-outfit font-bold text-xl tracking-widest text-white uppercase opacity-90">Salud<span class="text-gold-400 font-light">Equilibrio</span></span>
+            </a>
+            <div class="hidden md:flex gap-10 text-[10px] items-center tracking-[4px] uppercase font-semibold text-gray-500">
+                <a href="#kangen" class="hover:text-gold-400 transition-colors">Agua</a>
+                <a href="#sanacion" class="hover:text-gold-400 transition-colors">Sanación</a>
+                <a href="tecnicas_masaje/index.html" class="hover:text-gold-400 transition-colors">Masaje</a>
+                <div class="w-10 h-[1px] bg-gold-400/30"></div>
+                <a href="#contacto" class="text-white hover:text-gold-400 transition-colors">Contacto</a>
+            </div>
+        </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero">
-        <div class="hero-visual"></div>
-        <div class="hero-content">
-            <span class="hero-tagline">Mente sana en cuerpo sano</span>
-            <h1>Sanar es posible</h1>
-            <p style="font-size: 1.25rem; max-width: 700px; margin: 0 auto 40px;">
-                Descubre el equilibrio perfecto a través de nuestras tres líneas de vida: Agua Alcalina, Masajes de
-                conexión y Gestión Emocional.
+    <!-- Master Hero -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 px-6 overflow-hidden hero-mask">
+        <div class="max-w-4xl mx-auto text-center relative z-10 animate-fade-in">
+            <span class="inline-block text-gold-400 text-xs font-bold tracking-[8px] uppercase mb-12 opacity-80">Restaura tu Armonía</span>
+            <h1 class="text-6xl md:text-[110px] font-serif italic text-white leading-[0.9] mb-12 tracking-tighter">
+                El Camino hacia el <br> <span class="not-italic text-glow text-gray-400">Silencio Interior</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 font-light leading-relaxed max-w-2xl mx-auto mb-16 px-4">
+                Un ecosistema dedicado a la salud integral. Desde la estructura del agua que bebes hasta las técnicas ancestrales que resintonizan tu flujo vital.
             </p>
-            <div style="display: flex; gap: 20px; justify-content: center;">
-                <a href="#kangen" class="btn-contact"
-                    style="padding: 18px 40px; font-size: 1rem; border-radius: 5px;">Explorar Kangen</a>
-                <a href="#servicios"
-                    style="padding: 18px 40px; border: 1px solid var(--kangen-blue); color: var(--kangen-blue); text-decoration: none; font-weight: 700;">Nuestros
-                    Servicios</a>
+            <div class="flex justify-center">
+                <div class="separator"></div>
             </div>
         </div>
+        
+        <!-- Background Elements -->
+        <div class="absolute top-[30%] left-[10%] w-72 h-72 bg-healing-500/5 rounded-full blur-[100px] animate-float"></div>
+        <div class="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] bg-gold-400/5 rounded-full blur-[150px]" style="animation-delay: -3s;"></div>
     </section>
 
-    <!-- Detailed Kangen Section -->
-    <section id="kangen-detail">
-        <div class="container">
-            <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
-                <div class="reveal-on-scroll">
-                    <div
-                        style="position: relative; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 40px; backdrop-filter: blur(5px);">
-                        <img src="assets/kangen.png" alt="Tecnología Kangen"
-                            style="width: 100%; border-radius: 30px; box-shadow: var(--shadow-premium);">
-                    </div>
-                </div>
-                <div class="kangen-content-card reveal-on-scroll">
-                    <span class="badge"
-                        style="position: static; margin-bottom: 25px; background: var(--kangen-blue);">Distribuidor
-                        Oficial Único</span>
-                    <h2 style="font-size: 3.5rem; margin-bottom: 25px;">Revolución Alcalina Kangen</h2>
-                    <p style="font-size: 1.2rem; margin-bottom: 35px; color: rgba(255,255,255,0.9);">
-                        Como distribuidores oficiales de <strong>Enagic &reg;</strong>, traemos a tu vida la tecnología
-                        japonesa líder en ionización. No es solo agua, es vitalidad celular.
-                    </p>
-                    <ul style="list-style: none; margin-bottom: 40px;">
-                        <li style="margin-bottom: 15px; font-size: 1.1rem;"><i class="fas fa-check-circle"
-                                style="color: var(--teal-glow); margin-right: 15px;"></i> Hidratación Celular Profunda
-                        </li>
-                        <li style="margin-bottom: 15px; font-size: 1.1rem;"><i class="fas fa-check-circle"
-                                style="color: var(--teal-glow); margin-right: 15px;"></i> El Antioxidante más potente
-                            del mundo</li>
-                        <li style="margin-bottom: 15px; font-size: 1.1rem;"><i class="fas fa-check-circle"
-                                style="color: var(--teal-glow); margin-right: 15px;"></i> pH equilibrado para un cuerpo
-                            sano</li>
-                    </ul>
-                    <a href="#contact" class="btn-contact"
-                        style="padding: 20px 45px; background: var(--kangen-blue); font-size: 1rem;">Solicitar
-                        Demostración Gratis</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Main Pillars Section -->
-    <div class="container" id="servicios">
-        <div class="section-title">
-            <h2>Nuestra Tríada de Salud</h2>
-            <p>Un enfoque tridimensional hacia tu bienestar total</p>
-        </div>
-
-        <div class="grid-main">
-            <!-- Pillar 1: Agua Kangen -->
-            <article class="card-main line-kangen" id="kangen">
-                <span class="badge">Distribuidor Oficial</span>
-                <i class="fas fa-droplet" style="color: var(--kangen-blue);"></i>
-                <h3>Agua Kangen</h3>
-                <p>Transforma tu salud desde la base celular. Somos distribuidores oficiales de la mejor tecnología de
-                    agua alcalina e hidrogenada del mundo.</p>
-                <a href="#"
-                    style="margin-top: 20px; display: inline-block; color: var(--kangen-blue); font-weight: 700; text-decoration: none;">Saber
-                    más &rarr;</a>
-            </article>
-
-            <!-- Pillar 2: Masajes -->
-            <article class="card-main line-masaje">
-                <i class="fas fa-hands" style="color: var(--gold-accent);"></i>
-                <h3>Masaje Consciente</h3>
-                <p>Técnicas milenarias combinadas con presencia absoluta. Shiatsu, Tantra y masajes diseñados para
-                    liberar tensiones y reconectar con el placer de existir.</p>
-                <a href="#"
-                    style="margin-top: 20px; display: inline-block; color: var(--gold-accent); font-weight: 700; text-decoration: none;">Reservar
-                    sesión &rarr;</a>
-            </article>
-
-            <!-- Pillar 3: Sanación -->
-            <article class="card-main line-sanacion">
-                <i class="fas fa-brain" style="color: var(--teal-glow);"></i>
-                <h3>Sanación Emocional</h3>
-                <p>Gestiona tus emociones para liberar tu cuerpo. Acompañamiento profundo para desbloquear lo que te
-                    impide brillar y reconectar con tu esencia.</p>
-                <a href="#sanacion"
-                    style="margin-top: 20px; display: inline-block; color: var(--teal-glow); font-weight: 700; text-decoration: none;">Iniciar
-                    camino &rarr;</a>
-            </article>
-        </div>
-    </div>
-
-    <!-- Detailed Massage Section -->
-    <section id="masajes" class="section-immersive">
-        <div class="container">
-            <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
-                <div class="reveal-on-scroll">
-                    <h2 style="font-size: 3.5rem; margin-bottom: 25px;">El Arte del Tacto Consciente</h2>
-                    <p style="font-size: 1.25rem; margin-bottom: 30px; line-height: 1.8;">
-                        Nuestros masajes no son solo relajación, son una ceremonia de reconexión profunda. Combinamos el
-                        Shiatsu tradicional con el Masaje Sensitivo para despertar la consciencia de cada célula.
-                    </p>
-                    <div style="margin-bottom: 40px;">
-                        <div
-                            style="display: flex; align-items: center; margin-bottom: 25px; background: white; padding: 20px; border-radius: 20px; box-shadow: var(--shadow-soft);">
-                            <i class="fas fa-spa"
-                                style="color: var(--gold-accent); margin-right: 20px; font-size: 2rem;"></i>
-                            <div>
-                                <strong style="font-size: 1.1rem; display: block; margin-bottom: 5px;">Shiatsu
-                                    Zen</strong>
-                                <span style="opacity: 0.8;">Presión rítmica precisa para liberar el flujo de tu energía
-                                    vital.</span>
-                            </div>
+    <!-- Portal Selection Grid -->
+    <section class="py-32 px-6 bg-zen">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- 1. KANGEN WATER -->
+                <a href="kangen_water/index.html" class="group block h-full">
+                    <div class="portal-card rounded-[2rem] p-10 h-full flex flex-col justify-between overflow-hidden relative">
+                        <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity text-5xl">💧</div>
+                        <div>
+                            <span class="text-[10px] font-bold tracking-[3px] text-healing-500 uppercase mb-6 block">Hidratación Celular</span>
+                            <h3 class="text-4xl font-serif italic text-white mb-6">Kangen Ecosystem</h3>
+                            <p class="text-sm text-gray-500 leading-relaxed font-light mb-10">
+                                Transforma tu máquina biológica a través del agua alcalina ionizada. Hidrógeno molecular para la longevidad.
+                            </p>
                         </div>
-                        <div
-                            style="display: flex; align-items: center; margin-bottom: 15px; background: white; padding: 20px; border-radius: 20px; box-shadow: var(--shadow-soft);">
-                            <i class="fas fa-leaf"
-                                style="color: var(--gold-accent); margin-right: 20px; font-size: 2rem;"></i>
-                            <div>
-                                <strong style="font-size: 1.1rem; display: block; margin-bottom: 5px;">Masaje
-                                    Holístico</strong>
-                                <span style="opacity: 0.8;">Una integración total de cuerpo, mente y espíritu en cada
-                                    sesión.</span>
-                            </div>
+                        <div class="flex items-center gap-3 text-gold-400 text-xs font-bold tracking-[2px] uppercase">
+                            Explorar <span class="w-8 h-[1px] bg-gold-400/30 group-hover:w-12 transition-all"></span>
                         </div>
                     </div>
-                    <a href="#contact" class="btn-contact"
-                        style="padding: 20px 50px; background: var(--gold-accent); border-radius: 5px; font-size: 1.1rem;">Reservar
-                        tu momento</a>
-                </div>
-                <div class="reveal-on-scroll" style="order: -1;">
-                    <div
-                        style="position: relative; padding: 20px; background: white; border-radius: 40px; box-shadow: var(--shadow-premium);">
-                        <img src="assets/massage.png" alt="Masaje Terapéutico"
-                            style="width: 100%; border-radius: 30px;">
+                </a>
+
+                <!-- 2. SANACIÓN ZEN -->
+                <a href="sanacion/index.html" class="group block h-full">
+                    <div class="portal-card rounded-[2rem] p-10 h-full flex flex-col justify-between overflow-hidden relative">
+                        <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity text-5xl">🧘</div>
+                        <div>
+                            <span class="text-[10px] font-bold tracking-[3px] text-healing-500 uppercase mb-6 block">Cuerpo & Mente</span>
+                            <h3 class="text-4xl font-serif italic text-white mb-6">Sanación Holística</h3>
+                            <p class="text-sm text-gray-500 leading-relaxed font-light mb-10">
+                                Metodologías de reconexión energética y terapias integrativas para el equilibrio del sistema nervioso.
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3 text-gold-400 text-xs font-bold tracking-[2px] uppercase">
+                            Explorar <span class="w-8 h-[1px] bg-gold-400/30 group-hover:w-12 transition-all"></span>
+                        </div>
                     </div>
-                </div>
+                </a>
+
+                <!-- 3. TÉCNICAS DE MASAJE -->
+                <a href="tecnicas_masaje/index.html" class="group block h-full">
+                    <div class="portal-card rounded-[2rem] p-10 h-full flex flex-col justify-between overflow-hidden relative">
+                        <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity text-5xl">👐</div>
+                        <div>
+                            <span class="text-[10px] font-bold tracking-[3px] text-healing-500 uppercase mb-6 block">Cuerpo Físico</span>
+                            <h3 class="text-4xl font-serif italic text-white mb-6">Masaje Ancestral</h3>
+                            <p class="text-sm text-gray-500 leading-relaxed font-light mb-10">
+                                Especialidades en Shiatsu y Masaje Thai. El arte de la presión y el estiramiento para liberar tensiones profundas.
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3 text-gold-400 text-xs font-bold tracking-[2px] uppercase">
+                            Explorar <span class="w-8 h-[1px] bg-gold-400/30 group-hover:w-12 transition-all"></span>
+                        </div>
+                    </div>
+                </a>
+
             </div>
         </div>
     </section>
 
-    <!-- Detailed Healing Section -->
-    <section id="sanacion" class="section-immersive">
-        <div class="container">
-            <div style="text-align: center; max-width: 950px; margin: 0 auto; background: rgba(255,255,255,0.85); padding: 80px; border-radius: 50px; backdrop-filter: blur(10px); border: 1px solid var(--glass-border);"
-                class="reveal-on-scroll">
-                <h2 style="font-size: 4rem; margin-bottom: 30px;">Gestión de Emociones</h2>
-                <p
-                    style="font-size: 1.5rem; line-height: 1.8; color: var(--deep-navy); font-style: italic; margin-bottom: 50px;">
-                    "Lo que el corazón calla, el cuerpo lo grita."
-                </p>
-                <p style="font-size: 1.25rem; margin-bottom: 60px; line-height: 1.8;">
-                    En Salud Equilibrio te guiamos para identificar y liberar emociones atrapadas, permitiendo que tu
-                    sistema nervioso recupere su paz natural y tu cuerpo su capacidad innata de sanar.
-                </p>
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; text-align: left;">
-                    <div
-                        style="background: var(--white); padding: 40px; border-radius: 30px; box-shadow: var(--shadow-soft); border-left: 8px solid var(--teal-glow);">
-                        <i class="fas fa-heart-pulse"
-                            style="color: var(--teal-glow); font-size: 2.5rem; margin-bottom: 20px;"></i>
-                        <h4 style="font-size: 1.5rem; margin-bottom: 15px;">Coherencia Vital</h4>
-                        <p style="font-size: 1rem; opacity: 0.8;">Alineamos tus latidos con tus acciones para una vida
-                            sin conflictos internos.</p>
-                    </div>
-                    <div
-                        style="background: var(--white); padding: 40px; border-radius: 30px; box-shadow: var(--shadow-soft); border-left: 8px solid var(--teal-glow);">
-                        <i class="fas fa-sun"
-                            style="color: var(--teal-glow); font-size: 2.5rem; margin-bottom: 20px;"></i>
-                        <h4 style="font-size: 1.5rem; margin-bottom: 15px;">Brillo Interior</h4>
-                        <p style="font-size: 1rem; opacity: 0.8;">Recupera tu luz propia eliminando los velos de
-                            bloqueos pasados.</p>
-                    </div>
-                </div>
-            </div>
+    <!-- Wisdom Banner -->
+    <section class="py-32 border-t border-white/5 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h4 class="text-xl md:text-3xl font-serif italic text-gray-300 mb-8 opacity-80 leading-relaxed">
+                "La sanación no es un destino remoto, sino el regreso al estado natural del ser: la armonía absoluta con la energía que nos habita."
+            </h4>
+            <div class="w-12 h-[1px] bg-gold-400 px-auto mx-auto mb-8"></div>
+            <p class="text-[10px] tracking-[5px] uppercase font-bold text-gray-600">Salud Equilibrio — Enfoque Integral</p>
         </div>
     </section>
 
-    <!-- Art Projects Section -->
-    <section id="proyectos">
-        <div class="container" style="padding: 0;">
-            <div class="section-title">
-                <h2 style="color: white;">Nuestros Otros Mundos</h2>
-                <p style="color: rgba(255,255,255,0.6);">Donde la salud se encuentra con la creatividad</p>
-            </div>
-
-            <div class="arte-banner">
-                <h3 style="font-size: 2.5rem; margin-bottom: 10px;">Portal de Arte</h3>
-                <p>Explora la obra artística de Mari Paz Arés y déjate inspirar por el color y la vibración.</p>
-                <a href="#" class="btn-contact" style="display: inline-block; margin-top: 20px;">Visitar Web de Arte</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer / Contact -->
-    <footer id="contact">
-        <div class="footer-brand">
-            <h2>Salud<span class="text-gradient">Equilibrio</span></h2>
-            <p>Acompañándote hacia una salud óptima y una vida plena desde la coherencia y el amor.</p>
-            <div style="margin-top: 30px; display: flex; gap: 15px;">
-                <a href="#" style="color: var(--kangen-blue); font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
-                <a href="#" style="color: var(--kangen-blue); font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
-                <a href="#" style="color: var(--kangen-blue); font-size: 1.5rem;"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-
-        <div>
-            <h4 style="margin-bottom: 25px;">Enlaces</h4>
-            <ul class="contact-list">
-                <li><a href="#hero">Inicio</a></li>
-                <li><a href="#kangen">Agua Kangen</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#proyectos">Arte</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h4 style="margin-bottom: 25px;">Contacto Directo</h4>
-            <ul class="contact-list">
-                <li><i class="fas fa-phone"></i> +34 687 37 75 37</li>
-                <li><i class="fas fa-envelope"></i> paz@saludequilibrio.es</li>
-                <li><i class="fas fa-envelope"></i> javi@saludequilibrio.es</li>
-                <li><i class="fas fa-location-dot"></i> Sevilla, España</li>
-            </ul>
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-3xl mb-10 opacity-30">🕉️</div>
+            <p class="text-xs text-gray-600 tracking-widest uppercase">© 2026 Salud Equilibrio. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <div style="text-align: center; padding: 20px; background: #eee; font-size: 0.8rem; opacity: 0.6;">
-        &copy; 2024 Salud Equilibrio. Todos los derechos reservados.
-    </div>
-
-    <!-- JS -->
-    <script src="main.js"></script>
 </body>
 
 </html>
