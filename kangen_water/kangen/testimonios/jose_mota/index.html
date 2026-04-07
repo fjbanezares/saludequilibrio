@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jose Mota — El tiempo a su favor | Kangen Water®</title>
+    <meta name="description"
+        content="El sorprendente cambio de Jose Mota. De los 46 a los 60 años, observa su vitalidad. La hidratación antioxidante Kangen® como parte de este proceso.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="../../../style.css">
+    <style>
+        /* ─── Page-specific styles ─── */
+        .testimonio-hero {
+            padding: 180px 0 80px;
+            text-align: center;
+            background: radial-gradient(ellipse at 50% 30%, rgba(37, 99, 235, 0.12), transparent 60%);
+        }
+
+        .testimonio-hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.05;
+            margin-bottom: 2rem;
+        }
+
+        .testimonio-hero .lead {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Comparison Before / After */
+        .comparison-section {
+            padding: 60px 0 100px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .comparison-card {
+            position: relative;
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid rgba(6, 182, 212, 0.15);
+            background: rgba(17, 24, 39, 0.6);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            transition: var(--transition);
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(6, 182, 212, 0.35);
+            box-shadow: 0 30px 80px rgba(37, 99, 235, 0.15);
+        }
+
+        .comparison-card img {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .comparison-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .comparison-card .year-tag {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            background: rgba(37, 99, 235, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .comparison-card .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 1.5rem 1.5rem;
+            background: linear-gradient(to top, rgba(3, 7, 18, 0.95), transparent);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .comparison-card .caption strong {
+            color: var(--text-white);
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Story section */
+        .story-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--black) 0%, var(--navy-dark) 100%);
+        }
+
+        .story-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .story-photo {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(37, 99, 235, 0.15);
+        }
+
+        .story-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .story-content {
+            padding: 3rem;
+        }
+
+        .story-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            line-height: 1.15;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+        }
+
+        .story-content p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-content p strong {
+            color: var(--text-white);
+        }
+
+        .highlight-box {
+            background: rgba(37, 99, 235, 0.08);
+            border-left: 4px solid var(--water-cyan);
+            padding: 1.5rem 2rem;
+            border-radius: 0 16px 16px 0;
+            margin: 2rem 0;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .highlight-box strong {
+            color: var(--water-cyan);
+        }
+
+        /* CTA */
+        .testimonio-cta {
+            padding: 120px 0;
+            text-align: center;
+            background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.1), transparent 60%);
+        }
+
+        .testimonio-cta .cta-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem;
+        }
+
+        .testimonio-cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonio-cta p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 968px) {
+            .testimonio-hero h1 { font-size: 3rem; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .comparison-card img { height: 400px; }
+            .story-layout { grid-template-columns: 1fr; }
+            .story-content { padding: 2rem 0; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../../../index.html" class="logo">
+                <span class="logo-text">Salud Equilibrio</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../../index.html">Inicio</a>
+                <a href="../index.html">Testimonios</a>
+                <a href="../../../index.html#contacto" class="btn-primary-sm">Adquiere tu Máquina</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="testimonio-hero">
+        <div class="container" data-aos="fade-up">
+            <span class="badge">Caso Observado</span>
+            <h1>Jose Mota:<br><span class="gradient-text">El tiempo a su favor</span></h1>
+            <p class="lead">Un ejemplo asombroso de vitalidad. A sus 60 años luce mejor, y con más energía, que hace 14 años. Descubre qué elemento clave hay en su rutina.</p>
+        </div>
+    </section>
+
+    <!-- Before / After Comparison -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="comparison-grid">
+                <div class="comparison-card" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="year-tag">2012 (46 años)</div>
+                    <img src="jose_mota_2012.png" alt="Jose Mota hace 14 años">
+                    <div class="caption">
+                        <strong>Hace 14 Años</strong>
+                        Un retrato en el que se podían percibir los rasgos propios de la madurez y la intensa carga del mundo del espectáculo.
+                    </div>
+                </div>
+                <div class="comparison-card" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="year-tag">2026 (60 años)</div>
+                    <img src="jose_mota_2026_cumple_60.png" alt="Jose Mota en la actualidad cumpliendo 60">
+                    <div class="caption">
+                        <strong>La Vitalidad de los 60</strong>
+                        Con 60 años cumplidos y una mirada brillante. Todo observador notará que el impacto del tiempo parece haberse frenado.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Story -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-layout">
+                <div class="story-photo" data-aos="fade-right" data-aos-duration="1000">
+                    <img src="jose_mota_con_antonio_instalando_maquina_kangen.png" alt="Jose Mota adquiriendo su primera máquina Kangen con Antonio">
+                </div>
+                <!-- Conservamos el mismo tono respetuoso de observador -->
+                <div class="story-content" data-aos="fade-left" data-aos-duration="1000">
+                    <h2>El secreto se esconde <span class="gradient-text">en el agua</span></h2>
+                    <p>Hace un tiempo, <strong>Antonio</strong>, nuestro distribuidor experto Enagic, visitó la residencia de Jose Mota para entregarle personalmente su nueva tecnología. Quedó documentado el momento en el que Kangen entró en su hogar.</p>
+                    <p>Hoy en día, al cruzar la barrera de los 60 años, cualquiera que compare imágenes actuales con aquellas de 2012 puede detectar un nivel de frescura y apariencia que desafía al calendario.</p>
+
+                    <div class="highlight-box">
+                        <strong>Hidratación de grado médico:</strong> Para profesionales que entregan una energía física desbordante como Jose, el estrés celular es brutal. Beber agua micro-estructurada, supercargada de hidrógeno, combate precisamente este impacto oxidativo, hidratando rápido y ralentizando los signos del envejecimiento.
+                    </div>
+
+                    <p>El antes y el después es una evidencia que observamos gratamente. No hay duda de que el agua, como principal motor de nuestro organismo, y su potente capacidad antioxidante, le han acompañado en este espléndido estado a sus 60 años.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="testimonio-cta">
+        <div class="container">
+            <div class="cta-inner glass-card" data-aos="zoom-in">
+                <h2>Comienza hoy mismo tu <span class="gradient-text">propio cambio</span></h2>
+                <p>La hidratación antioxidante Kangen no es exclusiva de celebridades. Está a tu alcance. Infórmate.</p>
+                <div class="cta-buttons">
+                    <a href="../../../index.html#contacto" class="btn-primary">Quiero Mi Máquina</a>
+                    <a href="../index.html" class="btn-secondary">Más Casos Observados</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <h3>Salud Equilibrio</h3>
+                <p>Distribuidor Independiente Enagic®</p>
+            </div>
+            <div class="footer-links">
+                <a href="../../../index.html">Portal Principal</a>
+                <a href="../index.html">Testimonios</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Salud Equilibrio. KANGEN WATER® es una marca registrada de Enagic.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+
+</html>

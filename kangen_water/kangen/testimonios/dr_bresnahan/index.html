@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Gerald Bresnahan — El Cardiólogo de los Presidentes | Kangen Water®</title>
+    <meta name="description"
+        content="Descubre por qué el Dr. Gerald Bresnahan, cardiólogo de Obama, Clinton, la Reina de Inglaterra y el Papa, recomienda el Agua Kangen® a sus pacientes.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="../../../style.css">
+    <style>
+        /* ─── Page-specific styles ─── */
+        .testimonio-hero {
+            padding: 180px 0 80px;
+            text-align: center;
+            background: radial-gradient(ellipse at 50% 30%, rgba(6, 182, 212, 0.1), transparent 60%);
+        }
+
+        .testimonio-hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+
+        .testimonio-hero .lead {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Medical Block / Quote */
+        .quote-section {
+            padding: 40px 0 80px;
+        }
+
+        .quote-card {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding: 4rem;
+            background: rgba(17, 24, 39, 0.4);
+            border-radius: 30px;
+            border: 1px solid rgba(6, 182, 212, 0.15);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .quote-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 8rem;
+            color: rgba(6, 182, 212, 0.1);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1;
+        }
+
+        .quote-text {
+            font-size: 1.35rem;
+            color: var(--text-white);
+            line-height: 1.9;
+            font-weight: 300;
+            font-style: italic;
+            position: relative;
+            z-index: 2;
+        }
+
+        .quote-author {
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            color: var(--water-cyan);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Profile Section */
+        .profile-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, var(--black) 0%, var(--navy-dark) 100%);
+        }
+
+        .profile-layout {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .profile-icon {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.05), transparent);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            border-radius: 30px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: rgba(6, 182, 212, 0.3);
+            font-size: 6rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .profile-icon i {
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-icon span {
+            font-size: 1.2rem;
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: 1px;
+            opacity: 0.6;
+            color: var(--water-cyan);
+            text-transform: uppercase;
+        }
+
+        .story-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .story-content p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-content p strong {
+            color: var(--text-white);
+        }
+
+        .highlight-box {
+            background: rgba(6, 182, 212, 0.08);
+            border-left: 4px solid var(--water-cyan);
+            padding: 1.5rem 2rem;
+            border-radius: 0 16px 16px 0;
+            margin: 2rem 0;
+            color: var(--text-white);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .highlight-box strong {
+            color: var(--water-cyan);
+        }
+
+        /* CTA */
+        .testimonio-cta {
+            padding: 120px 0;
+            text-align: center;
+            background: radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.08), transparent 60%);
+        }
+
+        .testimonio-cta .cta-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem;
+        }
+
+        .testimonio-cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonio-cta p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 968px) {
+            .testimonio-hero h1 { font-size: 3rem; }
+            .profile-layout { grid-template-columns: 1fr; }
+            .profile-icon { height: 350px; }
+            .quote-card { padding: 3rem 2rem; }
+            .quote-text { font-size: 1.15rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../../../index.html" class="logo">
+                <span class="logo-text">Salud Equilibrio</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../../index.html">Inicio</a>
+                <a href="../index.html">Testimonios</a>
+                <a href="../../../index.html#contacto" class="btn-primary-sm">Adquiere tu Máquina</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="testimonio-hero">
+        <div class="container" data-aos="fade-up">
+            <span class="badge" style="background: rgba(6, 182, 212, 0.1); border-color: rgba(6, 182, 212, 0.3);">Aval Médico de Élite</span>
+            <h1>Dr. Gerald Bresnahan:<br><span class="gradient-text">El Cardiólogo de los Presidentes</span></h1>
+            <p class="lead">El médico internista encargado de la salud cardiovascular de Barack Obama, Ronald Reagan, Bill Clinton, George Bush, la Reina de Inglaterra y el Papa respalda categóricamente la tecnología Kangen.</p>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote-card" data-aos="zoom-in" data-aos-duration="1000">
+                <p class="quote-text">
+                    "Durante décadas hemos comprendido la importancia de las dietas alcalinizantes, pero no habíamos tenido éxito en lograr que nuestros pacientes consuman una dieta perfectamente alcalina simplemente porque no podemos comer suficientes alimentos alcalinos para mantener nuestro cuerpo nivelado. Al tener algo que cambia el pH del cuerpo de ácido a alcalino basándose en algo que ya hacemos diariamente, que es beber agua, podemos alcalinizar a las personas con suma facilidad."
+                    <br><br>
+                    "Cientos de miles de nuestros pacientes han visto resultados extraordinarios al beber agua de grado médico Kangen®. Estamos poniendo de nuestra parte para llevar esta tecnología a la comunidad médica de los Estados Unidos porque el agua Kangen® está revolucionando la salud, la forma física y el bienestar de nuestra nación. Esto será algo grandioso para todos y cambiará las vidas de millones de personas."
+                </p>
+                <div class="quote-author">— Dr. Gerald Bresnahan, M.D., FACC</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Profile -->
+    <section class="profile-section">
+        <div class="container">
+            <div class="profile-layout">
+                <!-- Icon Placeholder for Medical Badge or Image later -->
+                <div class="profile-icon" data-aos="fade-right" data-aos-duration="1000">
+                    <i class="fas fa-user-doctor"></i>
+                    <span>Eminencia Médica</span>
+                </div>
+
+                <div class="story-content" data-aos="fade-left" data-aos-duration="1000">
+                    <h2>Un Pionero de Mando Mundial</h2>
+                    <p>El <strong>Dr. Gerald Bresnahan</strong> es indudablemente uno de los cardiólogos más reconocidos a nivel mundial, establecido en Los Ángeles. Tras la repentina muerte de su padre a los 54 años por una enfermedad cardíaca, consagró su vida a la prevención de la causa de muerte número uno en Estados Unidos.</p>
+                    
+                    <p>Destacó brillantemente en Medicina Interna y Cardiología en el reputado <em>Los Angeles County - USC Medical Center</em>. Su aportación a la medicina moderna es incalculable: mientras estuvo en la Universidad de California, San Diego, <strong>estuvo involucrado en el desarrollo de la prueba de sangre de enzimas cardíacas</strong> que todavía se utiliza en todo el mundo hoy en día para diagnosticar ataques cardíacos tempranos.</p>
+
+                    <div class="highlight-box">
+                        <strong>Médico de Élite</strong><br>
+                        Se le considera, sin duda, el mejor en su campo. Por ello, ha servido como el cardiólogo de guardia para los <strong>Presidentes de los Estados Unidos</strong>, el <strong>Papa</strong>, la <strong>Reina de Inglaterra</strong> y numerosos dignatarios internacionales.
+                    </div>
+
+                    <p>Actualmente, el Dr. Bresnahan supervisa los estrictos controles de calidad en uno de los principales centros coronarios de Los Ángeles y ejerce como presidente del Comité Cardiotorácico. Que una eminencia con semejante nivel de rigor científico, y con la responsabilidad de velar por la salud de los líderes mundiales, promueva categóricamente el <strong>Agua Kangen®</strong> eleva esta tecnología muy por encima de cualquier filtro convencional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="testimonio-cta">
+        <div class="container">
+            <div class="cta-inner glass-card" data-aos="zoom-in">
+                <h2>El Respaldo de la <span class="gradient-text">Ciencia</span></h2>
+                <p>Al igual que las figuras más influyentes del mundo, confía tu hidratación a un dispositivo avalado clínicamente y transforma tu bienestar.</p>
+                <div class="cta-buttons">
+                    <a href="../../../index.html#contacto" class="btn-primary">Adquirir Tecnología Kangen</a>
+                    <a href="../index.html" class="btn-secondary">Volver a Testimonios</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <h3>Salud Equilibrio</h3>
+                <p>Distribuidor Independiente Enagic®</p>
+            </div>
+            <div class="footer-links">
+                <a href="../../../index.html">Portal Principal</a>
+                <a href="../index.html">Testimonios</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Salud Equilibrio. KANGEN WATER® es una marca registrada de Enagic.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+
+</html>

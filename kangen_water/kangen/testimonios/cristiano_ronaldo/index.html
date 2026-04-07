@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristiano Ronaldo — La Elección de la Élite | Kangen Water®</title>
+    <meta name="description"
+        content="La hidratación de la élite al alcance de todos. Por qué Cristiano Ronaldo, al igual que cualquier persona inteligente, elige el Agua Kangen® por su valor y calidad.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="../../../style.css">
+    <style>
+        /* ─── Page-specific styles ─── */
+        .testimonio-hero {
+            padding: 180px 0 80px;
+            text-align: center;
+            background: radial-gradient(ellipse at 50% 30%, rgba(37, 99, 235, 0.12), transparent 60%);
+        }
+
+        .testimonio-hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.05;
+            margin-bottom: 2rem;
+        }
+
+        .testimonio-hero .lead {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Highlight Image Section */
+        .evidence-section {
+            padding: 60px 0 100px;
+            text-align: center;
+        }
+
+        .evidence-card {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid rgba(6, 182, 212, 0.15);
+            background: rgba(17, 24, 39, 0.5);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+        }
+
+        .evidence-card:hover {
+            border-color: rgba(6, 182, 212, 0.35);
+            box-shadow: 0 30px 80px rgba(37, 99, 235, 0.15);
+        }
+
+        .evidence-card img {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .evidence-card .caption {
+            padding: 2rem;
+            background: rgba(3, 7, 18, 0.6);
+            backdrop-filter: blur(10px);
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            border-top: 1px solid rgba(255,255,255,0.02);
+            text-align: left;
+        }
+
+        .evidence-card .caption strong {
+            color: var(--text-white);
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Story section */
+        .story-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--black) 0%, var(--navy-dark) 100%);
+        }
+
+        .story-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            max-width: 900px;
+            margin: 0 auto;
+            gap: 3rem;
+        }
+
+        .story-content h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            line-height: 1.15;
+            font-family: 'Outfit', sans-serif;
+            text-align: center;
+        }
+
+        .story-content p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-content p strong {
+            color: var(--text-white);
+        }
+
+        .highlight-box {
+            background: rgba(37, 99, 235, 0.05);
+            border-left: 4px solid var(--water-cyan);
+            border-right: 1px solid rgba(37, 99, 235, 0.1);
+            border-top: 1px solid rgba(37, 99, 235, 0.1);
+            border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+            padding: 2.5rem;
+            border-radius: 0 16px 16px 0;
+            margin: 3rem 0;
+            color: var(--text-white);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .highlight-box strong {
+            color: var(--water-cyan);
+            font-size: 1.4rem;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        /* CTA */
+        .testimonio-cta {
+            padding: 120px 0;
+            text-align: center;
+            background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.1), transparent 60%);
+        }
+
+        .testimonio-cta .cta-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem;
+        }
+
+        .testimonio-cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonio-cta p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 968px) {
+            .testimonio-hero h1 { font-size: 3rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../../../index.html" class="logo">
+                <span class="logo-text">Salud Equilibrio</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../../index.html">Inicio</a>
+                <a href="../index.html">Testimonios</a>
+                <a href="../../../index.html#contacto" class="btn-primary-sm">Adquiere tu Máquina</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="testimonio-hero">
+        <div class="container" data-aos="fade-up">
+            <span class="badge">Caso Observado</span>
+            <h1>Cristiano Ronaldo:<br><span class="gradient-text">La Inteligencia del Éxito</span></h1>
+            <p class="lead">Es el hombre que probablemente más cuide su cuerpo en todo el planeta. ¿El verdadero secreto? Su decisión diaria en la hidratación está al alcance de cualquiera.</p>
+        </div>
+    </section>
+
+    <!-- Evidence Section -->
+    <section class="evidence-section">
+        <div class="container">
+            <div class="evidence-card" data-aos="zoom-in" data-aos-duration="1000">
+                <img src="fotograma_del_documental_de_georgina_k8_en_cocina.png" alt="Fotograma de Cristiano Ronaldo donde se muestra la máquina K8 en su cocina">
+                <div class="caption">
+                    <strong>Un detalle revelador</strong>
+                    Durante una escena casual del popular documental de Netflix de Georgina Rodríguez, la cámara capta un elemento clave en la espectacular cocina de Cristiano: la máquina <strong>Leveluk K8 de Enagic</strong>.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Story -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-layout">
+                <div class="story-content" data-aos="fade-up" data-aos-duration="1000">
+                    <h2>Más allá del <span class="gradient-text">poder adquisitivo</span></h2>
+                    
+                    <p>Cuando la gente observa detalles como este, la reacción inmediata suele ser: <em>"Claro, como él tiene millones, puede permitírselo"</em>. Sin embargo, hay una profunda sabiduría que rescatar de esta imagen, y no tiene nada que ver con ser millonario.</p>
+                    
+                    <p>Cristiano es una figura que tiene acceso casi ilimitado a cualquier tecnología, cualquier nutricionista, cualquier filtro o marca de agua en el planeta tierra. Si ha elegido situar una <strong>K8 de Enagic</strong> en el corazón de su hogar, es porque, tras evaluar todas las opciones del mercado mundial, ha llegado a la conclusión científica de que <strong>Kangen es, de forma objetiva, la mejor herramienta de hidratación para el cuerpo humano</strong>.</p>
+
+                    <div class="highlight-box">
+                        <strong>El mito del "Agua Para Ricos"</strong>
+                        Aquí reside la gran verdad: la élite no elige Kangen por su costo, lo elige por sus resultados. De hecho, amortizando el equipo, un litro de esta extraordinaria agua súper antioxidante te cuesta unos <strong>3 céntimos de euro</strong>.
+                        <br><br>
+                        Es decir, cuesta muchísimo menos que el agua embotellada convencional. Es pura eficiencia.
+                    </div>
+
+                    <p>La lección real de ese fortuito vistazo a su cocina es empoderadora. Al adquirir una máquina Kangen, puedes proporcionarle a tu cuerpo, a un costo irrisorio y desde el grifo de tu propia casa, exactamente el mismo nivel de cuidado de élite que exige la leyenda deportiva más laureada del fútbol.</p>
+
+                    <p>No necesitas los millones de Cristiano para hidratarte como él. Solo necesitas <strong>su inteligencia</strong> a la hora de elegir qué agua bebes todos los días de tu vida.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="testimonio-cta">
+        <div class="container">
+            <div class="cta-inner glass-card" data-aos="zoom-in">
+                <h2>La elección <span class="gradient-text">está en ti</span></h2>
+                <p>Hidrátate con la calidad de los campeones del mundo, protegiendo tanto tu salud como tu bolsillo a largo plazo.</p>
+                <div class="cta-buttons">
+                    <a href="../../../index.html#contacto" class="btn-primary">Adquirir Tecnología Kangen</a>
+                    <a href="../index.html" class="btn-secondary">Volver a Testimonios</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <h3>Salud Equilibrio</h3>
+                <p>Distribuidor Independiente Enagic®</p>
+            </div>
+            <div class="footer-links">
+                <a href="../../../index.html">Portal Principal</a>
+                <a href="../index.html">Testimonios</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Salud Equilibrio. KANGEN WATER® es una marca registrada de Enagic.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+
+</html>

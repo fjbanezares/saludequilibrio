@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonios | Agua Kangen® | Salud Equilibrio</title>
+    <meta name="description"
+        content="Testimonios de famosos y personas reales que usan Agua Kangen® como su opción de hidratación diaria.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        /* ─── Page-specific styles ─── */
+        .testimonios-hero {
+            padding: 180px 0 60px;
+            text-align: center;
+            background: radial-gradient(ellipse at 50% 20%, rgba(0, 119, 182, 0.1), transparent 60%);
+        }
+
+        .testimonios-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonios-hero .lead {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 720px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Category headers */
+        .cat-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 6rem 0 3rem;
+        }
+
+        .cat-header .cat-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(0, 180, 216, 0.08);
+            border: 1px solid rgba(0, 180, 216, 0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--water-glow);
+        }
+
+        .cat-header h2 {
+            font-size: 2.2rem;
+        }
+
+        /* Cards grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .tcard {
+            border-radius: 24px;
+            overflow: hidden;
+            background: rgba(8, 20, 42, 0.5);
+            border: 1px solid rgba(0, 180, 216, 0.1);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .tcard:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 180, 216, 0.3);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+        }
+
+        .tcard-img {
+            height: 320px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .tcard-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .tcard:hover .tcard-img img {
+            transform: scale(1.08);
+        }
+
+        .tcard-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(to top, rgba(8, 20, 42, 1), transparent);
+        }
+
+        /* Placeholder icon for upcoming cards */
+        .tcard-icon-placeholder {
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: rgba(0, 180, 216, 0.08);
+            background: linear-gradient(135deg, rgba(0, 119, 182, 0.05) 0%, transparent 100%);
+        }
+
+        .tcard-body {
+            padding: 2rem 2rem 2.5rem;
+        }
+
+        .tcard-tag {
+            display: inline-block;
+            padding: 4px 14px;
+            background: rgba(0, 180, 216, 0.08);
+            border: 1px solid rgba(0, 180, 216, 0.2);
+            border-radius: 50px;
+            color: var(--water-clear);
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .tcard-body h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .tcard-body p {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .ribbon {
+            position: absolute;
+            top: 24px;
+            right: -50px;
+            background: rgba(0, 119, 182, 0.85);
+            backdrop-filter: blur(8px);
+            color: #fff;
+            padding: 6px 70px;
+            transform: rotate(45deg);
+            font-weight: 700;
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+            z-index: 10;
+        }
+
+        /* Bottom CTA */
+        .bottom-cta {
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .bottom-cta .cta-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem;
+        }
+
+        .bottom-cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .bottom-cta p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .testimonios-hero h1 { font-size: 2.8rem; }
+            .cards-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">
+                <span class="logo-text">Salud Equilibrio</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../index.html">Inicio</a>
+                <a href="../../index.html#contacto" class="btn-primary-sm">Adquiere tu Máquina</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="testimonios-hero">
+        <div class="container" data-aos="fade-up">
+            <span class="badge">Testimonios</span>
+            <h1>Resultados que <span class="gradient-text">hablan solos</span></h1>
+            <p class="lead">Personas reconocidas y gente de a pie que han integrado el Agua Kangen® en su día a día. Observa los hechos y saca tus propias conclusiones.</p>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <!-- ─── Famosos ─── -->
+        <div class="cat-header" data-aos="fade-right">
+            <div class="cat-icon"><i class="fas fa-star"></i></div>
+            <h2>Figuras Públicas</h2>
+        </div>
+
+        <div class="cards-grid">
+            <!-- Santiago Segura -->
+            <div class="tcard" data-aos="fade-up">
+                <div class="tcard-img">
+                    <img src="santiago_segura/santiago_segura_con_antonio_kangen.png" alt="Santiago Segura con su máquina Kangen">
+                </div>
+                <div class="tcard-body">
+                    <span class="tcard-tag">Actor · Director</span>
+                    <h3>Santiago Segura</h3>
+                    <p>En Torrente 2 (2001) aparentaba ser mucho mayor. 25 años después luce notablemente mejor. En medio, una máquina Kangen. Los antioxidantes del agua sin duda han influido.</p>
+                    <a href="santiago_segura/index.html" class="btn-secondary">Ver la transformación</a>
+                </div>
+            </div>
+
+            <!-- Cristiano Ronaldo -->
+            <div class="tcard" data-aos="fade-up" data-aos-delay="100">
+                <div class="tcard-img">
+                    <img src="cristiano_ronaldo/fotograma_del_documental_de_georgina_k8_en_cocina.png" alt="Máquina Kangen K8 en la cocina de Cristiano Ronaldo">
+                </div>
+                <div class="tcard-body">
+                    <span class="tcard-tag">Fútbol · Élite</span>
+                    <h3>Cristiano Ronaldo</h3>
+                    <p>¿Qué elige el hombre que mejor cuida su cuerpo en el mundo? Observamos su decisión y por qué hidratarse como él cuesta menos que el agua embotellada.</p>
+                    <a href="cristiano_ronaldo/index.html" class="btn-secondary">Descubrir el motivo</a>
+                </div>
+            </div>
+
+            <!-- Benzema -->
+            <div class="tcard" data-aos="fade-up" data-aos-delay="200">
+                <div class="ribbon">PRÓXIMAMENTE</div>
+                <div class="tcard-icon-placeholder"><i class="fas fa-trophy"></i></div>
+                <div class="tcard-body">
+                    <span class="tcard-tag">Fútbol · Balón de Oro</span>
+                    <h3>Karim Benzema</h3>
+                    <p>Longevidad deportiva al más alto nivel. Recuperación muscular y rendimiento sostenido. Pronto compartiremos más detalles.</p>
+                </div>
+            </div>
+
+            <!-- Jose Mota -->
+            <div class="tcard" data-aos="fade-up" data-aos-delay="300">
+                <div class="tcard-img">
+                    <img src="jose_mota/jose_mota_con_antonio_instalando_maquina_kangen.png" alt="Jose Mota con su máquina Kangen">
+                </div>
+                <div class="tcard-body">
+                    <span class="tcard-tag">Comedia · Televisión</span>
+                    <h3>Jose Mota</h3>
+                    <p>Un asombroso ejemplo de vitalidad. A sus 60 años luce mejor, y con más energía, que hace 14 años. La hidratación antioxidante ha estado presente en su rutina.</p>
+                    <a href="jose_mota/index.html" class="btn-secondary">Ver la transformación</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ─── Expertos Médicos ─── -->
+        <div class="cat-header" data-aos="fade-right">
+            <div class="cat-icon" style="color: var(--water-cyan); border-color: rgba(6,182,212,0.3);"><i class="fas fa-user-doctor"></i></div>
+            <h2>Voces Médicas Autorizadas</h2>
+        </div>
+
+        <div class="cards-grid" style="margin-bottom: 6rem;">
+            <!-- Dr Bresnahan -->
+            <div class="tcard" data-aos="fade-up">
+                <div class="tcard-icon-placeholder" style="background: rgba(6, 182, 212, 0.03); color: rgba(6, 182, 212, 0.15); border-bottom: 1px solid rgba(6, 182, 212, 0.1);"><i class="fas fa-stethoscope"></i></div>
+                <div class="tcard-body">
+                    <span class="tcard-tag" style="color: var(--water-cyan); border-color: rgba(6,182,212,0.2); background: rgba(6,182,212,0.05);">Cardiología de Élite</span>
+                    <h3>Dr. Gerald Bresnahan</h3>
+                    <p>El reputado cardiólogo de los Presidentes de EE.UU., la Reina de Inglaterra y el Papa explica el impacto ineludible del Agua Kangen en la salud.</p>
+                    <a href="dr_bresnahan/index.html" class="btn-secondary" style="border-color: rgba(6,182,212,0.4); color: var(--water-cyan);">Ver Aval Médico</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ─── Personas Reales ─── -->
+        <div class="cat-header" data-aos="fade-right">
+            <div class="cat-icon"><i class="fas fa-heart-pulse"></i></div>
+            <h2>Personas Reales</h2>
+        </div>
+
+        <div class="cards-grid" style="margin-bottom: 6rem;">
+            <!-- Sintrom -->
+            <div class="tcard" data-aos="fade-up">
+                <div class="ribbon">PRÓXIMAMENTE</div>
+                <div class="tcard-icon-placeholder"><i class="fas fa-stethoscope"></i></div>
+                <div class="tcard-body">
+                    <span class="tcard-tag">Salud Cardiovascular</span>
+                    <h3>El caso del Sintrom</h3>
+                    <p>Una mujer nos contó que, tras cambiar su hidratación habitual por Agua Kangen®, su médico observó una mejoría tal que decidió retirarle el Sintrom. Un testimonio que documentaremos con detalle.</p>
+                </div>
+            </div>
+
+            <!-- Placeholder for more -->
+            <div class="tcard" data-aos="fade-up" data-aos-delay="100">
+                <div class="tcard-body" style="padding: 4rem 2.5rem; text-align:center;">
+                    <div style="font-size: 4rem; color: rgba(0,180,216,0.15); margin-bottom: 2rem;"><i class="fas fa-plus-circle"></i></div>
+                    <h3>Tu historia aquí</h3>
+                    <p>¿Ya tienes tu máquina Kangen? Comparte tu experiencia y ayuda a otros a descubrir el poder de la hidratación antioxidante.</p>
+                    <a href="../../index.html#contacto" class="btn-primary">Contáctanos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <section class="bottom-cta">
+        <div class="container">
+            <div class="cta-inner glass-card" data-aos="zoom-in">
+                <h2>Elige <span class="gradient-text">bienestar real</span></h2>
+                <p>No dejes para mañana el agua que tus células necesitan hoy. Solicita información sin compromiso.</p>
+                <a href="../../index.html#contacto" class="btn-primary">Solicitar Información</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <h3>Salud Equilibrio</h3>
+                <p>Distribuidor Independiente Enagic®</p>
+            </div>
+            <div class="footer-links">
+                <a href="../../index.html">Portal Kangen</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Salud Equilibrio. KANGEN WATER® es una marca registrada de Enagic.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+
+</html>
