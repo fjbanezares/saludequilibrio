@@ -12,6 +12,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap"
         rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
         tailwind.config = {
@@ -116,10 +119,59 @@
             opacity: 0.5;
             animation: float 8s infinite alternate;
         }
+
+        /* ─── Language toggle visibility ─── */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+        [data-lang="en"] .lang-es { display: none; }
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(2, 6, 23, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            min-width: 150px;
+            padding: 0.5rem;
+            z-index: 100;
+        }
+        .dropdown-content.show { display: block; }
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+        .lang-option:hover { background: rgba(255, 255, 255, 0.05); color: #fff; }
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #fff;
+        }
     </style>
 </head>
 
-<body class="antialiased selection:bg-kangen-500 selection:text-white">
+<body data-lang="es" class="antialiased selection:bg-kangen-500 selection:text-white">
 
     <!-- Ambient Background -->
     <div class="ambient-orb w-[500px] h-[500px] bg-kangen-900/30 top-[-20%] left-[-10%]"></div>
@@ -129,61 +181,99 @@
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
-            <a href="#" class="flex items-center gap-3 group">
+            <a href="../../index.html" class="flex items-center gap-3 group">
                 <span
                     class="text-3xl filter drop-shadow-[0_0_10px_rgba(45,212,191,0.5)] group-hover:scale-110 transition-transform">💧</span>
                 <span class="font-serif font-bold text-2xl tracking-wide text-white">Kangen<span
                         class="text-kangen-400 font-sans font-light">Ecosystem</span></span>
             </a>
             <div class="hidden md:flex space-x-8 items-center text-sm font-medium text-slate-300 tracking-wide">
-                <a href="#filosofia" class="hover:text-white transition-colors">Filosofía</a>
-                <a href="#modulos" class="hover:text-white transition-colors">Módulos</a>
+                <a href="#filosofia" class="hover:text-white transition-colors">
+                    <span class="lang-es">Filosofía</span>
+                    <span class="lang-en">Philosophy</span>
+                </a>
+                <a href="#modulos" class="hover:text-white transition-colors">
+                    <span class="lang-es">Módulos</span>
+                    <span class="lang-en">Modules</span>
+                </a>
                 <a href="#contacto"
                     class="px-6 py-2.5 rounded-full border border-white/20 hover:bg-white hover:text-slate-900 transition-all">
-                    Agendar Demo
+                    <span class="lang-es">Agendar Demo</span>
+                    <span class="lang-en">Schedule Demo</span>
                 </a>
+
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fas fa-chevron-down text-[10px] opacity-50 ml-2"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')">
+                            <span>🇪🇸</span>
+                            <span>ES</span>
+                        </div>
+                        <div class="lang-option" onclick="setLanguage('en')">
+                            <span>🇬🇧</span>
+                            <span>EN</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Master Hero Section -->
-    <section class="relative min-h-[90vh] flex items-center justify-center pt-32 pb-20 px-4 hero-gradient">
-        <div class="max-w-5xl mx-auto text-center relative z-10">
-            <div
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700/50 text-kangen-400 text-xs font-bold tracking-widest uppercase mb-8 backdrop-blur-sm animate-pulse-slow">
-                <span class="w-2 h-2 rounded-full bg-kangen-400"></span> Dispositivo Médico Certificado ISO 13485
+    <section class="relative min-h-[95vh] flex items-center justify-center pt-32 pb-20 px-4 hero-gradient overflow-hidden">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+            
+            <div class="text-left" data-aos="fade-right">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700/50 text-kangen-400 text-xs font-bold tracking-widest uppercase mb-8 backdrop-blur-sm animate-pulse-slow">
+                    <span class="w-2 h-2 rounded-full bg-kangen-400"></span> 
+                    <span class="lang-es">Dispositivo Médico Certificado ISO 13485</span>
+                    <span class="lang-en">Medical Device Certified ISO 13485</span>
+                </div>
+
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-8 leading-[1.1] tracking-tight text-white">
+                    <span class="lang-es">No eres lo que comes,<br><span class="text-gradient">eres lo que bebes.</span></span>
+                    <span class="lang-en">You are not what you eat,<br><span class="text-gradient">you are what you drink.</span></span>
+                </h1>
+
+                <div class="space-y-6 text-lg text-slate-300 font-light leading-relaxed mb-12">
+                    <p>
+                        <span class="lang-es">Piensa en esto por un segundo: <strong class="text-white font-normal">el 70% de tu cuerpo es literal y físicamente agua</strong>. Tu sangre, tu cerebro, cada célula de tus músculos e intestinos. Y, sin embargo, nos conformamos con darle a nuestra máquina biológica más perfecta un combustible muerto, ácido y empaquetado en plástico.</span>
+                        <span class="lang-en">Think about this for a second: <strong class="text-white font-normal">70% of your body is literally and physically water</strong>. Your blood, your brain, every cell of your muscles and intestines. And yet, we settle for giving our most perfect biological machine a dead, acidic and plastic-packaged fuel.</span>
+                    </p>
+                    <p class="text-xl font-serif italic text-slate-100">
+                        <span class="lang-es">Te mereces algo mejor. Tu familia se merece algo mejor.</span>
+                        <span class="lang-en">You deserve something better. Your family deserves something better.</span>
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center gap-6">
+                    <a href="#modulos"
+                        class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-kangen-500 to-blue-600 text-white font-bold text-lg hover:shadow-[0_0_30px_rgba(45,212,191,0.4)] hover:scale-105 transition-all text-center">
+                        <span class="lang-es">Adentrarse en el Ecosistema ↓</span>
+                        <span class="lang-en">Enter the Ecosystem ↓</span>
+                    </a>
+                </div>
             </div>
 
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-8 leading-[1.1] tracking-tight">
-                No eres lo que comes,<br>
-                <span class="text-gradient">eres lo que bebes.</span>
-            </h1>
-
-            <div class="max-w-3xl mx-auto space-y-6 text-lg md:text-xl text-slate-300 font-light leading-relaxed mb-12">
-                <p>
-                    Piensa en esto por un segundo: <strong class="text-white font-normal">el 70% de tu cuerpo es literal
-                        y físicamente agua</strong>. Tu sangre, tu cerebro, cada célula de tus músculos e intestinos
-                    flota y opera en un medio acuoso. Y, sin embargo, nos conformamos con darle a nuestra máquina
-                    biológica más perfecta un combustible muerto, ácido, empaquetado en plástico y desprovisto de carga
-                    eléctrica.
-                </p>
-                <p class="text-xl md:text-2xl font-serif italic text-slate-100">
-                    Te mereces algo mejor. Tu familia se merece algo mejor.
-                </p>
-                <p>
-                    Mereces beber directamente de una fuente que restaura tu homeostasis. Un agua cargada de <strong
-                        class="text-kangen-400 font-normal">hidrógeno molecular antioxidante</strong> capaz de penetrar
-                    la pared celular, neutralizar el envejecimiento oxidativo y purificar tu organismo desde los
-                    cimientos. No es un lujo; es el estándar de vida que la tecnología japonesa ha puesto a tu alcance.
-                </p>
+            <!-- Prominent Visual Section -->
+            <div class="relative group" data-aos="fade-left">
+                <div class="absolute -inset-10 bg-kangen-400/5 rounded-full blur-[120px] group-hover:bg-kangen-400/10 transition-all duration-1000"></div>
+                <div class="relative">
+                    <img src="../../assets/kangen_kitchen.png" alt="Kangen K8 Real Kitchen" class="rounded-[4rem] shadow-2xl border border-white/5 transition-transform duration-1000 group-hover:scale-[1.02]">
+                    <!-- Floating Stat Badge -->
+                    <div class="absolute -bottom-6 -left-6 glass-nav p-6 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-2xl">
+                        <div class="text-kangen-400 text-xs font-bold uppercase tracking-widest mb-1">Hydrogen Rich</div>
+                        <div class="text-2xl font-serif text-white">Homeostasis</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <a href="#modulos"
-                    class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-kangen-500 to-blue-600 text-white font-bold text-lg hover:shadow-[0_0_30px_rgba(45,212,191,0.4)] hover:scale-105 transition-all">
-                    Adentrarse en el Ecosistema ↓
-                </a>
-            </div>
         </div>
     </section>
 
@@ -192,9 +282,14 @@
         <div class="max-w-7xl mx-auto">
 
             <div class="text-center mb-20 animate-on-scroll">
-                <h2 class="text-3xl md:text-5xl font-serif font-bold text-white mb-4">El Centro de Mando</h2>
-                <p class="text-slate-400 text-lg max-w-2xl mx-auto">Navega por nuestras áreas de especialidad. Desde la
-                    introducción anatómica hasta los desgloces financieros exhaustivos.</p>
+                <h2 class="text-3xl md:text-5xl font-serif font-bold text-white mb-4">
+                    <span class="lang-es">El Centro de Mando</span>
+                    <span class="lang-en">The Command Center</span>
+                </h2>
+                <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+                    <span class="lang-es">Navega por nuestras áreas de especialidad. Desde la introducción anatómica hasta los desgloces financieros exhaustivos.</span>
+                    <span class="lang-en">Navigate through our specialty areas. From anatomical introduction to comprehensive financial breakdowns.</span>
+                </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -209,14 +304,17 @@
                             class="module-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-6 text-white shadow-lg">
                             📖
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-3">La Introducción</h3>
+                        <h3 class="text-2xl font-bold text-white mb-3">
+                            <span class="lang-es">La Introducción</span>
+                            <span class="lang-en">The Introduction</span>
+                        </h3>
                         <p class="text-slate-400 leading-relaxed mb-8 flex-grow text-sm">
-                            El curso definitivo de 16 módulos. Descubre paso a paso por qué nos oxidamos, el paradigma
-                            alcalino y el viaje hacia la salud preventiva y longeva.
+                            <span class="lang-es">El curso definitivo de 16 módulos. Descubre paso a paso por qué nos oxidamos, el paradigma alcalino y el viaje hacia la salud preventiva y longeva.</span>
+                            <span class="lang-en">The definitive 16-module course. Discover step-by-step why we oxidize, the alkaline paradigm, and the journey toward preventive and long-lasting health.</span>
                         </p>
                         <div
                             class="flex items-center text-kangen-400 font-semibold text-sm group-hover:text-white transition-colors">
-                            Iniciar el Viaje <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                            <span class="lang-es">Iniciar el Viaje</span><span class="lang-en">Start the Journey</span> <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
                         </div>
                     </div>
                 </a>
@@ -231,14 +329,35 @@
                             class="module-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-6 text-white shadow-lg">
                             🔬
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-3">Evidencia Clínica</h3>
+                        <h3 class="text-2xl font-bold text-white mb-3">
+                            <span class="lang-es">Evidencia Clínica</span>
+                            <span class="lang-en">Clinical Evidence</span>
+                        </h3>
                         <p class="text-slate-400 leading-relaxed mb-8 flex-grow text-sm">
-                            Nuestra gran base de datos de 100 estudios científicos indexados, análisis sobre diabetes,
-                            función renal y la superioridad del H2 frente a la isquemia.
+                            <span class="lang-es">Nuestra gran base de datos de 100 estudios científicos indexados, análisis sobre diabetes, función renal y la superioridad del H2 frente a la isquemia.</span>
+                            <span class="lang-en">Our large database of 100 indexed scientific studies, analyses on diabetes, renal function, and the superiority of H2 against ischemia.</span>
                         </p>
                         <div
                             class="flex items-center text-blue-400 font-semibold text-sm group-hover:text-white transition-colors">
-                            Exigir el Rigor <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                            <span class="lang-es">Exigir el Rigor</span><span class="lang-en">Demand Rigor</span> <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 0. pH 8.5 - 9.5 KANGEN WATER (DRINKING) -->
+                <a href="ph95/index.html" class="group block h-full">
+                    <div class="module-card rounded-3xl p-8 h-full flex flex-col relative overflow-hidden text-left border-dashed border-white/20">
+                        <div class="absolute -right-10 -top-10 w-32 h-32 bg-kangen-400/10 rounded-full blur-2xl group-hover:bg-kangen-400/20 transition-all"></div>
+                        <div class="module-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-6 text-white shadow-lg bg-kangen-500/20 border-kangen-400/30">
+                            🧬
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">pH 8.5/9.5 Kangen Water®</h3>
+                        <p class="text-slate-400 leading-relaxed mb-8 flex-grow text-sm">
+                            <span class="lang-es">Hidrógeno activo y micro-clustering. El agua ionizada definitiva para hidratación celular profunda, rendimiento deportivo y antienvejecimiento.</span>
+                            <span class="lang-en">Active hydrogen and micro-clustering. The definitive ionized water for deep cellular hydration, sports performance, and anti-aging.</span>
+                        </p>
+                        <div class="flex items-center text-kangen-400 font-semibold text-sm group-hover:text-white transition-colors">
+                            <span class="lang-es">Beber Salud</span><span class="lang-en">Drink Health</span> <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
                         </div>
                     </div>
                 </a>
@@ -253,14 +372,17 @@
                             class="module-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-6 text-white shadow-lg">
                             ❓
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-3">Las 23 Razones</h3>
+                        <h3 class="text-2xl font-bold text-white mb-3">
+                            <span class="lang-es">Las 23 Razones</span>
+                            <span class="lang-en">The 23 Reasons</span>
+                        </h3>
                         <p class="text-slate-400 leading-relaxed mb-8 flex-grow text-sm">
-                            Respuestas asertivas, lógicas y transparentes a las dudas comerciales. Desde la comparación
-                            con la ósmosis hasta la estructura hexagonal pura.
+                            <span class="lang-es">Respuestas asertivas, lógicas y transparentes a las dudas comerciales. Desde la comparación con la ósmosis hasta la estructura hexagonal pura.</span>
+                            <span class="lang-en">Assertive, logical, and transparent answers to commercial doubts. From comparison with osmosis to pure hexagonal structures.</span>
                         </p>
                         <div
                             class="flex items-center text-amber-400 font-semibold text-sm group-hover:text-white transition-colors">
-                            Leer Argumentario <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                            <span class="lang-es">Leer Argumentario</span><span class="lang-en">Read Arguments</span> <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
                         </div>
                     </div>
                 </a>
@@ -275,14 +397,17 @@
                             style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.2));">
                             💶
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-3">ROI Familiar</h3>
+                        <h3 class="text-2xl font-bold text-white mb-3">
+                            <span class="lang-es">ROI Familiar</span>
+                            <span class="lang-en">Family ROI</span>
+                        </h3>
                         <p class="text-slate-400 leading-relaxed mb-8 flex-grow text-sm">
-                            Los números no mienten. El desglose exhaustivo de cómo la máquina se amortiza pagándote
-                            0,039€/L y destruyendo el inmenso coste logístico oculto del supermercado.
+                            <span class="lang-es">Los números no mienten. El desglose exhaustivo de cómo la máquina se amortiza pagándote 0,039€/L y destruyendo el inmenso coste logístico oculto del supermercado.</span>
+                            <span class="lang-en">The numbers don't lie. A comprehensive breakdown of how the machine pays for itself at €0.039/L, destroying the immense hidden logistics cost of the supermarket.</span>
                         </p>
                         <div
                             class="flex items-center text-emerald-400 font-semibold text-sm group-hover:text-white transition-colors">
-                            Analizar Mis Finanzas <span
+                            <span class="lang-es">Analizar Mis Finanzas</span><span class="lang-en">Analyze My Finances</span> <span
                                 class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
                         </div>
                     </div>
@@ -298,14 +423,17 @@
                             style="background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(245, 158, 11, 0.2));">
                             🍽️
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-3">HORECA Dinámico</h3>
+                        <h3 class="text-2xl font-bold text-white mb-3">
+                            <span class="lang-es">HORECA Dinámico</span>
+                            <span class="lang-en">Dynamic HORECA</span>
+                        </h3>
                         <p class="text-slate-400 leading-relaxed mb-8 flex-grow text-sm">
-                            El arma secreta de la restauración. Auditoría corporativa enseñando cómo pasar de 36.000€ a
-                            1.400€ de coste anual recuperando el margen operativo en mesa de tu restaurante.
+                            <span class="lang-es">El arma secreta de la restauración. Auditoría corporativa enseñando cómo pasar de 36.000€ a 1.400€ de coste anual recuperando el margen operativo en mesa de tu restaurante.</span>
+                            <span class="lang-en">The secret weapon of restoration. Corporate audit showing how to go from €36,000 to €1,400 in annual cost, recovering the operating margin on your restaurant's tables.</span>
                         </p>
                         <div
                             class="flex items-center text-gold-400 font-semibold text-sm group-hover:text-white transition-colors">
-                            Salvar mi Margen <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                            <span class="lang-es">Salvar mi Margen</span><span class="lang-en">Save My Margin</span> <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
                         </div>
                     </div>
                 </a>
@@ -317,12 +445,130 @@
                         <div class="module-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-6 text-white shadow-lg">
                             💬
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-3">Casos de Éxito</h3>
+                        <h3 class="text-2xl font-bold text-white mb-3">
+                            <span class="lang-es">Casos de Éxito</span>
+                            <span class="lang-en">Success Stories</span>
+                        </h3>
                         <p class="text-slate-400 leading-relaxed mb-8 flex-grow text-sm">
-                            Miles de vidas y analíticas de sangre transformadas en todo el mundo. Descubre los testimonios médicos y personales de quienes ya integraron Kangen.
+                            <span class="lang-es">Miles de vidas y analíticas de sangre transformadas en todo el mundo. Descubre los testimonios médicos y personales de quienes ya integraron Kangen.</span>
+                            <span class="lang-en">Thousands of lives and blood tests transformed worldwide. Discover the medical and personal testimonials of those who have already integrated Kangen.</span>
                         </p>
                         <div class="flex items-center text-cyan-400 font-semibold text-sm group-hover:text-white transition-colors">
-                            Ver Testimonios <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                            <span class="lang-es">Ver Testimonios</span><span class="lang-en">View Testimonials</span> <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 7. pH 7.0 CLEAN WATER -->
+                <a href="ph7/index.html" class="group block h-full">
+                    <div class="module-card rounded-3xl p-8 h-full flex flex-col relative overflow-hidden text-left border-dashed border-white/20">
+                        <div class="absolute -right-10 -top-10 w-32 h-32 bg-blue-400/10 rounded-full blur-2xl group-hover:bg-blue-400/20 transition-all"></div>
+                        <div class="module-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-6 text-white shadow-lg bg-blue-500/20 border-blue-400/30">
+                            ✨
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">pH 7.0 Clean Water</h3>
+                        <p class="text-slate-400 leading-relaxed mb-8 flex-grow text-sm">
+                            <span class="lang-es">Filtración absoluta. El agua más segura para biberones, niños pequeños y preparación de medicamentos efervescentes. Pureza sin compromiso.</span>
+                            <span class="lang-en">Absolute filtration. The safest water for baby bottles, small children, and the preparation of effervescent medications. Purity without compromise.</span>
+                        </p>
+                        <div class="flex items-center text-blue-400 font-semibold text-sm group-hover:text-white transition-colors">
+                            <span class="lang-es">Descubrir Pureza</span><span class="lang-en">Discover Purity</span> <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 8. pH 11.5 STRONG KANGEN -->
+                <a href="ph115/index.html" class="group block h-full">
+                    <div class="module-card rounded-3xl p-8 h-full flex flex-col relative overflow-hidden text-left border-dashed border-white/20">
+                        <div class="absolute -right-10 -top-10 w-32 h-32 bg-mint-vibrant/10 rounded-full blur-2xl group-hover:bg-mint-vibrant/20 transition-all"></div>
+                        <div class="module-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-6 text-white shadow-lg bg-mint-vibrant/20 border-mint-vibrant/30">
+                            🔥
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">pH 11.5 Strong Kangen</h3>
+                        <p class="text-slate-400 leading-relaxed mb-8 flex-grow text-sm">
+                            <span class="lang-es">El poder desengrasante total. Elimina pesticidas y ceras de los alimentos, y sustituye los productos químicos de limpieza en tu hogar.</span>
+                            <span class="lang-en">Total degreasing power. Removes pesticides and waxes from food, and replaces chemical cleaning products in your home.</span>
+                        </p>
+                        <div class="flex items-center text-mint-vibrant font-semibold text-sm group-hover:text-white transition-colors">
+                            <span class="lang-es">Ver el Poder</span><span class="lang-en">See the Power</span> <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 13. pH 2.5 STRONG ACIDIC -->
+                <a href="ph25/index.html" class="group block h-full">
+                    <div class="module-card rounded-3xl p-8 h-full flex flex-col relative overflow-hidden text-left border-dashed border-white/20">
+                        <div class="absolute -right-10 -top-10 w-32 h-32 bg-red-500/10 rounded-full blur-2xl group-hover:bg-red-500/20 transition-all"></div>
+                        <div class="module-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-6 text-white shadow-lg bg-red-500/20 border-red-400/30">
+                            🛡️
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">pH 2.5 Strong Acidic</h3>
+                        <p class="text-slate-400 leading-relaxed mb-8 flex-grow text-sm">
+                            <span class="lang-es">Desinfectante de grado quirúrgico sin químicos. Elimina el 99.9% de patógenos, bacterias y virus de forma ecológica y segura.</span>
+                            <span class="lang-en">Surgical-grade disinfectant without chemicals. It eliminates 99.9% of pathogens, bacteria, and viruses ecologically and safely.</span>
+                        </p>
+                        <div class="flex items-center text-red-400 font-semibold text-sm group-hover:text-white transition-colors">
+                            <span class="lang-es">Sanitizar Mi Hogar</span><span class="lang-en">Sanitize My Home</span> <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 9. pH 6.0 BEAUTY WATER -->
+                <a href="ph6/index.html" class="group block h-full">
+                    <div class="module-card rounded-3xl p-8 h-full flex flex-col relative overflow-hidden text-left border-dashed border-white/20">
+                        <div class="absolute -right-10 -top-10 w-32 h-32 bg-pink-500/10 rounded-full blur-2xl group-hover:bg-pink-500/20 transition-all"></div>
+                        <div class="module-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-6 text-white shadow-lg bg-pink-500/20 border-pink-400/30">
+                            🌸
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">pH 6.0 Beauty Water</h3>
+                        <p class="text-slate-400 leading-relaxed mb-8 flex-grow text-sm">
+                            <span class="lang-es">El tónico natural definitivo. Respeta el pH de tu piel y cabello, y proporciona a tus plantas el entorno ideal para un crecimiento vibrante.</span>
+                            <span class="lang-en">The ultimate natural toner. Respects the pH of your skin and hair, and provides your plants with the ideal environment for vibrant growth.</span>
+                        </p>
+                        <div class="flex items-center text-pink-400 font-semibold text-sm group-hover:text-white transition-colors">
+                            <span class="lang-es">Explorar Belleza</span><span class="lang-en">Explore Beauty</span> <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 10. CICLO DE VIDA -->
+                <a href="ciclo_de_vida/index.html" class="group block h-full">
+                    <div class="module-card rounded-3xl p-8 h-full flex flex-col relative overflow-hidden text-left border-dashed border-white/20">
+                        <div class="absolute -right-10 -top-10 w-32 h-32 bg-mint-vibrant/10 rounded-full blur-2xl group-hover:bg-mint-vibrant/20 transition-all"></div>
+                        <div class="module-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-6 text-white shadow-lg bg-mint-vibrant/20 border-mint-vibrant/30">
+                            🔄
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">
+                            <span class="lang-es">Ciclo de Vida</span>
+                            <span class="lang-en">Life Cycle</span>
+                        </h3>
+                        <p class="text-slate-400 leading-relaxed mb-8 flex-grow text-sm">
+                            <span class="lang-es">Ingeniería para la eternidad. El sistema de autolimpieza automática y los cuidados necesarios para garantizar más de 20 años de salud.</span>
+                            <span class="lang-en">Engineering for eternity. The automatic self-cleaning system and the necessary care to guarantee more than 20 years of health.</span>
+                        </p>
+                        <div class="flex items-center text-mint-vibrant font-semibold text-sm group-hover:text-white transition-colors">
+                            <span class="lang-es">Ver Mantenimiento</span><span class="lang-en">View Maintenance</span> <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 11. INVERSIÓN Y NEGOCIO -->
+                <a href="inversion_y_negocio/index.html" class="group block h-full">
+                    <div class="module-card rounded-3xl p-8 h-full flex flex-col relative overflow-hidden text-left border-dashed border-white/20">
+                        <div class="absolute -right-10 -top-10 w-32 h-32 bg-gold/10 rounded-full blur-2xl group-hover:bg-gold/20 transition-all"></div>
+                        <div class="module-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-6 text-white shadow-lg bg-gold/20 border-gold/30">
+                            🏆
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">
+                            <span class="lang-es">Inversión y Negocio</span>
+                            <span class="lang-en">Investment & Business</span>
+                        </h3>
+                        <p class="text-slate-400 leading-relaxed mb-8 flex-grow text-sm">
+                            <span class="lang-es">El activo más rentable de tu patrimonio. Descubre el ROI monetario de 1.124€ anuales y el retorno vital en libertad y logística.</span>
+                            <span class="lang-en">The most profitable asset of your wealth. Discover the monetary ROI of €1,124 annually and the vital return in freedom and logistics.</span>
+                        </p>
+                        <div class="flex items-center text-gold font-semibold text-sm group-hover:text-white transition-colors">
+                            <span class="lang-es">Analizar Rentabilidad</span><span class="lang-en">Analyze Profitability</span> <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
                         </div>
                     </div>
                 </a>
@@ -337,32 +583,58 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="space-y-8">
                     <h2 class="text-3xl md:text-5xl font-serif font-bold text-white leading-tight">
-                        La Verdadera Libertad <br><span class="text-gradient">No Viene en Plástico</span>
+                        <span class="lang-es">La Verdadera Libertad <br><span class="text-gradient">No Viene en Plástico</span></span>
+                        <span class="lang-en">True Freedom <br><span class="text-gradient">Doesn't Come in Plastic</span></span>
                     </h2>
                     <p class="text-lg text-slate-300 font-light leading-relaxed">
-                        Beber agua Kangen no es solo un cambio de hábito, es una declaración de independencia frente a la industria del embotellado y la toxicidad urbana.
+                        <span class="lang-es">Beber agua Kangen no es solo un cambio de hábito, es una declaración de independencia frente a la industria del embotellado y la toxicidad urbana.</span>
+                        <span class="lang-en">Drinking Kangen water is not just a change of habit; it is a declaration of independence from the bottling industry and urban toxicity.</span>
                     </p>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="p-6 rounded-2xl bg-slate-800/40 border border-white/5 hover:border-kangen-500/30 transition-colors">
                             <div class="text-2xl mb-3">🚫 🧴</div>
-                            <h4 class="text-white font-bold mb-2">Adiós a la Logística</h4>
-                            <p class="text-sm text-slate-400">Olvida cargar paquetes de botellas del supermercado. Tu fuente de grado médico está en tu cocina.</p>
+                            <h4 class="text-white font-bold mb-2">
+                                <span class="lang-es">Adiós a la Logística</span>
+                                <span class="lang-en">Goodbye to Logistics</span>
+                            </h4>
+                            <p class="text-sm text-slate-400">
+                                <span class="lang-es">Olvida cargar paquetes de botellas del supermercado. Tu fuente de grado médico está en tu cocina.</span>
+                                <span class="lang-en">Forget carrying bottle packs from the supermarket. Your medical-grade source is in your kitchen.</span>
+                            </p>
                         </div>
                         <div class="p-6 rounded-2xl bg-slate-800/40 border border-white/5 hover:border-kangen-500/30 transition-colors">
                             <div class="text-2xl mb-3">💎 🧬</div>
-                            <h4 class="text-white font-bold mb-2">Cero Microplásticos</h4>
-                            <p class="text-sm text-slate-400">Protege tu sistema endocrino eliminando el contacto del agua con polímeros y Bisfenol A.</p>
+                            <h4 class="text-white font-bold mb-2">
+                                <span class="lang-es">Cero Microplásticos</span>
+                                <span class="lang-en">Zero Microplastics</span>
+                            </h4>
+                            <p class="text-sm text-slate-400">
+                                <span class="lang-es">Protege tu sistema endocrino eliminando el contacto del agua con polímeros y Bisfenol A.</span>
+                                <span class="lang-en">Protect your endocrine system by eliminating water contact with polymers and Bisphenol A.</span>
+                            </p>
                         </div>
                         <div class="p-6 rounded-2xl bg-slate-800/40 border border-white/5 hover:border-kangen-500/30 transition-colors">
                             <div class="text-2xl mb-3">🛡️ ⚡</div>
-                            <h4 class="text-white font-bold mb-2">Filtración Dual</h4>
-                            <p class="text-sm text-slate-400">Elimina cloro, metales pesados y sedimentos del grifo mientras preservas los minerales esenciales.</p>
+                            <h4 class="text-white font-bold mb-2">
+                                <span class="lang-es">Filtración Dual</span>
+                                <span class="lang-en">Dual Filtration</span>
+                            </h4>
+                            <p class="text-sm text-slate-400">
+                                <span class="lang-es">Elimina cloro, metales pesados y sedimentos del grifo mientras preservas los minerales esenciales.</span>
+                                <span class="lang-en">Removes chlorine, heavy metals, and sediments from the tap while preserving essential minerals.</span>
+                            </p>
                         </div>
                         <div class="p-6 rounded-2xl bg-slate-800/40 border border-white/5 hover:border-kangen-500/30 transition-colors">
                             <div class="text-2xl mb-3">🧼 ✨</div>
-                            <h4 class="text-white font-bold mb-2">Mantenimiento Inteligente</h4>
-                            <p class="text-sm text-slate-400">Sistemas de autolimpieza patentados que garantizan 20+ años de vida útil con esfuerzo nulo.</p>
+                            <h4 class="text-white font-bold mb-2">
+                                <span class="lang-es">Mantenimiento Inteligente</span>
+                                <span class="lang-en">Smart Maintenance</span>
+                            </h4>
+                            <p class="text-sm text-slate-400">
+                                <span class="lang-es">Sistemas de autolimpieza patentados que garantizan 20+ años de vida útil con esfuerzo nulo.</span>
+                                <span class="lang-en">Patented self-cleaning systems that guarantee 20+ years of useful life with zero effort.</span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -371,19 +643,99 @@
                     <div class="module-card rounded-[3rem] p-12 text-center relative overflow-hidden">
                         <div class="absolute inset-0 bg-kangen-500/5 blur-3xl"></div>
                         <div class="relative z-10">
-                            <div class="text-kangen-400 font-bold tracking-widest uppercase mb-4">Análisis de Coste Real</div>
+                            <div class="text-kangen-400 font-bold tracking-widest uppercase mb-4">
+                                <span class="lang-es">Análisis de Coste Real</span>
+                                <span class="lang-en">Real Cost Analysis</span>
+                            </div>
                             <div class="text-6xl md:text-7xl font-sans font-extrabold text-white mb-6">
                                 0,03<span class="text-3xl text-kangen-400">€</span>
                             </div>
-                            <div class="text-xl text-slate-300 font-serif italic mb-8">El coste por litro de agua de grado médico</div>
+                            <div class="text-xl text-slate-300 font-serif italic mb-8">
+                                <span class="lang-es">El coste por litro de agua de grado médico</span>
+                                <span class="lang-en">The cost per liter of medical grade water</span>
+                            </div>
                             <p class="text-slate-400 text-sm leading-relaxed mb-8">
-                                Aunque la inversión inicial es de alta gama, el ciclo de vida de la tecnología Enagic® reduce el coste de tu salud diaria a una fracción del agua mineral barata, devolviéndote la inversión en ahorros directos de supermercado y farmacia.
+                                <span class="lang-es">Aunque la inversión inicial es de alta gama, el ciclo de vida de la tecnología Enagic® reduce el coste de tu salud diaria a una fracción del agua mineral barata, devolviéndote la inversión en ahorros directos de supermercado y farmacia.</span>
+                                <span class="lang-en">Although the initial investment is high-end, the life cycle of Enagic® technology reduces the cost of your daily health to a fraction of cheap mineral water, returning the investment through direct supermarket and pharmacy savings.</span>
                             </p>
                             <div class="inline-flex px-6 py-2 rounded-full bg-kangen-500/10 border border-kangen-500/20 text-kangen-400 text-xs font-bold uppercase tracking-tighter">
-                                Inversión en Salud Preventiva
+                                <span class="lang-es">Inversión en Salud Preventiva</span>
+                                <span class="lang-en">Investment in Preventive Health</span>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design & Integration Section -->
+    <section class="py-24 px-4 relative z-10 overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div class="order-2 lg:order-1" data-aos="fade-right">
+                    <img src="../../assets/kangen_kitchen.png" alt="Kangen Kitchen Integration" class="rounded-[3rem] shadow-2xl border border-white/5 transition-transform hover:scale-[1.02] duration-700">
+                </div>
+                <div class="order-1 lg:order-2 space-y-8" data-aos="fade-left">
+                    <span class="text-kangen-400 text-[10px] tracking-[8px] uppercase font-bold">
+                        <span class="lang-es">Arquitectura y Salud</span>
+                        <span class="lang-en">Architecture and Health</span>
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-white leading-tight">
+                        <span class="lang-es">Diseño que Complementa <br><span class="text-gradient">tu Estilo de Vida</span></span>
+                        <span class="lang-en">Design that <br><span class="text-gradient">Complements your Lifestyle</span></span>
+                    </h2>
+                    <div class="space-y-6 text-lg text-slate-300 font-light leading-relaxed">
+                        <p>
+                            <span class="lang-es">La máquina Kangen se integra perfectamente en cualquier espacio moderno de la cocina. Su diseño compacto y elegante permite instalarla al lado del grifo sin ocupar demasiado espacio, manteniendo una estética minimalista y limpia.</span>
+                            <span class="lang-en">The Kangen machine integrates perfectly into any modern kitchen space. Its compact and elegant design allows for installation next to the faucet without taking up too much space, maintaining a minimalist and clean aesthetic.</span>
+                        </p>
+                        <p>
+                            <span class="lang-es">Con su pantalla táctil intuitiva y conexión directa, ofrece agua alcalina y purificada al instante. Es una solución práctica y sofisticada que eleva la funcionalidad de tu hogar sin alterar su estilo.</span>
+                            <span class="lang-en">With its intuitive touch screen and direct connection, it offers alkaline and purified water instantly. It is a practical and sophisticated solution that elevates your home's functionality without altering its style.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Longevity & Self-Cleaning Section -->
+    <section class="py-24 px-4 relative z-10 bg-slate-900/40 border-y border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div class="space-y-10" data-aos="fade-right">
+                    <span class="text-blue-400 text-[10px] tracking-[8px] uppercase font-bold">Ingeniería de Longevidad</span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-white leading-tight">
+                        <span class="lang-es">La Máquina que <br><span class="text-blue-400">se Cuida Sola</span></span>
+                        <span class="lang-en">The Machine that <br><span class="text-blue-400">Takes Care of Itself</span></span>
+                    </h2>
+                    <div class="space-y-6 text-lg text-slate-400 font-light leading-relaxed">
+                        <p>
+                            <span class="lang-es">El corazón de Kangen son sus placas de titanio grado médico recubiertas de platino. Para garantizar una vida útil superior a 20 años, la máquina incorpora un **sistema de autolimpieza inteligente**.</span>
+                            <span class="lang-en">The heart of Kangen is its medical-grade titanium plates coated with platinum. To guarantee a useful life of more than 20 years, the machine incorporates an **intelligent self-cleaning system**.</span>
+                        </p>
+                        <p>
+                            <span class="lang-es">Mediante la inversión periódica de la polaridad de los electrodos, el sistema desprende automáticamente los sedimentos de calcio y magnesio, manteniendo la capacidad de electrólisis en un estado óptimo sin intervención externa.</span>
+                            <span class="lang-en">By periodically reversing the polarity of the electrodes, the system automatically sheds calcium and magnesium sediments, maintaining the electrolysis capacity in an optimal state without external intervention.</span>
+                        </p>
+                    </div>
+                    
+                    <!-- Pro Tip Box -->
+                    <div class="p-8 rounded-3xl bg-blue-500/5 border border-blue-500/20 backdrop-blur-sm">
+                        <div class="flex items-center gap-4 mb-4">
+                            <i class="fas fa-magic text-blue-400"></i>
+                            <h4 class="text-white font-bold tracking-wide uppercase text-xs">Pro Tip: Deep Cleaning</h4>
+                        </div>
+                        <p class="text-sm text-slate-300 italic">
+                            <span class="lang-es">"En zonas de agua muy dura, activar el modo 'Agua de Belleza' durante 2-3 minutos una vez al día fuerza la inversión de corriente y realiza una limpieza profunda de la celda, maximizando su rendimiento a largo plazo."</span>
+                            <span class="lang-en">"In areas with very hard water, activating the 'Beauty Water' mode for 2-3 minutes once a day forces current reversal and performs a deep clean of the cell, maximizing its long-term performance."</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="relative" data-aos="fade-left">
+                    <div class="absolute -inset-10 bg-blue-500/10 rounded-full blur-[100px]"></div>
+                    <img src="../../assets/kangen_cleaning.png" alt="Kangen Self-Cleaning Tech" class="rounded-[3rem] shadow-2xl relative z-10 border border-white/5">
                 </div>
             </div>
         </div>
@@ -396,16 +748,18 @@
             <div class="absolute inset-0 background-noise opacity-20"></div>
             <div class="relative z-10">
                 <span class="text-5xl mb-6 block">🩺</span>
-                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6">No exijas fe. Exige Medición
-                    Clínica.</h2>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
+                    <span class="lang-es">No exijas fe. Exige Medición Clínica.</span>
+                    <span class="lang-en">Don't demand faith. Demand Clinical Measurement.</span>
+                </h2>
                 <p class="text-xl text-slate-300 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-                    Sabemos que en la era de los falsos milagros de internet, el rigor es lo único que importa. Déjanos
-                    ir a tu hogar u oficina con reactivos médicos y medidores de ORP para que el agua que bebes confiese
-                    su verdad.
+                    <span class="lang-es">Sabemos que en la era de los falsos milagros de internet, el rigor es lo único que importa. Déjanos ir a tu hogar u oficina con reactivos médicos y medidores de ORP para que el agua que bebes confiese su verdad.</span>
+                    <span class="lang-en">We know that in the age of false internet miracles, rigor is all that matters. Let us visit your home or office with medical reagents and ORP meters so that the water you drink confesses its truth.</span>
                 </p>
                 <button
                     class="inline-flex items-center justify-center px-10 py-5 rounded-full bg-white text-slate-900 font-bold text-lg hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:scale-105 transition-all">
-                    Solicitar Auditoría Domiciliaria Gratuita
+                    <span class="lang-es">Solicitar Auditoría Domiciliaria Gratuita</span>
+                    <span class="lang-en">Request a Free Home Audit</span>
                 </button>
             </div>
         </div>
@@ -414,12 +768,58 @@
     <!-- Minimalist Footer -->
     <footer class="py-12 border-t border-slate-800 text-center text-slate-500 text-sm relative z-10">
         <div class="max-w-4xl mx-auto px-4">
-            <p class="mb-4">© 2026 Distribuidor Independiente Enagic. Promoviendo la homeostasis celular global.</p>
-            <p class="font-light text-xs max-w-2xl mx-auto opacity-60">Las declaraciones en este portal están extraídas
-                de la literatura médica disponible. Este dispositivo cuenta con certificación europea e ISO médica
-                (13485). Consulta siempre a tu especialista frente a patologías graves subyacentes.</p>
+            <p class="mb-4">
+                <span class="lang-es">© 2026 Distribuidor Independiente Enagic. Promoviendo la homeostasis celular global.</span>
+                <span class="lang-en">© 2026 Enagic Independent Distributor. Promoting global cellular homeostasis.</span>
+            </p>
+            <p class="font-light text-xs max-w-2xl mx-auto opacity-60">
+                <span class="lang-es">Las declaraciones en este portal están extraídas de la literatura médica disponible. Este dispositivo cuenta con certificación europea e ISO médica (13485). Consulta siempre a tu especialista frente a patologías graves subyacentes.</span>
+                <span class="lang-en">The statements on this portal are drawn from available medical literature. This device has European certification and medical ISO (13485). Always consult your specialist regarding serious underlying pathologies.</span>
+            </p>
         </div>
     </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Language Toggle Logic
+        const LANG_KEY = 'salud_equilibrio_lang';
+        
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            document.getElementById('lang-dropdown').classList.toggle('show');
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.closest('.lang-trigger')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem(LANG_KEY, lang);
+            const flag = lang === 'es' ? '🇪🇸' : '🇬🇧';
+            const text = lang.toUpperCase();
+            document.getElementById('current-flag').innerText = flag;
+            document.getElementById('current-lang-text').innerText = text;
+            
+            const dropdown = document.getElementById('lang-dropdown');
+            if(dropdown) dropdown.classList.remove('show');
+
+            // Force update across all elements if needed (though CSS handles it)
+            console.log('Language set to:', lang);
+        }
+
+        function initLanguage() {
+            const savedLang = localStorage.getItem(LANG_KEY) || 'es';
+            setLanguage(savedLang);
+        }
+
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
 
 </body>
 

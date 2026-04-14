@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristina Castaño — Belleza Natural & Agua Kangen® | Salud Equilibrio</title>
+    <meta name="description"
+        content="La actriz Cristina Castaño confía en el Agua Kangen® para su hidratación diaria y el cuidado de su piel con agua de belleza pH 6.0. Descubre por qué las actrices eligen Kangen.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="../../../style.css">
+    <style>
+        /* ─── Language toggle system ─── */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+        [data-lang="en"] .lang-es { display: none; }
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(1, 8, 19, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 180, 216, 0.2);
+            border-radius: 1rem;
+            min-width: 150px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .dropdown-content.show { display: block; }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .lang-option:hover {
+            background: rgba(0, 119, 182, 0.1);
+            color: #fff;
+        }
+
+        .lang-option.active {
+            color: var(--water-clear);
+        }
+
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 180, 216, 0.15);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-white);
+            transition: all 0.3s ease;
+        }
+
+        .lang-trigger:hover {
+            border-color: rgba(0, 180, 216, 0.4);
+            background: rgba(0, 180, 216, 0.05);
+        }
+
+        /* ─── Page-specific styles ─── */
+        .actriz-hero {
+            padding: 180px 0 80px;
+            text-align: center;
+            background: radial-gradient(ellipse at 50% 30%, rgba(0, 119, 182, 0.12), transparent 60%);
+        }
+
+        .actriz-hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.05;
+            margin-bottom: 2rem;
+        }
+
+        .actriz-hero .lead {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Story section — main photo + text */
+        .story-section {
+            padding: 80px 0 100px;
+        }
+
+        .story-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .story-photo {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 180, 216, 0.1);
+            position: relative;
+        }
+
+        .story-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .story-photo:hover img {
+            transform: scale(1.03);
+        }
+
+        .story-photo .photo-tag {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            background: rgba(0, 119, 182, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .story-content {
+            padding: 2rem 0;
+        }
+
+        .story-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            line-height: 1.15;
+        }
+
+        .story-content p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-content p strong {
+            color: var(--text-white);
+        }
+
+        /* pH 6 Beauty Water section */
+        .beauty-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--deep-ocean) 0%, var(--midnight) 100%);
+        }
+
+        .beauty-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .beauty-card {
+            border-radius: 24px;
+            overflow: hidden;
+            background: rgba(8, 20, 42, 0.6);
+            border: 1px solid rgba(245, 158, 11, 0.15);
+            padding: 2.5rem;
+            transition: var(--transition);
+        }
+
+        .beauty-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(245, 158, 11, 0.3);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .beauty-card .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .beauty-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text-white);
+        }
+
+        .beauty-card p {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            line-height: 1.7;
+        }
+
+        .ph-badge {
+            display: inline-block;
+            padding: 6px 18px;
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            border-radius: 50px;
+            color: #f59e0b;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .beauty-section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .beauty-section-header p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-top: 1.5rem;
+        }
+
+        .highlight-box {
+            background: rgba(0, 119, 182, 0.08);
+            border-left: 4px solid var(--water-vibrant);
+            padding: 1.5rem 2rem;
+            border-radius: 0 16px 16px 0;
+            margin: 2rem 0;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .highlight-box strong {
+            color: var(--water-clear);
+        }
+
+        .highlight-box-gold {
+            background: rgba(245, 158, 11, 0.06);
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem 2rem;
+            border-radius: 0 16px 16px 0;
+            margin: 2rem 0;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .highlight-box-gold strong {
+            color: #f59e0b;
+        }
+
+        /* CTA */
+        .actriz-cta {
+            padding: 120px 0;
+            text-align: center;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 119, 182, 0.1), transparent 60%);
+        }
+
+        .actriz-cta .cta-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem;
+        }
+
+        .actriz-cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .actriz-cta p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 968px) {
+            .actriz-hero h1 { font-size: 3rem; }
+            .story-layout { grid-template-columns: 1fr; }
+            .beauty-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body data-lang="es">
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../../../index.html" class="logo">
+                <span class="logo-text">Salud Equilibrio</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../../index.html">
+                    <span class="lang-es inline">Inicio</span>
+                    <span class="lang-en inline">Home</span>
+                </a>
+                <a href="../index.html">
+                    <span class="lang-es inline">Testimonios</span>
+                    <span class="lang-en inline">Testimonials</span>
+                </a>
+
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <svg style="width:10px;height:10px;margin-left:4px;opacity:0.5;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')">
+                            <span style="font-size:1.2rem;">🇪🇸</span>
+                            <span>Castellano</span>
+                        </div>
+                        <div class="lang-option" onclick="setLanguage('en')">
+                            <span style="font-size:1.2rem;">🇬🇧</span>
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="../../../index.html#contacto" class="btn-primary-sm">
+                    <span class="lang-es inline">Adquiere tu Máquina</span>
+                    <span class="lang-en inline">Get Your Machine</span>
+                </a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="actriz-hero">
+        <div class="container" data-aos="fade-up">
+            <span class="badge">
+                <span class="lang-es inline">Caso Observado</span>
+                <span class="lang-en inline">Observed Case</span>
+            </span>
+            <h1>
+                <span class="lang-es">Cristina Castaño:<br><span class="gradient-text">Belleza Natural & Agua Kangen®</span></span>
+                <span class="lang-en">Cristina Castaño:<br><span class="gradient-text">Natural Beauty & Kangen Water®</span></span>
+            </h1>
+            <p class="lead">
+                <span class="lang-es">La reconocida actriz de series como <strong>Ña&#237;ls</strong> y numerosas películas españolas eligió la hidratación Kangen® para su día a día. Agua limpia para beber y agua de belleza pH 6.0 para una piel radiante.</span>
+                <span class="lang-en">The renowned actress from series like <strong>Ña&#237;ls</strong> and numerous Spanish films chose Kangen® hydration for her daily life. Clean water to drink and pH 6.0 beauty water for radiant skin.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Story -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-layout">
+                <div class="story-photo" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="photo-tag"><i class="fas fa-star" style="margin-right:8px;"></i>Kangen Water®</div>
+                    <img src="actriz_muy_guapa.png" alt="Cristina Castaño con su máquina Kangen LevelUk Jr II">
+                </div>
+                <div class="story-content" data-aos="fade-left" data-aos-duration="1000">
+                    <h2>
+                        <span class="lang-es">El secreto mejor guardado de una <span class="gradient-text">actriz de élite</span></span>
+                        <span class="lang-en">The best-kept secret of an <span class="gradient-text">elite actress</span></span>
+                    </h2>
+                    <p>
+                        <span class="lang-es"><strong>Cristina Castaño</strong>, conocida por su brillante papel en la exitosa serie <strong>Ña&#237;ls</strong> y su participación en numerosas películas del cine español, es una de las actrices más bellas y talentosas de su generación. Su rostro es su herramienta de trabajo, y por eso no deja nada al azar.</span>
+                        <span class="lang-en"><strong>Cristina Castaño</strong>, known for her brilliant role in the hit series <strong>Ña&#237;ls</strong> and her participation in numerous Spanish films, is one of the most beautiful and talented actresses of her generation. Her face is her working tool, which is why she leaves nothing to chance.</span>
+                    </p>
+                    <p>
+                        <span class="lang-es">En la foto la vemos junto a su máquina <strong>Kangen LevelUk Jr II</strong>, en la comodidad de su cocina. No es casualidad: eligió tener agua recién tratada, limpia y antioxidante al alcance de la mano para hidratarse en su día a día.</span>
+                        <span class="lang-en">In the photo we can see her next to her <strong>Kangen LevelUk Jr II</strong> machine, in the comfort of her kitchen. It's no coincidence: she chose to have freshly treated, clean, antioxidant water within arm's reach for her daily hydration.</span>
+                    </p>
+
+                    <div class="highlight-box">
+                        <strong>
+                            <span class="lang-es inline">Dos aguas, un solo dispositivo</span>
+                            <span class="lang-en inline">Two waters, one single device</span>
+                        </strong><br>
+                        <span class="lang-es">Con su máquina Kangen, Cristina tiene acceso inmediato a <strong>agua alcalina antioxidante</strong> para beber cómodamente en casa, y al <strong>agua de belleza pH 6.0</strong>, perfecta para el cuidado de su piel. Un doble beneficio con un solo botón.</span>
+                        <span class="lang-en">With her Kangen machine, Cristina has immediate access to <strong>antioxidant alkaline water</strong> for comfortable drinking at home, and to <strong>pH 6.0 beauty water</strong>, perfect for her skin care. A double benefit with a single button press.</span>
+                    </div>
+
+                    <p>
+                        <span class="lang-es">No ponemos palabras en boca de nadie. Simplemente observamos: una actriz que necesita lucir impecable cada día frente a las cámaras eligió tener una máquina Kangen en su hogar. <strong>Los hechos hablan solos.</strong></span>
+                        <span class="lang-en">We don't put words in anyone's mouth. We simply observe: an actress who needs to look flawless every day in front of the cameras chose to have a Kangen machine in her home. <strong>The facts speak for themselves.</strong></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- pH 6 Beauty Water Section -->
+    <section class="beauty-section">
+        <div class="container">
+            <div class="beauty-section-header" data-aos="fade-up">
+                <span class="ph-badge">pH 6.0 — Beauty Water</span>
+                <h2>
+                    <span class="lang-es">El Agua de Belleza: <span class="gradient-text">el tónico natural perfecto</span></span>
+                    <span class="lang-en">Beauty Water: <span class="gradient-text">the perfect natural toner</span></span>
+                </h2>
+                <p>
+                    <span class="lang-es">La máquina Kangen produce agua a <strong>pH 6.0</strong>, sintonizada con el <strong>manto ácido natural de la piel</strong> (pH 4.5–6.0). A diferencia de los tónicos comerciales con alcohol, perfumes y conservantes, el agua de belleza Kangen es 100% natural, sin residuos y sin químicos.</span>
+                    <span class="lang-en">The Kangen machine produces water at <strong>pH 6.0</strong>, attuned to the skin's <strong>natural acid mantle</strong> (pH 4.5–6.0). Unlike commercial toners with alcohol, perfumes, and preservatives, Kangen beauty water is 100% natural, residue-free, and chemical-free.</span>
+                </p>
+            </div>
+
+            <div class="beauty-grid">
+                <div class="beauty-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="card-icon">💆</div>
+                    <h3>
+                        <span class="lang-es inline">Tónico Facial Natural</span>
+                        <span class="lang-en inline">Natural Facial Toner</span>
+                    </h3>
+                    <p>
+                        <span class="lang-es">Pulverizar el agua pH 6.0 sobre el rostro limpio. Cierra los poros, tonifica y prepara la piel para absorber mejor la crema hidratante. Ideal mañana y noche.</span>
+                        <span class="lang-en">Spray pH 6.0 water on a clean face. It closes pores, tones, and prepares the skin to better absorb moisturizer. Ideal morning and night.</span>
+                    </p>
+                </div>
+                <div class="beauty-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon">✨</div>
+                    <h3>
+                        <span class="lang-es inline">Hidratación Profunda</span>
+                        <span class="lang-en inline">Deep Hydration</span>
+                    </h3>
+                    <p>
+                        <span class="lang-es">El pH 6.0 respeta y refuerza la barrera cutánea natural. Mejora la retención de humedad epidérmica y la elasticidad, resultando en una piel más luminosa y tersa.</span>
+                        <span class="lang-en">pH 6.0 respects and reinforces the natural skin barrier. It improves epidermal moisture retention and elasticity, resulting in more luminous, smoother skin.</span>
+                    </p>
+                </div>
+                <div class="beauty-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon">💇</div>
+                    <h3>
+                        <span class="lang-es inline">Acondicionador Capilar</span>
+                        <span class="lang-en inline">Hair Conditioner</span>
+                    </h3>
+                    <p>
+                        <span class="lang-es">Como último aclarado tras el champú, el agua pH 6.0 aplana las cutículas del cabello, resultando un pelo más suave, brillante y sin encrespamiento.</span>
+                        <span class="lang-en">As a final rinse after shampoo, pH 6.0 water flattens the hair cuticles, resulting in softer, shinier, and frizz-free hair.</span>
+                    </p>
+                </div>
+                <div class="beauty-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon">🛡️</div>
+                    <h3>
+                        <span class="lang-es inline">Sin Químicos</span>
+                        <span class="lang-en inline">Chemical-Free</span>
+                    </h3>
+                    <p>
+                        <span class="lang-es">Cero alcohol, cero parabenos, cero perfumes artificiales. Solo agua pura ionizada al pH perfecto para la piel. El cuidado de belleza más natural que existe.</span>
+                        <span class="lang-en">Zero alcohol, zero parabens, zero artificial perfumes. Just pure ionized water at the perfect pH for skin. The most natural beauty care that exists.</span>
+                    </p>
+                </div>
+            </div>
+
+            <div style="max-width: 800px; margin: 3rem auto 0;" data-aos="fade-up">
+                <div class="highlight-box-gold">
+                    <strong>
+                        <span class="lang-es inline">¿Por qué pH 6.0 para un rostro bello?</span>
+                        <span class="lang-en inline">Why pH 6.0 for a beautiful face?</span>
+                    </strong><br>
+                    <span class="lang-es">La piel tiene un manto ácido protector con pH entre 4.5 y 6.0. Cuando usamos productos con pH alto (jabones alcalinos, agua del grifo a pH 7-8), ese manto se deteriora, dejando la piel expuesta a bacterias, deshidratación y envejecimiento prematuro. El agua Kangen a <strong>pH 6.0</strong> restaura y fortalece esa barrera natural, sin añadir ningún químico artificial. Para un rostro tan bello como el de Cristina, es el complemento perfecto.</span>
+                    <span class="lang-en">The skin has a protective acid mantle with pH between 4.5 and 6.0. When we use high-pH products (alkaline soaps, tap water at pH 7-8), that mantle deteriorates, leaving the skin exposed to bacteria, dehydration, and premature aging. Kangen water at <strong>pH 6.0</strong> restores and strengthens that natural barrier, without adding any artificial chemicals. For a face as beautiful as Cristina's, it's the perfect complement.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="actriz-cta">
+        <div class="container">
+            <div class="cta-inner glass-card" data-aos="zoom-in">
+                <h2>
+                    <span class="lang-es">Si Cristina <span class="gradient-text">confía en Kangen</span>...</span>
+                    <span class="lang-en">If Cristina <span class="gradient-text">trusts Kangen</span>...</span>
+                </h2>
+                <p>
+                    <span class="lang-es">Imagina lo que el agua más pura y el tónico facial más natural del mundo pueden hacer por tu piel y tu bienestar. Solicita información sin compromiso.</span>
+                    <span class="lang-en">Imagine what the purest water and the most natural facial toner in the world can do for your skin and well-being. Request information with no obligation.</span>
+                </p>
+                <div class="cta-buttons">
+                    <a href="../../../index.html#contacto" class="btn-primary">
+                        <span class="lang-es inline">Quiero Información</span>
+                        <span class="lang-en inline">I Want Information</span>
+                    </a>
+                    <a href="../index.html" class="btn-secondary">
+                        <span class="lang-es inline">Ver Más Testimonios</span>
+                        <span class="lang-en inline">View More Testimonials</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <h3>Salud Equilibrio</h3>
+                <p>
+                    <span class="lang-es inline">Distribuidor Independiente Enagic®</span>
+                    <span class="lang-en inline">Independent Enagic® Distributor</span>
+                </p>
+            </div>
+            <div class="footer-links">
+                <a href="../../../index.html">
+                    <span class="lang-es inline">Portal Principal</span>
+                    <span class="lang-en inline">Main Portal</span>
+                </a>
+                <a href="../index.html">
+                    <span class="lang-es inline">Testimonios</span>
+                    <span class="lang-en inline">Testimonials</span>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Salud Equilibrio. KANGEN WATER® <span class="lang-es inline">es una marca registrada de</span><span class="lang-en inline">is a registered trademark of</span> Enagic.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+
+    <!-- Universal Multi-Language Script -->
+    <script>
+        const LANG_KEY = 'salud_equilibrio_lang';
+
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            document.getElementById('lang-dropdown').classList.toggle('show');
+        }
+
+        // Close dropdown when clicking outside
+        window.onclick = function(event) {
+            if (!event.target.closest('.lang-trigger')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem(LANG_KEY, lang);
+            
+            // Update UI elements
+            const flag = lang === 'es' ? '🇪🇸' : '🇬🇧';
+            const text = lang.toUpperCase();
+            document.getElementById('current-flag').innerText = flag;
+            document.getElementById('current-lang-text').innerText = text;
+
+            // Close dropdown
+            const dropdown = document.getElementById('lang-dropdown');
+            if(dropdown) dropdown.classList.remove('show');
+        }
+
+        function initLanguage() {
+            const savedLang = localStorage.getItem(LANG_KEY) || 'es';
+            setLanguage(savedLang);
+        }
+
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+
+</body>
+
+</html>

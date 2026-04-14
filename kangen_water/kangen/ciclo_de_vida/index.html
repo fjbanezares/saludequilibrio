@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciclo de Vida | Kangen Water® | Salud Equilibrio</title>
+    <meta name="description" content="Ingeniería japonesa diseñada para durar. Descubre el ciclo de vida y mantenimiento de la tecnología Kangen.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Noto Serif', 'serif'],
+                    },
+                    colors: {
+                        obsidian: '#0e0e0e',
+                        gold: '#d4af37',
+                        mint: {
+                            vibrant: '#66dd8b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0e0e0e;
+            color: #f5f5f5;
+            overflow-x: hidden;
+        }
+
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(14, 14, 14, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(102, 221, 139, 0.2);
+            transform: translateY(-5px);
+        }
+
+        /* ─── Language toggle visibility ─── */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+        [data-lang="en"] .lang-es { display: none; }
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(1, 8, 19, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(102, 221, 139, 0.2);
+            border-radius: 1rem;
+            min-width: 150px;
+            padding: 0.5rem;
+            z-index: 100;
+        }
+        .dropdown-content.show { display: block; }
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+        .lang-option:hover { background: rgba(102, 221, 139, 0.1); color: #fff; }
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(102, 221, 139, 0.15);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #fff;
+        }
+
+        .circle-progress {
+            background: conic-gradient(#66dd8b var(--progress), transparent 0);
+        }
+    </style>
+</head>
+
+<body data-lang="es" class="antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav h-24 flex items-center">
+        <div class="max-w-7xl mx-auto px-8 w-full flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4 group">
+                <img src="../../../assets/logo.png" alt="Salud Equilibrio" class="h-12 w-auto">
+                <span class="font-serif text-xl tracking-tighter text-white">Kangen<span class="text-mint-vibrant font-light">Ecosystem</span></span>
+            </a>
+            
+            <div class="flex items-center gap-8">
+                <div class="hidden md:flex gap-8 text-[10px] tracking-[4px] uppercase font-bold text-white/50">
+                    <a href="../index.html" class="hover:text-mint-vibrant transition-colors">Portal</a>
+                    <a href="autolimpieza/index.html" class="hover:text-mint-vibrant transition-colors">Autolimpieza</a>
+                </div>
+
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fas fa-chevron-down text-[10px] opacity-50 ml-2"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')"><span>🇪🇸</span><span>ES</span></div>
+                        <div class="lang-option" onclick="setLanguage('en')"><span>🇬🇧</span><span>EN</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[85vh] flex items-center justify-center pt-24 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-mint-vibrant/5 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-20 items-center relative z-10">
+            <div class="text-left" data-aos="fade-right">
+                <span class="text-mint-vibrant text-[10px] tracking-[10px] uppercase font-bold mb-8 block">Japanese Engineering</span>
+                <h1 class="font-serif italic text-6xl md:text-8xl text-white mb-8">
+                    <span class="lang-es">Ciclo de <span class="not-italic">Vida</span></span>
+                    <span class="lang-en">Life <span class="not-italic">Cycle</span></span>
+                </h1>
+                <p class="text-white/50 text-xl font-light leading-relaxed max-w-xl">
+                    <span class="lang-es">Diseñada para acompañarte durante décadas. Un viaje de longevidad técnica donde la máquina inteligente se cuida a sí misma y garantiza una filtración industrial ininterrumpida.</span>
+                    <span class="lang-en">Designed to accompany you for decades. A journey of technical longevity where the smart machine takes care of itself and guarantees uninterrupted industrial filtration.</span>
+                </p>
+            </div>
+            <div class="relative" data-aos="fade-left">
+                <div class="absolute -inset-20 bg-mint-vibrant/10 rounded-full blur-[120px]"></div>
+                <img src="../../../assets/kangen_longevity.png" alt="Longevity Concept" class="rounded-[4rem] relative z-10 opacity-90 group-hover:scale-105 transition-transform duration-1000">
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Cycle Grid -->
+    <section class="py-24 px-8 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Phase 1: Intelligent Cleaning -->
+            <a href="autolimpieza/index.html" class="glass-card p-12 rounded-[3rem] relative group overflow-hidden">
+                <div class="absolute -right-10 -top-10 w-32 h-32 bg-mint-vibrant/5 rounded-full blur-3xl group-hover:bg-mint-vibrant/10 transition-all"></div>
+                <div class="w-20 h-20 rounded-2xl overflow-hidden mb-8 border border-mint-vibrant/20">
+                    <img src="../../../assets/kangen_cleaning.png" alt="Cleaning Tech" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-3xl font-bold text-white mb-4">
+                    <span class="lang-es">Autolimpieza Activa</span>
+                    <span class="lang-en">Active Self-Cleaning</span>
+                </h3>
+                <p class="text-white/40 text-base leading-relaxed mb-10">
+                    <span class="lang-es">El sistema que revierte su propia polaridad para eliminar minerales y mantener las placas de titanio como el primer día. Eficiencia sin esfuerzo.</span>
+                    <span class="lang-en">The system that reverses its own polarity to remove minerals and keep titanium plates like new. Effortless efficiency.</span>
+                </p>
+                <div class="text-mint-vibrant text-xs font-bold tracking-widest group-hover:translate-x-3 transition-transform inline-flex items-center gap-2">
+                    EXPLORAR TECNOLOGÍA <i class="fas fa-arrow-right text-[10px]"></i>
+                </div>
+            </a>
+
+            <!-- Phase 2: High Performance Filtration -->
+            <a href="cambio_de_filtros/index.html" class="glass-card p-12 rounded-[3rem] relative group overflow-hidden border-cyan-400/10">
+                <div class="absolute -right-10 -top-10 w-32 h-32 bg-cyan-400/5 rounded-full blur-3xl group-hover:bg-cyan-400/10 transition-all"></div>
+                <div class="w-20 h-20 rounded-2xl overflow-hidden mb-8 border border-cyan-400/20">
+                    <img src="../../../assets/kangen_filter.png" alt="Filter Tech" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-3xl font-bold text-white mb-4">
+                    <span class="lang-es">Filtro de Alto Grado</span>
+                    <span class="lang-en">High-Grade Filter</span>
+                </h3>
+                <p class="text-white/40 text-base leading-relaxed mb-10">
+                    <span class="lang-es">6.000 litros de filtración absoluta. Descubre cómo Kangen arrasa a la competencia con su capacidad industrial de un año de duración.</span>
+                    <span class="lang-en">6,000 liters of absolute filtration. Discover how Kangen beats the competition with its year-long industrial capacity.</span>
+                </p>
+                <div class="text-cyan-400 text-xs font-bold tracking-widest group-hover:translate-x-3 transition-transform inline-flex items-center gap-2">
+                    ANÁLISIS DE FILTRACIÓN <i class="fas fa-arrow-right text-[10px]"></i>
+                </div>
+            </a>
+
+            <!-- Phase 3: Annual Maintenance -->
+            <a href="mantenimiento/index.html" class="glass-card p-12 rounded-[3rem] relative group overflow-hidden border-orange-400/10">
+                <div class="absolute -right-10 -top-10 w-32 h-32 bg-orange-400/5 rounded-full blur-3xl group-hover:bg-orange-400/10 transition-all"></div>
+                <div class="w-20 h-20 rounded-2xl overflow-hidden mb-8 border border-orange-400/20">
+                    <img src="../../../assets/kangen_longevity.png" alt="Maintenance Tech" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-3xl font-bold text-white mb-4">
+                    <span class="lang-es">Mantenimiento Estructural</span>
+                    <span class="lang-en">Structural Maintenance</span>
+                </h3>
+                <p class="text-white/40 text-base leading-relaxed mb-10">
+                    <span class="lang-es">E-Cleaning mensual y Deep-Cleaning anual. El protocolo oficial para que la salud rinda durante dos décadas.</span>
+                    <span class="lang-en">Monthly E-Cleaning and annual Deep-Cleaning. The official protocol so that health performs for two decades.</span>
+                </p>
+                <div class="text-orange-400 text-xs font-bold tracking-widest group-hover:translate-x-3 transition-transform inline-flex items-center gap-2">
+                    VER PROTOCOLO OFICIAL <i class="fas fa-arrow-right text-[10px]"></i>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center bg-obsidian">
+        <div class="max-w-7xl mx-auto px-8">
+            <p class="text-[10px] tracking-[8px] uppercase font-light text-white/20">© 2026 Salud Equilibrio. Longevity by Enagic.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        
+        const LANG_KEY = 'salud_equilibrio_lang';
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            document.getElementById('lang-dropdown').classList.toggle('show');
+        }
+        window.onclick = function(event) {
+            if (!event.target.closest('.lang-trigger')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem(LANG_KEY, lang);
+            const flag = lang === 'es' ? '🇪🇸' : '🇬🇧';
+            const text = lang.toUpperCase();
+            document.getElementById('current-flag').innerText = flag;
+            document.getElementById('current-lang-text').innerText = text;
+            const dropdown = document.getElementById('lang-dropdown');
+            if(dropdown) dropdown.classList.remove('show');
+        }
+        function initLanguage() {
+            const savedLang = localStorage.getItem(LANG_KEY) || 'es';
+            setLanguage(savedLang);
+        }
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+
+</body>
+
+</html>

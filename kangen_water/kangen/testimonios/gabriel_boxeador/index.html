@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriel Enguema — Campeón de España de Boxeo & Kangen Water® | Salud Equilibrio</title>
+    <meta name="description"
+        content="Gabriel Enguema, campeón de España de boxeo, confía en la hidratación Kangen® para su entrenamiento de élite. Observa cómo la mejor agua del mundo acompaña a los atletas de alto rendimiento.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="../../../style.css">
+    <style>
+        /* ─── Language toggle system ─── */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+        [data-lang="en"] .lang-es { display: none; }
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(1, 8, 19, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 180, 216, 0.2);
+            border-radius: 1rem;
+            min-width: 150px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .dropdown-content.show { display: block; }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .lang-option:hover {
+            background: rgba(0, 119, 182, 0.1);
+            color: #fff;
+        }
+
+        .lang-option.active {
+            color: var(--water-clear);
+        }
+
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 180, 216, 0.15);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-white);
+            transition: all 0.3s ease;
+        }
+
+        .lang-trigger:hover {
+            border-color: rgba(0, 180, 216, 0.4);
+            background: rgba(0, 180, 216, 0.05);
+        }
+
+        /* ─── Page-specific styles ─── */
+        .gabriel-hero {
+            padding: 180px 0 80px;
+            text-align: center;
+            background: radial-gradient(ellipse at 50% 30%, rgba(0, 119, 182, 0.12), transparent 60%);
+        }
+
+        .gabriel-hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.05;
+            margin-bottom: 2rem;
+        }
+
+        .gabriel-hero .lead {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Comparison Before / After */
+        .comparison-section {
+            padding: 60px 0 100px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .comparison-card {
+            position: relative;
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 180, 216, 0.12);
+            background: rgba(8, 20, 42, 0.5);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            transition: var(--transition);
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 80px rgba(0, 119, 182, 0.15);
+        }
+
+        .comparison-card img {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .comparison-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .comparison-card .card-tag {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            background: rgba(0, 119, 182, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .comparison-card .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 1.5rem 1.5rem;
+            background: linear-gradient(to top, rgba(1, 8, 19, 0.95), transparent);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .comparison-card .caption strong {
+            color: var(--text-white);
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Story section */
+        .story-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--deep-ocean) 0%, var(--midnight) 100%);
+        }
+
+        .story-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .story-photo {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 180, 216, 0.1);
+        }
+
+        .story-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .story-content {
+            padding: 3rem;
+        }
+
+        .story-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            line-height: 1.15;
+        }
+
+        .story-content p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-content p strong {
+            color: var(--text-white);
+        }
+
+        .highlight-box {
+            background: rgba(0, 119, 182, 0.08);
+            border-left: 4px solid var(--water-vibrant);
+            padding: 1.5rem 2rem;
+            border-radius: 0 16px 16px 0;
+            margin: 2rem 0;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .highlight-box strong {
+            color: var(--water-clear);
+        }
+
+        /* CTA */
+        .gabriel-cta {
+            padding: 120px 0;
+            text-align: center;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 119, 182, 0.1), transparent 60%);
+        }
+
+        .gabriel-cta .cta-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem;
+        }
+
+        .gabriel-cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .gabriel-cta p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 968px) {
+            .gabriel-hero h1 { font-size: 3rem; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .comparison-card img { height: 400px; }
+            .story-layout { grid-template-columns: 1fr; }
+            .story-content { padding: 2rem 0; }
+        }
+    </style>
+</head>
+
+<body data-lang="es">
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../../../index.html" class="logo">
+                <span class="logo-text">Salud Equilibrio</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../../index.html">
+                    <span class="lang-es inline">Inicio</span>
+                    <span class="lang-en inline">Home</span>
+                </a>
+                <a href="../index.html">
+                    <span class="lang-es inline">Testimonios</span>
+                    <span class="lang-en inline">Testimonials</span>
+                </a>
+
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <svg style="width:10px;height:10px;margin-left:4px;opacity:0.5;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')">
+                            <span style="font-size:1.2rem;">🇪🇸</span>
+                            <span>Castellano</span>
+                        </div>
+                        <div class="lang-option" onclick="setLanguage('en')">
+                            <span style="font-size:1.2rem;">🇬🇧</span>
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="../../../index.html#contacto" class="btn-primary-sm">
+                    <span class="lang-es inline">Adquiere tu Máquina</span>
+                    <span class="lang-en inline">Get Your Machine</span>
+                </a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="gabriel-hero">
+        <div class="container" data-aos="fade-up">
+            <span class="badge">
+                <span class="lang-es inline">Caso Observado</span>
+                <span class="lang-en inline">Observed Case</span>
+            </span>
+            <h1>
+                <span class="lang-es">Gabriel Enguema:<br><span class="gradient-text">Campeón de España de Boxeo</span></span>
+                <span class="lang-en">Gabriel Enguema:<br><span class="gradient-text">Spanish Boxing Champion</span></span>
+            </h1>
+            <p class="lead">
+                <span class="lang-es">Un atleta de élite que elige la hidratación antioxidante más potente del mundo para acompañar su entrenamiento al más alto nivel. El deporte de élite exige lo mejor, también en hidratación.</span>
+                <span class="lang-en">An elite athlete who chooses the most powerful antioxidant hydration in the world to support his training at the highest level. Elite sport demands the best — including in hydration.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Photos Section -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="comparison-grid">
+                <div class="comparison-card" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="card-tag"><i class="fas fa-trophy" style="margin-right:8px;"></i>
+                        <span class="lang-es inline">Campeón</span>
+                        <span class="lang-en inline">Champion</span>
+                    </div>
+                    <img src="foto_boxeo.png" alt="Gabriel Enguema, Campeón de España de Boxeo, con su cinturón de campeón">
+                    <div class="caption">
+                        <strong>
+                            <span class="lang-es inline">Gabriel Enguema — Campeón de España</span>
+                            <span class="lang-en inline">Gabriel Enguema — Champion of Spain</span>
+                        </strong>
+                        <span class="lang-es">Gabriel tras conquistar el título nacional, luciendo su cinturón de campeón. Un físico y una determinación de élite.</span>
+                        <span class="lang-en">Gabriel after conquering the national title, wearing his champion belt. An elite physique and determination.</span>
+                    </div>
+                </div>
+                <div class="comparison-card" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="card-tag"><i class="fas fa-droplet" style="margin-right:8px;"></i>Kangen</div>
+                    <img src="antonio_con_boxeador.png" alt="Gabriel Enguema con Antonio, distribuidor Kangen">
+                    <div class="caption">
+                        <strong>
+                            <span class="lang-es inline">Gabriel con Antonio — Conexión Kangen</span>
+                            <span class="lang-en inline">Gabriel with Antonio — The Kangen Connection</span>
+                        </strong>
+                        <span class="lang-es">El campeón junto a Antonio, distribuidor Enagic, quien le proporcionó la mejor agua del mundo para potenciar su rendimiento.</span>
+                        <span class="lang-en">The champion together with Antonio, Enagic distributor, who provided him with the best water in the world to boost his performance.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Story -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-layout">
+                <div class="story-photo" data-aos="fade-right" data-aos-duration="1000">
+                    <img src="antonio_con_boxeador.png" alt="Gabriel Enguema con Antonio tras un combate">
+                </div>
+                <div class="story-content" data-aos="fade-left" data-aos-duration="1000">
+                    <h2>
+                        <span class="lang-es">El agua que <span class="gradient-text">hidrata a un campeón</span></span>
+                        <span class="lang-en">The water that <span class="gradient-text">hydrates a champion</span></span>
+                    </h2>
+                    <p>
+                        <span class="lang-es"><strong>Gabriel Enguema</strong>, campeón de España de boxeo, es un atleta que lleva su cuerpo al límite en cada entrenamiento y cada combate. El rendimiento deportivo de élite exige una recuperación muscular óptima, una hidratación celular profunda y la máxima reducción del estrés oxidativo.</span>
+                        <span class="lang-en"><strong>Gabriel Enguema</strong>, Champion of Spain in boxing, is an athlete who pushes his body to the limit in every training session and every fight. Elite athletic performance demands optimal muscle recovery, deep cellular hydration, and maximum reduction of oxidative stress.</span>
+                    </p>
+                    <p>
+                        <span class="lang-es">Nuestro amigo <strong>Antonio</strong>, distribuidor Enagic, tuvo la oportunidad de proporcionarle la mejor agua del mundo: <strong>Agua Kangen®</strong>. Una hidratación rica en hidrógeno molecular que, sin duda, es el complemento perfecto para un deportista que necesita lo mejor de lo mejor.</span>
+                        <span class="lang-en">Our friend <strong>Antonio</strong>, Enagic distributor, had the opportunity to provide him with the best water in the world: <strong>Kangen Water®</strong>. A hydration rich in molecular hydrogen that is, without a doubt, the perfect complement for an athlete who needs the very best.</span>
+                    </p>
+
+                    <div class="highlight-box">
+                        <strong>
+                            <span class="lang-es inline">¿Por qué los deportistas de élite eligen Kangen?</span>
+                            <span class="lang-en inline">Why do elite athletes choose Kangen?</span>
+                        </strong><br>
+                        <span class="lang-es">El agua Kangen® es rica en <strong>hidrógeno molecular (H₂)</strong>, uno de los antioxidantes más potentes estudiados por la ciencia. El H₂ penetra hasta las mitocondrias celulares, reduciendo el estrés oxidativo generado por el ejercicio intenso. Esto se traduce en una <strong>recuperación muscular más rápida</strong>, menor inflamación y un rendimiento sostenido a nivel de élite.</span>
+                        <span class="lang-en">Kangen Water® is rich in <strong>molecular hydrogen (H₂)</strong>, one of the most powerful antioxidants studied by science. H₂ penetrates into the cellular mitochondria, reducing the oxidative stress generated by intense exercise. This translates into <strong>faster muscle recovery</strong>, less inflammation, and sustained performance at the elite level.</span>
+                    </div>
+
+                    <p>
+                        <span class="lang-es">No ponemos palabras en boca de nadie. Simplemente observamos: un campeón de España de boxeo eligió el Agua Kangen® como parte de su hidratación. El deporte de alto rendimiento no admite mediocridad en ningún aspecto — <strong>tampoco en el agua que se bebe</strong>.</span>
+                        <span class="lang-en">We don't put words in anyone's mouth. We simply observe: a Spanish Boxing Champion chose Kangen Water® as part of his hydration. High-performance sport doesn't accept mediocrity in any aspect — <strong>not even in the water you drink</strong>.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="gabriel-cta">
+        <div class="container">
+            <div class="cta-inner glass-card" data-aos="zoom-in">
+                <h2>
+                    <span class="lang-es">Si un campeón <span class="gradient-text">confía en Kangen</span>...</span>
+                    <span class="lang-en">If a champion <span class="gradient-text">trusts Kangen</span>...</span>
+                </h2>
+                <p>
+                    <span class="lang-es">Imagina lo que el agua más antioxidante del mundo puede hacer por tu rendimiento, tu recuperación y tu bienestar diario. Solicita información sin compromiso.</span>
+                    <span class="lang-en">Imagine what the most antioxidant water in the world can do for your performance, your recovery, and your daily well-being. Request information with no obligation.</span>
+                </p>
+                <div class="cta-buttons">
+                    <a href="../../../index.html#contacto" class="btn-primary">
+                        <span class="lang-es inline">Quiero Información</span>
+                        <span class="lang-en inline">I Want Information</span>
+                    </a>
+                    <a href="../index.html" class="btn-secondary">
+                        <span class="lang-es inline">Ver Más Testimonios</span>
+                        <span class="lang-en inline">View More Testimonials</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <h3>Salud Equilibrio</h3>
+                <p>
+                    <span class="lang-es inline">Distribuidor Independiente Enagic®</span>
+                    <span class="lang-en inline">Independent Enagic® Distributor</span>
+                </p>
+            </div>
+            <div class="footer-links">
+                <a href="../../../index.html">
+                    <span class="lang-es inline">Portal Principal</span>
+                    <span class="lang-en inline">Main Portal</span>
+                </a>
+                <a href="../index.html">
+                    <span class="lang-es inline">Testimonios</span>
+                    <span class="lang-en inline">Testimonials</span>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Salud Equilibrio. KANGEN WATER® <span class="lang-es inline">es una marca registrada de</span><span class="lang-en inline">is a registered trademark of</span> Enagic.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+
+    <!-- Universal Multi-Language Script -->
+    <script>
+        const LANG_KEY = 'salud_equilibrio_lang';
+
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            document.getElementById('lang-dropdown').classList.toggle('show');
+        }
+
+        // Close dropdown when clicking outside
+        window.onclick = function(event) {
+            if (!event.target.closest('.lang-trigger')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem(LANG_KEY, lang);
+            
+            // Update UI elements
+            const flag = lang === 'es' ? '🇪🇸' : '🇬🇧';
+            const text = lang.toUpperCase();
+            document.getElementById('current-flag').innerText = flag;
+            document.getElementById('current-lang-text').innerText = text;
+
+            // Close dropdown
+            const dropdown = document.getElementById('lang-dropdown');
+            if(dropdown) dropdown.classList.remove('show');
+        }
+
+        function initLanguage() {
+            const savedLang = localStorage.getItem(LANG_KEY) || 'es';
+            setLanguage(savedLang);
+        }
+
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+
+</body>
+
+</html>

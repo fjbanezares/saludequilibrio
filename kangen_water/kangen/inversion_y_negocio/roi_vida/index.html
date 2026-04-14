@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retorno Vital | Kangen Water®</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Noto Serif', 'serif'],
+                    },
+                    colors: {
+                        obsidian: '#0e0e0e',
+                        mint: {
+                            vibrant: '#66dd8b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #0e0e0e; color: #f5f5f5; }
+        .glass-nav { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(14, 14, 14, 0.8); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .glass-card { backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.4s ease; }
+        
+        /* Language Toggle */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+        .dropdown-content { display: none; position: absolute; right: 0; top: 100%; background: rgba(1, 8, 19, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(102, 221, 139, 0.2); border-radius: 1rem; min-width: 150px; padding: 0.5rem; z-index: 100; }
+        .dropdown-content.show { display: block; }
+        .lang-option { display: flex; align-items: center; gap: 12px; padding: 10px 16px; cursor: pointer; border-radius: 0.5rem; transition: all 0.3s ease; font-size: 0.85rem; color: #ccc; }
+        .lang-option:hover { background: rgba(102, 221, 139, 0.1); color: #fff; }
+        .lang-trigger { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 16px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(102, 221, 139, 0.15); border-radius: 50px; font-size: 0.85rem; color: #fff; }
+    </style>
+</head>
+
+<body data-lang="es" class="antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav h-24 flex items-center">
+        <div class="max-w-7xl mx-auto px-8 w-full flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4 group">
+                <i class="fas fa-chevron-left text-mint-vibrant text-xs"></i>
+                <span class="font-serif text-xl tracking-tighter text-white">Retorno<span class="text-mint-vibrant font-light">Vital</span></span>
+            </a>
+            <div class="flex items-center gap-8">
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fas fa-chevron-down text-[10px] opacity-50 ml-2"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')"><span>🇪🇸</span><span>ES</span></div>
+                        <div class="lang-option" onclick="setLanguage('en')"><span>🇬🇧</span><span>EN</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="min-h-screen pt-40 pb-24 px-8 max-w-6xl mx-auto">
+        
+        <div class="mb-24 text-center" data-aos="fade-up">
+            <h1 class="font-serif italic text-5xl md:text-7xl text-white mb-8 leading-tight">
+                <span class="lang-es">Cero Esfuerzo. <br> <span class="text-mint-vibrant not-italic">Máxima Libertad.</span></span>
+                <span class="lang-en">Zero Effort. <br> <span class="text-mint-vibrant not-italic">Maximum Freedom.</span></span>
+            </h1>
+            <p class="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+                <span class="lang-es">La verdadera inversión es recuperar tu tiempo y tu energía. Descubre cómo Kangen elimina la pesada logística del agua de tu vida.</span>
+                <span class="lang-en">The true investment is reclaiming your time and energy. Discover how Kangen eliminates the heavy logistics of water from your life.</span>
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-20 items-center mb-32">
+            <div data-aos="fade-right">
+                <h2 class="font-serif italic text-4xl text-white mb-10 leading-tight">
+                    <span class="lang-es">La <span class="text-mint-vibrant">Logística Invisible</span> del Gasto</span>
+                    <span class="lang-en">The <span class="text-mint-vibrant">Invisible Logistics</span> of Spending</span>
+                </h2>
+                <div class="space-y-10">
+                    <div class="flex gap-6">
+                        <div class="w-12 h-12 rounded-xl bg-mint-vibrant/10 flex items-center justify-center text-xl shrink-0 border border-mint-vibrant/20">⏰</div>
+                        <div>
+                            <h4 class="text-white font-bold mb-2 tracking-wide uppercase text-xs">Ahorro de Tiempo / Time Saving</h4>
+                            <p class="text-white/50 text-base font-light">
+                                <span class="lang-es">Olvida las visitas semanales al supermercado solo para cargar packs de agua. Recupera horas valiosas cada mes.</span>
+                                <span class="lang-en">Forget weekly supermarket visits just to carry water packs. Reclaim valuable hours every month.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="w-12 h-12 rounded-xl bg-mint-vibrant/10 flex items-center justify-center text-xl shrink-0 border border-mint-vibrant/20">⛽</div>
+                        <div>
+                            <h4 class="text-white font-bold mb-2 tracking-wide uppercase text-xs">Ahorro de Gasolina / Fuel Saving</h4>
+                            <p class="text-white/50 text-base font-light">
+                                <span class="lang-es">Menos peso en el coche y menos desplazamientos innecesarios significan una reducción directa en el consumo de combustible de tu hogar.</span>
+                                <span class="lang-en">Less weight in the car and fewer unnecessary trips mean a direct reduction in your household's fuel consumption.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative" data-aos="fade-left">
+                <div class="absolute -inset-10 bg-mint-vibrant/5 rounded-full blur-[100px]"></div>
+                <img src="../../../assets/kangen_roi_lifestyle.png" alt="Serene Lifestyle" class="rounded-[4rem] shadow-2xl relative z-10 border border-white/5">
+            </div>
+        </div>
+
+        <!-- Physical ROI Section -->
+        <div class="glass-card p-12 md:p-20 rounded-[4rem] bg-gradient-to-br from-mint-vibrant/5 to-transparent border-mint-vibrant/20" data-aos="fade-up">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="inline-flex gap-4 items-center px-6 py-2 rounded-full bg-red-400/10 border border-red-400/20 text-red-400 text-[10px] font-bold uppercase tracking-widest mb-8">
+                        Risk Mitigation
+                    </div>
+                    <h3 class="font-serif italic text-4xl text-white mb-10 leading-tight">
+                        <span class="lang-es">Protege tu <span class="text-mint-vibrant">Salud Física</span></span>
+                        <span class="lang-en">Protect your <span class="text-mint-vibrant">Physical Health</span></span>
+                    </h3>
+                    <div class="space-y-6 text-white/60 text-lg font-light leading-relaxed">
+                        <p>
+                            <span class="lang-es">Cargar garrafones o packs de 9kg de forma recurrente es una de las mayores causas ocultas de lesiones de espalda y desgaste articular en el hogar.</span>
+                            <span class="lang-en">Carrying carboys or 9kg packs recurrently is one of the biggest hidden causes of back injuries and joint wear in the home.</span>
+                        </p>
+                        <p>
+                            <span class="lang-es">Con Kangen, el mejor agua del mundo fluye directamente en tu cocina con un esfuerzo físico de **cero gramos**. Estás invirtiendo en evitar fisioterapeutas y posibles bajas médicas por sobreesfuerzo innecesario.</span>
+                            <span class="lang-en">With Kangen, the best water in the world flows directly into your kitchen with **zero grams** of physical effort. You are investing in avoiding physiotherapists and potential medical sick leave due to unnecessary overexertion.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <div class="w-full aspect-square rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl">
+                        <img src="../../../assets/kangen_effortless.png" alt="Physical Health Investment" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center bg-obsidian">
+        <div class="max-w-7xl mx-auto px-8">
+            <p class="text-[10px] tracking-[8px] uppercase font-light text-white/20">Salud Equilibrio | Enagic Japan Technology</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        const LANG_KEY = 'salud_equilibrio_lang';
+        function toggleDropdown(event) { event.stopPropagation(); document.getElementById('lang-dropdown').classList.toggle('show'); }
+        window.onclick = function(event) { if (!event.target.closest('.lang-trigger')) { const dropdowns = document.getElementsByClassName("dropdown-content"); for (let i = 0; i < dropdowns.length; i++) { dropdowns[i].classList.remove('show'); } } }
+        function setLanguage(lang) { document.body.setAttribute('data-lang', lang); localStorage.setItem(LANG_KEY, lang); const flag = lang === 'es' ? '🇪🇸' : '🇬🇧'; const text = lang.toUpperCase(); document.getElementById('current-flag').innerText = flag; document.getElementById('current-lang-text').innerText = text; const dropdown = document.getElementById('lang-dropdown'); if(dropdown) dropdown.classList.remove('show'); }
+        function initLanguage() { const savedLang = localStorage.getItem(LANG_KEY) || 'es'; setLanguage(savedLang); }
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+</body>
+</html>

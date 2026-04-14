@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biocultura & La Familia Real | Salud Consciente & Agua Kangen® | Salud Equilibrio</title>
+    <meta name="description"
+        content="Exploramos la conexión entre la salud consciente, la feria Biocultura y la elección de hidratación de los miembros de la Familia Real.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="../../../style.css">
+    <style>
+        /* ─── Language toggle system ─── */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+        [data-lang="en"] .lang-es { display: none; }
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(1, 8, 19, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 180, 216, 0.2);
+            border-radius: 1rem;
+            min-width: 150px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .dropdown-content.show { display: block; }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .lang-option:hover {
+            background: rgba(0, 119, 182, 0.1);
+            color: #fff;
+        }
+
+        .lang-option.active {
+            color: var(--water-clear);
+        }
+
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 180, 216, 0.15);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-white);
+            transition: all 0.3s ease;
+        }
+
+        .lang-trigger:hover {
+            border-color: rgba(0, 180, 216, 0.4);
+            background: rgba(0, 180, 216, 0.05);
+        }
+
+        /* ─── Page-specific styles ─── */
+        .royal-hero {
+            padding: 180px 0 80px;
+            text-align: center;
+            background: radial-gradient(ellipse at 50% 30%, rgba(0, 119, 182, 0.12), transparent 60%);
+        }
+
+        .royal-hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+
+        .royal-hero .lead {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Photo Cards */
+        .photos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+
+        .photo-card {
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 180, 216, 0.1);
+            background: rgba(8, 20, 42, 0.5);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+            transition: var(--transition);
+        }
+
+        .photo-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 180, 216, 0.3);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-card .caption {
+            padding: 2rem;
+            border-top: 1px solid rgba(0, 180, 216, 0.1);
+        }
+
+        .photo-card .caption h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .photo-card .caption p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Philosophy Section */
+        .philosophy-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--deep-ocean) 0%, var(--midnight) 100%);
+        }
+
+        .content-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .text-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .text-content p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-quote {
+            background: rgba(0, 119, 182, 0.1);
+            border-left: 4px solid var(--water-vibrant);
+            padding: 2.5rem;
+            border-radius: 0 24px 24px 0;
+            margin: 3rem 0;
+        }
+
+        .highlight-quote p {
+            font-style: italic;
+            font-size: 1.15rem;
+            margin-bottom: 0;
+            color: var(--text-white);
+        }
+
+        /* Icon Grid */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .icon-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 180, 216, 0.1);
+            text-align: center;
+        }
+
+        .icon-item i {
+            font-size: 2rem;
+            color: var(--water-glow);
+            margin-bottom: 1rem;
+        }
+
+        .icon-item h4 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .icon-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 968px) {
+            .royal-hero h1 { font-size: 3rem; }
+            .photos-grid { grid-template-columns: 1fr; }
+            .content-layout { grid-template-columns: 1fr; }
+            .photo-card img { height: 400px; }
+        }
+    </style>
+</head>
+
+<body data-lang="es">
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../../../index.html" class="logo">
+                <span class="logo-text">Salud Equilibrio</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../../index.html">
+                    <span class="lang-es inline">Inicio</span>
+                    <span class="lang-en inline">Home</span>
+                </a>
+                <a href="../index.html">
+                    <span class="lang-es inline">Testimonios</span>
+                    <span class="lang-en inline">Testimonials</span>
+                </a>
+
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <svg style="width:10px;height:10px;margin-left:4px;opacity:0.5;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')">
+                            <span style="font-size:1.2rem;">🇪🇸</span>
+                            <span>Castellano</span>
+                        </div>
+                        <div class="lang-option" onclick="setLanguage('en')">
+                            <span style="font-size:1.2rem;">🇬🇧</span>
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="../../../index.html#contacto" class="btn-primary-sm">
+                    <span class="lang-es inline">Solicitar Información</span>
+                    <span class="lang-en inline">Request Information</span>
+                </a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="royal-hero">
+        <div class="container" data-aos="fade-up">
+            <span class="badge">
+                <span class="lang-es inline">Salud & Prevención</span>
+                <span class="lang-en inline">Health & Prevention</span>
+            </span>
+            <h1>
+                <span class="lang-es">Biocultura y el<br><span class="gradient-text">Compromiso Real</span></span>
+                <span class="lang-en">Biocultura and the<br><span class="gradient-text">Royal Commitment</span></span>
+            </h1>
+            <p class="lead">
+                <span class="lang-es">La salud no es casualidad, es una elección diaria. Exploramos por qué quienes más cuidan su bienestar eligen la prevención y la excelencia.</span>
+                <span class="lang-en">Health is not a coincidence, it is a daily choice. We explore why those who most care for their well-being choose prevention and excellence.</span>
+            </p>
+        </div>
+    </header>
+
+    <!-- Photo Section -->
+    <section style="padding: 0 0 100px;">
+        <div class="container">
+            <div class="photos-grid">
+                <!-- Real Photo: Biocultura -->
+                <div class="photo-card" data-aos="fade-right">
+                    <img src="leticia_reina_antonio.png" alt="Antonio junto a SM la Reina Letizia en Biocultura IFEMA">
+                    <div class="caption">
+                        <h3>
+                            <span class="lang-es inline">Encuentro en Biocultura</span>
+                            <span class="lang-en inline">Meeting at Biocultura</span>
+                        </h3>
+                        <p>
+                            <span class="lang-es">Su Majestad la Reina Letizia visitando Biocultura en IFEMA —un evento que honra con su presencia y que es de su máximo interés personal, pues es de sobra conocido que S.M. cuida con esmero su salud y la de los suyos. Nuestra Reina es ejemplo de hábitos de vida conscientes. Antonio, nuestro amigo y miembro de nuestro equipo Kangen, tuvo la fortuna de coincidir con ella en este entorno de excelencia y prevención.</span>
+                            <span class="lang-en">Her Majesty Queen Letizia visiting Biocultura at IFEMA —an event she honors with her presence and which is of her highest personal interest, as it is well known that H.M. carefully looks after her health and that of her loved ones. Our Queen is an example of conscious lifestyle habits. Antonio, our friend and member of our Kangen team, had the fortune of meeting her in this environment of excellence and prevention.</span>
+                        </p>
+                    </div>
+                </div>
+                <!-- Concept Photo: Royal Lifestyle -->
+                <div class="photo-card" data-aos="fade-left">
+                    <img src="familia_real_kangen.png" alt="Concepto: Estilo de vida saludable y Agua Kangen">
+                    <div class="caption">
+                        <h3>
+                            <span class="lang-es inline">La Elección de la Excelencia</span>
+                            <span class="lang-en inline">The Choice of Excellence</span>
+                        </h3>
+                        <p>
+                            <span class="lang-es">Para quienes disponen de la mejor información, la calidad del agua es innegociable. Basándonos en hechos como el uso de botellas Kangen por miembros de la casa real, intuimos que la tecnología japonesa Enagic® es su elección natural.</span>
+                            <span class="lang-en">For those with access to the best information, water quality is non-negotiable. Based on facts such as the use of Kangen bottles by members of the royal household, we infer that Enagic® Japanese technology is their natural choice.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy -->
+    <section class="philosophy-section">
+        <div class="container">
+            <div class="content-layout">
+                <div class="text-content" data-aos="fade-right">
+                    <h2>
+                        <span class="lang-es">La Medicina del <span class="gradient-text">Mañana es la Prevención</span></span>
+                        <span class="lang-en">The Medicine of <span class="gradient-text">Tomorrow is Prevention</span></span>
+                    </h2>
+                    <p>
+                        <span class="lang-es">La medicina convencional es fundamental cuando ya es tarde, pero el verdadero poder reside en fortalecer el organismo para tratar de necesitar el hospital lo mínimo posible. Es una labor social: no colapsar el sistema mediante acciones responsables.</span>
+                        <span class="lang-en">Conventional medicine is essential when it's already too late, but true power lies in strengthening the organism to try to need the hospital as little as possible. It is a social duty: not collapsing the system through responsible actions.</span>
+                    </p>
+                    <p>
+                        <span class="lang-es">En la feria Biocultura se dan cita personas que entienden esta filosofía. Allí, el deporte, la gestión emocional, la comida orgánica y, por supuesto, **el mejor agua del mundo**, se unen para crear una barrera natural contra la enfermedad.</span>
+                        <span class="lang-en">At the Biocultura fair, people who understand this philosophy gather. There, sports, emotional management, organic food and, of course, **the best water in the world**, come together to create a natural barrier against disease.</span>
+                    </p>
+                    <div class="highlight-quote">
+                        <p>
+                            <span class="lang-es">"No podemos asegurar con certeza que una máquina Kangen presida su cocina, pero cuando vemos a la Infanta Cristina portar con naturalidad su botella Kangen, la intuición nos dice que la familia más informada de España ha elegido la mejor hidratación para su día a día."</span>
+                            <span class="lang-en">"We cannot say for certain that a Kangen machine presides over their kitchen, but when we see Infanta Cristina naturally carrying her Kangen bottle, intuition tells us that the best-informed family in Spain has chosen the finest hydration for their daily life."</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="icon-grid" data-aos="fade-left">
+                    <div class="icon-item">
+                        <i class="fas fa-apple-whole"></i>
+                        <h4>
+                            <span class="lang-es inline">Alimentación Real</span>
+                            <span class="lang-en inline">Real Nutrition</span>
+                        </h4>
+                        <p>
+                            <span class="lang-es inline">Orgánica y libre de tóxicos.</span>
+                            <span class="lang-en inline">Organic and toxin-free.</span>
+                        </p>
+                    </div>
+                    <div class="icon-item">
+                        <i class="fas fa-droplet"></i>
+                        <h4>
+                            <span class="lang-es inline">Agua Kangen</span>
+                            <span class="lang-en inline">Kangen Water</span>
+                        </h4>
+                        <p>
+                            <span class="lang-es inline">Hidratación antioxidante.</span>
+                            <span class="lang-en inline">Antioxidant hydration.</span>
+                        </p>
+                    </div>
+                    <div class="icon-item">
+                        <i class="fas fa-heart-pulse"></i>
+                        <h4>
+                            <span class="lang-es inline">Deporte Elitista</span>
+                            <span class="lang-en inline">Elite Sports</span>
+                        </h4>
+                        <p>
+                            <span class="lang-es inline">Cuerpo activo y resiliente.</span>
+                            <span class="lang-en inline">Active and resilient body.</span>
+                        </p>
+                    </div>
+                    <div class="icon-item">
+                        <i class="fas fa-brain"></i>
+                        <h4>
+                            <span class="lang-es inline">Gestión Mental</span>
+                            <span class="lang-en inline">Mental Balance</span>
+                        </h4>
+                        <p>
+                            <span class="lang-es inline">Psicología y equilibrio.</span>
+                            <span class="lang-en inline">Psychology and balance.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="padding: 100px 0; text-align: center;">
+        <div class="container">
+            <div class="glass-card" data-aos="zoom-in">
+                <h2>
+                    <span class="lang-es">Únete a la <span class="gradient-text">Cultura de la Prevención</span></span>
+                    <span class="lang-en">Join the <span class="gradient-text">Culture of Prevention</span></span>
+                </h2>
+                <p style="max-width: 600px; margin: 0 auto 3rem;">
+                    <span class="lang-es">Si los más informados eligen Kangen, es por una razón. Descubre cómo transformar tu hogar en un centro de salud.</span>
+                    <span class="lang-en">If the best informed choose Kangen, it's for a reason. Discover how to transform your home into a health center.</span>
+                </p>
+                <a href="../../../index.html#contacto" class="btn-primary">
+                    <span class="lang-es inline">Saber Más</span>
+                    <span class="lang-en inline">Learn More</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <h3>Salud Equilibrio</h3>
+                <p>
+                    <span class="lang-es inline">Distribuidor Independiente Enagic®</span>
+                    <span class="lang-en inline">Independent Enagic® Distributor</span>
+                </p>
+            </div>
+            <div class="footer-links">
+                <a href="../../../index.html">
+                    <span class="lang-es inline">Portal Principal</span>
+                    <span class="lang-en inline">Main Portal</span>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Salud Equilibrio. KANGEN WATER® <span class="lang-es inline">es una marca registrada de</span><span class="lang-en inline">is a registered trademark of</span> Enagic.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+
+    <!-- Language Toggle Logic -->
+    <script>
+        const LANG_KEY = 'salud_equilibrio_lang';
+
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            document.getElementById('lang-dropdown').classList.toggle('show');
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.closest('.lang-trigger')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem(LANG_KEY, lang);
+            
+            const flag = lang === 'es' ? '🇪🇸' : '🇬🇧';
+            const text = lang.toUpperCase();
+            document.getElementById('current-flag').innerText = flag;
+            document.getElementById('current-lang-text').innerText = text;
+
+            const dropdown = document.getElementById('lang-dropdown');
+            if(dropdown) dropdown.classList.remove('show');
+        }
+
+        function initLanguage() {
+            const savedLang = localStorage.getItem(LANG_KEY) || 'es';
+            setLanguage(savedLang);
+        }
+
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+
+</body>
+
+</html>

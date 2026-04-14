@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pH 6.0 Beauty Water | Agua de Belleza | Salud Equilibrio</title>
+    <meta name="description" content="Descubre el secreto de una piel y cabello radiantes con el Agua de Belleza pH 6.0 de Kangen. El tónico natural definitivo.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Noto Serif', 'serif'],
+                    },
+                    colors: {
+                        obsidian: '#0e0e0e',
+                        petal: '#fdf2f8',
+                        mint: {
+                            vibrant: '#66dd8b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: #0e0e0e;
+            color: #f5f5f5;
+        }
+
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(14, 14, 14, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Language toggle visibility */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+        [data-lang="en"] .lang-es { display: none; }
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(14, 14, 14, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(102, 221, 139, 0.2);
+            border-radius: 1rem;
+            min-width: 150px;
+            padding: 0.5rem;
+            z-index: 100;
+        }
+        .dropdown-content.show { display: block; }
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+        .lang-option:hover { background: rgba(102, 221, 139, 0.1); color: #fff; }
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(102, 221, 139, 0.15);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #fff;
+        }
+
+        .hero-title {
+            text-shadow: 0 0 30px rgba(102, 221, 139, 0.2);
+        }
+    </style>
+</head>
+
+<body data-lang="es" class="antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav h-24 flex items-center">
+        <div class="max-w-7xl mx-auto px-8 w-full flex justify-between items-center">
+            <a href="../../../index.html" class="flex items-center gap-4 group">
+                <img src="../../../assets/logo.png" alt="Salud Equilibrio" class="h-12 w-auto brightness-110">
+                <span class="font-serif text-xl tracking-tighter text-white hidden sm:block">Salud<span class="text-mint-vibrant font-light">Equilibrio</span></span>
+            </a>
+            
+            <div class="flex items-center gap-8">
+                <a href="../index.html" class="hidden md:block text-[10px] tracking-[4px] uppercase font-bold text-white/50 hover:text-mint-vibrant transition-colors">
+                    Kangen Portal
+                </a>
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fas fa-chevron-down text-[10px] opacity-50 ml-2"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')"><span>🇪🇸</span><span>ES</span></div>
+                        <div class="lang-option" onclick="setLanguage('en')"><span>🇬🇧</span><span>EN</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-24">
+        <div class="absolute inset-0 z-0">
+            <img src="beauty_mist.png" alt="Beauty Water Mist" class="w-full h-full object-cover brightness-50 contrast-110">
+            <div class="absolute inset-0 bg-gradient-to-b from-obsidian/60 via-obsidian/20 to-obsidian"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-8 text-center" data-aos="fade-up">
+            <span class="inline-block text-mint-vibrant text-[10px] tracking-[10px] uppercase mb-8 font-bold opacity-80">Skin & Petal Harmony</span>
+            <h1 class="font-serif italic text-6xl md:text-[100px] text-white leading-tight mb-8 hero-title">
+                <span class="lang-es">pH 6.0 <br> <span class="not-italic">Agua de Belleza</span></span>
+                <span class="lang-en">pH 6.0 <br> <span class="not-italic">Beauty Water</span></span>
+            </h1>
+            <p class="text-white/60 text-lg md:text-xl font-light leading-relaxed max-w-3xl mx-auto">
+                <span class="lang-es">El tónico natural para todo lo que vive. Recupera la luminosidad de tu piel, el brillo de tu cabello y la vitalidad de tus plantas.</span>
+                <span class="lang-en">The natural toner for everything alive. Recover your skin's radiance, your hair's shine, and your plants' vitality.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- The Secret of Skin -->
+    <section class="py-40 px-8 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+            <div data-aos="fade-right">
+                <h2 class="font-serif italic text-5xl text-white mb-10 leading-tight">
+                    <span class="lang-es">Certificación Médica <br> <span class="text-mint-vibrant">y Eficacia Real</span></span>
+                    <span class="lang-en">Medical Certification <br> <span class="text-mint-vibrant">and Real Efficacy</span></span>
+                </h2>
+                <div class="space-y-8 text-white/50 text-lg font-light leading-relaxed">
+                    <p>
+                        <span class="lang-es">No es solo una sensación; es ciencia. El <strong>Ministerio de Salud de Japón</strong> ha certificado oficialmente el agua de pH 6.0 como <strong>astringente</strong>, reconociendo su capacidad única para tonificar la piel de forma natural y segura.</span>
+                        <span class="lang-en">It's not just a feeling; it's science. The <strong>Japanese Ministry of Health</strong> has officially certified pH 6.0 water as an <strong>astringent</strong>, recognizing its unique ability to tone the skin naturally and safely.</span>
+                    </p>
+                    <p>
+                        <span class="lang-es">Desde una perspectiva económica y de salud, sustituir los tonificadores comerciales —cargados de alcohol y químicos— por agua fresca tratada físicamente en el momento, supone un ahorro inteligente y una liberación para tu organismo.</span>
+                        <span class="lang-en">From an economic and health perspective, replacing commercial toners—loaded with alcohol and chemicals—with fresh, physically treated water, represents a smart saving and a liberation for your body.</span>
+                    </p>
+                </div>
+            </div>
+            <div data-aos="fade-left">
+                <div class="glass-card p-12 rounded-[2.5rem] relative overflow-hidden group">
+                    <div class="absolute -top-20 -right-20 w-64 h-64 bg-mint-vibrant/5 rounded-full blur-3xl"></div>
+                    <img src="beauty_mist.png" alt="Beauty Detail" class="rounded-2xl mb-8 group-hover:scale-105 transition-transform duration-700">
+                    <h4 class="text-white font-serif italic text-2xl mb-4">Beauty Ritual</h4>
+                    <p class="text-white/40 text-sm leading-relaxed">
+                        <span class="lang-es">Usa un pulverizador fino para hidratarte durante el día, especialmente en ambientes con aire acondicionado o tras la limpieza facial.</span>
+                        <span class="lang-en">Use a fine mister to hydrate throughout the day, especially in air-conditioned environments or after facial cleansing.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Versatile Uses Grid -->
+    <section class="py-40 bg-obsidian/40 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-24" data-aos="fade-up">
+                <h2 class="font-serif italic text-5xl text-white mb-8">
+                    <span class="lang-es">Más que un <span class="text-mint-vibrant">Tónico Facial</span></span>
+                    <span class="lang-en">More than just a <span class="text-mint-vibrant">Facial Toner</span></span>
+                </h2>
+                <p class="text-white/40 max-w-2xl mx-auto">Descubre cómo este agua de "astringencia suave" revoluciona tu cuidado personal y del hogar.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Hair Care -->
+                <div class="glass-card p-8 rounded-3xl" data-aos="fade-up">
+                    <i class="fas fa-wind text-mint-vibrant text-2xl mb-6"></i>
+                    <h4 class="text-white font-bold mb-4">Cabello Radiante</h4>
+                    <p class="text-xs text-white/50 leading-relaxed font-light">
+                        <span class="lang-es">Úsala tras el champú para sellar la cutícula. Aporta un brillo natural increíble y reduce los enredos sin químicos.</span>
+                        <span class="lang-en">Use it after shampooing to seal the cuticle. It adds incredible natural shine and reduces tangles without chemicals.</span>
+                    </p>
+                </div>
+                <!-- Pets -->
+                <div class="glass-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-paw text-mint-vibrant text-2xl mb-6"></i>
+                    <h4 class="text-white font-bold mb-4">Mascotas Felices</h4>
+                    <p class="text-xs text-white/50 leading-relaxed font-light">
+                        <span class="lang-es">Cepilla a tu perro o gato con un poco de pH 6. Su pelaje lucirá mucho más suave y brillante, como recién salido de la peluquería.</span>
+                        <span class="lang-en">Brush your dog or cat with some pH 6. Their coat will look much softer and shinier, like they just left the groomer.</span>
+                    </p>
+                </div>
+                <!-- Cleaning -->
+                <div class="glass-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-sparkles text-mint-vibrant text-2xl mb-6"></i>
+                    <h4 class="text-white font-bold mb-4">Cristales Espejo</h4>
+                    <p class="text-xs text-white/50 leading-relaxed font-light">
+                        <span class="lang-es">Ideal para limpiar espejos y cristales. Al no dejar residuos minerales, el acabado es un brillo puro sin vetas.</span>
+                        <span class="lang-en">Ideal for cleaning mirrors and glass. Since it leaves no mineral residue, the finish is a pure streak-free shine.</span>
+                    </p>
+                </div>
+                <!-- Culinary -->
+                <div class="glass-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-egg text-mint-vibrant text-2xl mb-6"></i>
+                    <h4 class="text-white font-bold mb-4">Trucos de Cocina</h4>
+                    <p class="text-xs text-white/50 leading-relaxed font-light">
+                        <span class="lang-es">Cuece huevos con pH 6 para que se pelen fácilmente. Úsala para lavar pasta y que quede "al dente" con un brillo apetitoso.</span>
+                        <span class="lang-en">Boil eggs with pH 6 so they peel easily. Use it to wash pasta for an "al dente" finish and an appetizing shine.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Green Harmony Section -->
+    <section class="py-40 px-8 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+            <div class="order-2 lg:order-1" data-aos="fade-right">
+                <img src="vibrant_plants.png" alt="Healthy Plants" class="rounded-[2.5rem] shadow-2xl low-key-image border border-white/5">
+            </div>
+            <div class="order-1 lg:order-2" data-aos="fade-left">
+                <span class="text-mint-vibrant text-[10px] tracking-[6px] uppercase font-bold mb-6 block">Botanical Wisdom</span>
+                <h2 class="font-serif italic text-5xl text-white mb-10 leading-tight">
+                    <span class="lang-es">Armonía con <br> <span class="text-white not-italic">la Naturaleza</span></span>
+                    <span class="lang-en">Harmony with <br> <span class="text-white not-italic">Nature</span></span>
+                </h2>
+                <p class="text-white/50 text-xl leading-relaxed font-light mb-12">
+                    <span class="lang-es">La gran mayoría de las plantas ornamentales y flores prosperan en un entorno ligeramente ácido. El pH 6.0 es el agua óptima que simula la lluvia suave y nutrida, permitiendo que tus plantas respiren mejor y luzcan un verde más intenso.</span>
+                    <span class="lang-en">The vast majority of ornamental plants and flowers thrive in a slightly acidic environment. pH 6.0 is the optimal water that simulates soft, nutrient-rich rain, allowing your plants to breathe better and look a more intense green.</span>
+                </p>
+                <div class="flex items-center gap-6">
+                    <div class="w-16 h-[1px] bg-mint-vibrant/40"></div>
+                    <span class="italic text-white/70 font-serif">"Tus plantas notarán la diferencia desde el primer riego."</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botanical Testimonials -->
+    <section class="py-40 bg-obsidian/60 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-24" data-aos="fade-up">
+                <span class="text-mint-vibrant text-[10px] tracking-[10px] uppercase font-bold mb-6 block">Real Life Impact</span>
+                <h2 class="font-serif italic text-5xl text-white mb-8">
+                    <span class="lang-es">La Naturaleza <span class="text-white not-italic">No Miente</span></span>
+                    <span class="lang-en">Nature <span class="text-white not-italic">Never Lies</span></span>
+                </h2>
+                <p class="text-white/40 max-w-2xl mx-auto">
+                    <span class="lang-es">Dos testimonios visuales que demuestran cómo el agua adecuada puede revivir y potenciar la vida de tus plantas y cultivos.</span>
+                    <span class="lang-en">Two visual testimonials showing how the right water can revive and enhance the life of your plants and crops.</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Video 1 -->
+                <div class="glass-card p-6 rounded-[2rem]" data-aos="fade-right">
+                    <div class="aspect-[9/16] w-full max-w-[350px] mx-auto rounded-2xl overflow-hidden shadow-2xl border border-white/5 bg-black">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/6k1jUwTxC_w" title="Kangen Plants Testimonial 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="mt-8 text-center">
+                        <h4 class="text-white font-serif italic text-xl mb-2">
+                            <span class="lang-es">Revitalización Rápida</span>
+                            <span class="lang-en">Fast Revitalization</span>
+                        </h4>
+                        <p class="text-white/40 text-sm">
+                            <span class="lang-es">Observa el cambio de vitalidad en cuestión de horas tras el riego con pH 6.0.</span>
+                            <span class="lang-en">Witness the shift in vitality within hours after watering with pH 6.0.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="glass-card p-6 rounded-[2rem]" data-aos="fade-left">
+                    <div class="aspect-[9/16] w-full max-w-[350px] mx-auto rounded-2xl overflow-hidden shadow-2xl border border-white/5 bg-black">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/uQGLVchKT1M" title="Kangen Plants Testimonial 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="mt-8 text-center">
+                        <h4 class="text-white font-serif italic text-xl mb-2">
+                            <span class="lang-es">Crecimiento y Color</span>
+                            <span class="lang-en">Growth and Color</span>
+                        </h4>
+                        <p class="text-white/40 text-sm">
+                            <span class="lang-es">Cómo el agua Kangen influye en el desarrollo estructural y la intensidad cromática.</span>
+                            <span class="lang-en">How Kangen water influences structural development and color intensity.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-40 bg-gradient-to-t from-obsidian to-forest/20 text-center">
+        <div class="max-w-3xl mx-auto px-8" data-aos="zoom-in">
+            <h2 class="font-serif italic text-5xl text-white mb-12">Eleva tu Higiene a un <br> <span class="text-mint-vibrant not-italic">Nivel Profesional</span></h2>
+            <p class="text-white/50 mb-16 font-light italic">"Porque la belleza no es algo que se compra, es algo que se cultiva con el equilibrio adecuado."</p>
+            <a href="../../../index.html#contacto" class="btn-mint inline-block px-12 py-5 rounded-full font-bold text-[12px] tracking-[4px] uppercase bg-mint-vibrant text-obsidian hover:scale-105 transition-all">
+                Saber más sobre Kangen
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-32 border-t border-white/5 text-center bg-obsidian">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col items-center">
+            <img src="../../../assets/logo.png" alt="Salud Equilibrio" class="h-16 w-auto mb-12 opacity-50 grayscale">
+            <p class="text-[10px] tracking-[6px] uppercase font-light text-white/20">© 2026 Salud Equilibrio. Beauty starts with the right water.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        
+        // Language Toggle
+        const LANG_KEY = 'salud_equilibrio_lang';
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            document.getElementById('lang-dropdown').classList.toggle('show');
+        }
+        window.onclick = function(event) {
+            if (!event.target.closest('.lang-trigger')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem(LANG_KEY, lang);
+            const flag = lang === 'es' ? '🇪🇸' : '🇬🇧';
+            const text = lang.toUpperCase();
+            document.getElementById('current-flag').innerText = flag;
+            document.getElementById('current-lang-text').innerText = text;
+            const dropdown = document.getElementById('lang-dropdown');
+            if(dropdown) dropdown.classList.remove('show');
+        }
+        function initLanguage() {
+            const savedLang = localStorage.getItem(LANG_KEY) || 'es';
+            setLanguage(savedLang);
+        }
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+
+</body>
+
+</html>

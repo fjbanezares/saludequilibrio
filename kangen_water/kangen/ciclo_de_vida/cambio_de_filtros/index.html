@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtración de Alto Rendimiento | Ciclo de Vida | Kangen Water®</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Noto Serif', 'serif'],
+                    },
+                    colors: {
+                        obsidian: '#0e0e0e',
+                        cyan: {
+                            400: '#22d3ee',
+                        },
+                        mint: {
+                            vibrant: '#66dd8b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0e0e0e;
+            color: #f5f5f5;
+        }
+
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(14, 14, 14, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* ─── Language toggle visibility ─── */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+        [data-lang="en"] .lang-es { display: none; }
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(1, 8, 19, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(102, 221, 139, 0.2);
+            border-radius: 1rem;
+            min-width: 150px;
+            padding: 0.5rem;
+            z-index: 100;
+        }
+        .dropdown-content.show { display: block; }
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+        .lang-option:hover { background: rgba(102, 221, 139, 0.1); color: #fff; }
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(102, 221, 139, 0.15);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body data-lang="es" class="antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav h-24 flex items-center">
+        <div class="max-w-7xl mx-auto px-8 w-full flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4 group">
+                <i class="fas fa-chevron-left text-mint-vibrant text-xs"></i>
+                <span class="font-serif text-xl tracking-tighter text-white">Ciclo de<span class="text-mint-vibrant font-light">Vida</span></span>
+            </a>
+            
+            <div class="flex items-center gap-8">
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fas fa-chevron-down text-[10px] opacity-50 ml-2"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')"><span>🇪🇸</span><span>ES</span></div>
+                        <div class="lang-option" onclick="setLanguage('en')"><span>🇬🇧</span><span>EN</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Content -->
+    <section class="min-h-screen pt-40 pb-24 px-8 max-w-6xl mx-auto">
+        
+        <div class="mb-24 text-center" data-aos="fade-up">
+            <h1 class="font-serif italic text-5xl md:text-7xl text-white mb-8 leading-tight">
+                <span class="lang-es">Filtración de <br> <span class="text-cyan-400 not-italic">Capacidad Industrial</span></span>
+                <span class="lang-en">Industrial Capacity <br> <span class="text-cyan-400 not-italic">Filtration</span></span>
+            </h1>
+            <p class="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+                <span class="lang-es">6.000 litros de pureza absoluta. Un estándar de rendimiento que deja atrás a cualquier sistema doméstico convencional.</span>
+                <span class="lang-en">6,000 liters of absolute purity. A performance standard that leaves any conventional home system behind.</span>
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-20 items-center mb-32">
+            <div class="relative order-2 lg:order-1" data-aos="fade-right">
+                <div class="absolute -inset-10 bg-cyan-400/10 rounded-full blur-[100px]"></div>
+                <img src="../../../assets/kangen_filter.png" alt="High Performance Filter" class="rounded-[4rem] shadow-2xl relative z-10 border border-white/5">
+            </div>
+            <div class="order-1 lg:order-2 space-y-8" data-aos="fade-left">
+                <h2 class="font-serif italic text-4xl text-white mb-10 leading-tight">
+                    <span class="lang-es">El Poder de los <span class="text-cyan-400">6.000 Litros</span></span>
+                    <span class="lang-en">The Power of <span class="text-cyan-400">6,000 Liters</span></span>
+                </h2>
+                <div class="space-y-6 text-white/50 text-lg font-light leading-relaxed">
+                    <p>
+                        <span class="lang-es">Mientras que la mayoría de filtros básicos del mercado requieren cambios cada 3 o 6 meses, el filtro de alto rendimiento Enagic® está diseñado para durar un ciclo completo de **6.000 litros**.</span>
+                        <span class="lang-en">While most basic filters on the market require changes every 3 or 6 months, the Enagic® high-performance filter is designed to last a full cycle of **6,000 liters**.</span>
+                    </p>
+                    <p>
+                        <span class="lang-es">Para una familia promedio, esto equivale a aproximadamente un año de agua potable, cocina y lavado sin preocuparse por la caída en la calidad de filtración.</span>
+                        <span class="lang-en">For an average family, this equals approximately one year of drinking, cooking, and washing water without worrying about a drop in filtration quality.</span>
+                    </p>
+                </div>
+
+                <!-- Comparison Box -->
+                <div class="p-8 rounded-3xl bg-cyan-500/5 border border-cyan-500/20 backdrop-blur-sm">
+                    <h4 class="text-white font-bold mb-4 text-xs tracking-widest uppercase">Benchmark Competitivo</h4>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center py-2 border-b border-white/5">
+                            <span class="text-white/40 text-sm">Filtros Convencionales</span>
+                            <span class="text-white/80 font-mono">1.500 - 2.000 L</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2">
+                            <span class="text-cyan-400 font-bold text-sm uppercase">Kangen High-Performance</span>
+                            <span class="text-cyan-400 font-mono font-bold text-xl">6.000 L</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Deep Dive -->
+        <div class="grid md:grid-cols-3 gap-8 mb-20">
+            <div class="glass-card p-10 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="100">
+                <div class="text-cyan-400 mb-6 text-2xl font-bold">1</div>
+                <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-widest">Carbón Activado Granular</h4>
+                <p class="text-white/40 text-sm leading-relaxed">
+                    <span class="lang-es">Elimina eficientemente el cloro residual, sedimentos, moho y olores, mejorando drásticamente el sabor del agua.</span>
+                    <span class="lang-en">Efficiently removes residual chlorine, sediments, mold, and odors, drastically improving water taste.</span>
+                </p>
+            </div>
+            <div class="glass-card p-10 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-cyan-400 mb-6 text-2xl font-bold">2</div>
+                <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-widest">Filtración Mecánica</h4>
+                <p class="text-white/40 text-sm leading-relaxed">
+                    <span class="lang-es">Un laberinto de micro-fibras que atrapa partículas físicas y contaminantes de gran tamaño antes de la ionización.</span>
+                    <span class="lang-en">A labyrinth of micro-fibers that traps physical particles and large contaminants before ionization.</span>
+                </p>
+            </div>
+            <div class="glass-card p-10 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="300">
+                <div class="text-cyan-400 mb-6 text-2xl font-bold">3</div>
+                <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-widest">Notificación Inteligente</h4>
+                <p class="text-white/40 text-sm leading-relaxed">
+                    <span class="lang-es">La máquina monitoriza el flujo y te avisará por voz ("Replace Filter") y en pantalla exactamente cuando sea necesario el cambio.</span>
+                    <span class="lang-en">The machine monitors the flow and will alert you by voice ("Replace Filter") and on the screen exactly when replacement is needed.</span>
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center bg-obsidian">
+        <div class="max-w-7xl mx-auto px-8">
+            <p class="text-[10px] tracking-[8px] uppercase font-light text-white/20">Salud Equilibrio | Enagic Japan Technology</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        
+        const LANG_KEY = 'salud_equilibrio_lang';
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            document.getElementById('lang-dropdown').classList.toggle('show');
+        }
+        window.onclick = function(event) {
+            if (!event.target.closest('.lang-trigger')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem(LANG_KEY, lang);
+            const flag = lang === 'es' ? '🇪🇸' : '🇬🇧';
+            const text = lang.toUpperCase();
+            document.getElementById('current-flag').innerText = flag;
+            document.getElementById('current-lang-text').innerText = text;
+            const dropdown = document.getElementById('lang-dropdown');
+            if(dropdown) dropdown.classList.remove('show');
+        }
+        function initLanguage() {
+            const savedLang = localStorage.getItem(LANG_KEY) || 'es';
+            setLanguage(savedLang);
+        }
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+</body>
+</html>

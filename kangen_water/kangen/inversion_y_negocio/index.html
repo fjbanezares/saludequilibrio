@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inversión y Negocio | Kangen Water® | Salud Equilibrio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Noto Serif', 'serif'],
+                    },
+                    colors: {
+                        obsidian: '#0e0e0e',
+                        gold: '#d4af37',
+                        mint: {
+                            vibrant: '#66dd8b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #0e0e0e; color: #f5f5f5; overflow-x: hidden; }
+        .glass-nav { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(14, 14, 14, 0.8); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .glass-card { backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.4s ease; }
+        .glass-card:hover { background: rgba(255, 255, 255, 0.06); border-color: rgba(212, 175, 55, 0.2); transform: translateY(-5px); }
+        .text-gradient-gold { background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-image: linear-gradient(to right, #d4af37, #f1c40f); }
+        
+        /* Language Toggle */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+        .dropdown-content { display: none; position: absolute; right: 0; top: 100%; background: rgba(1, 8, 19, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 1rem; min-width: 150px; padding: 0.5rem; z-index: 100; }
+        .dropdown-content.show { display: block; }
+        .lang-option { display: flex; align-items: center; gap: 12px; padding: 10px 16px; cursor: pointer; border-radius: 0.5rem; transition: all 0.3s ease; font-size: 0.85rem; color: #ccc; }
+        .lang-option:hover { background: rgba(212, 175, 55, 0.1); color: #fff; }
+        .lang-trigger { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 16px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 50px; font-size: 0.85rem; color: #fff; }
+    </style>
+</head>
+
+<body data-lang="es" class="antialiased">
+
+    <nav class="fixed w-full z-50 glass-nav h-24 flex items-center">
+        <div class="max-w-7xl mx-auto px-8 w-full flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4 group">
+                <img src="../../../assets/logo.png" alt="Salud Equilibrio" class="h-12 w-auto">
+                <span class="font-serif text-xl tracking-tighter text-white">Inversión<span class="text-gold font-light">Negocio</span></span>
+            </a>
+            
+            <div class="flex items-center gap-8">
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fas fa-chevron-down text-[10px] opacity-50 ml-2"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')"><span>🇪🇸</span><span>ES</span></div>
+                        <div class="lang-option" onclick="setLanguage('en')"><span>🇬🇧</span><span>EN</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative min-h-[70vh] flex items-center justify-center pt-24 overflow-hidden">
+        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent"></div>
+        <div class="max-w-4xl mx-auto px-8 text-center relative z-10" data-aos="fade-up">
+            <span class="text-gold text-[10px] tracking-[10px] uppercase font-bold mb-8 block">Project ROI</span>
+            <h1 class="font-serif italic text-6xl md:text-8xl text-white mb-8">
+                <span class="lang-es">Activos en <span class="not-italic text-gradient-gold">Salud</span></span>
+                <span class="lang-en">Assets in <span class="not-italic text-gradient-gold">Health</span></span>
+            </h1>
+            <p class="text-white/50 text-xl font-light leading-relaxed max-w-2xl mx-auto">
+                <span class="lang-es">Descubre por qué Kangen no es un gasto, sino la inversión más inteligente de tu patrimonio. Rentabilidad monetaria y vital.</span>
+                <span class="lang-en">Discover why Kangen is not an expense, but the smartest investment of your assets. Monetary and vital profitability.</span>
+            </p>
+        </div>
+    </section>
+
+    <section class="py-24 px-8 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8">
+            
+            <!-- ROI Monetario -->
+            <a href="roi_monetario/index.html" class="glass-card p-12 rounded-[3.5rem] relative group overflow-hidden border-gold/10">
+                <div class="absolute -right-10 -top-10 w-40 h-40 bg-gold/5 rounded-full blur-3xl group-hover:bg-gold/10 transition-all"></div>
+                <div class="w-20 h-20 rounded-2xl overflow-hidden mb-8 border border-gold/20">
+                    <img src="../../../assets/kangen_roi_economic.png" alt="Economic ROI" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-3xl font-bold text-white mb-4">
+                    <span class="lang-es">Retorno Económico</span>
+                    <span class="lang-en">Economic Return</span>
+                </h3>
+                <p class="text-white/40 text-base leading-relaxed mb-10">
+                    <span class="lang-es">Las matemáticas no mienten: descubre cómo ahorrar más de 1.100€ anuales sustituyendo el agua embotellada por tecnología Enagic®.</span>
+                    <span class="lang-en">The math doesn't lie: discover how to save more than €1,100 annually by replacing bottled water with Enagic® technology.</span>
+                </p>
+                <div class="text-gold text-xs font-bold tracking-widest group-hover:translate-x-3 transition-transform inline-flex items-center gap-2 uppercase">
+                    ANALIZAR NÚMEROS <i class="fas fa-arrow-right text-[10px]"></i>
+                </div>
+            </a>
+
+            <!-- ROI Vital (Vida) -->
+            <a href="roi_vida/index.html" class="glass-card p-12 rounded-[3.5rem] relative group overflow-hidden border-mint-vibrant/10">
+                <div class="absolute -right-10 -top-10 w-40 h-40 bg-mint-vibrant/5 rounded-full blur-3xl group-hover:bg-mint-vibrant/10 transition-all"></div>
+                <div class="w-20 h-20 rounded-2xl overflow-hidden mb-8 border border-mint-vibrant/20">
+                    <img src="../../../assets/kangen_roi_lifestyle.png" alt="Lifestyle ROI" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-3xl font-bold text-white mb-4">
+                    <span class="lang-es">Retorno Vital (Libertad)</span>
+                    <span class="lang-en">Vital Return (Freedom)</span>
+                </h3>
+                <p class="text-white/40 text-base leading-relaxed mb-10">
+                    <span class="lang-es">Cero esfuerzo, cero transporte. Recupera tu tiempo, tu energía física y elimina los tóxicos de tu hogar para siempre.</span>
+                    <span class="lang-en">Zero effort, zero transport. Reclaim your time, your physical energy, and eliminate toxins from your home forever.</span>
+                </p>
+                <div class="text-mint-vibrant text-xs font-bold tracking-widest group-hover:translate-x-3 transition-transform inline-flex items-center gap-2 uppercase">
+                    EXPLORAR CALIDAD DE VIDA <i class="fas fa-arrow-right text-[10px]"></i>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center bg-obsidian">
+        <div class="max-w-7xl mx-auto px-8">
+            <p class="text-[10px] tracking-[8px] uppercase font-light text-white/20">© 2026 Salud Equilibrio. Financial Longevity.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        const LANG_KEY = 'salud_equilibrio_lang';
+        function toggleDropdown(event) { event.stopPropagation(); document.getElementById('lang-dropdown').classList.toggle('show'); }
+        window.onclick = function(event) { if (!event.target.closest('.lang-trigger')) { const dropdowns = document.getElementsByClassName("dropdown-content"); for (let i = 0; i < dropdowns.length; i++) { dropdowns[i].classList.remove('show'); } } }
+        function setLanguage(lang) { document.body.setAttribute('data-lang', lang); localStorage.setItem(LANG_KEY, lang); const flag = lang === 'es' ? '🇪🇸' : '🇬🇧'; const text = lang.toUpperCase(); document.getElementById('current-flag').innerText = flag; document.getElementById('current-lang-text').innerText = text; const dropdown = document.getElementById('lang-dropdown'); if(dropdown) dropdown.classList.remove('show'); }
+        function initLanguage() { const savedLang = localStorage.getItem(LANG_KEY) || 'es'; setLanguage(savedLang); }
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+</body>
+</html>

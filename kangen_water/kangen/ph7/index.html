@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pH 7.0 Clean Water | Kangen Water® | Salud Equilibrio</title>
+    <meta name="description" content="Descubre la pureza del Agua Limpia pH 7.0 de Kangen. Ideal para bebés, medicamentos y suplementos. Pureza absoluta para tu hogar.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Noto Serif & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Noto Serif', 'serif'],
+                    },
+                    colors: {
+                        obsidian: '#0e0e0e',
+                        crystal: '#e0f2fe',
+                        mint: {
+                            vibrant: '#66dd8b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: #0e0e0e;
+            color: #f5f5f5;
+        }
+
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(14, 14, 14, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 15px rgba(224, 242, 254, 0.4);
+        }
+
+        /* ─── Language toggle system ─── */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+        [data-lang="en"] .lang-es { display: none; }
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(1, 8, 19, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(102, 221, 139, 0.2);
+            border-radius: 1rem;
+            min-width: 150px;
+            padding: 0.5rem;
+            z-index: 100;
+        }
+        .dropdown-content.show { display: block; }
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+        .lang-option:hover { background: rgba(102, 221, 139, 0.1); color: #fff; }
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(102, 221, 139, 0.15);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body data-lang="es" class="antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav h-24 flex items-center">
+        <div class="max-w-7xl mx-auto px-8 w-full flex justify-between items-center">
+            <a href="../../../index.html" class="flex items-center gap-4 group">
+                <img src="../../../assets/logo.png" alt="Salud Equilibrio" class="h-12 w-auto brightness-110">
+                <span class="font-serif text-xl tracking-tighter text-white hidden sm:block">Salud<span class="text-mint-vibrant font-light">Equilibrio</span></span>
+            </a>
+            
+            <div class="flex items-center gap-8">
+                <div class="hidden md:flex gap-8 text-[10px] tracking-[4px] uppercase font-bold text-white/50">
+                    <a href="../index.html" class="hover:text-mint-vibrant transition-colors">
+                        <span class="lang-es inline">Kangen Portal</span>
+                        <span class="lang-en inline">Kangen Portal</span>
+                    </a>
+                </div>
+
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fas fa-chevron-down text-[10px] opacity-50 ml-2"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')">
+                            <span>🇪🇸</span>
+                            <span>Castellano</span>
+                        </div>
+                        <div class="lang-option" onclick="setLanguage('en')">
+                            <span>🇬🇧</span>
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[80vh] flex items-center justify-center overflow-hidden pt-24">
+        <div class="absolute inset-0 z-0">
+            <img src="water_clarity.png" alt="Clean Water Glass" class="w-full h-full object-cover brightness-50 contrast-125">
+            <div class="absolute inset-0 bg-gradient-to-b from-obsidian/60 via-obsidian/20 to-obsidian"></div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-8 text-center" data-aos="fade-up">
+            <span class="inline-block text-crystal text-[10px] tracking-[10px] uppercase mb-8 font-bold opacity-70">Pure Neutrality</span>
+            <h1 class="font-serif italic text-6xl md:text-8xl text-white leading-tight mb-8">
+                <span class="lang-es">pH 7.0 <br> <span class="not-italic text-glow">Agua Limpia</span></span>
+                <span class="lang-en">pH 7.0 <br> <span class="not-italic text-glow">Clean Water</span></span>
+            </h1>
+            <p class="text-white/60 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+                <span class="lang-es">El estandarte de la pureza. Agua libre de cloro y metales pesados, diseñada para las necesidades más delicadas de tu hogar.</span>
+                <span class="lang-en">The standard of purity. Water free of chlorine and heavy metals, designed for the most delicate needs of your home.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Purity Section -->
+    <section class="py-32 px-8 max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-20 items-center">
+            <div data-aos="fade-right">
+                <h2 class="font-serif italic text-4xl text-white mb-8">
+                    <span class="lang-es">Filtración de <span class="text-mint-vibrant">Vanguardia</span></span>
+                    <span class="lang-en">Cutting-Edge <span class="text-mint-vibrant">Filtration</span></span>
+                </h2>
+                <p class="text-white/50 text-lg leading-relaxed mb-8 font-light">
+                    <span class="lang-es">La tecnología Kangen no solo ioniza; el primer paso es la purificación absoluta. El filtro de alto rendimiento elimina impurezas, cloro, metales pesados y otros contaminantes presentes en el agua corriente.</span>
+                    <span class="lang-en">Kangen technology doesn't just ionize; the first step is absolute purification. The high-performance filter removes impurities, chlorine, heavy metals, and other contaminants present in tap water.</span>
+                </p>
+                <div class="glass-card p-8 rounded-2xl">
+                    <p class="text-white/70 italic font-serif">
+                        <span class="lang-es">"El resultado es un agua limpia, segura y con sabor neutro, devolviendo al agua su estado más honesto."</span>
+                        <span class="lang-en">"The result is clean, safe water with a neutral taste, returning water to its most honest state."</span>
+                    </p>
+                </div>
+            </div>
+            <div class="relative" data-aos="fade-left">
+                <div class="absolute -inset-4 bg-mint-vibrant/10 rounded-full blur-3xl opacity-50"></div>
+                <img src="water_clarity.png" alt="Detail Clean Water" class="rounded-3xl relative z-10 shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- Baby Safe Section -->
+    <section class="py-32 bg-obsidian/50 px-8">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+            <div class="order-2 md:order-1" data-aos="fade-right">
+                <img src="baby_safe.png" alt="Baby Care Kangen" class="rounded-3xl shadow-2xl low-key-image">
+            </div>
+            <div class="order-1 md:order-2" data-aos="fade-left">
+                <span class="text-mint-vibrant text-[10px] tracking-[6px] uppercase font-bold mb-6 block">Protección Infantil</span>
+                <h2 class="font-serif italic text-4xl text-white mb-8">
+                    <span class="lang-es">Seguridad para el <br> <span class="text-white not-italic">Desarrollo más Frágil</span></span>
+                    <span class="lang-en">Security for the <br> <span class="text-white not-italic">Most Fragile Development</span></span>
+                </h2>
+                <p class="text-white/50 text-lg leading-relaxed mb-8 font-light">
+                    <span class="lang-es">El agua pH 7.0 es el aliado ideal para la preparación de fórmulas infantiles o alimentos para niños pequeños. Al ser un agua neutra y pura, carece de componentes que puedan ser agresivos para un organismo en pleno desarrollo.</span>
+                    <span class="lang-en">pH 7.0 water is the ideal ally for preparing baby formulas or food for young children. As a neutral and pure water, it lacks components that could be aggressive for a rapidly developing organism.</span>
+                </p>
+                <ul class="space-y-4 text-white/70">
+                    <li class="flex items-center gap-4"><i class="fas fa-check text-mint-vibrant text-xs"></i> 
+                        <span class="lang-es">Protección renal para recién nacidos.</span>
+                        <span class="lang-en">Renal protection for newborns.</span>
+                    </li>
+                    <li class="flex items-center gap-4"><i class="fas fa-check text-mint-vibrant text-xs"></i> 
+                        <span class="lang-es">Sin interferencias metabólicas.</span>
+                        <span class="lang-en">No metabolic interference.</span>
+                    </li>
+                    <li class="flex items-center gap-4"><i class="fas fa-check text-mint-vibrant text-xs"></i> 
+                        <span class="lang-es">Pureza garantizada en cada biberón.</span>
+                        <span class="lang-en">Guaranteed purity in every bottle.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Science/Medical Section -->
+    <section class="py-32 px-8 max-w-4xl mx-auto text-center">
+        <div class="mb-16" data-aos="zoom-in">
+            <h2 class="font-serif italic text-4xl text-white mb-8">
+                <span class="lang-es">Uso con <span class="text-mint-vibrant">Medicamentos y Suplementos</span></span>
+                <span class="lang-en">Use with <span class="text-mint-vibrant">Medications and Supplements</span></span>
+            </h2>
+            <p class="text-white/50 text-lg leading-relaxed font-light mb-12">
+                <span class="lang-es">La neutralidad del pH 7.0 es fundamental cuando el agua actúa como vehículo para preparados químicos o farmacéuticos. Las vitaminas efervescentes y los medicamentos están testados clínicamente en agua corriente neutra.</span>
+                <span class="lang-en">The neutrality of pH 7.0 is fundamental when water acts as a vehicle for chemical or pharmaceutical preparations. Effervescent vitamins and medications are clinically tested in neutral tap water.</span>
+            </p>
+        </div>
+
+        <!-- Personal Tip -->
+        <div class="glass-card p-12 rounded-3xl relative overflow-hidden" data-aos="fade-up">
+            <div class="absolute top-0 right-0 p-8 opacity-10 text-6xl"><i class="fas fa-lightbulb text-mint-vibrant"></i></div>
+            <h4 class="text-mint-vibrant text-xs tracking-[4px] uppercase font-bold mb-6">Expert Insight</h4>
+            <p class="text-white/80 font-serif italic text-xl leading-relaxed">
+                <span class="lang-es">"Se aconseja el uso de pH 7.0 para medicamentos y vitaminas para asegurar que se asimilen según lo previsto por el laboratorio. Personalmente, yo uso el pH 9.5 para disolver mis vitaminas y potenciar su efecto antioxidante, pero el pH 7.0 es el estándar de seguridad clínica absoluta."</span>
+                <span class="lang-en">"The use of pH 7.0 is advised for medications and vitamins to ensure they are absorbed as intended by the laboratory. Personally, I use pH 9.5 to dissolve my vitamins and boost their antioxidant effect, but pH 7.0 is the standard for absolute clinical safety."</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center bg-obsidian">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col items-center">
+            <img src="../../../assets/logo.png" alt="Salud Equilibrio" class="h-16 w-auto mb-10 opacity-50 grayscale">
+            <p class="text-[10px] tracking-[8px] uppercase font-light text-white/20">© 2026 Salud Equilibrio. Kangen Water® is a registered trademark of Enagic.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Language Toggle Logic
+        const LANG_KEY = 'salud_equilibrio_lang';
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            document.getElementById('lang-dropdown').classList.toggle('show');
+        }
+        window.onclick = function(event) {
+            if (!event.target.closest('.lang-trigger')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem(LANG_KEY, lang);
+            const flag = lang === 'es' ? '🇪🇸' : '🇬🇧';
+            const text = lang.toUpperCase();
+            document.getElementById('current-flag').innerText = flag;
+            document.getElementById('current-lang-text').innerText = text;
+            const dropdown = document.getElementById('lang-dropdown');
+            if(dropdown) dropdown.classList.remove('show');
+        }
+        function initLanguage() {
+            const savedLang = localStorage.getItem(LANG_KEY) || 'es';
+            setLanguage(savedLang);
+        }
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+
+</body>
+
+</html>

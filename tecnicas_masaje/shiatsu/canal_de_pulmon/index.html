@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canal de Pulmón (Fei) | MTC & Sanación | Salud Equilibrio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Bodoni Moda', 'serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            400: '#d4af37',
+                        },
+                        zen: '#0a0a0a',
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            color: #d1d5db;
+        }
+
+        /* Language Toggle System */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 1rem;
+            min-width: 140px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .dropdown-content.show { display: block; }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 11px;
+            letter-spacing: 1px;
+            font-weight: 600;
+            color: #9ca3af;
+        }
+
+        .lang-option:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: #fff;
+        }
+
+        .lang-option.active {
+            color: #d4af37;
+        }
+
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 99px;
+            font-size: 11px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .lang-trigger:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .content-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 2.5rem;
+        }
+
+        .function-item {
+            border-left: 2px solid rgba(212, 175, 55, 0.3);
+            padding-left: 2rem;
+            margin-bottom: 3rem;
+            transition: all 0.3s ease;
+        }
+
+        .function-item:hover {
+            border-left-color: #d4af37;
+            transform: translateX(10px);
+        }
+
+        .point-badge {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            color: #d4af37;
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(5, 5, 5, 0.9);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-gold-400/30 selection:text-white" data-lang="es">
+
+    <!-- Sub Navigation -->
+    <nav class="fixed w-full z-50 nav-blur">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4 group">
+                <span class="text-gold-400 text-xs tracking-[5px] uppercase font-bold opacity-80 group-hover:opacity-100 transition-opacity">
+                    <span class="lang-es">← Shiatsu</span>
+                    <span class="lang-en">← Shiatsu</span>
+                </span>
+            </a>
+
+            <div class="relative flex items-center gap-6">
+                <!-- Dropdown Trigger -->
+                <div class="lang-trigger" onclick="toggleDropdown(event)">
+                    <span id="current-flag">🇪🇸</span>
+                    <span id="current-lang-text">ES</span>
+                    <svg class="w-2.5 h-2.5 ml-1 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+
+                <!-- Dropdown Content -->
+                <div class="dropdown-content" id="lang-dropdown">
+                    <div class="lang-option" onclick="setLanguage('es')">
+                        <span class="text-lg">🇪🇸</span>
+                        <span>Castellano</span>
+                    </div>
+                    <div class="lang-option" onclick="setLanguage('en')">
+                        <span class="text-lg">🇬🇧</span>
+                        <span>English</span>
+                    </div>
+                </div>
+
+                <div class="font-outfit font-bold text-[10px] tracking-widest text-white uppercase opacity-90 leading-none hidden sm:block border-l border-white/10 pl-6 h-4 items-center flex">
+                    <span class="lang-es">Canal <span class="text-gold-400 font-light">de Pulmón</span></span>
+                    <span class="lang-en">Lung <span class="text-gold-400 font-light">Channel</span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pt-48 pb-20 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="max-w-2xl">
+                <h1 class="text-5xl md:text-7xl font-serif italic text-white leading-tight mb-12">
+                    <span class="lang-es">El Canal del Pulmón: <br><span class="text-gray-400 not-italic">Tu Escudo Invisible y el Aliento de la Vida</span></span>
+                    <span class="lang-en">The Lung Channel: <br><span class="text-gray-400 not-italic">Your Invisible Shield and the Breath of Life</span></span>
+                </h1>
+                
+                <div class="flex items-center gap-4 text-xs font-bold tracking-[4px] text-gold-400 uppercase">
+                    <span class="w-10 h-[1px] bg-gold-400/30"></span>
+                    <span class="lang-es">MTC & Sanación Integral</span>
+                    <span class="lang-en">TCM & Holistic Healing</span>
+                </div>
+            </div>
+            
+            <div class="relative">
+                <div class="absolute inset-0 bg-gold-400/10 blur-[100px] rounded-full"></div>
+                <!-- Lung Meridian Diagram v2 -->
+                <img src="meridiano_pulmon_v2.png" alt="Diagrama Técnico Científico del Meridiano de Pulmón" class="relative z-10 w-full rounded-[3rem] border border-white/5 shadow-2xl transition-all hover:scale-[1.02] duration-700">
+                
+                <div class="absolute -bottom-6 -right-6 px-4 py-2 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 text-[9px] tracking-[3px] uppercase font-bold text-gray-400 z-20">
+                    Diagrama de Precisión Lu.1 - Lu.11
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pb-32 px-6">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- Introduction -->
+            <section class="mb-24">
+                <div class="content-card">
+                    <h2 class="text-2xl font-serif italic text-white mb-8 border-b border-white/5 pb-6">
+                        <span class="lang-es">La Residencia de la Energía Vital</span>
+                        <span class="lang-en">The Residence of Vital Energy</span>
+                    </h2>
+                    <p class="text-lg text-gray-400 font-light leading-relaxed mb-6">
+                        <span class="lang-es">En la Medicina Tradicional China (MTC), el Pulmón es mucho más que un órgano puramente anatómico encargado del intercambio de gases. Se le conoce como el <strong>"Maestro del Qi"</strong> (energía) y actúa como el primer eslabón de nuestra interacción con el entorno.</span>
+                        <span class="lang-en">In Traditional Chinese Medicine (TCM), the Lung is much more than a purely anatomical organ in charge of gas exchange. It is known as the <strong>"Master of Qi"</strong> (energy) and acts as the first link in our interaction with the environment.</span>
+                    </p>
+                    <p class="text-lg text-gray-400 font-light leading-relaxed">
+                        <span class="lang-es">Este órgano representa nuestra capacidad de <strong>conexión y protección</strong>. Su meridiano, denominado <strong>"Tai Yin de la mano"</strong>, recorre desde el tórax hasta el dedo pulgar, trazando una ruta que define nuestra vitalidad, nuestra piel y nuestra integridad frente al mundo exterior.</span>
+                        <span class="lang-en">This organ represents our capacity for <strong>connection and protection</strong>. Its meridian, called <strong>"Tai Yin of the Hand"</strong>, runs from the chest to the thumb, tracing a path that defines our vitality, our skin, and our integrity facing the outside world.</span>
+                    </p>
+                </div>
+            </section>
+
+            <!-- 5 Functions -->
+            <section class="mb-32">
+                <h3 class="text-[10px] tracking-[6px] uppercase font-black text-gold-400/60 mb-16 px-4">
+                    <span class="lang-es">Las 5 Funciones Vitales del Pulmón</span>
+                    <span class="lang-en">The 5 Vital Functions of the Lung</span>
+                </h3>
+                
+                <div class="space-y-4">
+                    <!-- Function 1 -->
+                    <div class="function-item">
+                        <h4 class="text-xl font-serif italic text-white mb-4">
+                            <span class="lang-es">Administrar la respiración y la energía (Qi)</span>
+                            <span class="lang-en">Administrating respiration and energy (Qi)</span>
+                        </h4>
+                        <p class="text-sm text-gray-500 font-light leading-relaxed">
+                            <span class="lang-es">El Pulmón <strong>inspira el aire puro</strong> de la naturaleza y expulsa el aire impuro. Su genialidad reside en combinar este aire inspirado con la energía de los alimentos para formar la <strong>energía Zong Qi</strong>, el combustible maestro que nutre a todo el organismo.</span>
+                            <span class="lang-en">The Lung <strong>inspires pure air</strong> from nature and expels impure air. Its brilliance lies in combining this inspired air with food energy to form <strong>Zong Qi energy</strong>, the master fuel that nourishes the entire organism.</span>
+                        </p>
+                    </div>
+
+                    <!-- Function 2 -->
+                    <div class="function-item">
+                        <h4 class="text-xl font-serif italic text-white mb-4">
+                            <span class="lang-es">Controlar la distribución y manifestarse en la piel</span>
+                            <span class="lang-en">Controlling distribution and manifesting in the skin</span>
+                        </h4>
+                        <p class="text-sm text-gray-500 font-light leading-relaxed">
+                            <span class="lang-es">Es el encargado de "bombear" las energías y los líquidos hacia la superficie. Si el Pulmón está fuerte, distribuye la <strong>Wei Qi (energía defensiva)</strong>, manteniendo la piel hidratada y protegida; si es débil, somos propensos a resfriados y sudoración anormal.</span>
+                            <span class="lang-en">It is responsible for "pumping" energies and liquids to the surface. If the Lung is strong, it distributes <strong>Wei Qi (defensive energy)</strong>, keeping the skin hydrated and protected; if weak, we are prone to colds and abnormal sweating.</span>
+                        </p>
+                    </div>
+
+                    <!-- Function 3 -->
+                    <div class="function-item">
+                        <h4 class="text-xl font-serif italic text-white mb-4">
+                            <span class="lang-es">Dirigir la purificación y el descenso</span>
+                            <span class="lang-en">Directing purification and descent</span>
+                        </h4>
+                        <p class="text-sm text-gray-500 font-light leading-relaxed">
+                            <span class="lang-es">Como un purificador central, interviene en el metabolismo de los líquidos. Su fuerza hace que los líquidos <strong>desciendan hacia los riñones</strong> y la vejiga para su correcta excreción, manteniendo el equilibrio interno.</span>
+                            <span class="lang-en">As a central purifier, it intervenes in the metabolism of fluids. Its strength causes fluids to <strong>descend towards the kidneys</strong> and bladder for correct excretion, maintaining internal balance.</span>
+                        </p>
+                    </div>
+
+                    <!-- Function 4 -->
+                    <div class="function-item">
+                        <h4 class="text-xl font-serif italic text-white mb-4">
+                            <span class="lang-es">Comunicar con la nariz y la garganta</span>
+                            <span class="lang-en">Communicating with the nose and throat</span>
+                        </h4>
+                        <p class="text-sm text-gray-500 font-light leading-relaxed">
+                            <span class="lang-es">La nariz es la apertura externa de los pulmones; de ella dependen el olfato y la respiración libre. Al ser la garganta el conducto respiratorio, un ataque al Pulmón suele manifestarse como <strong>afonía</strong>: como dice el clásico, "las campanas llenas o rotas no suenan".</span>
+                            <span class="lang-en">The nose is the external opening of the lungs; smell and free breathing depend on it. Since the throat is the respiratory duct, a Lung attack usually manifests as <strong>aphonia</strong>: as the classic says, "full or broken bells do not ring."</span>
+                        </p>
+                    </div>
+
+                    <!-- Function 5 -->
+                    <div class="function-item">
+                        <h4 class="text-xl font-serif italic text-white mb-4">
+                            <span class="lang-es">Morada del "Po" (alma instintiva)</span>
+                            <span class="lang-en">Dwelling of the "Po" (instinctive soul)</span>
+                        </h4>
+                        <p class="text-sm text-gray-500 font-light leading-relaxed">
+                            <span class="lang-es">El Pulmón alberga el <strong>alma Po</strong>, encargada de nuestros automatismos, instintos de supervivencia y mecanismos de <strong>defensa física y psicológica</strong> frente a cualquier agresión externa.</span>
+                            <span class="lang-en">The Lung houses the <strong>Po soul</strong>, responsible for our automatisms, survival instincts, and mechanisms of <strong>physical and psychological defense</strong> against any external aggression.</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Energy Map -->
+            <section class="mb-32">
+                <h3 class="text-[10px] tracking-[6px] uppercase font-black text-gold-400/60 mb-16 px-4">
+                    <span class="lang-es">El Mapa de la Energía: Tai Yin de la Mano</span>
+                    <span class="lang-en">The Energy Map: Tai Yin of the Hand</span>
+                </h3>
+                <div class="content-card relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gold-400/[0.02] -skew-y-12 transform origin-top-left"></div>
+                    <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                        
+                        <!-- Point 9P -->
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="point-badge text-xs px-4">9 P</span>
+                                <span class="text-white font-serif italic text-2xl">Tai Yuan</span>
+                            </div>
+                            <p class="text-sm md:text-base text-gray-300 leading-relaxed font-light">
+                                <span class="lang-es">Punto <strong>Shu</strong>. Se utiliza para <strong>tonificar el Qi</strong> del pulmón y es el punto de reunión de los vasos sanguíneos.</span>
+                                <span class="lang-en"><strong>Shu</strong> point. Used to <strong>tonify Lung Qi</strong> and is the gathering point of blood vessels.</span>
+                            </p>
+                        </div>
+
+                        <!-- Point 7P -->
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="point-badge text-xs px-4">7 P</span>
+                                <span class="text-white font-serif italic text-2xl">Lie Que</span>
+                            </div>
+                            <p class="text-sm md:text-base text-gray-300 leading-relaxed font-light">
+                                <span class="lang-es">Punto <strong>Luo</strong> que comunica con el Intestino Grueso. Ideal para <strong>liberar la superficie</strong>, dispersar el viento y calmar la tos.</span>
+                                <span class="lang-en"><strong>Luo</strong> point communicating with the Large Intestine. Ideal for <strong>releasing the exterior</strong>, dispersing wind, and calming cough.</span>
+                            </p>
+                        </div>
+
+                        <!-- Point 5P -->
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="point-badge text-xs px-4">5 P</span>
+                                <span class="text-white font-serif italic text-2xl">Chi Ze</span>
+                            </div>
+                            <p class="text-sm md:text-base text-gray-300 leading-relaxed font-light">
+                                <span class="lang-es">Punto <strong>He (mar)</strong>. Sirve para purificar el pulmón, dispersar el calor y bajar el <strong>reflujo de la energía</strong> hacia abajo.</span>
+                                <span class="lang-en"><strong>He (sea)</strong> point. Used to purify the lung, disperse heat, and lower <strong>rebellious Qi</strong>.</span>
+                            </p>
+                        </div>
+
+                        <!-- Point 11P -->
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="point-badge text-xs px-4">11 P</span>
+                                <span class="text-white font-serif italic text-2xl">Shao Shang</span>
+                            </div>
+                            <p class="text-sm md:text-base text-gray-300 leading-relaxed font-light">
+                                <span class="lang-es">Punto <strong>Jing (pozo)</strong>. Crucial en urgencias para <strong>dolor de garganta</strong> e hinchazón; tiene propiedades para reanimar.</span>
+                                <span class="lang-en"><strong>Jing (well)</strong> point. Crucial in emergencies for <strong>sore throat</strong> and swelling; has resuscitation properties.</span>
+                            </p>
+                        </div>
+
+                        <!-- Point 10P -->
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="point-badge text-xs px-4">10 P</span>
+                                <span class="text-white font-serif italic text-2xl">Yu Ji</span>
+                            </div>
+                            <p class="text-sm md:text-base text-gray-300 leading-relaxed font-light">
+                                <span class="lang-es">Utilizado clínicamente para <strong>dispersar el calor específico</strong> acumulado en el tejido pulmonar.</span>
+                                <span class="lang-en">Clinically used to <strong>disperse specific heat</strong> accumulated in the lung tissue.</span>
+                            </p>
+                        </div>
+
+                        <!-- Point 13V -->
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="point-badge text-xs px-4">13 V</span>
+                                <span class="text-white font-serif italic text-2xl">Fei Shu</span>
+                            </div>
+                            <p class="text-sm md:text-base text-gray-300 leading-relaxed font-light">
+                                <span class="lang-es">El <strong>Punto Shu de espalda</strong>. Esencial para estimular y tonificar las funciones de <strong>descenso y difusión</strong> del órgano.</span>
+                                <span class="lang-en">The <strong>Back Shu Point</strong>. Essential to stimulate and tonify the organ's <strong>descending and diffusing</strong> functions.</span>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Conclusion -->
+            <section class="border-t border-white/5 pt-20">
+                <div class="max-w-2xl mx-auto text-center">
+                    <p class="text-lg text-gray-400 font-light leading-relaxed mb-12 italic">
+                        <span class="lang-es">Cuidar la energía del Pulmón es cuidar nuestra primera línea de defensa. Protegerse del <strong>frío excesivo</strong> y evitar las <strong>tristezas prolongadas</strong> son pasos fundamentales para mantener nuestra integridad física y emocional en equilibrio.</span>
+                        <span class="lang-en">Taking care of the Lung energy is taking care of our first line of defense. Protecting oneself from <strong>excessive cold</strong> and avoiding <strong>prolonged sadness</strong> are fundamental steps to maintain physical and emotional integrity in balance.</span>
+                    </p>
+                    <div class="w-12 h-[1px] bg-gold-400 mx-auto"></div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center text-[10px] tracking-[4px] uppercase text-gray-600">
+        <p>© 2026 Salud Equilibrio.
+            <span class="lang-es">Anatomía Energética.</span>
+            <span class="lang-en">Energetic Anatomy.</span>
+        </p>
+    </footer>
+
+    <!-- Universal Multi-Language Script -->
+    <script>
+        const LANG_KEY = 'salud_equilibrio_lang';
+
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            document.getElementById('lang-dropdown').classList.toggle('show');
+        }
+
+        // Close dropdown when clicking outside
+        window.onclick = function(event) {
+            if (!event.target.closest('.lang-trigger')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem(LANG_KEY, lang);
+            
+            // Update UI elements
+            const flag = lang === 'es' ? '🇪🇸' : '🇬🇧';
+            const text = lang.toUpperCase();
+            document.getElementById('current-flag').innerText = flag;
+            document.getElementById('current-lang-text').innerText = text;
+
+            // Close dropdown
+            const dropdown = document.getElementById('lang-dropdown');
+            if(dropdown) dropdown.classList.remove('show');
+        }
+
+        function initLanguage() {
+            const savedLang = localStorage.getItem(LANG_KEY) || 'es';
+            setLanguage(savedLang);
+        }
+
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+
+</body>
+
+</html>

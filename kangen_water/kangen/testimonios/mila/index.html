@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mila en Valencia: Vitalidad y Renovación Renal Rigor Kangen</title>
+    <style>
+        /* --- ESTILOS BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1e26;
+            background-color: #f8fbff;
+        }
+
+        /* --- PALETA DE COLORES Y VARIABLES --- */
+        :root {
+            --azul-premium: #0c4a6e;
+            --azul-acento: #0ea5e9;
+            --azul-suave: #e0f2fe;
+            --oro-acento: #f59e0b;
+            --texto-oscuro: #1a1e26;
+            --texto-medio: #4b5563;
+            --blanco: #ffffff;
+            --sombra: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --sombra-premium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- CONTENEDORES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* --- HERO & VIDEO SECTION --- */
+        .hero {
+            background-color: var(--azul-premium);
+            color: var(--blanco);
+            padding: 5rem 0 7rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+            color: var(--azul-suave);
+        }
+
+        .video-wrapper {
+            max-width: 850px;
+            margin: 0 auto -5rem auto;
+            /* Overlaps hero and context */
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            background: #000;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* Ratio 16:9 */
+            height: 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- CONTEXT SECTION (VALENCIA) --- */
+        .context {
+            background-color: var(--blanco);
+            padding: 10rem 0 5rem 0;
+            margin-top: -5rem;
+            /* Offset for hero overlap */
+        }
+
+        .context-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .context-graphic {
+            background: linear-gradient(135deg, var(--azul-suave) 0%, #ffffff 100%);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--azul-suave);
+            text-align: center;
+        }
+
+        .icon-water {
+            font-size: 3rem;
+            color: var(--azul-acento);
+            margin-bottom: 1rem;
+        }
+
+        .context-text h2 {
+            font-size: 2.2rem;
+            color: var(--azul-premium);
+            margin-bottom: 1rem;
+        }
+
+        .context-text p {
+            font-size: 1.1rem;
+            color: var(--texto-medio);
+        }
+
+        /* --- CORRELACIÓN FISIOLÓGICA (THE "WHY") --- */
+        .correlation {
+            padding: 5rem 0;
+            background-color: #f1f5f9;
+        }
+
+        .correlation-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--azul-premium);
+            margin-bottom: 1rem;
+        }
+
+        .correlation-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--texto-medio);
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .correlation-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .correlation-card {
+            background-color: var(--blanco);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--sombra);
+            border-left: 5px solid var(--oro-acento);
+            transition: transform 0.3s ease;
+        }
+
+        .correlation-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .correlation-card h3 {
+            font-size: 1.4rem;
+            color: var(--azul-premium);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .correlation-card h3 svg {
+            width: 24px;
+            height: 24px;
+            margin-right: 0.75rem;
+            color: var(--oro-acento);
+        }
+
+        .correlation-card p {
+            color: var(--texto-medio);
+            margin-bottom: 1rem;
+        }
+
+        .correlation-card .fisiology {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--azul-acento);
+        }
+
+        /* --- RESULTADOS TANGIBLES (SPLIT) --- */
+        .results {
+            padding: 6rem 0;
+            background-color: var(--blanco);
+        }
+
+        .results-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .result-group h2 {
+            font-size: 2.2rem;
+            color: var(--azul-premium);
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--azul-acento);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .result-list {
+            list-style: none;
+        }
+
+        .result-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 12px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+
+        .result-item-icon {
+            font-size: 1.5rem;
+            color: var(--oro-acento);
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+        }
+
+        .result-item-content h4 {
+            font-size: 1.2rem;
+            color: var(--azul-premium);
+            margin-bottom: 0.25rem;
+        }
+
+        .result-item-content p {
+            font-size: 1rem;
+            color: var(--texto-medio);
+        }
+
+        /* --- NOTA ÉTICA Y DISCLAIMER --- */
+        .disclaimer {
+            padding: 4rem 2rem;
+            background-color: var(--azul-suave);
+            border-radius: 16px;
+            text-align: center;
+            margin: 4rem 0;
+            border: 2px solid var(--oro-acento);
+        }
+
+        .disclaimer h3 {
+            color: var(--azul-premium);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .disclaimer p {
+            font-size: 1.1rem;
+            color: var(--texto-medio);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- CALL TO ACTION --- */
+        .cta {
+            text-align: center;
+            padding: 5rem 0;
+        }
+
+        .btn-premium {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--oro-acento) 0%, #fbbf24 100%);
+            color: var(--azul-premium);
+            padding: 16px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 20px -3px rgba(245, 158, 11, 0.4);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--azul-premium);
+            color: var(--azul-suave);
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVIDAD --- */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .results-split {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <div class="mb-8 flex justify-center">
+                <img src="image.png" alt="Mila Testimonio" class="w-32 h-32 rounded-full border-4 border-white/20 shadow-xl object-cover">
+            </div>
+            <h1>De Crisis Renal a Vitalidad Renovada</h1>
+            <p>Un análisis riguroso de la transformación fisiológica relatada por Mila y su familia en Valencia.</p>
+        </div>
+        <div class="video-wrapper">
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/NA5Arju1ByY"
+                    title="Testimonio de Mila sobre su padre - Agua Kangen"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </header>
+
+    <section class="context">
+        <div class="container context-grid">
+            <div class="context-graphic">
+                <span class="icon-water">💧Valencia Hard Water</span>
+                <p style="color:var(--azul-premium);font-weight:700;">Alta Carga de Cal y Sedimentos</p>
+            </div>
+            <div class="context-text">
+                <h2>El Desafío de Valencia: Agua Imbebible</h2>
+                <p>Mila vive en Valencia, una zona geográfica conocida por tener aguas de extrema dureza. Esto significa
+                    que el agua del grifo está saturada de minerales inorgánicos (exceso de cal) y sedimentos, lo que
+                    supone un sobreesfuerzo metabólico constante para el organismo, obligando a los riñones a realizar
+                    un trabajo de filtración agresivo y continuo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="correlation">
+        <div class="container">
+            <h2 class="correlation-title">Análisis Riguroso del Cambio de Hábitos</h2>
+            <p class="correlation-subtitle">Cómo el paso de un agua dura o embotellada a un agua microfiltrada e
+                ionizada promueve la homeostasis sin ser un milagro médico.</p>
+
+            <div class="correlation-cards">
+                <article class="correlation-card">
+                    <h3>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path
+                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                        </svg>
+                        Reducción de Carga de Filtrado
+                    </h3>
+                    <p>Al eliminar el "bombardeo" diario de cal y contaminantes inorgánicos del agua de Valencia, los
+                        nefrones (unidades de filtración del riñón) reciben un agua mucho más limpia. </p>
+                    <p class="fisiology">Mecanismo: Homeostasis Renal.</p>
+                    <p>Sin investigaciones concluyentes, la fisiología indica que esto reduce drásticamente el trabajo
+                        osmótico del riñón Dañado (Nefropatía Grado 3), permitiéndole estabilizar su función residual.
+                    </p>
+                </article>
+
+                <article class="correlation-card">
+                    <h3>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 6v6l4 2" />
+                        </svg>
+                        Eficiencia Mitocondrial (Energía)
+                    </h3>
+                    <p>La producción de ATP (energía) requiere agua. Una hidratación óptima y celularmente asimilable
+                        facilita el transporte eficiente de nutrientes.</p>
+                    <p class="fisiology">Mecanismo: Optimización de la Membrana Celular.</p>
+                    <p>Eliminar plásticos y contaminantes de aguas embotelladas reduce la fatiga crónica y niebla mental
+                        asociada a disruptores endocrinos.</p>
+                </article>
+
+                <article class="correlation-card">
+                    <h3>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        Eliminación de la Retención
+                    </h3>
+                    <p>El cuerpo retiene líquidos como defensa para diluir toxinas o cuando está deshidratado.</p>
+                    <p class="fisiology">Mecanismo: Diuresis Facilitada.</p>
+                    <p>Al recibir un agua altamente hidratante y alcalina, el cuerpo apaga el mecanismo de retención y
+                        promueve la eliminación de líquido extracelular estancado, estilizando la figura.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="results">
+        <div class="container results-split">
+            <div class="result-group">
+                <h2>Resultados del Padre</h2>
+                <ul class="result-list">
+                    <li class="result-item">
+                        <span class="result-item-icon">⚡</span>
+                        <div class="result-item-content">
+                            <h4>Función Renal Estabilizada</h4>
+                            <p>En solo dos meses de consumo, el riñón recuperó niveles de función estables, alejando la
+                                diálisis inminente.</p>
+                        </div>
+                    </li>
+                    <li class="result-item">
+                        <span class="result-item-icon">🩸</span>
+                        <div class="result-item-content">
+                            <h4>Ácido Úrico Normalizado</h4>
+                            <p>Bajó radicalmente hasta valores de hace 15 años, facilitando el lavado de desechos
+                                metabólicos.</p>
+                        </div>
+                    </li>
+                    <li class="result-item">
+                        <span class="result-item-icon">💉</span>
+                        <div class="result-item-content">
+                            <h4>Reducción de Insulina</h4>
+                            <p>Optimización del entorno celular que mejoró la sensibilidad a la insulina, reduciendo la
+                                necesidad de dosis externas.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="result-group">
+                <h2>Resultados de Mila</h2>
+                <ul class="result-list">
+                    <li class="result-item">
+                        <span class="result-item-icon">🏃‍♀️</span>
+                        <div class="result-item-content">
+                            <h4>Energía y Vitalidad</h4>
+                            <p>Reducción drástica del cansancio y fatiga crónica, permitiendo hacer mucho más durante el
+                                día.</p>
+                        </div>
+                    </li>
+                    <li class="result-item">
+                        <span class="result-item-icon">💧</span>
+                        <div class="result-item-content">
+                            <h4>Sin Retención de Líquidos</h4>
+                            <p>El cuerpo dejó de retener líquidos defensivamente, lo que resultó en una figura
+                                estilizada y menos hinchazón.</p>
+                        </div>
+                    </li>
+                    <li class="result-item">
+                        <span class="result-item-icon">✨</span>
+                        <div class="result-item-content">
+                            <h4>Hidratación de la Piel</h4>
+                            <p>Mejora visible en la calidad y la hidratación superficial de la piel.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="disclaimer">
+            <h3>🔍 Nota Ética y Rigor Científico</h3>
+            <p>Es primordial dejar claro que **no existen investigaciones clínicas concluyentes** que afirmen que el
+                agua Kangen cure o revierta enfermedades renales graves por sí misma. El sistema Kangen no debe
+                entenderse como un tratamiento médico. Lo que el testimonio demuestra es la capacidad de homeostasis del
+                cuerpo humano: cuando se le proporciona la herramienta más básica para la vida (agua pura, estructurada
+                y equilibrada en minerales) y se le deja de agredir con toxinas diarias, el organismo se optimiza de
+                forma natural.</p>
+        </div>
+    </div>
+
+    <section class="cta container">
+        <a href="#contacto" class="btn-premium">Saber Más sobre esta Tecnología</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Testimonio Mila Kangen Valencia. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+
+</html>

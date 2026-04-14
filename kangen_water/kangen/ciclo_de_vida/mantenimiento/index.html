@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantenimiento Estructural | Ciclo de Vida | Kangen Water®</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Noto Serif', 'serif'],
+                    },
+                    colors: {
+                        obsidian: '#0e0e0e',
+                        blue: {
+                            400: '#60a5fa',
+                        },
+                        amber: {
+                            400: '#fbbf24',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #0e0e0e; color: #f5f5f5; }
+        .glass-nav { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(14, 14, 14, 0.8); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .glass-card { backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); }
+        
+        /* Language Toggle */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+        .dropdown-content { display: none; position: absolute; right: 0; top: 100%; background: rgba(1, 8, 19, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(251, 191, 36, 0.2); border-radius: 1rem; min-width: 150px; padding: 0.5rem; z-index: 100; }
+        .dropdown-content.show { display: block; }
+        .lang-option { display: flex; align-items: center; gap: 12px; padding: 10px 16px; cursor: pointer; border-radius: 0.5rem; transition: all 0.3s ease; font-size: 0.85rem; color: #ccc; }
+        .lang-option:hover { background: rgba(251, 191, 36, 0.1); color: #fff; }
+        .lang-trigger { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 16px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(251, 191, 36, 0.15); border-radius: 50px; font-size: 0.85rem; color: #fff; }
+    </style>
+</head>
+
+<body data-lang="es" class="antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav h-24 flex items-center">
+        <div class="max-w-7xl mx-auto px-8 w-full flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4 group">
+                <i class="fas fa-chevron-left text-amber-400 text-xs"></i>
+                <span class="font-serif text-xl tracking-tighter text-white">Ciclo de<span class="text-amber-400 font-light">Vida</span></span>
+            </a>
+            <div class="flex items-center gap-8">
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fas fa-chevron-down text-[10px] opacity-50 ml-2"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')"><span>🇪🇸</span><span>ES</span></div>
+                        <div class="lang-option" onclick="setLanguage('en')"><span>🇬🇧</span><span>EN</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="min-h-screen pt-40 pb-24 px-8 max-w-6xl mx-auto">
+        
+        <div class="mb-24 text-center" data-aos="fade-up">
+            <h1 class="font-serif italic text-5xl md:text-7xl text-white mb-8 leading-tight">
+                <span class="lang-es">Mantenimiento <br> <span class="text-amber-400 not-italic">Estructural</span></span>
+                <span class="lang-en">Structural <br> <span class="text-amber-400 not-italic">Maintenance</span></span>
+            </h1>
+            <p class="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+                <span class="lang-es">El protocolo oficial de Enagic para garantizar que tu inversión rinda al 100% durante 15-25 años.</span>
+                <span class="lang-en">Enagic's official protocol to guarantee your investment performs at 100% for 15-25 years.</span>
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-20 mb-32">
+            <div class="glass-card p-12 rounded-[3rem] border-amber-400/10" data-aos="fade-right">
+                <span class="text-amber-400 text-[10px] tracking-[6px] uppercase font-bold mb-6 block">Monthly Care</span>
+                <h3 class="text-3xl font-bold text-white mb-6">E-Cleaning</h3>
+                <p class="text-white/50 text-base leading-relaxed mb-8 font-light">
+                    <span class="lang-es">Un proceso sencillo de 3-5 horas (preferiblemente nocturno) usando polvo de ácido cítrico de grado alimentario. Elimina la calcificación profunda de las placas que la autolimpieza automática no puede alcanzar por completo.</span>
+                    <span class="lang-en">A simple 3-5 hour process (preferably overnight) using food-grade citric acid powder. Removes deep calcification from plates that automatic self-cleaning cannot fully reach.</span>
+                </p>
+                <div class="flex items-center gap-4 text-amber-400 text-xs font-bold tracking-widest uppercase">
+                    <i class="fas fa-calendar-check"></i> 1 vez al mes / once a month
+                </div>
+            </div>
+
+            <div class="glass-card p-12 rounded-[3rem] border-blue-400/10" data-aos="fade-left">
+                <span class="text-blue-400 text-[10px] tracking-[6px] uppercase font-bold mb-6 block">Annual Care</span>
+                <h3 class="text-3xl font-bold text-white mb-6">Deep Cleaning</h3>
+                <p class="text-white/50 text-base leading-relaxed mb-8 font-light">
+                    <span class="lang-es">Una limpieza profesional profunda. Se recomienda enviar la máquina al servicio técnico oficial o realizar un protocolo extendido para garantizar que los conductos internos y la celda de electrólisis queden como nuevos.</span>
+                    <span class="lang-en">A professional deep cleaning. It is recommended to send the machine to the official technical service or perform an extended protocol to guarantee the internal ducts and electrolysis cell become like new.</span>
+                </p>
+                <div class="flex items-center gap-4 text-blue-400 text-xs font-bold tracking-widest uppercase">
+                    <i class="fas fa-shield-virus"></i> 1 vez al año / once a year
+                </div>
+            </div>
+        </div>
+
+        <div class="relative rounded-[4rem] overflow-hidden group shadow-2xl" data-aos="zoom-in">
+            <img src="../../../assets/kangen_longevity.png" alt="Maintenance Tech" class="w-full h-[500px] object-cover brightness-50 group-hover:scale-105 transition-transform duration-[3s]">
+            <div class="absolute inset-0 flex items-center justify-center p-8 bg-gradient-to-t from-obsidian via-transparent to-transparent">
+                <div class="text-center">
+                    <h4 class="text-white font-serif italic text-4xl mb-6">
+                        <span class="lang-es">Ingeniería para Toda la Vida</span>
+                        <span class="lang-en">Engineering for a Lifetime</span>
+                    </h4>
+                    <p class="text-white/70 max-w-xl mx-auto text-lg font-light italic">
+                        <span class="lang-es">"No es una cafetera que se tira tras 3 años. Es un dispositivo médico que heredarán tus hijos si sigues estos pasos."</span>
+                        <span class="lang-en">"It's not a coffee maker you throw away after 3 years. It's a medical device your children will inherit if you follow these steps."</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center bg-obsidian">
+        <div class="max-w-7xl mx-auto px-8">
+            <p class="text-[10px] tracking-[8px] uppercase font-light text-white/20">Salud Equilibrio | Enagic Maintenance Protocol</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        const LANG_KEY = 'salud_equilibrio_lang';
+        function toggleDropdown(event) { event.stopPropagation(); document.getElementById('lang-dropdown').classList.toggle('show'); }
+        window.onclick = function(event) { if (!event.target.closest('.lang-trigger')) { const dropdowns = document.getElementsByClassName("dropdown-content"); for (let i = 0; i < dropdowns.length; i++) { dropdowns[i].classList.remove('show'); } } }
+        function setLanguage(lang) { document.body.setAttribute('data-lang', lang); localStorage.setItem(LANG_KEY, lang); const flag = lang === 'es' ? '🇪🇸' : '🇬🇧'; const text = lang.toUpperCase(); document.getElementById('current-flag').innerText = flag; document.getElementById('current-lang-text').innerText = text; const dropdown = document.getElementById('lang-dropdown'); if(dropdown) dropdown.classList.remove('show'); }
+        function initLanguage() { const savedLang = localStorage.getItem(LANG_KEY) || 'es'; setLanguage(savedLang); }
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+</body>
+</html>

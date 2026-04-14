@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autolimpieza Inteligente | Ciclo de Vida | Kangen Water®</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Noto Serif', 'serif'],
+                    },
+                    colors: {
+                        obsidian: '#0e0e0e',
+                        blue: {
+                            400: '#60a5fa',
+                        },
+                        mint: {
+                            vibrant: '#66dd8b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0e0e0e;
+            color: #f5f5f5;
+        }
+
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(14, 14, 14, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* ─── Language toggle visibility ─── */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+        [data-lang="en"] .lang-es { display: none; }
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(1, 8, 19, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(102, 221, 139, 0.2);
+            border-radius: 1rem;
+            min-width: 150px;
+            padding: 0.5rem;
+            z-index: 100;
+        }
+        .dropdown-content.show { display: block; }
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+        .lang-option:hover { background: rgba(102, 221, 139, 0.1); color: #fff; }
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(102, 221, 139, 0.15);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #fff;
+        }
+
+        .low-key-image {
+            filter: brightness(0.7) contrast(1.1);
+        }
+    </style>
+</head>
+
+<body data-lang="es" class="antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav h-24 flex items-center">
+        <div class="max-w-7xl mx-auto px-8 w-full flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4 group">
+                <i class="fas fa-chevron-left text-mint-vibrant text-xs"></i>
+                <span class="font-serif text-xl tracking-tighter text-white">Ciclo de<span class="text-mint-vibrant font-light">Vida</span></span>
+            </a>
+            
+            <div class="flex items-center gap-8">
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fas fa-chevron-down text-[10px] opacity-50 ml-2"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')"><span>🇪🇸</span><span>ES</span></div>
+                        <div class="lang-option" onclick="setLanguage('en')"><span>🇬🇧</span><span>EN</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content Section -->
+    <section class="min-h-screen pt-40 pb-24 px-8 max-w-6xl mx-auto">
+        
+        <div class="mb-24 text-center" data-aos="fade-up">
+            <h1 class="font-serif italic text-5xl md:text-7xl text-white mb-8 leading-tight">
+                <span class="lang-es">Autolimpieza <br> <span class="text-blue-400 not-italic">Inteligente</span></span>
+                <span class="lang-en">Smart <br> <span class="text-blue-400 not-italic">Self-Cleaning</span></span>
+            </h1>
+            <p class="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+                <span class="lang-es">El secreto del Ministerio de Salud de Japón para certificar una tecnología que rinde durante décadas.</span>
+                <span class="lang-en">The secret of the Japanese Ministry of Health to certify technology that performs for decades.</span>
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-20 items-center mb-32">
+            <div data-aos="fade-right">
+                <h2 class="font-serif italic text-4xl text-white mb-10 leading-tight">
+                    <span class="lang-es">Inversión de <span class="text-blue-400">Polaridad</span></span>
+                    <span class="lang-en">Polarity <span class="text-blue-400">Reversal</span></span>
+                </h2>
+                <div class="space-y-8 text-white/50 text-lg font-light leading-relaxed">
+                    <p>
+                        <span class="lang-es">Minerales como el Calcio (Ca) y el Magnesio (Mg) presentes en el agua tienden a pegarse inevitablemente a las placas de los electrodos. Si este proceso no se detuviera, la capacidad de electrólisis disminuiría gradualmente.</span>
+                        <span class="lang-en">Minerals such as Calcium (Ca) and Magnesium (Mg) present in water inevitably tend to stick to the electrode plates. If this process were not stopped, the electrolysis capacity would gradually decrease.</span>
+                    </p>
+                    <p>
+                        <span class="lang-es">El sistema LevelLuk detecta esto y **invierte la corriente eléctrica**, rompiendo los cúmulos minerales y eliminándolos del sistema de forma automática. Un proceso de 20 segundos que se activa tras 15 minutos de uso continuo.</span>
+                        <span class="lang-en">The LevelLuk system detects this and **reverses the electric current**, breaking up mineral clusters and automatically removing them from the system. A 20-second process that activates after 15 minutes of continuous use.</span>
+                    </p>
+                </div>
+            </div>
+            <div class="relative" data-aos="fade-left">
+                <div class="absolute -inset-10 bg-blue-400/10 rounded-full blur-[100px]"></div>
+                <img src="../../../assets/kangen_cleaning.png" alt="Ionization Plates" class="rounded-[3rem] shadow-2xl relative z-10 border border-white/5 low-key-image">
+            </div>
+        </div>
+
+        <!-- Pro Tip Section -->
+        <div class="glass-card p-12 md:p-20 rounded-[3rem] text-center mb-20" data-aos="zoom-in">
+            <span class="text-mint-vibrant text-[10px] tracking-[8px] uppercase font-bold mb-8 block">Pro Care Hack</span>
+            <h3 class="font-serif italic text-3xl md:text-5xl text-white mb-10 leading-tight">
+                <span class="lang-es">El Truco del <span class="text-mint-vibrant">Agua de Belleza</span></span>
+                <span class="lang-en">The <span class="text-mint-vibrant">Beauty Water</span> Hack</span>
+            </h3>
+            <p class="text-white/60 text-lg md:text-xl font-light max-w-3xl mx-auto leading-relaxed mb-12">
+                <span class="lang-es">"En zonas de agua muy dura, activa el modo 'Beauty Water' durante 2-3 minutos una vez al día. Esto fuerza la inversión de corriente y garantiza que la celda se mantenga en un estado de pureza total para producir el mejor agua alcalina."</span>
+                <span class="lang-en">"In areas with very hard water, activate 'Beauty Water' mode for 2-3 minutes once a day. This forces current reversal and ensures the cell stays in a state of total purity to produce the best alkaline water."</span>
+            </p>
+            <div class="inline-flex gap-4 items-center px-8 py-4 rounded-full bg-mint-vibrant/10 border border-mint-vibrant/30 text-mint-vibrant font-bold text-sm tracking-widest uppercase">
+                <i class="fas fa-sparkles"></i> 
+                <span class="lang-es">Optimización Garantizada</span>
+                <span class="lang-en">Guaranteed Optimization</span>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center bg-obsidian">
+        <div class="max-w-7xl mx-auto px-8">
+            <p class="text-[10px] tracking-[8px] uppercase font-light text-white/20">Salud Equilibrio | Enagic Japan Technology</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        
+        const LANG_KEY = 'salud_equilibrio_lang';
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            document.getElementById('lang-dropdown').classList.toggle('show');
+        }
+        window.onclick = function(event) {
+            if (!event.target.closest('.lang-trigger')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem(LANG_KEY, lang);
+            const flag = lang === 'es' ? '🇪🇸' : '🇬🇧';
+            const text = lang.toUpperCase();
+            document.getElementById('current-flag').innerText = flag;
+            document.getElementById('current-lang-text').innerText = text;
+            const dropdown = document.getElementById('lang-dropdown');
+            if(dropdown) dropdown.classList.remove('show');
+        }
+        function initLanguage() {
+            const savedLang = localStorage.getItem(LANG_KEY) || 'es';
+            setLanguage(savedLang);
+        }
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+</body>
+</html>

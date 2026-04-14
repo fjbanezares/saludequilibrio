@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pH 2.5 Agua Súper Ácida | Desinfectante Grado Quirúrgico | Kangen®</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Noto Serif', 'serif'],
+                    },
+                    colors: {
+                        obsidian: '#0e0e0e',
+                        magenta: {
+                            vibrant: '#ff00ff',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #0e0e0e; color: #f5f5f5; }
+        .glass-nav { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(14, 14, 14, 0.8); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .glass-card { backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.4s ease; }
+        .text-gradient-magenta { background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-image: linear-gradient(to right, #ff00ff, #e11d48); }
+        
+        /* Language Toggle */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+        .dropdown-content { display: none; position: absolute; right: 0; top: 100%; background: rgba(1, 8, 19, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255, 0, 255, 0.2); border-radius: 1rem; min-width: 150px; padding: 0.5rem; z-index: 100; }
+        .dropdown-content.show { display: block; }
+        .lang-option { display: flex; align-items: center; gap: 12px; padding: 10px 16px; cursor: pointer; border-radius: 0.5rem; transition: all 0.3s ease; font-size: 0.85rem; color: #ccc; }
+        .lang-option:hover { background: rgba(255, 0, 255, 0.1); color: #fff; }
+        .lang-trigger { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 16px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 0, 255, 0.15); border-radius: 50px; font-size: 0.85rem; color: #fff; }
+    </style>
+</head>
+
+<body data-lang="es" class="antialiased">
+
+    <nav class="fixed w-full z-50 glass-nav h-24 flex items-center">
+        <div class="max-w-7xl mx-auto px-8 w-full flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4 group">
+                <img src="../../../assets/logo.png" alt="Salud Equilibrio" class="h-12 w-auto">
+                <span class="font-serif text-xl tracking-tighter text-white">pH 2.5<span class="text-magenta-vibrant font-light text-sm ml-2">SÚPER ÁCIDA</span></span>
+            </a>
+            
+            <div class="flex items-center gap-8">
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fas fa-chevron-down text-[10px] opacity-50 ml-2"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')"><span>🇪🇸</span><span>ES</span></div>
+                        <div class="lang-option" onclick="setLanguage('en')"><span>🇬🇧</span><span>EN</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="../../../assets/ph25_disinfectant.png" alt="Surgical Disinfection" class="w-full h-full object-cover brightness-[0.3]">
+            <div class="absolute inset-0 bg-gradient-to-b from-obsidian via-transparent to-obsidian"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-8 text-center" data-aos="fade-up">
+            <span class="text-magenta-vibrant text-[10px] tracking-[10px] uppercase font-bold mb-8 block font-sans">Surgical Grade Sanitization</span>
+            <h1 class="font-serif italic text-6xl md:text-[100px] text-white leading-tight mb-8">
+                <span class="lang-es">Desinfección <br> <span class="not-italic text-gradient-magenta">Total</span></span>
+                <span class="lang-en">Total <br> <span class="not-italic text-gradient-magenta">Disinfection</span></span>
+            </h1>
+            <p class="text-white/60 text-lg md:text-xl font-light leading-relaxed max-w-3xl mx-auto">
+                <span class="lang-es">Libre de químicos, 100% ecológico y con la potencia del ácido hipocloroso generado por electrólisis. El guardián patógeno de tu hogar.</span>
+                <span class="lang-en">Chemical-free, 100% ecological, and with the power of hypochlorous acid generated by electrolysis. The pathogen guardian of your home.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Content Sections -->
+    <section class="py-32 px-8 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-20 items-center mb-32">
+            <div data-aos="fade-right">
+                <h2 class="font-serif italic text-5xl text-white mb-10 leading-tight">
+                    <span class="lang-es">Más que Agua: <br> <span class="text-magenta-vibrant">Ácido Hipocloroso</span></span>
+                    <span class="lang-en">More than Water: <br> <span class="text-magenta-vibrant">Hypochlorous Acid</span></span>
+                </h2>
+                <div class="space-y-6 text-white/50 text-lg font-light leading-relaxed">
+                    <p>
+                        <span class="lang-es">Al aplicar una corriente eléctrica específica a una solución salina diluida, la tecnología Kangen produce agua con un pH de 2.5 de alta concentración en **ácido hipocloroso (HClO)**.</span>
+                        <span class="lang-en">By applying a specific electrical current to a diluted saline solution, Kangen technology produces water with a pH of 2.5 high in **hypochlorous acid (HClO)**.</span>
+                    </p>
+                    <p>
+                        <span class="lang-es">Es el mismo compuesto que produce nuestro propio sistema inmunológico para combatir infecciones. Elimina el 99.9% de bacterias, virus y patógenos en segundos, sin la toxicidad de la lejía comercial.</span>
+                        <span class="lang-en">It is the same compound produced by our own immune system to fight infections. It eliminates 99.9% of bacteria, viruses, and pathogens in seconds, without the toxicity of commercial bleach.</span>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-6" data-aos="fade-left">
+                <div class="glass-card p-8 rounded-3xl group">
+                    <div class="text-magenta-vibrant text-2xl mb-4 group-hover:scale-110 transition-transform">🦠</div>
+                    <h4 class="text-white font-bold mb-2 text-xs uppercase tracking-widest">Bactericida</h4>
+                    <p class="text-[10px] text-white/40 uppercase tracking-[2px]">E. Coli / Salmonella</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl group">
+                    <div class="text-magenta-vibrant text-2xl mb-4 group-hover:scale-110 transition-transform">🛡️</div>
+                    <h4 class="text-white font-bold mb-2 text-xs uppercase tracking-widest">Antiséptico</h4>
+                    <p class="text-[10px] text-white/40 uppercase tracking-[2px]">Heridas / Acné</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl group">
+                    <div class="text-magenta-vibrant text-2xl mb-4 group-hover:scale-110 transition-transform">🍳</div>
+                    <h4 class="text-white font-bold mb-2 text-xs uppercase tracking-widest">Higiene 0%</h4>
+                    <p class="text-[10px] text-white/40 uppercase tracking-[2px]">Encimeras Cocina</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl group">
+                    <div class="text-magenta-vibrant text-2xl mb-4 group-hover:scale-110 transition-transform">🦷</div>
+                    <h4 class="text-white font-bold mb-2 text-xs uppercase tracking-widest">Protocolo Dental</h4>
+                    <p class="text-[10px] text-white/40 uppercase tracking-[2px]">Gárgaras / Encías</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Protocolo Dental Specific Section -->
+        <div class="glass-card p-12 md:p-20 rounded-[4rem] text-center border-magenta-vibrant/20" data-aos="fade-up">
+            <h3 class="font-serif italic text-4xl text-white mb-8">
+                <span class="lang-es">Protocolo de Salud Bucal</span>
+                <span class="lang-en">Oral Health Protocol</span>
+            </h3>
+            <p class="text-white/40 text-lg max-w-2xl mx-auto mb-12">
+                <span class="lang-es">La combinación del pH 2.5 (desinfectante) y el pH 9.5 (neutralizador) crea un entorno de protección total para tu esmalte y encías, eliminando la placa sin efectos secundarios.</span>
+                <span class="lang-en">The combination of pH 2.5 (disinfectant) and pH 9.5 (neutralizer) creates a total protection environment for your enamel and gums, eliminating plaque without side effects.</span>
+            </p>
+            <a href="protocolo_colutorio_dental_kangen/index.html" class="inline-block px-12 py-5 rounded-full bg-magenta-vibrant/20 border border-magenta-vibrant/40 text-magenta-vibrant font-bold text-[10px] tracking-[4px] uppercase hover:bg-magenta-vibrant hover:text-white transition-all">
+                Ver Protocolo Dental Especializado
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center bg-obsidian">
+        <div class="max-w-7xl mx-auto px-8">
+            <p class="text-[10px] tracking-[8px] uppercase font-light text-white/20">Salud Equilibrio | Enagic Pathogen Control</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        const LANG_KEY = 'salud_equilibrio_lang';
+        function toggleDropdown(event) { event.stopPropagation(); document.getElementById('lang-dropdown').classList.toggle('show'); }
+        window.onclick = function(event) { if (!event.target.closest('.lang-trigger')) { const dropdowns = document.getElementsByClassName("dropdown-content"); for (let i = 0; i < dropdowns.length; i++) { dropdowns[i].classList.remove('show'); } } }
+        function setLanguage(lang) { document.body.setAttribute('data-lang', lang); localStorage.setItem(LANG_KEY, lang); const flag = lang === 'es' ? '🇪🇸' : '🇬🇧'; const text = lang.toUpperCase(); document.getElementById('current-flag').innerText = flag; document.getElementById('current-lang-text').innerText = text; const dropdown = document.getElementById('lang-dropdown'); if(dropdown) dropdown.classList.remove('show'); }
+        function initLanguage() { const savedLang = localStorage.getItem(LANG_KEY) || 'es'; setLanguage(savedLang); }
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+</body>
+</html>

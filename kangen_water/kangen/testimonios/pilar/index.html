@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilar — Sensibilidad Química Múltiple (SQM) & Kangen Water® | Salud Equilibrio</title>
+    <meta name="description"
+        content="El testimonio de Pilar: Cómo el Agua Kangen® le ayudó a superar los retos de la Sensibilidad Química Múltiple (SQM) y recuperar su calidad de vida.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="../../../style.css">
+    <style>
+        /* ─── Language toggle system ─── */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+        [data-lang="en"] .lang-es { display: none; }
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(1, 8, 19, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 180, 216, 0.2);
+            border-radius: 1rem;
+            min-width: 150px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .dropdown-content.show { display: block; }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .lang-option:hover {
+            background: rgba(0, 119, 182, 0.1);
+            color: #fff;
+        }
+
+        .lang-option.active {
+            color: var(--water-clear);
+        }
+
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 180, 216, 0.15);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-white);
+            transition: all 0.3s ease;
+        }
+
+        .lang-trigger:hover {
+            border-color: rgba(0, 180, 216, 0.4);
+            background: rgba(0, 180, 216, 0.05);
+        }
+
+        /* ─── Page-specific styles ─── */
+        .pilar-hero {
+            padding: 180px 0 80px;
+            text-align: center;
+            background: radial-gradient(ellipse at 50% 30%, rgba(0, 119, 182, 0.12), transparent 60%);
+        }
+
+        .pilar-hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.05;
+            margin-bottom: 2rem;
+        }
+
+        .pilar-hero .lead {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Video Section */
+        .video-wrapper {
+            max-width: 900px;
+            margin: 4rem auto;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(0, 180, 216, 0.2);
+            background: #000;
+            position: relative;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Benefits Grid */
+        .benefits-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--deep-ocean) 0%, var(--midnight) 100%);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .bcard {
+            background: rgba(8, 20, 42, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 180, 216, 0.1);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bcard:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 180, 216, 0.3);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .bcard-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 180, 216, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--water-glow);
+            margin-bottom: 2rem;
+        }
+
+        .bcard h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .bcard p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .bcard ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .bcard ul li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .bcard ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--water-clear);
+            font-weight: 800;
+        }
+
+        /* Story layout */
+        .story-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 5rem;
+            align-items: center;
+            margin-bottom: 6rem;
+        }
+
+        .story-photo {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 180, 216, 0.1);
+        }
+
+        .story-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .story-content h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            line-height: 1.15;
+        }
+
+        .story-content p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-box {
+            background: rgba(0, 119, 182, 0.1);
+            border-left: 4px solid var(--water-vibrant);
+            padding: 2rem;
+            border-radius: 0 20px 20px 0;
+            margin: 3rem 0;
+            color: var(--text-muted);
+        }
+
+        .highlight-box strong {
+            color: var(--water-clear);
+        }
+
+        /* CTA */
+        .pilar-cta {
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .glass-card {
+            background: rgba(8, 20, 42, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 80px 40px;
+            border-radius: 40px;
+        }
+
+        @media (max-width: 968px) {
+            .pilar-hero h1 { font-size: 3rem; }
+            .story-layout { grid-template-columns: 1fr; }
+            .benefits-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body data-lang="es">
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../../../index.html" class="logo">
+                <span class="logo-text">Salud Equilibrio</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../../index.html">
+                    <span class="lang-es inline">Inicio</span>
+                    <span class="lang-en inline">Home</span>
+                </a>
+                <a href="../index.html">
+                    <span class="lang-es inline">Testimonios</span>
+                    <span class="lang-en inline">Testimonials</span>
+                </a>
+
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <svg style="width:10px;height:10px;margin-left:4px;opacity:0.5;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')">
+                            <span style="font-size:1.2rem;">🇪🇸</span>
+                            <span>Castellano</span>
+                        </div>
+                        <div class="lang-option" onclick="setLanguage('en')">
+                            <span style="font-size:1.2rem;">🇬🇧</span>
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="../../../index.html#contacto" class="btn-primary-sm">
+                    <span class="lang-es inline">Solicitar Información</span>
+                    <span class="lang-en inline">Request Information</span>
+                </a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="pilar-hero">
+        <div class="container" data-aos="fade-up">
+            <span class="badge">
+                <span class="lang-es inline">Testimonio Real</span>
+                <span class="lang-en inline">Real Testimony</span>
+            </span>
+            <h1>
+                <span class="lang-es">Una Vida Transformada:<br><span class="gradient-text">El Testimonio de Pilar</span></span>
+                <span class="lang-en">A Transformed Life:<br><span class="gradient-text">Pilar's Testimony</span></span>
+            </h1>
+            <p class="lead">
+                <span class="lang-es">Descubre cómo el Agua Kangen® se convirtió en un aliado fundamental para recuperar la calidad de vida frente a la Sensibilidad Química Múltiple (SQM).</span>
+                <span class="lang-en">Discover how Kangen Water® became a fundamental ally in recovering quality of life while facing Multiple Chemical Sensitivity (MCS).</span>
+            </p>
+
+            <div class="video-wrapper" data-aos="zoom-in" data-aos-delay="200">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/_wpqZEz9jAM"
+                        title="Testimonio de Pilar - Agua Kangen"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <a href="https://www.youtube.com/watch?v=_wpqZEz9jAM" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                <i class="fab fa-youtube" style="margin-right:10px;"></i>
+                <span class="lang-es inline">Ver vídeo original en YouTube</span>
+                <span class="lang-en inline">Watch original video on YouTube</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="benefits-section">
+        <div class="container">
+            
+            <!-- Intro Story -->
+            <div class="story-layout">
+                <div class="story-photo" data-aos="fade-right">
+                    <img src="pilar_portrait.png" alt="Retrato de Pilar, testimonio de Agua Kangen">
+                </div>
+                <div class="story-content" data-aos="fade-left">
+                    <h2>
+                        <span class="lang-es">El reto de la <span class="gradient-text">SQM</span></span>
+                        <span class="lang-en">The <span class="gradient-text">MCS</span> challenge</span>
+                    </h2>
+                    <p>
+                        <span class="lang-es"><strong>Pilar padece Sensibilidad Química Múltiple (SQM)</strong>, una condición que provoca reacciones graves ante cualquier químico cotidiano. Tras sufrir quemaduras en la piel por el exceso de cloro del grifo, inició una búsqueda desesperada de soluciones.</span>
+                        <span class="lang-en"><strong>Pilar suffers from Multiple Chemical Sensitivity (MCS)</strong>, a condition that causes severe reactions to everyday chemicals. After suffering skin burns from excessive tap water chlorine, she began a desperate search for solutions.</span>
+                    </p>
+                    <p>
+                        <span class="lang-es">Lo que encontró no fue solo un filtro, sino un sistema integral que cambió por completo su día a día, permitiéndole vivir en un entorno mucho más seguro y saludable.</span>
+                        <span class="lang-en">What she found was not just a filter, but a comprehensive system that completely changed her day-to-day life, allowing her to live in a much safer and healthier environment.</span>
+                    </p>
+                    
+                    <div class="highlight-box">
+                        <span class="lang-es">"No es solo agua para beber, es una herramienta de vida para eliminar los tóxicos que nos rodean."</span>
+                        <span class="lang-en">"It's not just water to drink, it's a life tool to eliminate the toxins that surround us."</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2 style="text-align: center; margin-bottom: 2rem;" data-aos="fade-up">
+                <span class="lang-es">¿Cómo le ayuda Kangen en su <span class="gradient-text">día a día</span>?</span>
+                <span class="lang-en">How does Kangen help her <span class="gradient-text">daily life</span>?</span>
+            </h2>
+
+            <div class="benefits-grid">
+                <!-- Card 1 -->
+                <div class="bcard" data-aos="fade-up">
+                    <div class="bcard-icon"><i class="fas fa-apple-whole"></i></div>
+                    <h3>
+                        <span class="lang-es">Alimentación Pura</span>
+                        <span class="lang-en">Pure Nutrition</span>
+                    </h3>
+                    <p>
+                        <span class="lang-es">Pilar utiliza los diferentes tipos de agua para garantizar una dieta libre de químicos.</span>
+                        <span class="lang-en">Pilar uses the different types of water to ensure a chemical-free diet.</span>
+                    </p>
+                    <ul>
+                        <li>
+                            <span class="lang-es"><strong>pH 11.5 (Agua Fuerte):</strong> Elimina pesticidas y ceras de frutas y verduras que el agua normal no puede quitar.</span>
+                            <span class="lang-en"><strong>pH 11.5 (Strong Water):</strong> Removes pesticides and waxes from fruits and vegetables that normal water cannot remove.</span>
+                        </li>
+                        <li>
+                            <span class="lang-es"><strong>Mejor Digestión:</strong> Al cocinar con agua alcalina, asimila mejor los minerales y alivia problemas intestinales.</span>
+                            <span class="lang-en"><strong>Better Digestion:</strong> By cooking with alkaline water, she assimilates minerals better and relieves intestinal issues.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bcard" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bcard-icon"><i class="fas fa-spa"></i></div>
+                    <h3>
+                        <span class="lang-es">Piel y Bienestar</span>
+                        <span class="lang-en">Skin and Well-being</span>
+                    </h3>
+                    <p>
+                        <span class="lang-es">Ducharse ha pasado de ser un momento de miedo a una terapia relajante.</span>
+                        <span class="lang-en">Showering has gone from being a moment of fear to a relaxing therapy.</span>
+                    </p>
+                    <ul>
+                        <li>
+                            <span class="lang-es"><strong>Adiós al Cloro:</strong> La filtración avanzada elimina la irritación y las quemaduras cutáneas.</span>
+                            <span class="lang-en"><strong>Goodbye to Chlorine:</strong> Advanced filtration eliminates skin irritation and burns.</span>
+                        </li>
+                        <li>
+                            <span class="lang-es"><strong>Efecto Terapéutico:</strong> Alivia contracturas y dolores musculares similares a la fibromialgia.</span>
+                            <span class="lang-en"><strong>Therapeutic Effect:</strong> Relieves muscle contractures and pains similar to fibromyalgia.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bcard" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bcard-icon"><i class="fas fa-shield-halved"></i></div>
+                    <h3>
+                        <span class="lang-es">Higiene sin Tóxicos</span>
+                        <span class="lang-en">Toxic-Free Hygiene</span>
+                    </h3>
+                    <p>
+                        <span class="lang-es">La limpieza del hogar ya no requiere exponerse a productos industriales agresivos.</span>
+                        <span class="lang-en">Home cleaning no longer requires exposure to aggressive industrial products.</span>
+                    </p>
+                    <ul>
+                        <li>
+                            <span class="lang-es"><strong>pH 2.5 (Super Ácida):</strong> Desinfectante natural potente que elimina bacterias en segundos.</span>
+                            <span class="lang-en"><strong>pH 2.5 (Strong Acidic):</strong> Powerful natural disinfectant that kills bacteria in seconds.</span>
+                        </li>
+                        <li>
+                            <span class="lang-es"><strong>Cuidado de Mascotas:</strong> Protege a sus animales de parásitos de forma 100% natural.</span>
+                            <span class="lang-en"><strong>Pet Care:</strong> Protects her animals from parasites in a 100% natural way.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Final CTA -->
+    <section class="pilar-cta">
+        <div class="container">
+            <div class="glass-card" data-aos="zoom-in">
+                <h2>
+                    <span class="lang-es">¿Buscas una solución <span class="gradient-text">para tu bienestar</span>?</span>
+                    <span class="lang-en">Looking for a solution <span class="gradient-text">for your well-being</span>?</span>
+                </h2>
+                <p style="max-width: 700px; margin: 0 auto 3rem;">
+                    <span class="lang-es">La experiencia de Pilar nos enseña que el agua que usamos impacta directamente en nuestra salud. Si tienes dudas o quieres mejorar tu calidad de vida, estamos aquí para ayudarte.</span>
+                    <span class="lang-en">Pilar's experience teaches us that the water we use directly impacts our health. If you have questions or want to improve your quality of life, we are here to help.</span>
+                </p>
+                <a href="../../../index.html#contacto" class="btn-primary">
+                    <span class="lang-es inline">Solicitar Información sin Compromiso</span>
+                    <span class="lang-en inline">Request Information with No Obligation</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <h3>Salud Equilibrio</h3>
+                <p>
+                    <span class="lang-es inline">Distribuidor Independiente Enagic®</span>
+                    <span class="lang-en inline">Independent Enagic® Distributor</span>
+                </p>
+            </div>
+            <div class="footer-links">
+                <a href="../../../index.html">
+                    <span class="lang-es inline">Portal Principal</span>
+                    <span class="lang-en inline">Main Portal</span>
+                </a>
+                <a href="../index.html">
+                    <span class="lang-es inline">Ver más testimonios</span>
+                    <span class="lang-en inline">View more testimonials</span>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Salud Equilibrio. KANGEN WATER® <span class="lang-es inline">es una marca registrada de</span><span class="lang-en inline">is a registered trademark of</span> Enagic.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+
+    <!-- Language Toggle Logic -->
+    <script>
+        const LANG_KEY = 'salud_equilibrio_lang';
+
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            document.getElementById('lang-dropdown').classList.toggle('show');
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.closest('.lang-trigger')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem(LANG_KEY, lang);
+            
+            const flag = lang === 'es' ? '🇪🇸' : '🇬🇧';
+            const text = lang.toUpperCase();
+            document.getElementById('current-flag').innerText = flag;
+            document.getElementById('current-lang-text').innerText = text;
+
+            const dropdown = document.getElementById('lang-dropdown');
+            if(dropdown) dropdown.classList.remove('show');
+        }
+
+        function initLanguage() {
+            const savedLang = localStorage.getItem(LANG_KEY) || 'es';
+            setLanguage(savedLang);
+        }
+
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+
+</body>
+
+</html>

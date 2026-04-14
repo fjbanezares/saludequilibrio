@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pH 8.5 - 9.5 Kangen Water® | Hidratación Celular | Salud Equilibrio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Noto Serif', 'serif'],
+                    },
+                    colors: {
+                        obsidian: '#0e0e0e',
+                        kangen: {
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #0e0e0e; color: #f5f5f5; }
+        .glass-nav { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(14, 14, 14, 0.8); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .glass-card { backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .text-gradient-cyan { background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-image: linear-gradient(to right, #2dd4bf, #3b82f6); }
+        
+        /* Language Toggle */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+        .dropdown-content { display: none; position: absolute; right: 0; top: 100%; background: rgba(14, 14, 14, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(45, 212, 191, 0.2); border-radius: 1rem; min-width: 150px; padding: 0.5rem; z-index: 100; }
+        .dropdown-content.show { display: block; }
+        .lang-option { display: flex; align-items: center; gap: 12px; padding: 10px 16px; cursor: pointer; border-radius: 0.5rem; transition: all 0.3s ease; font-size: 0.85rem; color: #ccc; }
+        .lang-option:hover { background: rgba(45, 212, 191, 0.1); color: #fff; }
+        .lang-trigger { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 16px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(45, 212, 191, 0.15); border-radius: 50px; font-size: 0.85rem; color: #fff; }
+    </style>
+</head>
+
+<body data-lang="es" class="antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav h-24 flex items-center">
+        <div class="max-w-7xl mx-auto px-8 w-full flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4 group">
+                <img src="../../../assets/logo.png" alt="Salud Equilibrio" class="h-12 w-auto">
+                <span class="font-serif text-xl tracking-tighter text-white">pH 8.5/9.5<span class="text-kangen-400 font-light text-sm ml-2 italic">AGUA DE SALUD</span></span>
+            </a>
+            <div class="flex items-center gap-8">
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fas fa-chevron-down text-[10px] opacity-50 ml-2"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')"><span>🇪🇸</span><span>ES</span></div>
+                        <div class="lang-option" onclick="setLanguage('en')"><span>🇬🇧</span><span>EN</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="../../../assets/ph95_hydrogen.png" alt="Active Hydrogen Bubbles" class="w-full h-full object-cover brightness-[0.4]">
+            <div class="absolute inset-0 bg-gradient-to-b from-obsidian via-transparent to-obsidian"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-8 text-center" data-aos="fade-up">
+            <span class="text-kangen-400 text-[10px] tracking-[10px] uppercase font-bold mb-8 block font-sans">Active Hydrogen Rich Technology</span>
+            <h1 class="font-serif italic text-6xl md:text-[100px] text-white leading-tight mb-8">
+                <span class="lang-es">Combustible <br> <span class="not-italic text-gradient-cyan">Biológico Puro</span></span>
+                <span class="lang-en">Pure <br> <span class="not-italic text-gradient-cyan">Biological Fuel</span></span>
+            </h1>
+            <p class="text-white/60 text-lg md:text-xl font-light leading-relaxed max-w-3xl mx-auto">
+                <span class="lang-es">Más que agua potable. Es una inundación de antioxidantes y micro-clusters que hidratan tu cerebro y órganos a un nivel celular inalcanzable para el agua convencional.</span>
+                <span class="lang-en">More than drinking water. It is a flood of antioxidants and micro-clusters that hydrate your brain and organs at a cellular level unattainable for conventional water.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Properties Grid -->
+    <section class="py-32 px-8 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-40">
+            
+            <div class="glass-card p-10 rounded-[2.5rem] border-kangen-400/20" data-aos="fade-up">
+                <div class="text-4xl mb-8">💎</div>
+                <h3 class="text-2xl font-bold text-white mb-4">Micro-Cluster</h3>
+                <p class="text-white/40 text-sm leading-relaxed">
+                    <span class="lang-es">Agua estructurada en 5-6 moléculas frente a las 15-20 del agua de grifo. Hidratación instantánea sin sensación de pesadez.</span>
+                    <span class="lang-en">Water structured in 5-6 molecules compared to 15-20 in tap water. Instant hydration without feeling heavy.</span>
+                </p>
+            </div>
+
+            <div class="glass-card p-10 rounded-[2.5rem] border-kangen-400/20" data-aos="fade-up" data-aos-delay="100">
+                <div class="text-4xl mb-8">🌬️</div>
+                <h3 class="text-2xl font-bold text-white mb-4">H₂ Molecular</h3>
+                <p class="text-white/40 text-sm leading-relaxed">
+                    <span class="lang-es">El antioxidante más potente y pequeño del universo. Atraviesa la barrera hematoencefálica para neutralizar radicales libres.</span>
+                    <span class="lang-en">The most powerful and smallest antioxidant in the universe. It crosses the blood-brain barrier to neutralize free radicals.</span>
+                </p>
+            </div>
+
+            <div class="glass-card p-10 rounded-[2.5rem] border-kangen-400/20" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-4xl mb-8">⚖️</div>
+                <h3 class="text-2xl font-bold text-white mb-4">Alcalinidad</h3>
+                <p class="text-white/40 text-sm leading-relaxed">
+                    <span class="lang-es">Equilibra el pH interno reduciendo el estrés oxidativo y la inflamación crónica sistémica de los tejidos.</span>
+                    <span class="lang-en">Balances internal pH by reducing oxidative stress and systemic chronic inflammation of tissues.</span>
+                </p>
+            </div>
+
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+            <div data-aos="fade-right">
+                <span class="text-kangen-400 text-[10px] tracking-[6px] uppercase font-bold mb-6 block">The Fountain of Youth</span>
+                <h2 class="font-serif italic text-5xl text-white mb-10 leading-tight">
+                    <span class="lang-es">Energía Real <br> <span class="text-kangen-400">desde el Origen</span></span>
+                    <span class="lang-en">Real Energy <br> <span class="text-kangen-400">from the Origin</span></span>
+                </h2>
+                <p class="text-white/50 text-xl font-light leading-relaxed mb-12">
+                    <span class="lang-es">Beber Kangen 9.5 es como ofrecerle a tu organismo una "limpieza de filtros" constante. Mejora el rendimiento cognitivo, acelera la recuperación deportiva y favorece una digestión ligera y eficiente.</span>
+                    <span class="lang-en">Drinking Kangen 9.5 is like offering your body a constant "filter cleaning". It improves cognitive performance, accelerates sports recovery, and promotes light and efficient digestion.</span>
+                </p>
+                <div class="p-8 rounded-3xl bg-kangen-400/5 border border-kangen-400/20">
+                    <p class="text-kangen-400 italic font-serif">"Tus células no necesitan refrescos, necesitan hidrógeno. Dales el combustible que las diseñó."</p>
+                </div>
+            </div>
+            <div class="relative" data-aos="fade-left">
+                <img src="../../../assets/kangen_kitchen.png" alt="Pure Health" class="rounded-[4rem] shadow-2xl relative z-10 border border-white/10 opacity-80">
+                <div class="absolute -inset-10 bg-kangen-400/10 rounded-full blur-[100px]"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center bg-obsidian">
+        <div class="max-w-7xl mx-auto px-8">
+            <p class="text-[10px] tracking-[8px] uppercase font-light text-white/20">Salud Equilibrio | Enagic Water Technology</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        const LANG_KEY = 'salud_equilibrio_lang';
+        function toggleDropdown(event) { event.stopPropagation(); document.getElementById('lang-dropdown').classList.toggle('show'); }
+        window.onclick = function(event) { if (!event.target.closest('.lang-trigger')) { const dropdowns = document.getElementsByClassName("dropdown-content"); for (let i = 0; i < dropdowns.length; i++) { dropdowns[i].classList.remove('show'); } } }
+        function setLanguage(lang) { document.body.setAttribute('data-lang', lang); localStorage.setItem(LANG_KEY, lang); const flag = lang === 'es' ? '🇪🇸' : '🇬🇧'; const text = lang.toUpperCase(); document.getElementById('current-flag').innerText = flag; document.getElementById('current-lang-text').innerText = text; const dropdown = document.getElementById('lang-dropdown'); if(dropdown) dropdown.classList.remove('show'); }
+        function initLanguage() { const savedLang = localStorage.getItem(LANG_KEY) || 'es'; setLanguage(savedLang); }
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+</body>
+</html>

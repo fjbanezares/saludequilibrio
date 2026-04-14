@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retorno Monetario | Kangen Water®</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Noto Serif', 'serif'],
+                    },
+                    colors: {
+                        obsidian: '#0e0e0e',
+                        gold: '#d4af37',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #0e0e0e; color: #f5f5f5; }
+        .glass-nav { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(14, 14, 14, 0.8); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .glass-card { backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); }
+        
+        /* Language Toggle */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+        .dropdown-content { display: none; position: absolute; right: 0; top: 100%; background: rgba(1, 8, 19, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 1rem; min-width: 150px; padding: 0.5rem; z-index: 100; }
+        .dropdown-content.show { display: block; }
+        .lang-option { display: flex; align-items: center; gap: 12px; padding: 10px 16px; cursor: pointer; border-radius: 0.5rem; transition: all 0.3s ease; font-size: 0.85rem; color: #ccc; }
+        .lang-option:hover { background: rgba(212, 175, 55, 0.1); color: #fff; }
+        .lang-trigger { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 16px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 50px; font-size: 0.85rem; color: #fff; }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.02));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+    </style>
+</head>
+
+<body data-lang="es" class="antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav h-24 flex items-center">
+        <div class="max-w-7xl mx-auto px-8 w-full flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4 group">
+                <i class="fas fa-chevron-left text-gold text-xs"></i>
+                <span class="font-serif text-xl tracking-tighter text-white">Retorno<span class="text-gold font-light">Económico</span></span>
+            </a>
+            <div class="flex items-center gap-8">
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fas fa-chevron-down text-[10px] opacity-50 ml-2"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')"><span>🇪🇸</span><span>ES</span></div>
+                        <div class="lang-option" onclick="setLanguage('en')"><span>🇬🇧</span><span>EN</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="min-h-screen pt-40 pb-24 px-8 max-w-6xl mx-auto">
+        
+        <div class="mb-24 text-center" data-aos="fade-up">
+            <h1 class="font-serif italic text-5xl md:text-7xl text-white mb-8 leading-tight">
+                <span class="lang-es">Las Matemáticas <br> <span class="text-gold not-italic">No Mienten</span></span>
+                <span class="lang-en">The Mathematics <br> <span class="text-gold not-italic">Don't Lie</span></span>
+            </h1>
+            <p class="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+                <span class="lang-es">Un desglose exhaustivo de por qué Kangen se amortiza sola mientras protege tu capital a largo plazo.</span>
+                <span class="lang-en">A comprehensive breakdown of why Kangen pays for itself while protecting your long-term capital.</span>
+            </p>
+        </div>
+
+        <!-- Comparison Table Section -->
+        <div class="grid lg:grid-cols-2 gap-12 mb-32 items-center">
+            
+            <!-- Font Vella / Plastico -->
+            <div class="glass-card p-10 rounded-[3rem] border-white/5" data-aos="fade-right">
+                <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+                    <h3 class="text-xl font-bold text-white uppercase tracking-widest">Agua Embotellada</h3>
+                    <span class="text-xs text-white/30 uppercase">Escenario Base (0,40€/L)</span>
+                </div>
+                <div class="space-y-8">
+                    <div class="flex justify-between items-center text-white/60">
+                        <span class="lang-es">Gasto Diario (Familia 4p)</span>
+                        <span class="lang-en">Daily Expense (Family 4p)</span>
+                        <span class="font-mono text-white">3,20 €</span>
+                    </div>
+                    <div class="flex justify-between items-center text-white/60">
+                        <span class="lang-es">Gasto Anual</span>
+                        <span class="lang-en">Annual Expense</span>
+                        <span class="font-mono text-white text-xl">1.168 €</span>
+                    </div>
+                    <div class="flex justify-between items-center pt-8 border-t border-white/10">
+                        <span class="font-serif italic text-white/40">Gasto en 20 Años</span>
+                        <span class="font-mono text-red-500 text-3xl font-bold">23.360 €</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kangen / Enagic -->
+            <div class="stat-card p-10 rounded-[3rem]" data-aos="fade-left">
+                <div class="flex items-center justify-between mb-8 pb-4 border-b border-gold/20">
+                    <h3 class="text-xl font-bold text-gold uppercase tracking-widest">Kangen Water®</h3>
+                    <span class="text-xs text-gold/40 uppercase">Escenario ROI (0,015€/L)</span>
+                </div>
+                <div class="space-y-8">
+                    <div class="flex justify-between items-center text-white/50">
+                        <span class="lang-es">Gasto Diario (Familia 4p)</span>
+                        <span class="lang-en">Daily Expense (Family 4p)</span>
+                        <span class="font-mono text-white">0,12 €</span>
+                    </div>
+                    <div class="flex justify-between items-center text-white/50">
+                        <span class="lang-es">Gasto Anual</span>
+                        <span class="lang-en">Annual Expense</span>
+                        <span class="font-mono text-white text-xl">43,80 €</span>
+                    </div>
+                    <div class="flex justify-between items-center pt-8 border-t border-gold/20">
+                        <span class="font-serif italic text-gold/60">Gasto en 20 Años</span>
+                        <span class="font-mono text-gold text-3xl font-bold">876 €</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Big SAVINGS Banner -->
+        <div class="glass-card p-12 md:p-20 rounded-[4rem] text-center mb-32 border-gold/20 relative overflow-hidden" data-aos="zoom-in">
+            <div class="absolute -inset-20 bg-gold/5 rounded-full blur-[100px]"></div>
+            <div class="relative z-10">
+                <span class="text-gold text-[10px] tracking-[8px] uppercase font-bold mb-8 block font-sans">Ahorro Neto Directo / Net Savings</span>
+                <div class="flex flex-col items-center">
+                    <div class="text-7xl md:text-[10rem] font-sans font-extrabold text-white tracking-tighter leading-none mb-4">
+                        1.124 <span class="text-3xl md:text-5xl text-gold align-top mt-10 inline-block">€</span>
+                    </div>
+                    <p class="text-xl md:text-2xl text-white/60 font-serif italic">
+                        <span class="lang-es">Ahorro anual REAL tras amortización</span>
+                        <span class="lang-en">REAL annual savings after amortization</span>
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 mt-20">
+                    <div class="text-left p-8 rounded-3xl bg-white/5 border border-white/10">
+                        <h4 class="text-gold font-bold mb-4 uppercase text-xs tracking-widest">ROI Proyectado</h4>
+                        <div class="text-3xl font-mono text-white">80% - 120%</div>
+                        <p class="text-white/40 text-sm mt-4">
+                            <span class="lang-es">Un retorno de inversión superior a cualquier fondo de renta fija o variable convencional.</span>
+                            <span class="lang-en">An investment return superior to any conventional fixed or variable income fund.</span>
+                        </p>
+                    </div>
+                    <div class="text-left p-8 rounded-3xl bg-white/5 border border-white/10">
+                        <h4 class="text-gold font-bold mb-4 uppercase text-xs tracking-widest">Impacto Ecológico / Ecological Impact</h4>
+                        <div class="text-3xl font-mono text-white">+70.000</div>
+                        <p class="text-white/40 text-sm mt-4">
+                            <span class="lang-es">Botellas de plástico que dejarás de arrojar al planeta durante la vida útil de tu K8.</span>
+                            <span class="lang-en">Plastic bottles you will stop throwing into the planet during the useful life of your K8.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative" data-aos="fade-up">
+            <img src="../../../assets/kangen_roi_economic.png" alt="ROI Visual" class="rounded-[4rem] shadow-2xl border border-gold/10 opacity-80">
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center bg-obsidian">
+        <div class="max-w-7xl mx-auto px-8">
+            <p class="text-[10px] tracking-[8px] uppercase font-light text-white/20">Salud Equilibrio | Financial Longevity</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        const LANG_KEY = 'salud_equilibrio_lang';
+        function toggleDropdown(event) { event.stopPropagation(); document.getElementById('lang-dropdown').classList.toggle('show'); }
+        window.onclick = function(event) { if (!event.target.closest('.lang-trigger')) { const dropdowns = document.getElementsByClassName("dropdown-content"); for (let i = 0; i < dropdowns.length; i++) { dropdowns[i].classList.remove('show'); } } }
+        function setLanguage(lang) { document.body.setAttribute('data-lang', lang); localStorage.setItem(LANG_KEY, lang); const flag = lang === 'es' ? '🇪🇸' : '🇬🇧'; const text = lang.toUpperCase(); document.getElementById('current-flag').innerText = flag; document.getElementById('current-lang-text').innerText = text; const dropdown = document.getElementById('lang-dropdown'); if(dropdown) dropdown.classList.remove('show'); }
+        function initLanguage() { const savedLang = localStorage.getItem(LANG_KEY) || 'es'; setLanguage(savedLang); }
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+</body>
+</html>

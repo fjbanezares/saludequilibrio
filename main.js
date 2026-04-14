@@ -1,18 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const navbar = document.getElementById('navbar');
-
-    // Navbar scroll effect
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-
     // Reveal animations on scroll
     const observerOptions = {
-        threshold: 0.15,
+        threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
 
@@ -24,8 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Apply reveal class to major elements
-    const revealElements = document.querySelectorAll('.card-main, section, .arte-banner, footer > div');
+    // Dynamic selectors for the new structure
+    const revealElements = document.querySelectorAll('.glass-card, .text-content, .photo-card, section h2, section h1');
     revealElements.forEach(el => {
         el.classList.add('reveal-on-scroll');
         observer.observe(el);
@@ -36,19 +25,17 @@ document.addEventListener('DOMContentLoaded', () => {
     style.textContent = `
         .reveal-on-scroll {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
         }
         .revealed {
             opacity: 1;
             transform: translateY(0);
         }
-        .card-main:nth-child(2) { transition-delay: 0.1s; }
-        .card-main:nth-child(3) { transition-delay: 0.2s; }
     `;
     document.head.appendChild(style);
 
-    // Smooth scroll for all links
+    // Smooth scroll for anchors
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
@@ -56,14 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 const target = document.querySelector(href);
                 if (target) {
-                    const offset = 80; // height of fixed header
-                    const bodyRect = document.body.getBoundingClientRect().top;
-                    const elementRect = target.getBoundingClientRect().top;
-                    const elementPosition = elementRect - bodyRect;
-                    const offsetPosition = elementPosition - offset;
-
                     window.scrollTo({
-                        top: offsetPosition,
+                        top: target.offsetTop - 100,
                         behavior: 'smooth'
                     });
                 }
