@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arun Tacto Consciente | Salud Equilibrio</title>
+    <meta name="description" content="Descubre Arun Tacto Consciente en Salud Equilibrio. Una meditación en movimiento basada en la escucha profunda y la presencia.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Bodoni Moda', 'serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        obsidian: '#0e0e0e',
+                        gold: {
+                            400: '#d4af37',
+                        },
+                        zen: '#0a0a0a',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        'pulse-slow': {
+                            '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+                            '50%': { opacity: '0.4', transform: 'scale(0.95)' },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            color: #d1d5db;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(5, 5, 5, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        /* Energy Ball Component */
+        .energy-ball {
+            mix-blend-mode: screen;
+            border-radius: 50%;
+            mask-image: radial-gradient(circle, black 50%, transparent 70%);
+            -webkit-mask-image: radial-gradient(circle, black 50%, transparent 70%);
+            filter: contrast(1.2) brightness(1.1);
+        }
+
+        /* Language Toggle System */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(14, 14, 14, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 1rem;
+            min-width: 160px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .dropdown-content.show { display: block; }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-option:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: #fff;
+        }
+
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-gold-400/30 selection:text-white" data-lang="es">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-blur">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4 group">
+                <span class="text-gold-400 text-[10px] tracking-[5px] uppercase font-bold opacity-80 group-hover:opacity-100 transition-opacity flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span class="lang-es inline">Volver</span>
+                    <span class="lang-en inline">Back</span>
+                </span>
+            </a>
+            
+            <div class="flex items-center gap-8">
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fa-solid fa-chevron-down text-[8px] opacity-50 ml-1"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')">
+                            <span>🇪🇸</span>
+                            <span>Castellano</span>
+                        </div>
+                        <div class="lang-option" onclick="setLanguage('en')">
+                            <span>🇬🇧</span>
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-64 pb-32 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div class="space-y-12">
+                <div class="flex items-center gap-4">
+                    <span class="inline-block text-gold-400 text-[10px] font-bold tracking-[8px] uppercase opacity-70">Arun Conscious Touch</span>
+                    <div class="w-8 h-8">
+                        <img src="../../assets/yinyang_premium.png" class="energy-ball w-full h-full animate-pulse-slow">
+                    </div>
+                </div>
+                <h1 class="text-6xl md:text-8xl font-serif italic text-white leading-tight">
+                    <span class="lang-es">Meditación <br>en Movimiento</span>
+                    <span class="lang-en">Meditation <br>in Motion</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-500 font-light leading-relaxed max-w-xl">
+                    <span class="lang-es">Arun no es una técnica, es una forma de estar presente. Escuchamos el latido de tu cuerpo para permitir que la vida fluya sin juicios.</span>
+                    <span class="lang-en">Arun is not a technique, it's a way of being present. We listen to your body's heartbeat to allow life to flow without judgment.</span>
+                </p>
+            </div>
+            <div class="relative flex justify-center">
+                <img src="../../assets/arun_premium.png" alt="Arun Massage" class="w-full rounded-[3rem] shadow-2xl border border-white/5 opacity-80 animate-float">
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Philosophy -->
+    <section class="py-32 px-6 border-t border-white/5 bg-obsidian/30">
+        <div class="max-w-4xl mx-auto space-y-24">
+            
+            <div class="text-center space-y-8">
+                <h2 class="text-3xl md:text-5xl font-serif italic text-white">
+                    <span class="lang-es">La Escucha Profunda</span>
+                    <span class="lang-en">Deep Listening</span>
+                </h2>
+                <p class="text-gray-400 font-light leading-relaxed text-lg">
+                    <span class="lang-es">En Arun, el terapeuta no "hace" algo al cuerpo, sino que "está" con el cuerpo. Es un diálogo silencioso donde el tacto se convierte en un espejo que permite al receptor reconocer su propia sabiduría interna.</span>
+                    <span class="lang-en">In Arun, the therapist doesn't "do" something to the body, but "is" with the body. It's a silent dialogue where touch becomes a mirror that allows the receiver to recognize their own internal wisdom.</span>
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="glass-card p-12 rounded-[3rem] space-y-6">
+                    <h3 class="text-xl font-serif italic text-gold-400">
+                        <span class="lang-es">Sin Juicios</span>
+                        <span class="lang-en">Without Judgment</span>
+                    </h3>
+                    <p class="text-sm text-gray-500 font-light">
+                        <span class="lang-es">Aceptamos cada tensión, cada emoción y cada respiración tal como son, creando un espacio de seguridad absoluta para la sanación.</span>
+                        <span class="lang-en">We accept every tension, every emotion, and every breath as they are, creating a space of absolute safety for healing.</span>
+                    </p>
+                </div>
+                <div class="glass-card p-12 rounded-[3rem] space-y-6">
+                    <h3 class="text-xl font-serif italic text-gold-400">
+                        <span class="lang-es">Presencia Pura</span>
+                        <span class="lang-en">Pure Presence</span>
+                    </h3>
+                    <p class="text-sm text-gray-500 font-light">
+                        <span class="lang-es">El contacto consciente de Arun ayuda a calmar el sistema nervioso, expandiendo la conciencia hacia el momento presente.</span>
+                        <span class="lang-en">Arun's conscious contact helps calm the nervous system, expanding awareness into the present moment.</span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center text-[10px] tracking-[6px] uppercase font-bold text-gray-600">
+        <p>© 2026 Salud Equilibrio. Minimalism is the ultimate sophistication.</p>
+    </footer>
+
+    <!-- Global Scripts -->
+    <script src="../../main.js"></script>
+
+</body>
+
+</html>

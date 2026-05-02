@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masaje Facial Rejuvenecedor | Salud Equilibrio</title>
+    <meta name="description" content="Experimenta el Masaje Facial en Salud Equilibrio. Efecto lifting natural, relajación profunda y cuidado consciente de tu piel.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Bodoni Moda', 'serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        obsidian: '#0e0e0e',
+                        gold: {
+                            400: '#d4af37',
+                        },
+                        zen: '#0a0a0a',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        'pulse-slow': {
+                            '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+                            '50%': { opacity: '0.4', transform: 'scale(0.95)' },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            color: #d1d5db;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(5, 5, 5, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        /* Energy Ball Component */
+        .energy-ball {
+            mix-blend-mode: screen;
+            border-radius: 50%;
+            mask-image: radial-gradient(circle, black 50%, transparent 70%);
+            -webkit-mask-image: radial-gradient(circle, black 50%, transparent 70%);
+            filter: contrast(1.2) brightness(1.1);
+        }
+
+        /* Language Toggle System */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(14, 14, 14, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 1rem;
+            min-width: 160px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .dropdown-content.show { display: block; }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-option:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: #fff;
+        }
+
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-gold-400/30 selection:text-white" data-lang="es">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-blur">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4 group">
+                <span class="text-gold-400 text-[10px] tracking-[5px] uppercase font-bold opacity-80 group-hover:opacity-100 transition-opacity flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span class="lang-es inline">Volver</span>
+                    <span class="lang-en inline">Back</span>
+                </span>
+            </a>
+            
+            <div class="flex items-center gap-8">
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fa-solid fa-chevron-down text-[8px] opacity-50 ml-1"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')">
+                            <span>🇪🇸</span>
+                            <span>Castellano</span>
+                        </div>
+                        <div class="lang-option" onclick="setLanguage('en')">
+                            <span>🇬🇧</span>
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-64 pb-32 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div class="space-y-12">
+                <div class="flex items-center gap-4">
+                    <span class="inline-block text-gold-400 text-[10px] font-bold tracking-[8px] uppercase opacity-70">Cuidado Facial</span>
+                    <div class="w-8 h-8">
+                        <img src="../../assets/yinyang_premium.png" class="energy-ball w-full h-full animate-pulse-slow">
+                    </div>
+                </div>
+                <h1 class="text-6xl md:text-8xl font-serif italic text-white leading-tight">
+                    <span class="lang-es">Lifting <br>Natural</span>
+                    <span class="lang-en">Natural <br>Lifting</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-500 font-light leading-relaxed max-w-xl">
+                    <span class="lang-es">Mucho más que estética. Una técnica profunda para relajar los músculos faciales, mejorar la circulación y devolver la luminosidad a tu rostro.</span>
+                    <span class="lang-en">Much more than aesthetics. A deep technique to relax facial muscles, improve circulation, and restore luminosity to your face.</span>
+                </p>
+            </div>
+            <div class="relative flex justify-center">
+                <img src="../../assets/facial_premium.png" alt="Facial Massage" class="w-full rounded-[3rem] shadow-2xl border border-white/5 opacity-80 animate-float">
+            </div>
+        </div>
+    </section>
+
+    <!-- Details Grid -->
+    <section class="py-32 px-6 border-t border-white/5 bg-obsidian/30">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+            
+            <!-- Beneficio 1 -->
+            <div class="glass-card p-12 rounded-[3rem] space-y-6 text-center">
+                <div class="text-gold-400 text-3xl"><i class="fa-light fa-sparkles"></i></div>
+                <h3 class="text-2xl font-serif italic text-white">
+                    <span class="lang-es">Rejuvenecimiento</span>
+                    <span class="lang-en">Rejuvenation</span>
+                </h3>
+                <p class="text-sm text-gray-500 font-light leading-relaxed">
+                    <span class="lang-es">Estimulamos la producción de colágeno y elastina de forma natural, suavizando líneas de expresión y tonificando los tejidos.</span>
+                    <span class="lang-en">We stimulate the production of collagen and elastin naturally, smoothing expression lines and toning tissues.</span>
+                </p>
+            </div>
+
+            <!-- Beneficio 2 -->
+            <div class="glass-card p-12 rounded-[3rem] space-y-6 text-center">
+                <div class="text-gold-400 text-3xl"><i class="fa-light fa-droplet"></i></div>
+                <h3 class="text-2xl font-serif italic text-white">
+                    <span class="lang-es">Drenaje Linfático</span>
+                    <span class="lang-en">Lymphatic Drainage</span>
+                </h3>
+                <p class="text-sm text-gray-500 font-light leading-relaxed">
+                    <span class="lang-es">Ayudamos a eliminar toxinas y reducir la inflamación, logrando un rostro más definido, fresco y descansado.</span>
+                    <span class="lang-en">We help eliminate toxins and reduce inflammation, achieving a more defined, fresh, and rested face.</span>
+                </p>
+            </div>
+
+            <!-- Beneficio 3 -->
+            <div class="glass-card p-12 rounded-[3rem] space-y-6 text-center">
+                <div class="text-gold-400 text-3xl"><i class="fa-light fa-brain"></i></div>
+                <h3 class="text-2xl font-serif italic text-white">
+                    <span class="lang-es">Calma Mental</span>
+                    <span class="lang-en">Mental Calm</span>
+                </h3>
+                <p class="text-sm text-gray-500 font-light leading-relaxed">
+                    <span class="lang-es">La cara es el reflejo del sistema nervioso. Al relajar la musculatura facial, inducimos un estado de paz profunda en todo el organismo.</span>
+                    <span class="lang-en">The face reflects the nervous system. By relaxing facial muscles, we induce a state of deep peace throughout the body.</span>
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center text-[10px] tracking-[6px] uppercase font-bold text-gray-600">
+        <p>© 2026 Salud Equilibrio. Minimalism is the ultimate sophistication.</p>
+    </footer>
+
+    <!-- Global Scripts -->
+    <script src="../../main.js"></script>
+
+</body>
+
+</html>

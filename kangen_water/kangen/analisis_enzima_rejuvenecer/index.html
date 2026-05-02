@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Enzima para Rejuvenecer - Análisis Interactivo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        h1, h2, h3, h4, .font-serif {
+            font-family: 'Merriweather', serif;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #e2e8f0; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
+        .chapter-btn.active {
+            background-color: #0f766e;
+            color: white;
+            border-left: 4px solid #042f2e;
+        }
+
+        /* Language Toggle System */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background: rgba(4, 47, 46, 0.95); /* teal-950 */
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            min-width: 160px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .dropdown-content.show { display: block; }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="antialiased" data-lang="es">
+
+    <!-- Header with Top Left Language Selector -->
+    <header class="bg-teal-900 text-white py-8 px-6 shadow-lg border-b-4 border-teal-600 relative">
+        <div class="max-w-6xl mx-auto flex flex-col gap-6">
+            
+            <!-- Top Nav Area (Language Selector + Back button) -->
+            <div class="flex justify-between items-center w-full">
+                <!-- Language Dropdown (Top Left) -->
+                <div style="position: relative; display: inline-block; z-index: 50;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fa-solid fa-chevron-down text-[8px] opacity-50 ml-1"></i>
+                    </div>
+                    <div class="dropdown-content mt-2" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')">
+                            <span>🇪🇸</span>
+                            <span>Castellano</span>
+                        </div>
+                        <div class="lang-option" onclick="setLanguage('en')">
+                            <span>🇬🇧</span>
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Back to Kangen -->
+                <a href="../../index.html" class="text-teal-200 hover:text-white text-xs font-bold uppercase tracking-widest flex items-center gap-2 transition-colors">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span class="lang-es inline">Volver a Kangen</span>
+                    <span class="lang-en inline">Back to Kangen</span>
+                </a>
+            </div>
+
+            <!-- Title Area -->
+            <div>
+                <p class="text-teal-200 text-sm font-semibold tracking-wider uppercase mb-2">
+                    <span class="lang-es">Análisis Clínico y Literario</span>
+                    <span class="lang-en">Clinical and Literary Analysis</span>
+                </p>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">
+                    <span class="lang-es">La Enzima para Rejuvenecer</span>
+                    <span class="lang-en">The Rejuvenation Enzyme</span>
+                </h1>
+                <h2 class="text-xl md:text-2xl text-teal-100 font-light max-w-3xl">
+                    <span class="lang-es">Explorando la sabiduría del Dr. Hiromi Shinya y su convergencia con el Premio Nobel de Medicina 2016.</span>
+                    <span class="lang-en">Exploring the wisdom of Dr. Hiromi Shinya and its convergence with the 2016 Nobel Prize in Medicine.</span>
+                </h2>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-12 space-y-16">
+
+        <!-- Section: The Nobel Connection -->
+        <section class="bg-white rounded-xl shadow-md p-8 border border-slate-200">
+            <div class="mb-6">
+                <h2 class="text-3xl font-bold text-slate-800 mb-2 border-b-2 border-teal-500 pb-2 inline-block">
+                    <span class="lang-es">La Premisa Central y el Premio Nobel 2016</span>
+                    <span class="lang-en">The Central Premise and the 2016 Nobel Prize</span>
+                </h2>
+                <p class="text-slate-600 mt-4 text-lg">
+                    <span class="lang-es">El Dr. Shinya postula que el rejuvenecimiento ocurre cuando activamos la <strong>"planta de reciclaje intracelular"</strong> mediante el ayuno breve y la conservación de enzimas. Esta intuición clínica fenomenal fue validada científicamente años después a nivel molecular.</span>
+                    <span class="lang-en">Dr. Shinya postulates that rejuvenation occurs when we activate the <strong>"intracellular recycling plant"</strong> through brief fasting and enzyme conservation. This phenomenal clinical intuition was scientifically validated years later at the molecular level.</span>
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-8">
+                <div class="space-y-4">
+                    <div class="bg-teal-50 p-6 rounded-lg border border-teal-100">
+                        <h3 class="text-xl font-bold text-teal-800 mb-2">
+                            <span class="lang-es">⚕️ La Visión de Shinya (El Libro)</span>
+                            <span class="lang-en">⚕️ Shinya's Vision (The Book)</span>
+                        </h3>
+                        <p class="text-slate-700 text-sm">
+                            <span class="lang-es">Observando el tracto gastrointestinal de miles de pacientes, Shinya concluyó que el cuerpo posee un mecanismo de autolimpieza. Si dejamos de ingerir alimentos constantemente (ayuno breve), el cuerpo, falto de energía externa, comienza a "devorar" la basura intracelular, proteínas defectuosas y células zombis para reciclar sus componentes y rejuvenecer el tejido.</span>
+                            <span class="lang-en">By observing the gastrointestinal tract of thousands of patients, Shinya concluded that the body has a self-cleaning mechanism. If we constantly stop ingesting food (brief fasting), the body, lacking external energy, begins to "devour" intracellular garbage, defective proteins, and zombie cells to recycle its components and rejuvenate the tissue.</span>
+                        </p>
+                    </div>
+                    <div class="bg-blue-50 p-6 rounded-lg border border-blue-100 relative overflow-hidden">
+                        <div class="absolute -right-4 -top-4 text-blue-200 text-6xl opacity-30"><i class="fa-solid fa-microscope"></i></div>
+                        <h3 class="text-xl font-bold text-blue-800 mb-2 relative z-10">
+                            <span class="lang-es">🔬 El Nobel 2016 (La Ciencia Moderna)</span>
+                            <span class="lang-en">🔬 The 2016 Nobel (Modern Science)</span>
+                        </h3>
+                        <p class="text-slate-700 text-sm relative z-10">
+                            <span class="lang-es">El biólogo japonés <strong>Yoshinori Ohsumi</strong> ganó el Premio Nobel de Fisiología o Medicina en 2016 por descubrir los mecanismos moleculares de la <strong>Autofagia</strong> (del griego "comerse a sí mismo"). Ohsumi demostró cómo las células empaquetan desechos en vesículas y los envían a los lisosomas para su degradación y reciclaje. El principal desencadenante de este proceso es la privación de nutrientes (ayuno).</span>
+                            <span class="lang-en">Japanese biologist <strong>Yoshinori Ohsumi</strong> won the Nobel Prize in Physiology or Medicine in 2016 for discovering the molecular mechanisms of <strong>Autophagy</strong> (from Greek "self-eating"). Ohsumi demonstrated how cells package waste into vesicles and send them to lysosomes for degradation and recycling. The main trigger for this process is nutrient deprivation (fasting).</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Visualization: Autophagy vs Fasting -->
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <h4 class="text-center font-bold text-slate-700 mb-2 text-sm uppercase tracking-wide">
+                        <span class="lang-es">Mecanismo de Acción: Ayuno y Reciclaje</span>
+                        <span class="lang-en">Mechanism of Action: Fasting and Recycling</span>
+                    </h4>
+                    <div class="chart-container">
+                        <canvas id="autophagyChart"></canvas>
+                    </div>
+                    <p class="text-xs text-center text-slate-500 mt-2">
+                        <span class="lang-es">Modelo conceptual de activación de la autofagia en relación a las horas de ayuno.</span>
+                        <span class="lang-en">Conceptual model of autophagy activation in relation to fasting hours.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Deep Scientific Analysis Link -->
+            <div class="bg-teal-900 rounded-xl p-6 flex flex-col md:flex-row items-center justify-between gap-6 shadow-inner">
+                <div class="text-white space-y-2">
+                    <h3 class="text-xl font-bold font-serif">
+                        <span class="lang-es">Auditoría Científica Completa</span>
+                        <span class="lang-en">Complete Scientific Audit</span>
+                    </h3>
+                    <p class="text-teal-200 text-sm">
+                        <span class="lang-es">Accede al documento técnico donde contrastamos cada afirmación del Dr. Shinya con la literatura médica indexada contemporánea.</span>
+                        <span class="lang-en">Access the technical document where we contrast each of Dr. Shinya's claims with contemporary indexed medical literature.</span>
+                    </p>
+                </div>
+                <a href="https://docs.google.com/document/d/1EqGZXl1f0RHHqGVEi7UggAESzPDp4KkFpvJHjBWJaNk/edit?usp=sharing" target="_blank" 
+                   class="whitespace-nowrap px-6 py-3 bg-white text-teal-900 font-bold rounded-lg hover:bg-teal-50 transition-colors shadow-md flex items-center gap-2">
+                    <i class="fa-regular fa-file-lines"></i>
+                    <span class="lang-es inline">Leer Análisis Subyacente</span>
+                    <span class="lang-en inline">Read Underlying Analysis</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Section: Chapter by Chapter Analysis -->
+        <section>
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-slate-800 mb-2 border-b-2 border-teal-500 pb-2 inline-block">
+                    <span class="lang-es">Análisis Capítulo a Capítulo</span>
+                    <span class="lang-en">Chapter by Chapter Analysis</span>
+                </h2>
+                <p class="text-slate-600 mt-4">
+                    <span class="lang-es">Seleccione un capítulo en el panel izquierdo para explorar su sabiduría clave y cómo se compara con el rigor de la medicina contemporánea.</span>
+                    <span class="lang-en">Select a chapter in the left panel to explore its key wisdom and how it compares to the rigor of contemporary medicine.</span>
+                </p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-6 h-[800px] lg:h-[600px]">
+                <!-- Chapter List (Master) -->
+                <div
+                    class="w-full lg:w-1/3 bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col h-1/3 lg:h-full">
+                    <div class="bg-slate-100 p-4 border-b border-slate-200">
+                        <h3 class="font-bold text-slate-700 uppercase tracking-wide text-sm">
+                            <span class="lang-es">Índice del Libro</span>
+                            <span class="lang-en">Book Index</span>
+                        </h3>
+                    </div>
+                    <div class="overflow-y-auto custom-scrollbar flex-grow p-2" id="chapter-list">
+                        <!-- Buttons injected via JS -->
+                    </div>
+                </div>
+
+                <!-- Chapter Detail (Detail) -->
+                <div
+                    class="w-full lg:w-2/3 bg-white rounded-xl shadow-lg border border-slate-200 p-6 md:p-8 flex flex-col h-2/3 lg:h-full overflow-y-auto custom-scrollbar relative">
+                    <div id="chapter-detail-content">
+                        <!-- Content injected via JS -->
+                        <div class="flex items-center justify-center h-full text-slate-400 flex-col">
+                            <span class="text-6xl mb-4">📖</span>
+                            <p>Selecciona un capítulo...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Data Contextualization (The Diet) -->
+        <section class="bg-white rounded-xl shadow-md p-8 border border-slate-200 mb-12">
+            <div class="mb-6">
+                <h2 class="text-3xl font-bold text-slate-800 mb-2 border-b-2 border-teal-500 pb-2 inline-block">
+                    <span class="lang-es">La Práctica: La Dieta de Shinya</span>
+                    <span class="lang-en">The Practice: Shinya's Diet</span>
+                </h2>
+                <p class="text-slate-600 mt-4">
+                    <span class="lang-es">Para mantener la salud enzimática y no saturar el sistema digestivo, Shinya propone una estructura dietética muy específica.</span>
+                    <span class="lang-en">To maintain enzymatic health and not saturate the digestive system, Shinya proposes a very specific dietary structure.</span>
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="w-full md:w-1/2">
+                    <div class="chart-container" style="height: 300px; max-width: 400px;">
+                        <canvas id="dietChart"></canvas>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 space-y-4">
+                    <div class="p-4 border-l-4 border-green-500 bg-green-50">
+                        <h4 class="font-bold text-green-800">
+                            <span class="lang-es">85% Origen Vegetal</span>
+                            <span class="lang-en">85% Plant-Based</span>
+                        </h4>
+                        <p class="text-sm text-green-900 mt-1">
+                            <span class="lang-es">Cereales integrales, legumbres, verduras, frutas, semillas. Proporcionan fibra, vitaminas, minerales y fitoquímicos esenciales que actúan como coenzimas.</span>
+                            <span class="lang-en">Whole grains, legumes, vegetables, fruits, seeds. They provide essential fiber, vitamins, minerals, and phytochemicals that act as coenzymes.</span>
+                        </p>
+                    </div>
+                    <div class="p-4 border-l-4 border-red-500 bg-red-50">
+                        <h4 class="font-bold text-red-800">
+                            <span class="lang-es">15% Origen Animal</span>
+                            <span class="lang-en">15% Animal-Based</span>
+                        </h4>
+                        <p class="text-sm text-red-900 mt-1">
+                            <span class="lang-es">Preferiblemente pescado de tamaño pequeño (menor bioacumulación de toxinas). Carnes rojas limitadas. Lácteos estrictamente desaconsejados.</span>
+                            <span class="lang-en">Preferably small-sized fish (less bioaccumulation of toxins). Limited red meats. Dairy is strictly discouraged.</span>
+                        </p>
+                    </div>
+                    <div class="p-4 border-l-4 border-yellow-500 bg-yellow-50">
+                        <h4 class="font-bold text-yellow-800">
+                            <span class="lang-es">Agua Kangen (Alcalina)</span>
+                            <span class="lang-en">Kangen Water (Alkaline)</span>
+                        </h4>
+                        <p class="text-sm text-yellow-900 mt-1">
+                            <span class="lang-es">Hidratación profunda con agua de alto poder reductor (antioxidante) para contrarrestar la oxidación celular.</span>
+                            <span class="lang-en">Deep hydration with water of high reducing power (antioxidant) to counteract cellular oxidation.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-sm">
+        <p>
+            <span class="lang-es">Análisis interactivo basado en "La enzima para rejuvenecer" de Hiromi Shinya.</span>
+            <span class="lang-en">Interactive analysis based on "The Rejuvenation Enzyme" by Hiromi Shinya.</span>
+        </p>
+        <p class="mt-2">
+            <span class="lang-es">Nota: Este documento tiene fines informativos y analíticos, contrastando literatura con medicina moderna.</span>
+            <span class="lang-en">Note: This document is for informational and analytical purposes, contrasting literature with modern medicine.</span>
+        </p>
+    </footer>
+
+    <script>
+        // --- DATA STORAGE BILINGUAL ---
+        const chapters = [
+            {
+                id: 1,
+                title: { es: "I. Por qué he escrito este libro", en: "I. Why I wrote this book" },
+                wisdom: {
+                    es: "Shinya establece la premisa fundamental: el envejecimiento prematuro y la pérdida de vitalidad no son una consecuencia inevitable del paso del tiempo, sino el resultado del agotamiento del 'potencial enzimático' del cuerpo.",
+                    en: "Shinya establishes the fundamental premise: premature aging and loss of vitality are not an inevitable consequence of the passage of time, but the result of the depletion of the body's 'enzymatic potential'."
+                },
+                modern: {
+                    es: "La medicina antienvejecimiento actual comparte esta visión sistémica. Aunque no utiliza el término genérico 'enzima madre', la ciencia se enfoca en el agotamiento de las células madre, la disfunción mitocondrial y el acortamiento de los telómeros.",
+                    en: "Current anti-aging medicine shares this systemic vision. Although it does not use the generic term 'source enzyme', science focuses on stem cell depletion, mitochondrial dysfunction, and telomere shortening."
+                }
+            },
+            {
+                id: 2,
+                title: { es: "II. Recupera el vigor de tu juventud", en: "II. Recover the vigor of your youth" },
+                wisdom: {
+                    es: "El mensaje central es la esperanza: la vitalidad puede restaurarse. El cuerpo tiene una capacidad inherente para curarse a sí mismo si dejamos de sobrecargarlo con toxinas.",
+                    en: "The central message is hope: vitality can be restored. The body has an inherent capacity to heal itself if we stop overloading it with toxins."
+                },
+                modern: {
+                    es: "Se alinea con la Epigenética clínica. Hoy sabemos que nuestros genes no son nuestro destino. Modificaciones en el estilo de vida pueden 'apagar' genes inflamatorios y 'encender' genes de reparación celular.",
+                    en: "Aligns with clinical Epigenetics. Today we know our genes are not our destiny. Lifestyle modifications can 'turn off' inflammatory genes and 'turn on' cellular repair genes."
+                }
+            },
+            {
+                id: 3,
+                title: { es: "III. Las enzimas para rejuvenecer", en: "III. The enzymes to rejuvenate" },
+                wisdom: {
+                    es: "Define a las enzimas como la chispa de la vida. Explica que cocinamos en exceso nuestros alimentos, destruyendo las enzimas naturales de las plantas.",
+                    en: "Defines enzymes as the spark of life. Explains that we overcook our food, destroying the natural enzymes of plants."
+                },
+                modern: {
+                    es: "Fisiológicamente, las enzimas digestivas humanas hacen el trabajo pesado. Sin embargo, dietas ricas en alimentos crudos proporcionan fitonutrientes que modulan nuestra producción enzimática.",
+                    en: "Physiologically, human digestive enzymes do the heavy lifting. However, diets rich in raw foods provide phytonutrients that modulate our enzymatic production."
+                }
+            },
+            {
+                id: 4,
+                title: { es: "IV. La planta de reciclaje de tu cuerpo", en: "IV. Your body's recycling plant" },
+                wisdom: {
+                    es: "Describe cómo el cuerpo posee un sistema para reciclar proteínas viejas y dañadas, limpiando las células. Ocurre cuando el estómago está vacío.",
+                    en: "Describes how the body possesses a system to recycle old and damaged proteins, cleaning cells. It occurs when the stomach is empty."
+                },
+                modern: {
+                    es: "🌟 CONEXIÓN NOBEL: Descripción de la AUTOFAGIA (Nobel 2016). La privación de nutrientes activa vías que ordenan a las células degradar organelos dañados.",
+                    en: "🌟 NOBEL CONNECTION: Description of AUTOPHAGY (Nobel 2016). Nutrient deprivation activates pathways that instruct cells to degrade damaged organelles."
+                }
+            },
+            {
+                id: 5,
+                title: { es: "V. El breve ayuno de Shinya", en: "V. Shinya's brief fast" },
+                wisdom: {
+                    es: "Introduce el ayuno intermitente diario (15-16 horas) para permitir que el tracto digestivo descanse y se active la 'planta de reciclaje'.",
+                    en: "Introduces daily intermittent fasting (15-16 hours) to allow the digestive tract to rest and activate the 'recycling plant'."
+                },
+                modern: {
+                    es: "Totalmente respaldado. El ayuno intermitente mejora la sensibilidad a la insulina y es el interruptor primario para activar la autofagia.",
+                    en: "Fully supported. Intermittent fasting improves insulin sensitivity and is the primary switch to activate autophagy."
+                }
+            },
+            {
+                id: 6,
+                title: { es: "VI. Obesos, pero malnutridos", en: "VI. Obese, but malnourished" },
+                wisdom: {
+                    es: "Consumimos un exceso de calorías vacías pero estamos hambrientos a nivel celular por carecer de micronutrientes. El cuerpo pide más comida.",
+                    en: "We consume an excess of empty calories but are starving at the cellular level due to a lack of micronutrients. The body asks for more food."
+                },
+                modern: {
+                    es: "La nutrición clínica confirma el 'hambre oculta'. Las dietas ultraprocesadas desregulan las hormonas de saciedad impulsando la hiperfagia.",
+                    en: "Clinical nutrition confirms 'hidden hunger'. Ultra-processed diets dysregulate satiety hormones driving hyperphagia."
+                }
+            },
+            {
+                id: 7,
+                title: { es: "VII. Energía del poder de las plantas", en: "VII. Energy from plant power" },
+                wisdom: {
+                    es: "Aboga por una dieta basada en vegetales. Consumir fitoquímicos protege al cuerpo de la oxidación, motor del envejecimiento.",
+                    en: "Advocates a plant-based diet. Consuming phytochemicals protects the body from oxidation, the engine of aging."
+                },
+                modern: {
+                    es: "Amplio consenso científico. Las dietas basadas en plantas están directamente correlacionadas con la longevidad y salud cardiovascular.",
+                    en: "Broad scientific consensus. Plant-based diets are directly correlated with longevity and cardiovascular health."
+                }
+            },
+            {
+                id: 8,
+                title: { es: "VIII. Deficiencia de minerales", en: "VIII. Mineral deficiency" },
+                wisdom: {
+                    es: "Advierte sobre el empobrecimiento de suelos agrícolas. Sin minerales (cofactores), nuestras enzimas internas no funcionan.",
+                    en: "Warns about agricultural soil depletion. Without minerals (cofactors), our internal enzymes do not function."
+                },
+                modern: {
+                    es: "Datos agrónomos lo confirman. El magnesio es cofactor en >300 reacciones enzimáticas; su deficiencia es una epidemia reconocida.",
+                    en: "Agronomic data confirm it. Magnesium is a cofactor in >300 enzymatic reactions; its deficiency is a recognized epidemic."
+                }
+            },
+            {
+                id: 9,
+                title: { es: "IX. La sabiduría curativa de las plantas", en: "IX. The healing wisdom of plants" },
+                wisdom: {
+                    es: "Los compuestos amargos y coloridos de las plantas no son solo comida, son 'medicina' que señala al cuerpo cómo protegerse.",
+                    en: "The bitter and colorful compounds of plants are not just food, they are 'medicine' that signals the body how to protect itself."
+                },
+                modern: {
+                    es: "Fundamento de la Xenohormesis. Las plantas producen químicos (resveratrol, sulforafano) que activan nuestras propias vías de longevidad celular.",
+                    en: "Foundation of Xenohormesis. Plants produce chemicals (resveratrol, sulforaphane) that activate our own cellular longevity pathways."
+                }
+            },
+            {
+                id: 10,
+                title: { es: "X. La dieta de Shinya", en: "X. The Shinya diet" },
+                wisdom: {
+                    es: "85-90% origen vegetal, 10-15% proteína animal. Subraya la importancia de masticar exhaustivamente (30-50 veces).",
+                    en: "85-90% plant-based, 10-15% animal protein. Underlines the importance of exhaustive chewing (30-50 times)."
+                },
+                modern: {
+                    es: "Las zonas azules siguen dietas idénticas. La gastroenterología moderna enfatiza la masticación para estimular el nervio vago.",
+                    en: "Blue zones follow identical diets. Modern gastroenterology emphasizes chewing to stimulate the vagus nerve."
+                }
+            },
+            {
+                id: 11,
+                title: { es: "XI. El hambre es sana", en: "XI. Hunger is healthy" },
+                wisdom: {
+                    es: "Sentir rugir el estómago es señal de que el cuerpo se limpia, produciendo hormonas de juventud.",
+                    en: "Feeling the stomach rumble is a sign that the body is cleaning itself, producing youth hormones."
+                },
+                modern: {
+                    es: "Biológicamente preciso. El hambre aguda libera hormona del crecimiento (HGH) y estimula neurogénesis vía BDNF.",
+                    en: "Biologically accurate. Acute hunger releases growth hormone (HGH) and stimulates neurogenesis via BDNF."
+                }
+            },
+            {
+                id: 12,
+                title: { es: "XII. Haz un cambio sencillo y gradual", en: "XII. Make a simple and gradual change" },
+                wisdom: {
+                    es: "Los cambios drásticos fracasan. Recomienda adoptar hábitos gradualmente. El estrés por ser 'perfecto' consume enzimas.",
+                    en: "Drastic changes fail. Recommends adopting habits gradually. Stress from being 'perfect' consumes enzymes."
+                },
+                modern: {
+                    es: "La psicología de la salud concuerda. La adherencia a largo plazo en pasos pequeños supera a las dietas extremas.",
+                    en: "Health psychology agrees. Long-term adherence in small steps beats extreme diets."
+                }
+            },
+            {
+                id: 13,
+                title: { es: "XIII. Los peligros de los lácteos", en: "XIII. The dangers of dairy" },
+                wisdom: {
+                    es: "Afirma que la leche de vaca es tóxica para humanos adultos, causando inflamación y agotamiento inmunológico.",
+                    en: "Claims cow's milk is toxic for adult humans, causing inflammation and immune depletion."
+                },
+                modern: {
+                    es: "Perspectiva matizada. Gran parte de la población es intolerante a la lactosa, y ciertos estudios relacionan la caseína A1 con inflamación.",
+                    en: "Nuanced perspective. A large part of the population is lactose intolerant, and certain studies link A1 casein with inflammation."
+                }
+            },
+            {
+                id: 14,
+                title: { es: "XIV. El cofre del tesoro del colágeno", en: "XIV. The treasure chest of collagen" },
+                wisdom: {
+                    es: "La pérdida de colágeno es envejecimiento. Su formación depende de las enzimas y la vitamina C.",
+                    en: "Loss of collagen is aging. Its formation depends on enzymes and vitamin C."
+                },
+                modern: {
+                    es: "Fisiología pura. La síntesis de colágeno depende del ácido ascórbico (Vitamina C).",
+                    en: "Pure physiology. Collagen synthesis depends on ascorbic acid (Vitamin C)."
+                }
+            },
+            {
+                id: 15,
+                title: { es: "XV. El ataque de las células zombi", en: "XV. The attack of zombie cells" },
+                wisdom: {
+                    es: "Describe células que pierden vitalidad pero no mueren, liberando toxinas que enferman células sanas.",
+                    en: "Describes cells that lose vitality but don't die, releasing toxins that sicken healthy cells."
+                },
+                modern: {
+                    es: "En gerontología, son células senescentes que secretan factores inflamatorios (SASP). Su remoción es la frontera antienvejecimiento.",
+                    en: "In gerontology, these are senescent cells secreting inflammatory factors (SASP). Their removal is the anti-aging frontier."
+                }
+            },
+            {
+                id: 16,
+                title: { es: "XVI. El enema de café", en: "XVI. The coffee enema" },
+                wisdom: {
+                    es: "Recomienda enemas para estimular el hígado a producir glutatión y bilis.",
+                    en: "Recommends enemas to stimulate the liver to produce glutathione and bile."
+                },
+                modern: {
+                    es: "Alta controversia médica por riesgo de perforación. Defensores alternativos señalan activación del sistema detox hepático.",
+                    en: "High medical controversy due to perforation risk. Alternative advocates point to hepatic detox system activation."
+                }
+            },
+            {
+                id: 17,
+                title: { es: "XVII. Masaje de desintoxicación", en: "XVII. Detoxification massage" },
+                wisdom: {
+                    es: "Destaca mover la linfa. El sistema linfático depende del movimiento muscular y el masaje.",
+                    en: "Highlights moving lymph. The lymphatic system depends on muscular movement and massage."
+                },
+                modern: {
+                    es: "Totalmente válido. La fisioterapia reconoce la importancia del drenaje linfático para la inmunidad.",
+                    en: "Totally valid. Physiotherapy recognizes the importance of lymphatic drainage for immunity."
+                }
+            },
+            {
+                id: 18,
+                title: { es: "XVIII. Agua Kangen", en: "XVIII. Kangen Water" },
+                wisdom: {
+                    es: "Recomienda 'agua buena' (alcalina, con poder reductor) para facilitar la hidratación intracelular.",
+                    en: "Recommends 'good water' (alkaline, reducing power) to facilitate intracellular hydration."
+                },
+                modern: {
+                    es: "El consenso general es que la hidratación con agua pura reduce la carga oxidativa, aunque estudios de H2 están en desarrollo.",
+                    en: "General consensus is that hydration with pure water reduces oxidative load, though H2 studies are ongoing."
+                }
+            },
+            {
+                id: 19,
+                title: { es: "XIX. Poder inmune", en: "XIX. Immune power" },
+                wisdom: {
+                    es: "Un intestino limpio y purgado mediante ayuno crea un sistema inmunológico invencible.",
+                    en: "A clean intestine purged through fasting creates an invincible immune system."
+                },
+                modern: {
+                    es: "Pináculo de la Medicina Funcional. El 70% del sistema inmune reside en el GALT intestinal.",
+                    en: "Pinnacle of Functional Medicine. 70% of the immune system resides in intestinal GALT."
+                }
+            }
+        ];
+
+        let myChartAutophagy = null;
+        let myChartDiet = null;
+        let currentLang = localStorage.getItem('selectedLanguage') || 'es';
+        let activeChapterIndex = 0;
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem('selectedLanguage', lang);
+            
+            // Update UI elements
+            const flag = lang === 'es' ? '🇪🇸' : '🇬🇧';
+            const text = lang === 'es' ? 'ES' : 'EN';
+            document.getElementById('current-flag').innerText = flag;
+            document.getElementById('current-lang-text').innerText = text;
+            
+            renderChapterList();
+            updateChartsLang();
+        }
+
+        function toggleDropdown(e) {
+            e.stopPropagation();
+            document.getElementById('lang-dropdown').classList.toggle('show');
+        }
+
+        window.onclick = function() {
+            document.getElementById('lang-dropdown').classList.remove('show');
+        }
+
+        const chapterList = document.getElementById('chapter-list');
+        const chapterDetailContent = document.getElementById('chapter-detail-content');
+
+        function renderChapterList() {
+            chapterList.innerHTML = '';
+            chapters.forEach((chapter, index) => {
+                const btn = document.createElement('button');
+                const isActive = index === activeChapterIndex;
+                btn.className = `w-full text-left px-4 py-3 border-b border-slate-100 hover:bg-slate-50 transition-colors text-sm text-slate-700 chapter-btn focus:outline-none flex items-center justify-between group ${isActive ? 'active' : ''}`;
+                btn.innerHTML = `
+                    <span class="truncate pr-2 font-medium">${chapter.title[currentLang]}</span>
+                    <span class="text-teal-500 opacity-0 group-hover:opacity-100 transition-opacity">⮞</span>
+                `;
+                btn.onclick = () => {
+                    activeChapterIndex = index;
+                    loadChapterDetail(chapter, btn);
+                };
+                chapterList.appendChild(btn);
+
+                // Auto-load if active
+                if (isActive) {
+                    loadChapterDetail(chapter, btn);
+                }
+            });
+        }
+
+        function loadChapterDetail(chapter, activeBtn) {
+            document.querySelectorAll('.chapter-btn').forEach(b => b.classList.remove('active'));
+            if(activeBtn) activeBtn.classList.add('active');
+
+            const isAutophagyChapter = chapter.id === 4;
+            const highlightClass = isAutophagyChapter ? 'bg-amber-50 border-amber-200' : 'bg-slate-50 border-slate-200';
+            const iconNobel = isAutophagyChapter ? '<span class="text-amber-500 text-xl" title="Conexión Nobel 2016">🏆</span>' : '';
+            
+            const wisdomText = chapter.wisdom[currentLang];
+            const modernText = chapter.modern[currentLang];
+            
+            const wisdomLabel = currentLang === 'es' ? '✦ La Sabiduría de Shinya' : '✦ Shinya\'s Wisdom';
+            const modernLabel = currentLang === 'es' ? '⚕️ Medicina Moderna' : '⚕️ Modern Medicine';
+            const detailLabel = currentLang === 'es' ? 'Análisis Detallado' : 'Detailed Analysis';
+
+            chapterDetailContent.innerHTML = `
+                <div class="animate-fade-in">
+                    <span class="text-teal-600 font-bold tracking-widest text-xs uppercase mb-2 block">${detailLabel}</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6 font-serif">${chapter.title[currentLang]}</h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-bold text-teal-800 mb-2 flex items-center gap-2">
+                                <span>${wisdomLabel}</span>
+                            </h3>
+                            <p class="text-slate-700 leading-relaxed bg-teal-50/50 p-4 rounded-lg border-l-4 border-teal-500">
+                                ${wisdomText}
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 class="text-lg font-bold text-blue-800 mb-2 flex items-center gap-2">
+                                <span>${modernLabel}</span>
+                                ${iconNobel}
+                            </h3>
+                            <p class="text-slate-700 leading-relaxed ${highlightClass} p-4 rounded-lg border-l-4 border-blue-500">
+                                ${modernText}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            if (!document.getElementById('fade-style')) {
+                const style = document.createElement('style');
+                style.id = 'fade-style';
+                style.innerHTML = `
+                    .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+                    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+
+        function updateChartsLang() {
+            if (myChartAutophagy) {
+                myChartAutophagy.data.datasets[0].label = currentLang === 'es' ? 'Nivel de Autofagia (Reciclaje Celular)' : 'Autophagy Level (Cellular Recycling)';
+                myChartAutophagy.update();
+            }
+            if (myChartDiet) {
+                myChartDiet.data.labels = currentLang === 'es' ? 
+                    ['Vegetales/Cereales (85%)', 'Proteína Animal (15%)'] : 
+                    ['Plants/Grains (85%)', 'Animal Protein (15%)'];
+                myChartDiet.update();
+            }
+        }
+
+        function initCharts() {
+            const ctxAutophagy = document.getElementById('autophagyChart').getContext('2d');
+            myChartAutophagy = new Chart(ctxAutophagy, {
+                type: 'line',
+                data: {
+                    labels: ['0h', '4h', '8h', '12h', '16h (Shinya)', '20h', '24h'],
+                    datasets: [{
+                        label: 'Nivel de Autofagia (Reciclaje Celular)',
+                        data: [10, 15, 20, 50, 95, 80, 85],
+                        borderColor: '#0f766e',
+                        backgroundColor: 'rgba(15, 118, 110, 0.1)',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#0f766e',
+                        pointRadius: 4,
+                        pointHoverRadius: 6,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    if (context.dataIndex === 4) return currentLang === 'es' ? "Pico de reciclaje: El método Shinya" : "Recycling peak: Shinya method";
+                                    return currentLang === 'es' ? "Actividad autofágica" : "Autophagic activity";
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, display: false },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            const ctxDiet = document.getElementById('dietChart').getContext('2d');
+            myChartDiet = new Chart(ctxDiet, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Vegetales/Cereales (85%)', 'Proteína Animal (15%)'],
+                    datasets: [{
+                        data: [85, 15],
+                        backgroundColor: ['#10b981', '#f43f5e'],
+                        borderWidth: 0,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                font: { family: "'Open Sans', sans-serif" }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            activeChapterIndex = 3; // Auto-load chapter 4 (index 3, Autophagy)
+            setLanguage(currentLang);
+            initCharts();
+            updateChartsLang();
+        });
+
+    </script>
+</body>
+
+</html>

@@ -6,10 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estructura Energética: Shiatsu | Salud Equilibrio</title>
     <meta name="description" content="Domina todos los canales y meridianos en Shiatsu. Un viaje profundo para desbloquear el flujo vital.">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
         tailwind.config = {
@@ -44,6 +49,7 @@
         body {
             background-color: #050505;
             color: #d1d5db;
+            overflow-x: hidden;
         }
 
         .meridian-card {
@@ -75,23 +81,104 @@
             border-radius: 50%;
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
         }
+
+        /* Language Toggle System */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(14, 14, 14, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 1rem;
+            min-width: 160px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .dropdown-content.show { display: block; }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-option:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: #fff;
+        }
+
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
     </style>
 </head>
 
-<body class="antialiased selection:bg-gold-400/30 selection:text-white">
+<body class="antialiased selection:bg-gold-400/30 selection:text-white" data-lang="es">
 
     <!-- Sub Navigation -->
     <nav class="fixed w-full z-50 nav-blur">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex justify-between items-center">
             <a href="../index.html" class="flex items-center gap-4 group">
-                <span class="text-gold-400 text-xs tracking-[5px] uppercase font-bold opacity-80 group-hover:opacity-100 transition-opacity">← Especialidades</span>
+                <span class="text-gold-400 text-[10px] tracking-[5px] uppercase font-bold opacity-80 group-hover:opacity-100 transition-opacity flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span class="lang-es inline">Especialidades</span>
+                    <span class="lang-en inline">Specialties</span>
+                </span>
             </a>
-            <div class="font-outfit font-bold text-lg tracking-widest text-white uppercase opacity-90 leading-none">
+
+            <div class="font-outfit font-bold text-xl tracking-widest text-white uppercase opacity-90 hidden md:block">
                 Shiatsu <span class="text-gold-400 font-light">Estructural</span>
             </div>
-            <div class="hidden md:flex gap-8 items-center text-[9px] tracking-[4px] uppercase font-bold text-gray-500">
-                <a href="#meridianos" class="text-white">Canales</a>
-                <a href="#procedimiento" class="hover:text-gold-400 transition-colors">Técnica</a>
+
+            <div class="flex items-center gap-8">
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fa-solid fa-chevron-down text-[8px] opacity-50 ml-1"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')">
+                            <span>🇪🇸</span>
+                            <span>Castellano</span>
+                        </div>
+                        <div class="lang-option" onclick="setLanguage('en')">
+                            <span>🇬🇧</span>
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -100,16 +187,26 @@
     <section class="relative pt-64 pb-32 px-6">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div class="space-y-12 animate-fade-in">
-                <span class="inline-block text-gold-400 text-xs font-bold tracking-[6px] uppercase mb-10 opacity-70">El Flujo del Ki</span>
-                <h1 class="text-6xl md:text-8xl font-serif italic text-white leading-tight">Mapa de los <br>Canales</h1>
+                <span class="inline-block text-gold-400 text-[10px] font-bold tracking-[8px] uppercase mb-10 opacity-70">
+                    <span class="lang-es">El Flujo del Ki</span>
+                    <span class="lang-en">The Flow of Ki</span>
+                </span>
+                <h1 class="text-6xl md:text-8xl font-serif italic text-white leading-tight">
+                    <span class="lang-es">Mapa de los <br>Canales</span>
+                    <span class="lang-en">Map of the <br>Channels</span>
+                </h1>
                 <p class="text-lg md:text-xl text-gray-500 font-light leading-relaxed max-w-xl">
-                    En Shiatsu, el cuerpo no es una masa muscular aislada, sino un entramado de rutas energéticas o meridianos. Al presionar cada punto, reconectamos con el sistema nervioso central y reajustamos la homeostasis.
+                    <span class="lang-es">En Shiatsu, el cuerpo no es una masa muscular aislada, sino un entramado de rutas energéticas o meridianos. Al presionar cada punto, reconectamos con el sistema nervioso central y reajustamos la homeostasis.</span>
+                    <span class="lang-en">In Shiatsu, the body is not an isolated muscular mass, but a network of energetic routes or meridians. By pressing each point, we reconnect with the central nervous system and readjust homeostasis.</span>
                 </p>
                 <div class="flex items-center gap-6">
                     <div class="w-12 h-12 rounded-full border border-gold-400/30 flex items-center justify-center text-gold-400 animate-float text-xl">
                         ☯
                     </div>
-                    <span class="text-[10px] tracking-[4px] uppercase font-bold text-gray-400">Restauración Total</span>
+                    <span class="text-[10px] tracking-[4px] uppercase font-bold text-gray-400">
+                        <span class="lang-es inline">Restauración Total</span>
+                        <span class="lang-en inline">Total Restoration</span>
+                    </span>
                 </div>
             </div>
             
@@ -124,9 +221,13 @@
     <section id="meridianos" class="py-32 px-6 bg-zen border-t border-white/5">
         <div class="max-w-7xl mx-auto">
             <header class="text-center mb-32 max-w-2xl mx-auto">
-                <h2 class="text-4xl font-serif italic text-white mb-8 leading-tight">Los 12 Canales Principales</h2>
+                <h2 class="text-4xl font-serif italic text-white mb-8 leading-tight">
+                    <span class="lang-es">Los 12 Canales Principales</span>
+                    <span class="lang-en">The 12 Main Channels</span>
+                </h2>
                 <p class="text-sm text-gray-500 font-light leading-relaxed">
-                    Repasamos el sistema completo de meridianos. Cada uno está vinculado a un órgano y una esfera emocional-fisiológica específica.
+                    <span class="lang-es">Repasamos el sistema completo de meridianos. Cada uno está vinculado a un órgano y una esfera emocional-fisiológica específica.</span>
+                    <span class="lang-en">We review the complete meridian system. Each one is linked to a specific organ and emotional-physiological sphere.</span>
                 </p>
             </header>
 
@@ -136,12 +237,16 @@
                 <a href="canal_de_pulmon/index.html" class="group block h-full">
                     <div class="meridian-card">
                         <div class="flex justify-between items-start mb-6">
-                            <span class="text-xs tracking-[5px] text-gray-600 uppercase font-black">Lung / Met</span>
+                            <span class="text-xs tracking-[5px] text-gray-600 uppercase font-black">Lung / Metal</span>
                             <div class="timeline-bullet group-hover:scale-150 group-hover:bg-gold-400 transition-all"></div>
                         </div>
-                        <h4 class="text-2xl font-serif italic text-white mb-4">Pulmón</h4>
+                        <h4 class="text-2xl font-serif italic text-white mb-4">
+                            <span class="lang-es">Pulmón</span>
+                            <span class="lang-en">Lung</span>
+                        </h4>
                         <p class="text-xs text-gray-500 leading-relaxed font-light mb-6">
-                            Gobierna la respiración y la energía defensiva. Se vincula con la tristeza, el desapego y la asimilación del aire puro.
+                            <span class="lang-es">Gobierna la respiración y la energía defensiva. Se vincula con la tristeza, el desapego y la asimilación del aire puro.</span>
+                            <span class="lang-en">Governs breathing and defensive energy. Linked to sadness, detachment, and assimilation of pure air.</span>
                         </p>
                         <div class="text-[10px] tracking-[2px] font-bold text-gold-400 uppercase">3:00 - 5:00 AM</div>
                     </div>
@@ -150,12 +255,16 @@
                 <!-- IG -->
                 <div class="meridian-card">
                     <div class="flex justify-between items-start mb-6">
-                        <span class="text-xs tracking-[5px] text-gray-600 uppercase font-black">Intestino Grueso</span>
+                        <span class="text-xs tracking-[5px] text-gray-600 uppercase font-black">Large Intestine</span>
                         <div class="timeline-bullet"></div>
                     </div>
-                    <h4 class="text-2xl font-serif italic text-white mb-4">I. Grueso</h4>
+                    <h4 class="text-2xl font-serif italic text-white mb-4">
+                        <span class="lang-es">I. Grueso</span>
+                        <span class="lang-en">L. Intestine</span>
+                    </h4>
                     <p class="text-xs text-gray-500 leading-relaxed font-light mb-6">
-                        Encargado de la eliminación física y emocional. Su desequilibrio se traduce en estreñimiento o dificultad para soltar el pasado.
+                        <span class="lang-es">Encargado de la eliminación física y emocional. Su desequilibrio se traduce en estreñimiento o dificultad para soltar.</span>
+                        <span class="lang-en">In charge of physical and emotional elimination. Imbalance results in constipation or difficulty letting go.</span>
                     </p>
                     <div class="text-[10px] tracking-[2px] font-bold text-gold-400 uppercase">5:00 - 7:00 AM</div>
                 </div>
@@ -163,20 +272,30 @@
                 <!-- ESTÓMAGO -->
                 <div class="meridian-card">
                     <div class="flex justify-between items-start mb-6">
-                        <span class="text-xs tracking-[5px] text-gray-600 uppercase font-black">Stomach / Tierra</span>
+                        <span class="text-xs tracking-[5px] text-gray-600 uppercase font-black">Stomach / Earth</span>
                         <div class="timeline-bullet"></div>
                     </div>
-                    <h4 class="text-2xl font-serif italic text-white mb-4">Estómago</h4>
+                    <h4 class="text-2xl font-serif italic text-white mb-4">
+                        <span class="lang-es">Estómago</span>
+                        <span class="lang-en">Stomach</span>
+                    </h4>
                     <p class="text-xs text-gray-500 leading-relaxed font-light mb-6">
-                        Procesa no solo alimentos, sino información y emociones. Se vincula con la nutrición y la estabilidad mental.
+                        <span class="lang-es">Procesa no solo alimentos, sino información y emociones. Se vincula con la nutrición y la estabilidad mental.</span>
+                        <span class="lang-en">Processes not only food, but information and emotions. Linked to nutrition and mental stability.</span>
                     </p>
                     <div class="text-[10px] tracking-[2px] font-bold text-gold-400 uppercase">7:00 - 9:00 AM</div>
                 </div>
 
-                <!-- More can be added here -->
+                <!-- More in development -->
                 <div class="meridian-card bg-white/5 border-dashed border-white/20 flex flex-col justify-center items-center text-center">
-                    <h4 class="text-sm font-bold tracking-[3px] text-gray-500 uppercase mb-4">Continuando el Recorrido...</h4>
-                    <p class="text-xs text-gray-600 font-light max-w-[200px]">Corazón, Vejiga, Riñón, Pericardio, Hígado y Vesícula Biliar en desarrollo.</p>
+                    <h4 class="text-sm font-bold tracking-[3px] text-gray-500 uppercase mb-4">
+                        <span class="lang-es">Continuando el Recorrido...</span>
+                        <span class="lang-en">Continuing the Path...</span>
+                    </h4>
+                    <p class="text-xs text-gray-600 font-light max-w-[200px]">
+                        <span class="lang-es">Corazón, Vejiga, Riñón, Pericardio, Hígado y Vesícula Biliar en desarrollo.</span>
+                        <span class="lang-en">Heart, Bladder, Kidney, Pericardium, Liver, and Gallbladder in development.</span>
+                    </p>
                 </div>
 
             </div>
@@ -184,9 +303,12 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-20 border-t border-white/5 text-center text-xs tracking-widest text-gray-600">
-        <p>© 2026 Salud Equilibrio. El Mapa del Cuerpo Humano.</p>
+    <footer class="py-20 border-t border-white/5 text-center text-[10px] tracking-[6px] uppercase font-bold text-gray-600">
+        <p>© 2026 Salud Equilibrio. The Map of the Human Body.</p>
     </footer>
+
+    <!-- Global Scripts -->
+    <script src="../../main.js"></script>
 
 </body>
 

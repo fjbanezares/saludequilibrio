@@ -13,9 +13,9 @@
     <!-- Google Fonts: Noto Serif & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome for Linear Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
@@ -42,6 +42,7 @@
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'float': 'float 6s ease-in-out infinite',
                         'glow': 'glow 2s ease-in-out infinite alternate',
+                        'reveal': 'reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards',
                     },
                     keyframes: {
                         glow: {
@@ -51,6 +52,10 @@
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-20px)' },
+                        },
+                        reveal: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
                         }
                     }
                 }
@@ -60,9 +65,10 @@
 
     <style>
         body {
-            background: linear-gradient(135deg, #0e0e0e 0%, #1A2F23 100%);
+            background: #0e0e0e;
             color: #f5f5f5;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         .glass-nav {
@@ -75,180 +81,316 @@
         .glass-card {
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .glass-card:hover {
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.05);
             border-color: rgba(102, 221, 139, 0.3);
-            transform: translateY(-10px);
+            transform: translateY(-10px) scale(1.02);
         }
 
         .btn-mint {
             background: #66dd8b;
             color: #0e0e0e;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             box-shadow: 0 0 10px rgba(102, 221, 139, 0.3);
         }
 
         .btn-mint:hover {
-            filter: brightness(1.2);
-            box-shadow: 0 0 25px rgba(102, 221, 139, 0.6);
+            filter: brightness(1.1);
+            box-shadow: 0 0 30px rgba(102, 221, 139, 0.5);
             transform: scale(1.05);
         }
 
         .text-glow-mint {
-            text-shadow: 0 0 15px rgba(102, 221, 139, 0.4);
+            text-shadow: 0 0 20px rgba(102, 221, 139, 0.5);
         }
 
-        .low-key-image {
-            filter: contrast(1.1) brightness(0.8) grayscale(0.2);
+        .hero-bg {
+            filter: contrast(1.1) brightness(0.7);
+            transition: transform 10s ease-out;
         }
 
-        .icon-linear {
-            stroke-width: 2px;
-            color: rgba(255, 255, 255, 0.7);
+        body:hover .hero-bg {
+            transform: scale(1.1);
         }
 
-        /* 2px thick icons helper */
-        .fa-thin-custom {
-            font-weight: 200;
-        }
+        /* Language Toggle System */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
 
-        /* Custom Wave Animation for Vibrational Healing */
-        .wave-container {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .wave-video {
+        .dropdown-content {
+            display: none;
             position: absolute;
-            top: 0;
+            right: 0;
+            top: 100%;
+            background: rgba(14, 14, 14, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            min-width: 160px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .dropdown-content.show { display: block; }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-option:hover {
+            background: rgba(102, 221, 139, 0.1);
+            color: #fff;
+        }
+
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .lang-trigger:hover {
+            border-color: rgba(102, 221, 139, 0.4);
+            background: rgba(102, 221, 139, 0.05);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
             left: 0;
+            width: 0;
+            height: 1px;
+            background: #66dd8b;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.2;
-            mix-blend-mode: screen;
         }
     </style>
 </head>
 
-<body class="antialiased selection:bg-mint-vibrant/30 selection:text-white">
+<body class="antialiased selection:bg-mint-vibrant/30 selection:text-white" data-lang="es">
 
     <!-- Navbar -->
     <nav class="fixed w-full z-50 glass-nav h-24 flex items-center">
         <div class="max-w-7xl mx-auto px-8 w-full flex justify-between items-center">
-            <a href="#" class="flex items-center gap-8 group">
-                <div class="h-28 w-28 flex items-center justify-center">
+            <a href="#" class="flex items-center gap-6 group">
+                <div class="h-16 w-16 flex items-center justify-center">
                     <img src="assets/logo.png" alt="Salud Equilibrio Logo" class="h-full w-full object-contain brightness-125 contrast-110 group-hover:scale-110 transition-transform">
                 </div>
-                <span class="font-serif text-3xl tracking-tighter text-white">Salud<span class="text-mint-vibrant font-light">Equilibrio</span></span>
+                <span class="font-serif text-2xl tracking-tighter text-white">Salud<span class="text-mint-vibrant font-light">Equilibrio</span></span>
             </a>
             
-            <div class="hidden md:flex gap-12 text-[11px] tracking-[5px] uppercase font-bold text-white/50">
-                <a href="#agua" class="hover:text-mint-vibrant transition-colors">Agua</a>
-                <a href="#sanacion" class="hover:text-mint-vibrant transition-colors">Sanación</a>
-                <a href="#contacto" class="hover:text-mint-vibrant transition-colors">Contacto</a>
+            <div class="hidden lg:flex gap-10 items-center">
+                <div class="flex gap-10 text-[10px] tracking-[4px] uppercase font-bold text-white/50">
+                    <a href="#agua" class="nav-link hover:text-white transition-colors">
+                        <span class="lang-es inline">Agua Kangen</span>
+                        <span class="lang-en inline">Kangen Water</span>
+                    </a>
+                    <a href="#masajes" class="nav-link hover:text-white transition-colors">
+                        <span class="lang-es inline">Masajes</span>
+                        <span class="lang-en inline">Massages</span>
+                    </a>
+                    <a href="#sanacion" class="nav-link hover:text-white transition-colors">
+                        <span class="lang-es inline">Sanación</span>
+                        <span class="lang-en inline">Healing</span>
+                    </a>
+                    <a href="#contacto" class="nav-link hover:text-white transition-colors">
+                        <span class="lang-es inline">Contacto</span>
+                        <span class="lang-en inline">Contact</span>
+                    </a>
+                </div>
+
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fa-solid fa-chevron-down text-[8px] opacity-50 ml-1"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')">
+                            <span>🇪🇸</span>
+                            <span>Castellano</span>
+                        </div>
+                        <div class="lang-option" onclick="setLanguage('en')">
+                            <span>🇬🇧</span>
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Inmersivo -->
+    <!-- Hero Section -->
     <section class="relative h-screen flex items-center justify-center overflow-hidden">
-        <!-- Background with Overlay -->
         <div class="absolute inset-0 z-0">
-            <img src="assets/forest_night.png" alt="Dark Zen Forest" class="w-full h-full object-cover low-key-image">
-            <div class="absolute inset-0 bg-gradient-to-b from-obsidian/80 via-obsidian/40 to-obsidian/90"></div>
+            <img src="assets/hero_premium.png" alt="Zen Forest" class="w-full h-full object-cover hero-bg">
+            <div class="absolute inset-0 bg-gradient-to-b from-obsidian/90 via-obsidian/30 to-obsidian/95"></div>
         </div>
 
-        <div class="relative z-10 max-w-5xl mx-auto px-8 text-center" data-aos="fade-up">
-            <h2 class="font-serif text-[12px] tracking-[12px] uppercase text-mint-vibrant mb-8 opacity-80 animate-pulse-slow">Silencio es la Medicina más Profunda</h2>
-            <h1 class="font-serif italic text-6xl md:text-[100px] text-white leading-[1.1] mb-12 tracking-tighter">
-                Regresa a tu <br> <span class="not-italic text-glow-mint">Naturaleza Esencial</span>
+        <div class="relative z-10 max-w-5xl mx-auto px-8 text-center animate-reveal">
+            <h2 class="font-serif text-[10px] tracking-[12px] uppercase text-mint-vibrant mb-8 opacity-80">
+                <span class="lang-es">El Silencio es el Camino</span>
+                <span class="lang-en">Silence is the Path</span>
+            </h2>
+            <h1 class="font-serif italic text-6xl md:text-[110px] text-white leading-[1] mb-12 tracking-tighter">
+                <span class="lang-es">Regresa a tu <br> <span class="not-italic text-glow-mint">Naturaleza</span></span>
+                <span class="lang-en">Return to your <br> <span class="not-italic text-glow-mint">Nature</span></span>
             </h1>
             <p class="text-offwhite/60 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto mb-16">
-                Un santuario dedicado a la restauración biológica y energética. Donde la ciencia del agua se encuentra con la sabiduría del silencio.
+                <span class="lang-es">Un santuario dedicado a la restauración biológica y energética. Donde la ciencia del agua se encuentra con la sabiduría ancestral.</span>
+                <span class="lang-en">A sanctuary dedicated to biological and energetic restoration. Where the science of water meets ancestral wisdom.</span>
             </p>
-            <a href="#explorar" class="btn-mint inline-block px-12 py-5 rounded-full font-bold text-[12px] tracking-[4px] uppercase">
-                Iniciar Transformación
+            <a href="#explorar" class="btn-mint inline-block px-12 py-5 rounded-full font-bold text-[11px] tracking-[4px] uppercase">
+                <span class="lang-es inline">Iniciar Transformación</span>
+                <span class="lang-en inline">Begin Transformation</span>
             </a>
         </div>
         
-        <!-- Floating Elements -->
-        <div class="absolute top-1/4 left-10 w-64 h-64 bg-forest/20 rounded-full blur-[100px] animate-float opacity-30"></div>
-        <div class="absolute bottom-1/4 right-10 w-96 h-96 bg-mint-vibrant/5 rounded-full blur-[150px] animate-float opacity-20" style="animation-delay: -3s;"></div>
+        <!-- Subtle Scroll Indicator -->
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-30 animate-pulse-slow">
+            <span class="text-[8px] tracking-[4px] uppercase font-bold">Scroll</span>
+            <div class="w-[1px] h-12 bg-white"></div>
+        </div>
     </section>
 
-    <!-- Los Tres Pilares: Asymmetric Cards -->
+    <!-- Main Portals Grid -->
     <section id="explorar" class="py-40 px-8 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
             
-            <!-- Card 1: Kangen (Large Right) -->
-            <div class="md:col-span-7 group">
+            <!-- Card 1: Kangen (Featured) -->
+            <div id="agua" class="md:col-span-8 group">
                 <a href="kangen_water/index.html" class="block h-full">
-                    <div class="glass-card rounded-xl-custom p-16 h-full flex flex-col justify-between overflow-hidden relative">
-                        <div class="absolute -top-10 -right-10 w-64 h-64 bg-mint-vibrant/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <div>
-                            <div class="mb-12 opacity-50"><i class="fa-light fa-droplet text-4xl icon-linear"></i></div>
-                            <h3 class="font-serif italic text-5xl text-white mb-8">Kangen <br> Ecosystem</h3>
-                            <p class="text-offwhite/50 text-lg leading-relaxed max-w-md mb-12 font-light">
-                                Hidratación profunda con hidrógeno molecular. Reestructura tu bioquímica celular desde la raíz.
+                    <div class="glass-card rounded-xl-custom min-h-[500px] relative overflow-hidden flex flex-col justify-end p-12 lg:p-20">
+                        <img src="assets/kangen_premium.png" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-700" alt="Kangen Water">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/20 to-transparent"></div>
+                        <div class="relative z-10">
+                            <div class="mb-8 text-mint-vibrant opacity-60"><i class="fa-light fa-droplet text-4xl"></i></div>
+                            <h3 class="font-serif italic text-5xl lg:text-7xl text-white mb-8">Kangen Water</h3>
+                            <p class="text-offwhite/60 text-lg leading-relaxed max-w-md mb-12 font-light">
+                                <span class="lang-es">Hidratación profunda con hidrógeno molecular. Reestructura tu bioquímica celular y recupera tu vitalidad original.</span>
+                                <span class="lang-en">Deep hydration with molecular hydrogen. Restructure your cellular biochemistry and recover your original vitality.</span>
                             </p>
-                        </div>
-                        <div class="flex items-center gap-4 text-mint-vibrant font-bold tracking-[3px] text-[10px] uppercase">
-                            Explorar <span class="w-12 h-[1px] bg-mint-vibrant group-hover:w-20 transition-all duration-700"></span>
+                            <div class="flex items-center gap-4 text-mint-vibrant font-bold tracking-[3px] text-[10px] uppercase">
+                                <span class="lang-es inline">Explorar Ecosistema</span>
+                                <span class="lang-en inline">Explore Ecosystem</span>
+                                <span class="w-12 h-[1px] bg-mint-vibrant group-hover:w-20 transition-all duration-700"></span>
+                            </div>
                         </div>
                     </div>
                 </a>
             </div>
 
-            <!-- Card 2: Sanación Zen (Taller Left) -->
-            <div class="md:col-span-5 group">
+            <!-- Card 2: Masajes Ancestrales (Portal) -->
+            <div id="masajes" class="md:col-span-4 group">
+                <a href="tecnicas_masaje/index.html" class="block h-full">
+                    <div class="glass-card rounded-xl-custom h-full relative overflow-hidden flex flex-col justify-end p-12 border-white/5">
+                        <img src="assets/massage_premium.png" class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity duration-700" alt="Massages">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent"></div>
+                        <div class="relative z-10">
+                            <div class="mb-8 text-mint-vibrant opacity-60"><i class="fa-light fa-hands text-4xl"></i></div>
+                            <h3 class="font-serif italic text-4xl text-white mb-6">
+                                <span class="lang-es">Masaje <br> Ancestral</span>
+                                <span class="lang-en">Ancestral <br> Massage</span>
+                            </h3>
+                            <p class="text-offwhite/50 leading-relaxed font-light mb-10 text-sm">
+                                <span class="lang-es">Explora nuestras técnicas milenarias: Shiatsu, Thai, Reiki, Tantra y Reflexología. El arte del tacto consciente para restaurar tu equilibrio vital.</span>
+                                <span class="lang-en">Explore our millenary techniques: Shiatsu, Thai, Reiki, Tantra, and Reflexology. The art of conscious touch to restore your vital balance.</span>
+                            </p>
+                            <div class="flex items-center gap-4 text-mint-vibrant font-bold tracking-[3px] text-[10px] uppercase">
+                                <span class="lang-es inline">Ver Todas las Técnicas</span>
+                                <span class="lang-en inline">View All Techniques</span>
+                                <span class="w-8 h-[1px] bg-mint-vibrant group-hover:w-16 transition-all duration-700"></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Card 3: Sanación -->
+            <div id="sanacion" class="md:col-span-5 group">
                 <a href="sanacion/index.html" class="block h-full">
-                    <div class="glass-card rounded-xl-custom p-12 h-full flex flex-col justify-between bg-gradient-to-br from-white/[0.05] to-transparent">
+                    <div class="glass-card rounded-xl-custom p-12 h-full flex flex-col justify-between bg-gradient-to-br from-white/[0.03] to-transparent">
                         <div>
-                            <div class="mb-12 opacity-50"><i class="fa-light fa-leaf text-4xl icon-linear"></i></div>
-                            <h3 class="font-serif italic text-4xl text-white mb-8">Sanación <br> Holística</h3>
-                            <p class="text-offwhite/50 leading-relaxed font-light mb-10">
-                                Restauración energética y equilibrio del sistema nervioso a través del silencio.
+                            <div class="mb-12 opacity-40 text-mint-vibrant"><i class="fa-light fa-leaf text-4xl"></i></div>
+                            <h3 class="font-serif italic text-4xl text-white mb-8">
+                                <span class="lang-es">Sanación <br> Holística</span>
+                                <span class="lang-en">Holistic <br> Healing</span>
+                            </h3>
+                            <p class="text-offwhite/50 leading-relaxed font-light mb-10 italic">
+                                <span class="lang-es">"Donde el silencio sana lo que el ruido rompió." Restauración profunda del sistema nervioso.</span>
+                                <span class="lang-en">"Where silence heals what noise broke." Deep restoration of the nervous system.</span>
                             </p>
                         </div>
-                        <div class="w-full h-[1px] bg-white/10 mb-8"></div>
                         <div class="flex items-center gap-4 text-mint-vibrant font-bold tracking-[3px] text-[10px] uppercase">
-                            Conocer <span class="w-12 h-[1px] bg-mint-vibrant group-hover:w-20 transition-all duration-700"></span>
+                            <span class="lang-es inline">Conocer Más</span>
+                            <span class="lang-en inline">Learn More</span>
+                            <span class="w-12 h-[1px] bg-mint-vibrant group-hover:w-20 transition-all duration-700"></span>
                         </div>
                     </div>
                 </a>
             </div>
 
-            <!-- Card 3: Vibrational Healing (Loop Video) -->
-            <div class="md:col-span-12 group mt-8">
-                <div class="glass-card rounded-xl-custom p-16 overflow-hidden relative wave-container min-h-[400px] flex items-center">
-                    <!-- Vibrational Loop Placeholder (using SVG or CSS animation if no video) -->
+            <!-- Card 4: Vibrational Healing -->
+            <div class="md:col-span-7 group">
+                <div class="glass-card rounded-xl-custom p-16 overflow-hidden relative min-h-[350px] flex items-center">
                     <div class="absolute inset-0 opacity-10">
                         <svg class="w-full h-full" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0 200 Q 250 50 500 200 T 1000 200" fill="none" stroke="#66dd8b" stroke-width="1">
                                 <animate attributeName="d" values="M0 200 Q 250 50 500 200 T 1000 200; M0 200 Q 250 350 500 200 T 1000 200; M0 200 Q 250 50 500 200 T 1000 200" dur="10s" repeatCount="indefinite" />
-                            </path>
-                            <path d="M0 200 Q 250 100 500 200 T 1000 200" fill="none" stroke="#66dd8b" stroke-width="0.5" opacity="0.5">
-                                <animate attributeName="d" values="M0 200 Q 250 100 500 200 T 1000 200; M0 200 Q 250 300 500 200 T 1000 200; M0 200 Q 250 100 500 200 T 1000 200" dur="7s" repeatCount="indefinite" />
                             </path>
                         </svg>
                     </div>
 
                     <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center w-full">
                         <div>
-                            <span class="text-[10px] font-bold tracking-[5px] text-mint-vibrant uppercase mb-6 block">Vibrational Healing</span>
-                            <h3 class="font-serif italic text-5xl text-white mb-8">El Ritmo del <br> Bienestar</h3>
-                            <button class="w-16 h-16 rounded-full border border-mint-vibrant flex items-center justify-center text-mint-vibrant hover:bg-mint-vibrant hover:text-obsidian transition-all group/btn">
+                            <span class="text-[9px] font-bold tracking-[5px] text-mint-vibrant uppercase mb-6 block">Vibrational Healing</span>
+                            <h3 class="font-serif italic text-5xl text-white mb-8">
+                                <span class="lang-es">El Ritmo Vital</span>
+                                <span class="lang-en">The Vital Rhythm</span>
+                            </h3>
+                            <button class="w-14 h-14 rounded-full border border-mint-vibrant/30 flex items-center justify-center text-mint-vibrant hover:bg-mint-vibrant hover:text-obsidian transition-all group/btn">
                                 <i class="fa-solid fa-play ml-1"></i>
                             </button>
                         </div>
                         <div class="text-offwhite/40 font-light text-lg italic leading-relaxed">
-                            "Todo en el universo vibra. Nuestra misión es ayudarte a encontrar la frecuencia óptima para tu sanación biológica."
+                            <span class="lang-es">"Todo en el universo vibra. Nuestra misión es ayudarte a encontrar la frecuencia óptima para tu sanación biológica."</span>
+                            <span class="lang-en">"Everything in the universe vibrates. Our mission is to help you find the optimal frequency for your biological healing."</span>
                         </div>
                     </div>
                 </div>
@@ -256,62 +398,61 @@
         </div>
     </section>
 
-    <!-- Social Proof: Refined Quotes -->
+    <!-- Testimonials -->
     <section class="py-40 bg-obsidian/40 relative">
         <div class="max-w-5xl mx-auto px-8">
-            <h2 class="font-serif text-3xl text-center mb-24 opacity-80 italic">Círculo de Confianza</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-                <!-- Testimonial 1 -->
+            <h2 class="font-serif text-3xl text-center mb-24 opacity-80 italic">
+                <span class="lang-es">Testimonios de Bienestar</span>
+                <span class="lang-en">Testimonials of Well-being</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
                 <div class="relative pl-12">
-                    <span class="absolute top-0 left-0 text-6xl text-mint-vibrant/20 font-serif leading-none">“</span>
+                    <span class="absolute top-0 left-0 text-6xl text-mint-vibrant/20 font-serif">“</span>
                     <p class="text-xl text-offwhite/70 font-light italic leading-relaxed mb-8">
-                        Nunca imaginé que un cambio en el agua y unos minutos de silencio pudieran transformar mi salud de forma tan radical. Es volver a nacer.
+                        <span class="lang-es">Nunca imaginé que un cambio en el agua y unos minutos de silencio pudieran transformar mi salud de forma tan radical.</span>
+                        <span class="lang-en">I never imagined that a change in the water and a few minutes of silence could transform my health so radically.</span>
                     </p>
                     <div class="flex items-center gap-4">
                         <div class="w-10 h-[1px] bg-mint-vibrant/40"></div>
-                        <span class="text-[11px] tracking-[4px] uppercase font-bold text-mint-vibrant">Elena R. — Valencia</span>
+                        <span class="text-[10px] tracking-[4px] uppercase font-bold text-mint-vibrant">Elena R.</span>
                     </div>
                 </div>
-                <!-- Testimonial 2 -->
                 <div class="relative pl-12">
-                    <span class="absolute top-0 left-0 text-6xl text-mint-vibrant/20 font-serif leading-none">“</span>
+                    <span class="absolute top-0 left-0 text-6xl text-mint-vibrant/20 font-serif">“</span>
                     <p class="text-xl text-offwhite/70 font-light italic leading-relaxed mb-8">
-                        La atención al detalle y la atmósfera de paz de este portal son únicas. Un refugio real en medio del ruido digital.
+                        <span class="lang-es">La atención al detalle y la atmósfera de paz de este portal son únicas. Un refugio real en medio del ruido digital.</span>
+                        <span class="lang-en">The attention to detail and the atmosphere of peace in this portal are unique. A real refuge amidst the digital noise.</span>
                     </p>
                     <div class="flex items-center gap-4">
                         <div class="w-10 h-[1px] bg-mint-vibrant/40"></div>
-                        <span class="text-[11px] tracking-[4px] uppercase font-bold text-mint-vibrant">Marcos D. — Madrid</span>
+                        <span class="text-[10px] tracking-[4px] uppercase font-bold text-mint-vibrant">Marcos D.</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Final -->
-    <section id="contacto" class="py-40 text-center relative overflow-hidden">
-        <div class="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-mint-vibrant/5 rounded-full blur-[120px] opacity-30"></div>
-        <div class="max-w-2xl mx-auto px-8 relative z-10">
-            <h2 class="font-serif italic text-5xl text-white mb-12">¿Estás listo para el <br> <span class="not-italic text-glow-mint">Siguiente Paso?</span></h2>
-            <p class="text-offwhite/50 mb-16 font-light">Escríbenos para una consultoría de bienestar personalizada.</p>
-            <a href="mailto:info@saludequilibrio.com" class="btn-mint inline-block px-12 py-5 rounded-full font-bold text-[12px] tracking-[4px] uppercase">
-                Contactar Ahora
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer Escultural -->
-    <footer class="py-32 border-t border-white/5 text-center bg-obsidian">
+    <!-- Footer -->
+    <footer id="contacto" class="py-32 border-t border-white/5 text-center bg-obsidian">
         <div class="max-w-7xl mx-auto px-8 flex flex-col items-center">
-            <div class="text-2xl text-mint-vibrant mb-12 opacity-50"><i class="fa-solid fa-om"></i></div>
+            <h2 class="font-serif italic text-5xl text-white mb-12">
+                <span class="lang-es">¿Comenzamos el <span class="not-italic text-glow-mint">Viaje?</span></span>
+                <span class="lang-en">Shall we begin the <span class="not-italic text-glow-mint">Journey?</span></span>
+            </h2>
+            <a href="mailto:info@saludequilibrio.com" class="btn-mint inline-block px-12 py-5 rounded-full font-bold text-[11px] tracking-[4px] uppercase mb-24">
+                <span class="lang-es inline">Solicitar Información</span>
+                <span class="lang-en inline">Request Information</span>
+            </a>
             <div class="flex gap-12 text-[10px] tracking-[6px] uppercase font-bold text-white/30 mb-20">
                 <a href="#" class="hover:text-mint-vibrant transition-colors">Instagram</a>
-                <a href="#" class="hover:text-mint-vibrant transition-colors">YouTube</a>
-                <a href="#" class="hover:text-mint-vibrant transition-colors">Vimeo</a>
+                <a href="#" class="hover:text-white transition-colors">YouTube</a>
             </div>
-            <p class="text-[10px] tracking-[8px] uppercase font-light text-white/20">© 2026 Salud Equilibrio. Minimalism is the ultimate sophistication.</p>
+            <p class="text-[9px] tracking-[8px] uppercase font-light text-white/20">© 2026 Salud Equilibrio. Minimalism is the ultimate sophistication.</p>
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="main.js"></script>
 </body>
 
 </html>

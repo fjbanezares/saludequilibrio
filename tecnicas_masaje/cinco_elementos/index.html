@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de los 5 Elementos | Salud Equilibrio</title>
+    <meta name="description" content="Explora el modelo de los 5 elementos de la Medicina Tradicional China. Equilibrio energético para cuerpo y mente.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Bodoni Moda', 'serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        obsidian: '#0e0e0e',
+                        gold: {
+                            400: '#d4af37',
+                        },
+                        mint: '#66dd8b',
+                        zen: '#0a0a0a',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        'pulse-slow': {
+                            '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+                            '50%': { opacity: '0.4', transform: 'scale(0.98)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            color: #d1d5db;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(5, 5, 5, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        /* Energy Ball Component */
+        .energy-ball {
+            mix-blend-mode: screen;
+            border-radius: 50%;
+            mask-image: radial-gradient(circle, black 50%, transparent 70%);
+            -webkit-mask-image: radial-gradient(circle, black 50%, transparent 70%);
+            filter: contrast(1.2) brightness(1.1);
+        }
+
+        /* Language Toggle System */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(14, 14, 14, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 1rem;
+            min-width: 160px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .dropdown-content.show { display: block; }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-option:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: #fff;
+        }
+
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-gold-400/30 selection:text-white" data-lang="es">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-blur">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4 group">
+                <span class="text-gold-400 text-[10px] tracking-[5px] uppercase font-bold opacity-80 group-hover:opacity-100 transition-opacity flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span class="lang-es inline">Volver</span>
+                    <span class="lang-en inline">Back</span>
+                </span>
+            </a>
+            
+            <div class="flex items-center gap-8">
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fa-solid fa-chevron-down text-[8px] opacity-50 ml-1"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')">
+                            <span>🇪🇸</span>
+                            <span>Castellano</span>
+                        </div>
+                        <div class="lang-option" onclick="setLanguage('en')">
+                            <span>🇬🇧</span>
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-64 pb-32 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div class="space-y-12">
+                <span class="inline-block text-gold-400 text-[10px] font-bold tracking-[8px] uppercase mb-4 opacity-70">
+                    <span class="lang-es">Medicina Tradicional China</span>
+                    <span class="lang-en">Traditional Chinese Medicine</span>
+                </span>
+                <h1 class="text-6xl md:text-8xl font-serif italic text-white leading-tight">
+                    <span class="lang-es">Los 5 <br>Elementos</span>
+                    <span class="lang-en">The 5 <br>Elements</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-500 font-light leading-relaxed max-w-xl">
+                    <span class="lang-es">Un sistema ancestral para comprender el flujo de la energía vital y restaurar el equilibrio entre cuerpo, mente y espíritu.</span>
+                    <span class="lang-en">An ancestral system to understand the flow of vital energy and restore the balance between body, mind, and spirit.</span>
+                </p>
+            </div>
+            <div class="relative flex justify-center">
+                <div class="w-full max-w-lg relative group">
+                    <div class="absolute inset-0 bg-gold-400/20 blur-[120px] rounded-full"></div>
+                    <img src="../../assets/yinyang_premium.png" alt="Yin Yang Premium" 
+                         class="relative w-full h-auto object-contain animate-pulse-slow energy-ball">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="py-32 px-6 border-t border-white/5 bg-obsidian/30">
+        <div class="max-w-4xl mx-auto text-center space-y-16">
+            <h2 class="text-4xl md:text-6xl font-serif italic text-white">
+                <span class="lang-es">La Danza de la Unidad</span>
+                <span class="lang-en">The Dance of Unity</span>
+            </h2>
+            <p class="text-xl md:text-2xl text-gray-400 font-light leading-relaxed italic px-8">
+                <span class="lang-es">
+                    "El Yin y el Yang no son fuerzas opuestas, sino aspectos de una misma unidad. Como el día y la noche, uno no puede existir sin el otro; se engendran, se transforman y se contienen mutuamente. En el cuerpo, la salud no es un estado estático, sino un equilibrio dinámico."
+                </span>
+                <span class="lang-en">
+                    "Yin and Yang are not opposing forces, but aspects of the same unity. Like day and night, one cannot exist without the other; they engender, transform, and mutually contain each other. In the body, health is not a static state, but a dynamic balance."
+                </span>
+            </p>
+            <div class="w-16 h-[1px] bg-gold-400/30 mx-auto"></div>
+            <p class="text-lg text-gray-500 font-light leading-relaxed max-w-3xl mx-auto">
+                <span class="lang-es">
+                    No hay energía "buena" o "mala", solo estados de armonía o discordancia. La enfermedad es simplemente un grito del sistema ante un exceso que sofoca o una carencia que debilita. Nuestra labor es escuchar ese pulso y permitir que la danza natural del Ki recupere su ritmo original.
+                </span>
+                <span class="lang-en">
+                    There is no "good" or "bad" energy, only states of harmony or discord. Illness is simply a cry from the system in the face of an excess that suffocates or a deficiency that weakens. Our task is to listen to that pulse and allow the natural dance of Ki to recover its original rhythm.
+                </span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Diagnostic Details -->
+    <section class="py-32 px-6 border-t border-white/5">
+        <div class="max-w-4xl mx-auto space-y-16">
+            
+            <div class="glass-card p-12 rounded-[3rem] space-y-8">
+                <h2 class="text-3xl font-serif italic text-white">
+                    <span class="lang-es">Diagnóstico Energético</span>
+                    <span class="lang-en">Energetic Diagnosis</span>
+                </h2>
+                <p class="text-gray-400 font-light leading-relaxed">
+                    <span class="lang-es">A través de este modelo, se analizarán tanto síntomas físicos como psicológicos para identificar desequilibrios en los diferentes elementos energéticos, determinando cuáles necesitan ser <strong>tonificados o relajados</strong>.</span>
+                    <span class="lang-en">Through this model, both physical and psychological symptoms will be analyzed to identify imbalances in the different energy elements, determining which ones need to be <strong>tonified or relaxed</strong>.</span>
+                </p>
+                <p class="text-gray-400 font-light leading-relaxed">
+                    <span class="lang-es">Utilizando técnicas diagnósticas de la medicina china, se podrá elegir una terapia adecuada, como acupuntura, masaje, o tratamientos con hierbas. También se considerarán ajustes en el estilo de vida y decisiones conductuales que apoyen la resolución de experiencias y el equilibrio energético.</span>
+                    <span class="lang-en">Using diagnostic techniques from Chinese medicine, an appropriate therapy can be chosen, such as acupuncture, massage, or herbal treatments. Lifestyle adjustments and behavioral decisions that support the resolution of experiences and energetic balance will also be considered.</span>
+                </p>
+            </div>
+
+            <div class="glass-card p-12 rounded-[3rem] space-y-8 border-gold-400/10">
+                <h2 class="text-3xl font-serif italic text-white">
+                    <span class="lang-es">Alineación Holística</span>
+                    <span class="lang-en">Holistic Alignment</span>
+                </h2>
+                <p class="text-gray-400 font-light leading-relaxed">
+                    <span class="lang-es">Para consolidar este equilibrio, se introducirá una técnica de meditación que ayude a alinear y articular cuerpo, emociones, mente y espíritu. Esta práctica busca que las terapias no solo traten síntomas, sino que permitan alcanzar el máximo potencial personal.</span>
+                    <span class="lang-en">To consolidate this balance, a meditation technique will be introduced to help align and articulate body, emotions, mind, and spirit. This practice seeks to ensure that therapies not only treat symptoms but also allow for achieving maximum personal potential.</span>
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center text-[10px] tracking-[6px] uppercase font-bold text-gray-600">
+        <p>© 2026 Salud Equilibrio. Minimalism is the ultimate sophistication.</p>
+    </footer>
+
+    <!-- Global Scripts -->
+    <script src="../../main.js"></script>
+
+</body>
+
+</html>

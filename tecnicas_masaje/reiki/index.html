@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reiki: Sanación Energética | Salud Equilibrio</title>
+    <meta name="description" content="Descubre el Reiki en Salud Equilibrio. Equilibrio, armonía y conexión con la energía universal para sanar cuerpo, mente y espíritu.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Bodoni Moda', 'serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        obsidian: '#0e0e0e',
+                        gold: {
+                            400: '#d4af37',
+                        },
+                        ethereal: '#f0f4f8',
+                        zen: '#0a0a0a',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        'pulse-slow': {
+                            '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+                            '50%': { opacity: '0.4', transform: 'scale(0.95)' },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            color: #d1d5db;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(5, 5, 5, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        /* Energy Ball Component */
+        .energy-ball {
+            mix-blend-mode: screen;
+            border-radius: 50%;
+            mask-image: radial-gradient(circle, black 50%, transparent 70%);
+            -webkit-mask-image: radial-gradient(circle, black 50%, transparent 70%);
+            filter: contrast(1.2) brightness(1.1);
+        }
+
+        /* Language Toggle System */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(14, 14, 14, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 1rem;
+            min-width: 160px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .dropdown-content.show { display: block; }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-option:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: #fff;
+        }
+
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-gold-400/30 selection:text-white" data-lang="es">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-blur">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4 group">
+                <span class="text-gold-400 text-[10px] tracking-[5px] uppercase font-bold opacity-80 group-hover:opacity-100 transition-opacity flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span class="lang-es inline">Volver</span>
+                    <span class="lang-en inline">Back</span>
+                </span>
+            </a>
+            
+            <div class="flex items-center gap-8">
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fa-solid fa-chevron-down text-[8px] opacity-50 ml-1"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')">
+                            <span>🇪🇸</span>
+                            <span>Castellano</span>
+                        </div>
+                        <div class="lang-option" onclick="setLanguage('en')">
+                            <span>🇬🇧</span>
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-64 pb-32 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div class="space-y-12">
+                <div class="flex items-center gap-4">
+                    <span class="inline-block text-gold-400 text-[10px] font-bold tracking-[8px] uppercase opacity-70">Reiki</span>
+                    <!-- Small Energy Ball Skill Example -->
+                    <div class="w-8 h-8">
+                        <img src="../../assets/yinyang_premium.png" class="energy-ball w-full h-full animate-pulse-slow">
+                    </div>
+                </div>
+                <h1 class="text-6xl md:text-8xl font-serif italic text-white leading-tight">
+                    <span class="lang-es">El Arte de <br>Sanar sin Tocar</span>
+                    <span class="lang-en">The Art of <br>Healing without Touch</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-500 font-light leading-relaxed max-w-xl">
+                    <span class="lang-es">Canalizamos la energía universal para restaurar el equilibrio físico, mental y emocional. Una técnica de amor y presencia pura.</span>
+                    <span class="lang-en">We channel universal energy to restore physical, mental, and emotional balance. A technique of pure love and presence.</span>
+                </p>
+                <div class="flex items-center gap-6">
+                    <span class="text-[10px] tracking-[4px] uppercase font-bold text-gold-400 border border-gold-400/20 px-4 py-2 rounded-full">
+                        <span class="lang-es inline">Formación en 3 Niveles</span>
+                        <span class="lang-en inline">3 Levels of Training</span>
+                    </span>
+                </div>
+            </div>
+            <div class="relative flex justify-center">
+                <img src="../../assets/reiki_premium.png" alt="Reiki Hands" class="w-full rounded-[3rem] shadow-2xl border border-white/5 opacity-80 animate-float">
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Sections -->
+    <section class="py-32 px-6 border-t border-white/5 bg-obsidian/30">
+        <div class="max-w-4xl mx-auto space-y-32">
+            
+            <!-- Barrido Energético -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <h2 class="text-3xl font-serif italic text-white">
+                        <span class="lang-es">Limpieza de Aura</span>
+                        <span class="lang-en">Aura Cleansing</span>
+                    </h2>
+                    <p class="text-gray-400 font-light leading-relaxed">
+                        <span class="lang-es">Con la técnica de <strong>Barrido Energético</strong>, "limpiamos" el aura o campo energético, eliminando bloqueos o energías estancadas y permitiendo un flujo libre de vitalidad.</span>
+                        <span class="lang-en">With the <strong>Energy Sweeping</strong> technique, we "cleanse" the aura or energetic field, eliminating blocks or stagnant energies and allowing a free flow of vitality.</span>
+                    </p>
+                </div>
+                <div class="glass-card p-10 rounded-[3rem] text-center">
+                    <!-- Small Energy Ball as decorative element -->
+                    <div class="w-24 h-24 mx-auto mb-6">
+                        <img src="../../assets/yinyang_premium.png" class="energy-ball w-full h-full animate-pulse-slow">
+                    </div>
+                    <p class="text-xs tracking-[2px] uppercase text-gold-400 font-bold">
+                        <span class="lang-es">Flujo Vital</span>
+                        <span class="lang-en">Vital Flow</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Símbolos Sagrados -->
+            <div class="space-y-12 text-center">
+                <h2 class="text-3xl md:text-5xl font-serif italic text-white">
+                    <span class="lang-es">Símbolos y Chakras</span>
+                    <span class="lang-en">Symbols and Chakras</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div class="glass-card p-12 rounded-[3rem] space-y-6">
+                        <div class="text-gold-400 text-3xl"><i class="fa-light fa-om"></i></div>
+                        <h3 class="text-xl font-serif italic text-white">
+                            <span class="lang-es">Cho Ku Rei</span>
+                            <span class="lang-en">Cho Ku Rei</span>
+                        </h3>
+                        <p class="text-sm text-gray-500 font-light">
+                            <span class="lang-es">Utilizamos símbolos sagrados que representan diferentes intenciones de sanación y protección, potenciando el efecto de la terapia.</span>
+                            <span class="lang-en">We use sacred symbols that represent different intentions of healing and protection, enhancing the effect of the therapy.</span>
+                        </p>
+                    </div>
+                    <div class="glass-card p-12 rounded-[3rem] space-y-6">
+                        <div class="text-gold-400 text-3xl"><i class="fa-light fa-sun"></i></div>
+                        <h3 class="text-xl font-serif italic text-white">
+                            <span class="lang-es">Centros Energéticos</span>
+                            <span class="lang-en">Energy Centers</span>
+                        </h3>
+                        <p class="text-sm text-gray-500 font-light">
+                            <span class="lang-es">Nos enfocamos en los principales chakras, buscando equilibrarlos y liberar bloqueos específicos para restaurar el bienestar integral.</span>
+                            <span class="lang-en">We focus on the main chakras, seeking to balance them and release specific blocks to restore holistic well-being.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Distancia -->
+            <div class="glass-card p-16 rounded-[4rem] text-center italic border-gold-400/20">
+                <h2 class="text-3xl font-serif text-gold-400 mb-8">
+                    <span class="lang-es">Sanación a Distancia</span>
+                    <span class="lang-en">Distance Healing</span>
+                </h2>
+                <p class="text-gray-400 font-light leading-relaxed text-lg">
+                    <span class="lang-es">La energía no conoce barreras físicas. Mediante símbolos y concentración, enviamos energía sanadora a cualquier lugar, permitiendo sesiones de Reiki sin necesidad de presencia física.</span>
+                    <span class="lang-en">Energy knows no physical barriers. Through symbols and concentration, we send healing energy anywhere, allowing Reiki sessions without the need for physical presence.</span>
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center text-[10px] tracking-[6px] uppercase font-bold text-gray-600">
+        <p>© 2026 Salud Equilibrio. Minimalism is the ultimate sophistication.</p>
+    </footer>
+
+    <!-- Global Scripts -->
+    <script src="../../main.js"></script>
+
+</body>
+
+</html>

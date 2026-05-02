@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titulados Masunaga | Salud Equilibrio</title>
+    <meta name="description" content="Terapeutas titulados por la prestigiosa Escuela de Shiatsu Masunaga. Compromiso con la sanación profunda.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Bodoni Moda', 'serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        obsidian: '#0e0e0e',
+                        gold: {
+                            400: '#d4af37',
+                        },
+                        mint: '#66dd8b',
+                        zen: '#0a0a0a',
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            color: #d1d5db;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(5, 5, 5, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        /* Language Toggle System */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(14, 14, 14, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 1rem;
+            min-width: 160px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .dropdown-content.show { display: block; }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-option:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: #fff;
+        }
+
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-gold-400/30 selection:text-white" data-lang="es">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-blur">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4 group">
+                <span class="text-gold-400 text-[10px] tracking-[5px] uppercase font-bold opacity-80 group-hover:opacity-100 transition-opacity flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span class="lang-es inline">Volver</span>
+                    <span class="lang-en inline">Back</span>
+                </span>
+            </a>
+            
+            <div class="flex items-center gap-8">
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fa-solid fa-chevron-down text-[8px] opacity-50 ml-1"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')">
+                            <span>🇪🇸</span>
+                            <span>Castellano</span>
+                        </div>
+                        <div class="lang-option" onclick="setLanguage('en')">
+                            <span>🇬🇧</span>
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-64 pb-32 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div class="space-y-12">
+                <span class="inline-block text-gold-400 text-[10px] font-bold tracking-[8px] uppercase mb-4 opacity-70">
+                    <span class="lang-es">Certificación Profesional</span>
+                    <span class="lang-en">Professional Certification</span>
+                </span>
+                <h1 class="text-6xl md:text-8xl font-serif italic text-white leading-tight">
+                    <span class="lang-es">Escuela <br>Masunaga</span>
+                    <span class="lang-en">Masunaga <br>School</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-500 font-light leading-relaxed max-w-xl">
+                    <span class="lang-es">Terapeutas titulados por la prestigiosa Escuela de Shiatsu Masunaga, comprometidos con la sanación profunda y el bienestar holístico.</span>
+                    <span class="lang-en">Licensed therapists from the prestigious Masunaga Shiatsu School, committed to deep healing and holistic well-being.</span>
+                </p>
+            </div>
+            <div class="relative">
+                <img src="../../assets/massage_premium.png" alt="Masunaga Technique" class="w-full rounded-[3rem] shadow-2xl border border-white/5 opacity-80">
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-32 px-6 border-t border-white/5">
+        <div class="max-w-4xl mx-auto space-y-24">
+            
+            <div class="glass-card p-12 rounded-[3rem] space-y-8">
+                <h2 class="text-3xl md:text-5xl font-serif italic text-white">
+                    <span class="lang-es">Un Linaje de Sabiduría</span>
+                    <span class="lang-en">A Lineage of Wisdom</span>
+                </h2>
+                <p class="text-gray-400 font-light leading-relaxed">
+                    <span class="lang-es">Cada masaje es una oportunidad para reconectar con tu bienestar. Somos terapeutas titulados por la prestigiosa Escuela de Shiatsu, comprometidos con ofrecer una terapia que va más allá de la relajación superficial.</span>
+                    <span class="lang-en">Each massage is an opportunity to reconnect with your well-being. We are licensed therapists from the prestigious Shiatsu School, committed to offering therapy that goes beyond superficial relaxation.</span>
+                </p>
+                <p class="text-gray-400 font-light leading-relaxed">
+                    <span class="lang-es">El Shiatsu que practicamos está basado en los conocimientos tradicionales y técnicas avanzadas que ayudan a restaurar el equilibrio natural de tu cuerpo, liberar tensiones y revitalizar tu energía.</span>
+                    <span class="lang-en">The Shiatsu we practice is based on traditional knowledge and advanced techniques that help restore the body's natural balance, release tensions, and revitalize your energy.</span>
+                </p>
+            </div>
+
+            <div class="glass-card p-16 rounded-[4rem] text-center italic border-gold-400/20">
+                <p class="text-2xl text-gold-400 font-serif mb-8">
+                    <span class="lang-es">"Sumérgete en la auténtica experiencia del Shiatsu con profesionales certificados"</span>
+                    <span class="lang-en">"Immerse yourself in the authentic Shiatsu experience with certified professionals"</span>
+                </p>
+                <p class="text-gray-400 font-light leading-relaxed">
+                    <span class="lang-es">Confía en nuestras manos expertas y vive un masaje que no solo cuida tu cuerpo, sino que también armoniza tu mente y espíritu.</span>
+                    <span class="lang-en">Trust our expert hands and experience a massage that not only cares for your body but also harmonizes your mind and spirit.</span>
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center text-[10px] tracking-[6px] uppercase font-bold text-gray-600">
+        <p>© 2026 Salud Equilibrio. Minimalism is the ultimate sophistication.</p>
+    </footer>
+
+    <!-- Global Scripts -->
+    <script src="../../main.js"></script>
+
+</body>
+
+</html>

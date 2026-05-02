@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis: La Enzima Prodigiosa vs. Medicina Moderna</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Language Toggle System */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(30, 27, 75, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            min-width: 160px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .dropdown-content.show { display: block; }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans h-screen flex overflow-hidden" data-lang="es">
+
+    <aside
+        class="w-full md:w-1/3 lg:w-1/4 bg-indigo-900 text-white flex flex-col h-full shadow-xl z-10 transition-transform duration-300 absolute md:relative transform -translate-x-full md:translate-x-0"
+        id="sidebar">
+        <div class="p-6 border-b border-indigo-800 flex flex-col gap-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">
+                        <span class="lang-es">Análisis Crítico</span>
+                        <span class="lang-en">Critical Analysis</span>
+                    </h1>
+                    <p class="text-indigo-300 text-sm mt-1">
+                        <span class="lang-es">La Enzima Prodigiosa</span>
+                        <span class="lang-en">The Enzyme Factor</span>
+                    </p>
+                </div>
+                <button id="close-sidebar" class="md:hidden text-white text-2xl font-bold px-2">&times;</button>
+            </div>
+            
+            <!-- Language Dropdown -->
+            <div style="position: relative; display: inline-block;">
+                <div class="lang-trigger" onclick="toggleDropdown(event)">
+                    <span id="current-flag">🇪🇸</span>
+                    <span id="current-lang-text">ES</span>
+                    <i class="fa-solid fa-chevron-down text-[8px] opacity-50 ml-1"></i>
+                </div>
+                <div class="dropdown-content" id="lang-dropdown">
+                    <div class="lang-option" onclick="setLanguage('es')">
+                        <span>🇪🇸</span>
+                        <span>Castellano</span>
+                    </div>
+                    <div class="lang-option" onclick="setLanguage('en')">
+                        <span>🇬🇧</span>
+                        <span>English</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-4 bg-indigo-800 text-sm text-indigo-200">
+            <span class="lang-es">Selecciona una sección para explorar el contraste médico.</span>
+            <span class="lang-en">Select a section to explore the medical contrast.</span>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto py-4" id="nav-chapters">
+            <!-- Navigation items injected via JS -->
+        </nav>
+
+        <div class="p-4 border-t border-indigo-800 text-xs text-indigo-400 text-center">
+            <span class="lang-es">Basado en evidencia médica actual</span>
+            <span class="lang-en">Based on current medical evidence</span>
+        </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden relative">
+
+        <header class="bg-white shadow-sm p-4 flex items-center justify-between z-0">
+            <div class="flex items-center">
+                <button id="open-sidebar" class="md:hidden mr-4 text-indigo-900 text-2xl">&#9776;</button>
+                <h2 class="text-xl font-semibold text-slate-700 truncate" id="header-title">Contexto General</h2>
+            </div>
+            <div class="text-sm px-3 py-1 bg-slate-100 rounded-full text-slate-600 font-medium">
+                Dr. Hiromi Shinya (2005)
+            </div>
+        </header>
+
+        <div class="flex-1 overflow-y-auto p-4 md:p-8 bg-slate-50" id="main-content">
+
+            <div id="intro-section" class="max-w-4xl mx-auto mb-8">
+                <p class="text-lg text-slate-600 mb-6 border-l-4 border-indigo-500 pl-4">
+                    <span class="lang-es">Esta herramienta interactiva desglosa las premisas del bestseller mundial "La enzima prodigiosa". El Dr. Shinya, un brillante cirujano pionero en colonoscopia, propuso una teoría dietética que cautivó al mundo. Sin embargo, ¿qué dice la ciencia moderna sobre sus afirmaciones?</span>
+                    <span class="lang-en">This interactive tool breaks down the premises of the world bestseller "The Enzyme Factor". Dr. Shinya, a brilliant surgeon and pioneer in colonoscopy, proposed a dietary theory that captivated the world. However, what does modern science say about his claims?</span>
+                </p>
+            </div>
+
+            <div id="chapter-content" class="max-w-5xl mx-auto hidden fade-in">
+                <div class="mb-6">
+                    <h3 id="content-title" class="text-3xl font-bold text-slate-800 mb-2"></h3>
+                    <p id="content-desc" class="text-slate-600"></p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-amber-50 border border-amber-200 rounded-xl p-6 shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <span class="text-2xl mr-2">📖</span>
+                            <h4 class="text-xl font-bold text-amber-900">
+                                <span class="lang-es">Lo que dice el Dr. Shinya</span>
+                                <span class="lang-en">What Dr. Shinya Says</span>
+                            </h4>
+                        </div>
+                        <ul id="shinya-points" class="space-y-3 text-amber-800">
+                            <!-- JS injected -->
+                        </ul>
+                    </div>
+
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-6 shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <span class="text-2xl mr-2">🔬</span>
+                            <h4 class="text-xl font-bold text-emerald-900">
+                                <span class="lang-es">El Consenso Médico Actual</span>
+                                <span class="lang-en">Current Medical Consensus</span>
+                            </h4>
+                        </div>
+                        <ul id="modern-points" class="space-y-3 text-emerald-800">
+                            <!-- JS injected -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="chart-section"
+                class="max-w-4xl mx-auto mt-12 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <h3 class="text-xl font-bold text-slate-800 mb-2 text-center">
+                    <span class="lang-es">Comparativa de Modelos Dietéticos</span>
+                    <span class="lang-en">Dietary Models Comparison</span>
+                </h3>
+                <p class="text-sm text-slate-500 text-center mb-6">
+                    <span class="lang-es">Comparación entre la dieta propuesta por Shinya y la Dieta Mediterránea (respaldada por la ciencia).</span>
+                    <span class="lang-en">Comparison between Shinya's proposed diet and the Mediterranean Diet (backed by science).</span>
+                </p>
+                <div class="chart-container">
+                    <canvas id="dietChart"></canvas>
+                </div>
+                <div class="mt-6 text-sm text-slate-600 bg-slate-50 p-4 rounded-lg">
+                    <strong>💡 <span class="lang-es">Nota:</span><span class="lang-en">Note:</span></strong> 
+                    <span class="lang-es">La dieta de Shinya es estructuralmente muy sana (alta en vegetales, baja en procesados). El problema para la medicina moderna no es su menú, sino el <strong>mecanismo de acción que él inventa</strong> (las "enzimas madre") para justificarla, el cual carece de base fisiológica.</span>
+                    <span class="lang-en">Shinya's diet is structurally very healthy (high in vegetables, low in processed foods). The problem for modern medicine is not his menu, but the <strong>mechanism of action he invents</strong> ("source enzymes") to justify it, which lacks a physiological basis.</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        const contentData = [
+            {
+                id: "intro",
+                title: { es: "Introducción: El Genio y el Mito", en: "Introduction: The Genius and the Myth" },
+                desc: { es: "Conociendo al Dr. Hiromi Shinya y la base fundamental de su libro.", en: "Getting to know Dr. Hiromi Shinya and the fundamental basis of his book." },
+                shinya: {
+                    es: [
+                        "El cuerpo posee una reserva finita de 'Enzimas Basales' o 'Enzimas Madre' (source enzymes).",
+                        "Todas las enfermedades surgen cuando agotamos esta reserva enzimática por mala alimentación y malos hábitos.",
+                        "La medicina moderna se equivoca al tratar síntomas; debe enfocarse en preservar estas enzimas."
+                    ],
+                    en: [
+                        "The body possesses a finite reserve of 'Basal Enzymes' or 'Source Enzymes'.",
+                        "All diseases arise when we deplete this enzymatic reserve through poor diet and habits.",
+                        "Modern medicine is wrong to treat symptoms; it should focus on preserving these enzymes."
+                    ]
+                },
+                modern: {
+                    es: [
+                        "El Dr. Shinya es un genio innegable de la cirugía: inventó la polipectomía endoscópica con asa, salvando millones de vidas.",
+                        "La 'Enzima Madre' NO EXISTE en la biología. El cuerpo sintetiza enzimas continuamente a partir de aminoácidos (proteínas), no tenemos un 'banco' que se agote.",
+                        "Las enzimas que comemos se destruyen en el estómago y se descomponen en aminoácidos antes de absorberse."
+                    ],
+                    en: [
+                        "Dr. Shinya is an undeniable surgical genius: he invented the snare endoscopic polypectomy, saving millions of lives.",
+                        "The 'Source Enzyme' DOES NOT EXIST in biology. The body continuously synthesizes enzymes from amino acids (proteins); we don't have a 'bank' that depletes.",
+                        "Enzymes we eat are destroyed in the stomach and broken down into amino acids before being absorbed."
+                    ]
+                }
+            },
+            {
+                id: "cap1",
+                title: { es: "Capítulo 1: Errores y Verdades (Lácteos y Carne)", en: "Chapter 1: Errors and Truths (Dairy and Meat)" },
+                desc: { es: "Sus posturas más polémicas sobre los alimentos de origen animal.", en: "His most controversial stances on animal-based foods." },
+                shinya: {
+                    es: [
+                        "Beber leche de vaca es perjudicial, causa osteoporosis y alergias. Es el 'peor alimento'.",
+                        "El consumo de carne arruina el intestino, creando 'fases intestinales' sucias y rígidas.",
+                        "Recomienda eliminar los lácteos por completo y reducir la proteína animal al mínimo."
+                    ],
+                    en: [
+                        "Drinking cow's milk is harmful, causes osteoporosis and allergies. It's the 'worst food'.",
+                        "Meat consumption ruins the intestine, creating dirty and rigid 'intestinal phases'.",
+                        "He recommends eliminating dairy completely and reducing animal protein to a minimum."
+                    ]
+                },
+                modern: {
+                    es: [
+                        "La leche no es veneno, pero gran parte de la población adulta es intolerante a la lactosa.",
+                        "El consumo excesivo de carnes rojas y procesadas está vinculado al cáncer colorrectal (OMS).",
+                        "Lo que él veía como 'intestinos feos' hoy se explica mejor por el daño al microbioma intestinal."
+                    ],
+                    en: [
+                        "Milk is not poison, but a large part of the adult population is lactose intolerant.",
+                        "Excessive consumption of red and processed meats is linked to colorectal cancer (WHO).",
+                        "What he saw as 'ugly intestines' is better explained today by damage to the intestinal microbiome."
+                    ]
+                }
+            },
+            {
+                id: "cap2",
+                title: { es: "Capítulo 2: La Dieta de la Enzima Prodigiosa", en: "Chapter 2: The Enzyme Factor Diet" },
+                desc: { es: "La proporción ideal de alimentos según el autor.", en: "The ideal proportion of foods according to the author." },
+                shinya: {
+                    es: [
+                        "Proporción ideal: 85-90% vegetales, 10-15% proteína animal (pescado).",
+                        "Masticar cada bocado de 30 a 50 veces para ahorrar enzimas.",
+                        "Beber mucha 'buena agua' estructurada antes de las comidas.",
+                        "Evitar grasas oxidadas y alimentos fritos."
+                    ],
+                    en: [
+                        "Ideal proportion: 85-90% vegetables, 10-15% animal protein (fish).",
+                        "Chew each bite 30 to 50 times to save enzymes.",
+                        "Drink plenty of 'good water' structured before meals.",
+                        "Avoid oxidized fats and fried foods."
+                    ]
+                },
+                modern: {
+                    es: [
+                        "La proporción 85% plantas / 15% animal es excelente, similar a las Blue Zones.",
+                        "Masticar bien mejora la saciedad y la digestión mecánica.",
+                        "La ciencia contemporánea ha investigado el papel del agua electrolizada o rica en hidrógeno. El hidrógeno activo puede actuar como un neutralizador de radicales libres, alineándose con la visión de Shinya sobre la capacidad reductora del agua para prevenir el daño celular. <a href='https://docs.google.com/document/d/1QCa6hBVLpdINwieijEllD1j70AvE7pXka2fG6qe5L9s/edit?usp=sharing' target='_blank' class='text-indigo-600 underline font-bold'>[Ver Análisis Científico]</a>",
+                        "Acuerdo total: las grasas trans y aceites oxidados son altamente inflamatorios."
+                    ],
+                    en: [
+                        "The 85% plants / 15% animal proportion is excellent, similar to the Blue Zones.",
+                        "Chewing well improves satiety and mechanical digestion.",
+                        "Contemporary science has investigated the role of electrolyzed or hydrogen-rich water. Active hydrogen can act as a free radical neutralizer, aligning with Shinya's vision on the importance of the water's reducing capacity to prevent cellular damage. <a href='https://docs.google.com/document/d/1QCa6hBVLpdINwieijEllD1j70AvE7pXka2fG6qe5L9s/edit?usp=sharing' target='_blank' class='text-indigo-600 underline font-bold'>[View Scientific Analysis]</a>",
+                        "Total agreement: trans fats and oxidized oils are highly inflammatory."
+                    ]
+                }
+            },
+            {
+                id: "cap3",
+                title: { es: "Capítulo 3: Hábitos de los Ricos y Saludables", en: "Chapter 3: Habits of the Healthy and Wealthy" },
+                desc: { es: "Prácticas de estilo de vida beneficiosas.", en: "Beneficial lifestyle practices." },
+                shinya: {
+                    es: [
+                        "Cenar temprano, dejar el estómago vacío antes de dormir.",
+                        "Tomar siestas cortas después de comer.",
+                        "Recomienda el uso de enemas de café para 'limpiar' el colon."
+                    ],
+                    en: [
+                        "Eat dinner early, leave the stomach empty before sleeping.",
+                        "Take short naps after eating.",
+                        "He recommends coffee enemas to 'cleanse' the colon."
+                    ]
+                },
+                modern: {
+                    es: [
+                        "Cenar temprano se alinea con la crononutrición moderna y el ayuno intermitente.",
+                        "Las siestas cortas (power naps) reducen el estrés cardiovascular.",
+                        "⚠️ PELIGRO: La gastroenterología moderna rechaza los enemas de café por riesgo de perforación e infección."
+                    ],
+                    en: [
+                        "Eating dinner early aligns with modern chrononutrition and intermittent fasting.",
+                        "Short naps (power naps) reduce cardiovascular stress.",
+                        "⚠️ DANGER: Modern gastroenterology rejects coffee enemas due to the risk of perforation and infection."
+                    ]
+                }
+            },
+            {
+                id: "cap4",
+                title: { es: "Capítulo 4: El Guion de tu Vida (Mente y Cuerpo)", en: "Chapter 4: The Script of Your Life (Mind and Body)" },
+                desc: { es: "La conexión psicológica y emocional con la salud.", en: "The psychological and emotional connection with health." },
+                shinya: {
+                    es: [
+                        "Estar enamorado y ser feliz genera 'enzimas madre'.",
+                        "El estrés agota rápidamente las reservas de enzimas.",
+                        "La voluntad de vivir puede revertir padecimientos severos."
+                    ],
+                    en: [
+                        "Being in love and being happy generates 'source enzymes'.",
+                        "Stress quickly depletes enzyme reserves.",
+                        "The will to live can reverse severe conditions."
+                    ]
+                },
+                modern: {
+                    es: [
+                        "La Psiconeuroinmunología demuestra que el estrés crónico suprime el sistema inmune.",
+                        "Las emociones positivas mejoran los pronósticos médicos por modulación hormonal.",
+                        "Shinya tenía una intuición clínica correcta sobre el bienestar mental."
+                    ],
+                    en: [
+                        "Psychoneuroimmunology shows that chronic stress suppresses the immune system.",
+                        "Positive emotions improve medical outcomes through hormonal modulation.",
+                        "Shinya had a correct clinical intuition about mental well-being."
+                    ]
+                }
+            }
+        ];
+
+        let myChart = null;
+        let currentLang = localStorage.getItem('selectedLanguage') || 'es';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem('selectedLanguage', lang);
+            
+            // Update UI elements
+            const flag = lang === 'es' ? '🇪🇸' : '🇬🇧';
+            const text = lang === 'es' ? 'ES' : 'EN';
+            document.getElementById('current-flag').innerText = flag;
+            document.getElementById('current-lang-text').innerText = text;
+            
+            renderSidebar();
+            loadContent(currentIndex);
+            updateChart();
+        }
+
+        function toggleDropdown(e) {
+            e.stopPropagation();
+            document.getElementById('lang-dropdown').classList.toggle('show');
+        }
+
+        window.onclick = function() {
+            document.getElementById('lang-dropdown').classList.remove('show');
+        }
+
+        let currentIndex = 0;
+
+        function renderSidebar() {
+            const nav = document.getElementById('nav-chapters');
+            nav.innerHTML = '';
+            contentData.forEach((item, index) => {
+                const title = item.title[currentLang];
+                const btn = document.createElement('button');
+                btn.className = `w-full text-left px-6 py-3 hover:bg-indigo-700 transition-colors duration-200 border-l-4 ${index === currentIndex ? 'border-indigo-400 bg-indigo-800' : 'border-transparent'}`;
+                btn.innerHTML = `<span class="block font-medium">${title.split(':')[0]}</span><span class="text-xs text-indigo-300 truncate block">${title.split(':')[1] || ''}</span>`;
+                btn.onclick = () => {
+                    currentIndex = index;
+                    document.querySelectorAll('#nav-chapters button').forEach(b => {
+                        b.classList.remove('border-indigo-400', 'bg-indigo-800');
+                        b.classList.add('border-transparent');
+                    });
+                    btn.classList.remove('border-transparent');
+                    btn.classList.add('border-indigo-400', 'bg-indigo-800');
+                    loadContent(index);
+                    if (window.innerWidth < 768) toggleSidebar();
+                };
+                nav.appendChild(btn);
+            });
+        }
+
+        function loadContent(index) {
+            const data = contentData[index];
+            const contentDiv = document.getElementById('chapter-content');
+
+            contentDiv.classList.remove('fade-in');
+            void contentDiv.offsetWidth;
+            contentDiv.classList.add('fade-in');
+            contentDiv.classList.remove('hidden');
+
+            document.getElementById('content-title').innerText = data.title[currentLang];
+            document.getElementById('content-desc').innerText = data.desc[currentLang];
+
+            const shinyaUl = document.getElementById('shinya-points');
+            shinyaUl.innerHTML = data.shinya[currentLang].map(point => `<li class="flex items-start"><span class="mr-2 mt-1">🔸</span><span>${point}</span></li>`).join('');
+
+            const modernUl = document.getElementById('modern-points');
+            modernUl.innerHTML = data.modern[currentLang].map(point => {
+                const isWarning = point.includes('PELIGRO') || point.includes('NO EXISTE') || point.includes('DANGER') || point.includes('DOES NOT EXIST');
+                const icon = isWarning ? '⚠️' : '✅';
+                const boldClass = isWarning ? 'font-bold text-red-700' : '';
+                return `<li class="flex items-start"><span class="mr-2 mt-1">${icon}</span><span class="${boldClass}">${point}</span></li>`;
+            }).join('');
+        }
+
+        function updateChart() {
+            if (myChart) {
+                myChart.data.labels = currentLang === 'es' ? 
+                    ['Base Vegetal', 'Bajo en Procesados', 'Agua/Hidratación', 'Base Científica', 'Lácteos (Permitidos)', 'Carne (Permitida)'] :
+                    ['Plant Based', 'Low Processed', 'Water/Hydration', 'Scientific Basis', 'Dairy (Allowed)', 'Meat (Allowed)'];
+                myChart.data.datasets[0].label = currentLang === 'es' ? 'Dieta Enzima Prodigiosa' : 'Enzyme Factor Diet';
+                myChart.data.datasets[1].label = currentLang === 'es' ? 'Dieta Mediterránea (Ciencia)' : 'Mediterranean Diet (Science)';
+                myChart.update();
+            }
+        }
+
+        function initChart() {
+            const ctx = document.getElementById('dietChart').getContext('2d');
+            myChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: currentLang === 'es' ? 
+                        ['Base Vegetal', 'Bajo en Procesados', 'Agua/Hidratación', 'Base Científica', 'Lácteos (Permitidos)', 'Carne (Permitida)'] :
+                        ['Plant Based', 'Low Processed', 'Water/Hydration', 'Scientific Basis', 'Dairy (Allowed)', 'Meat (Allowed)'],
+                    datasets: [{
+                        label: currentLang === 'es' ? 'Dieta Enzima Prodigiosa' : 'Enzyme Factor Diet',
+                        data: [90, 95, 100, 40, 0, 15],
+                        fill: true,
+                        backgroundColor: 'rgba(245, 158, 11, 0.2)',
+                        borderColor: 'rgb(245, 158, 11)',
+                        pointBackgroundColor: 'rgb(245, 158, 11)'
+                    }, {
+                        label: currentLang === 'es' ? 'Dieta Mediterránea (Ciencia)' : 'Mediterranean Diet (Science)',
+                        data: [80, 90, 80, 100, 40, 30],
+                        fill: true,
+                        backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                        borderColor: 'rgb(16, 185, 129)',
+                        pointBackgroundColor: 'rgb(16, 185, 129)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            ticks: { display: false, min: 0, max: 100 }
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+        }
+
+        const sidebar = document.getElementById('sidebar');
+        const openBtn = document.getElementById('open-sidebar');
+        const closeBtn = document.getElementById('close-sidebar');
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('-translate-x-full');
+        }
+
+        openBtn.addEventListener('click', toggleSidebar);
+        closeBtn.addEventListener('click', toggleSidebar);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setLanguage(currentLang);
+            initChart();
+        });
+    </script>
+</body>
+
+</html>
