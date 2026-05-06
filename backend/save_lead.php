@@ -25,7 +25,8 @@ try {
     $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (\PDOException $e) {
     http_response_code(500);
-    echo json_encode(['error' => 'Error de conexión a la base de datos.']);
+    // Temporalmente mostramos el error exacto para saber por qué falla
+    echo json_encode(['error' => 'Error de BD: ' . $e->getMessage()]);
     exit;
 }
 
@@ -52,9 +53,39 @@ try {
     $stmt = $pdo->prepare("INSERT INTO leads (name, email, phone) VALUES (?, ?, ?)");
     $stmt->execute([$name, $email, $phone]);
     
-    // Aquí podrías configurar el envío del eBook por email usando mail() o una librería como PHPMailer.
+    // --- LÓGICA DE ENVÍO DE CORREO ---
+    $to = $email;
+    $subject = "Aquí tienes tu guía de Salud Equilibrio";
     
-    echo json_encode(['success' => true, 'message' => '¡Registro completado! Revisa tu correo electrónico.']);
+    // Pon aquí el correo que vayas a crear en Ionos
+    $from = "info@saludequilibrio.es";
+    
+    // Pon aquí el nombre de tu archivo PDF cuando lo subas a Ionos
+    $pdf_link = "https://saludequilibrio.es/assets/downloads/libro.pdf";
+    
+    $headers  = "MIME-Version: 1.0\r\n";
+    $headers .= "Content-type: text/html; charset=UTF-8\r\n";
+    $headers .= "From: Salud Equilibrio <$from>\r\n";
+    $headers .= "Reply-To: $from\r\n";
+    
+    $message = "
+    <html>
+    <body style='font-family: Arial, sans-serif; color: #333;'>
+        <h2>¡Hola $name! Bienvenid@ a Salud Equilibrio</h2>
+        <p>Gracias por tu interés en descubrir nuestro enfoque holístico.</p>
+        <p>Puedes descargar tu guía gratuita haciendo clic en el siguiente enlace:</p>
+        <p><a href='$pdf_link' style='display: inline-block; padding: 10px 20px; background-color: #66dd8b; color: #0e0e0e; text-decoration: none; font-weight: bold; border-radius: 5px;'>Descargar mi Libro (PDF)</a></p>
+        <p>Si el botón no funciona, copia y pega este enlace en tu navegador:<br>$pdf_link</p>
+        <br>
+        <p>Un abrazo,<br>El equipo de Salud Equilibrio</p>
+    </body>
+    </html>
+    ";
+    
+    // Enviar el correo usando la función nativa de Ionos
+    mail($to, $subject, $message, $headers);
+    
+    echo json_encode(['success' => true, 'message' => '¡Registro completado! Revisa tu email (mira en Spam).']);
 } catch (\PDOException $e) {
     if ($e->getCode() == 23000) {
         http_response_code(400);
