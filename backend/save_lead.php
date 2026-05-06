@@ -3,10 +3,15 @@
 header('Content-Type: application/json');
 
 // Reemplaza con tus credenciales de IONOS
-$host = 'db-host.ionos.es';
-$db   = 'nombre_de_tu_base_de_datos';
-$user = 'tu_usuario';
-$pass = 'tu_contraseña';
+//Host (Suele ser algo como db50XXXXX.hosting-data.io)
+//Nombre de la base de datos (Suele empezar por dbsXXXXX)
+//Nombre de usuario (Suele empezar por dbuXXXXX)
+//Contraseña (La que tú inventaste).
+
+$host = 'db5020383245.hosting-data.io' ; //db-host.ionos.es';
+$db   = 'dbs15638754'; //nombre_de_tu_base_de_datos';
+$user = 'dbu1107098'; // tu_usuario';
+$pass = 'Saludequilibrio@2012';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
