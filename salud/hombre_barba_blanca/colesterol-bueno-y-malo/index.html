@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Colesterol Bueno y Malo No Existen | El Hombre de la Barba Blanca</title>
+    <meta name="description" content="Aprende por qué el colesterol 'bueno' y 'malo' son exactamente la misma molécula y qué significan realmente las siglas LDL y HDL. Explicado para tontos por El Hombre de la Barba Blanca.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Noto Serif & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Noto Serif', 'serif'],
+                    },
+                    colors: {
+                        obsidian: '#0e0e0e',
+                        gold: {
+                            glow: '#d4af37',
+                            light: '#f3e5ab'
+                        },
+                        mint: {
+                            vibrant: '#66dd8b',
+                            glow: 'rgba(102, 221, 139, 0.4)',
+                        },
+                        offwhite: '#f5f5f5',
+                    },
+                    borderRadius: {
+                        'xl-custom': '2rem',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: #0e0e0e;
+            color: #f5f5f5;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(14, 14, 14, 0.85);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(102, 221, 139, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .btn-mint {
+            background: #66dd8b;
+            color: #0e0e0e;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 0 15px rgba(102, 221, 139, 0.3);
+        }
+
+        .btn-mint:hover {
+            filter: brightness(1.1);
+            box-shadow: 0 0 30px rgba(102, 221, 139, 0.6);
+            transform: scale(1.03);
+        }
+
+        .text-glow-mint {
+            text-shadow: 0 0 20px rgba(102, 221, 139, 0.5);
+        }
+
+        .text-glow-gold {
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        /* ─── Language toggle system ─── */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(14, 14, 14, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            min-width: 160px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .dropdown-content.show { display: block; }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-option:hover {
+            background: rgba(102, 221, 139, 0.1);
+            color: #fff;
+        }
+
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .lang-trigger:hover {
+            border-color: rgba(102, 221, 139, 0.4);
+            background: rgba(102, 221, 139, 0.05);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            border: 1px solid rgba(102, 221, 139, 0.2);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-mint-vibrant/30 selection:text-white" data-lang="es">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full z-50 glass-nav h-24 flex items-center">
+        <div class="max-w-7xl mx-auto px-8 w-full flex justify-between items-center">
+            <a href="../../../index.html" class="flex items-center gap-4 group">
+                <div class="h-14 w-14 flex items-center justify-center">
+                    <img src="../../../logo.png" alt="Salud Equilibrio Logo" class="h-full w-full object-contain brightness-125 contrast-110 group-hover:scale-110 transition-transform">
+                </div>
+                <span class="font-serif text-2xl tracking-tighter text-white">Salud<span class="text-mint-vibrant font-light">Equilibrio</span></span>
+            </a>
+            
+            <div class="hidden lg:flex gap-8 items-center">
+                <div class="flex gap-8 text-[10px] tracking-[3px] uppercase font-bold text-white/60">
+                    <a href="../../../index.html" class="hover:text-white transition-colors">
+                        <span class="lang-es inline">🏠 Inicio</span>
+                        <span class="lang-en inline">🏠 Home</span>
+                    </a>
+                    <a href="../../../index.html#agua" class="hover:text-white transition-colors">
+                        <span class="lang-es inline">💧 Agua Kangen & Negocio</span>
+                        <span class="lang-en inline">💧 Kangen Water & Business</span>
+                    </a>
+                    <a href="../index.html" class="hover:text-mint-vibrant transition-colors text-mint-vibrant">
+                        <span class="lang-es inline">📚 El Hombre de la Barba Blanca</span>
+                        <span class="lang-en inline">📚 White-Bearded Man</span>
+                    </a>
+                    <a href="../../Inmunocal/index.html" class="hover:text-cyan-vibrant transition-colors">
+                        <span class="lang-es inline">🌿 Inmunocal</span>
+                        <span class="lang-en inline">🌿 Immunocal</span>
+                    </a>
+                </div>
+
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fa-solid fa-chevron-down text-[8px] opacity-50 ml-1"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')">
+                            <span>🇪🇸</span>
+                            <span>Castellano</span>
+                        </div>
+                        <div class="lang-option" onclick="setLanguage('en')">
+                            <span>🇬🇧</span>
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pt-40 pb-16 px-8 relative">
+        <div class="absolute inset-0 z-0 bg-gradient-to-b from-mint-vibrant/10 via-transparent to-transparent"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-3 bg-white/5 border border-mint-vibrant/30 px-6 py-2 rounded-full mb-8 backdrop-blur-md">
+                <span class="w-2.5 h-2.5 rounded-full bg-mint-vibrant animate-ping"></span>
+                <span class="text-xs uppercase tracking-[4px] font-semibold text-mint-vibrant">
+                    <span class="lang-es inline">Lección #2 · Salud Cardiovascular</span>
+                    <span class="lang-en inline">Lesson #2 · Cardiovascular Health</span>
+                </span>
+            </div>
+            
+            <h1 class="font-serif text-4xl md:text-6xl text-white mb-8 leading-tight font-normal">
+                <span class="lang-es">El Colesterol Bueno y Malo <span class="italic text-glow-mint block mt-2 font-light">NO EXISTEN</span></span>
+                <span class="lang-en">Good and Bad Cholesterol <span class="italic text-glow-mint block mt-2 font-light">DO NOT EXIST</span></span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-offwhite/70 font-light leading-relaxed mb-10 max-w-3xl mx-auto">
+                <span class="lang-es">Desmontamos el mayor mito médico de los últimos 50 años paso a paso, con manzanitas y peras, de la mano de <strong>Jose M. Castillejo (El Hombre de la Barba Blanca)</strong>.</span>
+                <span class="lang-en">We debunk the biggest medical myth of the last 50 years step by step in simple terms with <strong>Jose M. Castillejo (The White-Bearded Man)</strong>.</span>
+            </p>
+
+            <!-- Embedded Video Player -->
+            <div class="max-w-4xl mx-auto my-12">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/H9SIa0iLycY" title="El Colesterol Bueno y Malo no existen" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <p class="text-xs text-white/40 mt-4 italic">
+                    <span class="lang-es">Vídeo original de la lección magistral por Jose M. Castillejo en YouTube.</span>
+                    <span class="lang-en">Original video masterclass by Jose M. Castillejo on YouTube.</span>
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Body -->
+    <main class="py-12 px-8">
+        <div class="max-w-4xl mx-auto space-y-16">
+
+            <!-- Intro / Maestro Card -->
+            <div class="glass-card rounded-xl-custom p-8 md:p-12 flex flex-col md:flex-row gap-8 items-center border-mint-vibrant/20">
+                <div class="w-36 h-36 rounded-full overflow-hidden shrink-0 border-2 border-mint-vibrant/50 shadow-2xl">
+                    <img src="../images/barba_blanca_maestro.png" alt="El Hombre de la Barba Blanca" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h3 class="font-serif italic text-2xl text-white mb-2">
+                        <span class="lang-es">La Filosofía del Maestro</span>
+                        <span class="lang-en">The Master's Philosophy</span>
+                    </h3>
+                    <p class="text-sm text-mint-vibrant uppercase tracking-widest font-semibold mb-4">
+                        <span class="lang-es">Jose M. Castillejo</span>
+                        <span class="lang-en">Jose M. Castillejo</span>
+                    </p>
+                    <p class="text-offwhite/70 text-base leading-relaxed font-light">
+                        <span class="lang-es">"Cuando te dan el resultado de tu analítica, vas directo a buscar la línea del colesterol y miras si está en rojo. En medio segundo decides cómo te vas a sentir el resto del día. Pero... ¿realmente sabes lo que significa ese número? Vamos a desmontarlo letra por letra."</span>
+                        <span class="lang-en">"When you get your blood lab test, you go straight to the cholesterol line and check if it's in red. In half a second, you decide how you feel for the rest of the day. But do you really know what that number means? Let me break it down word for word."</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Key Takeaways summary cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card p-6 rounded-2xl">
+                    <div class="text-3xl text-mint-vibrant mb-3"><i class="fa-solid fa-atom"></i></div>
+                    <h4 class="font-semibold text-white mb-2">
+                        <span class="lang-es">Una sola molécula</span>
+                        <span class="lang-en">One single molecule</span>
+                    </h4>
+                    <p class="text-xs text-white/60 leading-relaxed">
+                        <span class="lang-es">Donde pone "malo" y "bueno" hay exactamente la misma molécula, idéntica átomo por átomo.</span>
+                        <span class="lang-en">Where it says 'bad' and 'good', there is the exact same molecule, identical atom by atom.</span>
+                    </p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl">
+                    <div class="text-3xl text-mint-vibrant mb-3"><i class="fa-solid fa-truck-fast"></i></div>
+                    <h4 class="font-semibold text-white mb-2">
+                        <span class="lang-es">Vehículos, no colesterol</span>
+                        <span class="lang-en">Vehicles, not cholesterol</span>
+                    </h4>
+                    <p class="text-xs text-white/60 leading-relaxed">
+                        <span class="lang-es">LDL y HDL no son dos tipos de grasa, sino los camiones contenedores que transportan la carga.</span>
+                        <span class="lang-en">LDL and HDL are not two types of fat, but the container trucks transporting the cargo.</span>
+                    </p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl">
+                    <div class="text-3xl text-mint-vibrant mb-3"><i class="fa-solid fa-fire-flame-curved"></i></div>
+                    <h4 class="font-semibold text-white mb-2">
+                        <span class="lang-es">El Humo vs. El Fuego</span>
+                        <span class="lang-en">Smoke vs. Fire</span>
+                    </h4>
+                    <p class="text-xs text-white/60 leading-relaxed">
+                        <span class="lang-es">Medir la cifra no apaga el incendio. La HDL alta es la señal de estar sano, no la causa directa.</span>
+                        <span class="lang-en">Measuring the number doesn't extinguish the fire. High HDL is a sign of health, not its cause.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- SECTION 1: EL ENGAÑABOBOS DE LA ANALÍTICA -->
+            <section class="space-y-6">
+                <h2 class="font-serif text-3xl text-white border-l-4 border-mint-vibrant pl-4">
+                    <span class="lang-es">1. El Gran Revelación: Los 3 Datos que la Analítica no te cuenta</span>
+                    <span class="lang-en">1. The Great Revelation: The 3 Facts Your Lab Report Doesn't Tell You</span>
+                </h2>
+                
+                <p class="text-offwhite/80 leading-relaxed text-lg font-light">
+                    <span class="lang-es">Casi todos nos imaginamos la sangre como un tanque de gasolina donde un aparato introduce un medidor y nos dice cuántas gotas de colesterol flotan por ahí. Nada más lejos de la realidad.</span>
+                    <span class="lang-en">Almost all of us imagine our blood like a gas tank where a device dips a meter and tells us how many drops of cholesterol are floating around. Nothing could be further from the truth.</span>
+                </p>
+
+                <div class="bg-white/[0.02] border border-white/10 rounded-2xl p-6 md:p-8 space-y-4">
+                    <div class="flex gap-4 items-start">
+                        <span class="text-mint-vibrant font-serif text-2xl font-bold">01.</span>
+                        <div>
+                            <h4 class="text-white font-semibold mb-1">
+                                <span class="lang-es">No existen dos colesteroles</span>
+                                <span class="lang-en">There are no two cholesterols</span>
+                            </h4>
+                            <p class="text-offwhite/70 text-sm">
+                                <span class="lang-es">Donde pone "colesterol malo" (LDL) y donde pone "colesterol bueno" (HDL) hay <strong>exactamente la misma molécula de colesterol</strong>. Átomo por átomo. Nunca han existido dos tipos de colesterol.</span>
+                                <span class="lang-en">Where it says "bad cholesterol" (LDL) and where it says "good cholesterol" (HDL) there is <strong>the exact same cholesterol molecule</strong>. Atom by atom. Two types of cholesterol have never existed.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 items-start pt-4 border-t border-white/5">
+                        <span class="text-mint-vibrant font-serif text-2xl font-bold">02.</span>
+                        <div>
+                            <h4 class="text-white font-semibold mb-1">
+                                <span class="lang-es">La analítica pesa el equipaje dentro del camión</span>
+                                <span class="lang-en">Lab tests weigh the baggage inside the truck</span>
+                            </h4>
+                            <p class="text-offwhite/70 text-sm">
+                                <span class="lang-es">Lo que se mide no es el colesterol suelto flotando en la sangre. Se mide el colesterol que va <strong>dentro de unos contenedores de transporte</strong> (lipoproteínas). Se pesa lo que llevan dentro entre todos.</span>
+                                <span class="lang-en">What is measured is not free-floating cholesterol in the blood. It measures cholesterol traveling <strong>inside transport containers</strong> (lipoproteins). They weigh the cargo inside.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 items-start pt-4 border-t border-white/5">
+                        <span class="text-mint-vibrant font-serif text-2xl font-bold">03.</span>
+                        <div>
+                            <h4 class="text-white font-semibold mb-1">
+                                <span class="lang-es">En la mayoría de sitios no se mide: SE CALCULÓ</span>
+                                <span class="lang-en">In most places it is not measured: IT IS CALCULATED</span>
+                            </h4>
+                            <p class="text-offwhite/70 text-sm">
+                                <span class="lang-es">En la inmensa mayoría de laboratorios del mundo, la cifra de LDL no se mide directamente mediante un análisis físico, sino que <strong>se calcula mediante una fórmula de 1972</strong> (Fórmula de Friedewald) basada en solo 448 personas.</span>
+                                <span class="lang-en">In the vast majority of labs worldwide, the LDL figure is not directly measured physically, but <strong>calculated using a 1972 formula</strong> (Friedewald equation) based on only 448 people.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: EL PROBLEMA FÍSICO (AGUA VS GRASA) -->
+            <section class="space-y-6">
+                <h2 class="font-serif text-3xl text-white border-l-4 border-mint-vibrant pl-4">
+                    <span class="lang-es">2. El Problema de Física: Por qué el cuerpo inventó las Lipoproteínas</span>
+                    <span class="lang-en">2. The Physics Problem: Why the Body Invented Lipoproteins</span>
+                </h2>
+
+                <p class="text-offwhite/80 leading-relaxed text-lg font-light">
+                    <span class="lang-es">Tu cuerpo se enfrentó hace millones de años a un dilema de física elemental:</span>
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+                    <div class="p-6 bg-red-500/10 border border-red-500/20 rounded-2xl">
+                        <h4 class="text-red-400 font-bold mb-2">
+                            <span class="lang-es">🚨 El Conflicto</span>
+                            <span class="lang-en">🚨 The Conflict</span>
+                        </h4>
+                        <p class="text-sm text-offwhite/70">
+                            <span class="lang-es">El <strong>colesterol es una grasa</strong>. Tu <strong>sangre es, en su mayor parte, agua</strong>. Como bien sabes, el aceite y el agua no se mezclan. Si la grasa fuera suelta por la sangre, se juntaría formando gotas gigantes... provocando una embolia inmediata.</span>
+                            <span class="lang-en"><strong>Cholesterol is a fat</strong>. Your <strong>blood is mostly water</strong>. As you know, oil and water don't mix. If fat floated freely in blood, it would coalesce into giant droplets... causing an instant embolism.</span>
+                        </p>
+                    </div>
+
+                    <div class="p-6 bg-mint-vibrant/10 border border-mint-vibrant/20 rounded-2xl">
+                        <h4 class="text-mint-vibrant font-bold mb-2">
+                            <span class="lang-es">💡 La Solución Genial</span>
+                            <span class="lang-en">💡 The Brilliant Solution</span>
+                        </h4>
+                        <p class="text-sm text-offwhite/70">
+                            <span class="lang-es">El cuerpo inventó el <strong>camión contenedor (Lipoproteína)</strong>: una diminuta esfera que lleva la grasa protegida por dentro y por fuera tiene una cubierta que es compatible con el agua. Viaja camuflado por la sangre como un submarino.</span>
+                            <span class="lang-en">The body invented the <strong>container truck (Lipoprotein)</strong>: a tiny sphere carrying fat safely inside, while its outer shell is water-friendly. It travels disguised through blood like a submarine.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <p class="text-offwhite/80 leading-relaxed text-base font-light">
+                    <span class="lang-es">Además, este contenedor lleva incrustadas en su cubierta unas proteínas especiales que funcionan como <strong>matrícula o etiqueta de destino</strong>: le dicen a las células a dónde va el paquete para que lo reconozcan y lo descarguen. De la mezcla de <em>Lípido</em> (grasa) y <em>Proteína</em> nace el nombre: <strong>LIPOPROTEÍNA</strong>.</span>
+                    <span class="lang-en">Furthermore, this container has special proteins embedded on its surface acting as a <strong>destination label/GPS</strong>: they signal to cells where the package is bound so they recognize and unload it. From <em>Lipid</em> (fat) and <em>Protein</em> comes the word: <strong>LIPOPROTEIN</strong>.</span>
+                </p>
+            </section>
+
+            <!-- INFOGRAPHIC 1 IMAGE: CAMIONES -->
+            <div class="my-12">
+                <div class="glass-card rounded-2xl overflow-hidden p-4 border-mint-vibrant/30">
+                    <img src="../images/camiones_colesterol.png" alt="Camiones de Transporte LDL y HDL" class="w-full rounded-xl shadow-2xl">
+                    <div class="p-6 text-center">
+                        <h4 class="font-serif italic text-xl text-white mb-2">
+                            <span class="lang-es">La Red Logística Sanguínea: Camiones de Reparto vs. Camiones de Recogida</span>
+                            <span class="lang-en">The Blood Logistics Network: Delivery vs. Recycling Trucks</span>
+                        </h4>
+                        <p class="text-xs text-offwhite/60">
+                            <span class="lang-es">El <strong>Hígado</strong> es la fábrica central. Las <strong>LDL</strong> son los camiones de reparto que llevan materia prima a las células. Las <strong>HDL</strong> son los camiones de reciclaje que recogen el sobrante y lo devuelven al almacén.</span>
+                            <span class="lang-en">The <strong>Liver</strong> is the main factory. <strong>LDL</strong> are delivery trucks supplying raw materials to cells. <strong>HDL</strong> are recycling trucks picking up surplus to return to storage.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 3: CAMIONES DE IDA Y VUELTA -->
+            <section class="space-y-6">
+                <h2 class="font-serif text-3xl text-white border-l-4 border-mint-vibrant pl-4">
+                    <span class="lang-es">3. Camiones de Ida y Camiones de Vuelta</span>
+                    <span class="lang-en">3. Outbound Trucks and Return Trucks</span>
+                </h2>
+
+                <p class="text-offwhite/80 leading-relaxed text-lg font-light">
+                    <span class="lang-es">El 75% del colesterol de tu cuerpo no te lo has comido en la dieta: lo fabrica tu propio hígado porque es la materia prima esencial para fabricar membranas celulares, hormonas (testosterona, estrógenos, cortisol) y vitamina D.</span>
+                    <span class="lang-en">75% of the cholesterol in your body doesn't come from food: your liver manufactures it because it's the vital building block for cell membranes, hormones (testosterone, estrogen, cortisol), and vitamin D.</span>
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-8">
+                    <div class="glass-card p-8 rounded-2xl border-l-4 border-yellow-500">
+                        <span class="text-xs uppercase tracking-widest font-bold text-yellow-400 block mb-2">
+                            <span class="lang-es">Ruta de Ida (Reparto)</span>
+                            <span class="lang-en">Outbound Route (Delivery)</span>
+                        </span>
+                        <h3 class="text-2xl font-serif text-white mb-3">LDL (Low-Density)</h3>
+                        <p class="text-sm text-offwhite/70 leading-relaxed">
+                            <span class="lang-es">Sale del hígado cargado de colesterol para repartirlo entre las células de la piel, músculos y órganos. <strong>LDL NO ES COLESTEROL</strong>; es el camión de reparto.</span>
+                            <span class="lang-en">Leaves the liver loaded with cholesterol to deliver it to skin, muscle, and organ cells. <strong>LDL IS NOT CHOLESTEROL</strong>; it is the delivery truck.</span>
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-2xl border-l-4 border-mint-vibrant">
+                        <span class="text-xs uppercase tracking-widest font-bold text-mint-vibrant block mb-2">
+                            <span class="lang-es">Ruta de Vuelta (Recogida)</span>
+                            <span class="lang-en">Return Route (Recycling)</span>
+                        </span>
+                        <h3 class="text-2xl font-serif text-white mb-3">HDL (High-Density)</h3>
+                        <p class="text-sm text-offwhite/70 leading-relaxed">
+                            <span class="lang-es">Sale casi vacío, recorre los tejidos recogiendo el colesterol sobrante y lo devuelve al hígado para reciclarlo o eliminarlo por la bilis.</span>
+                            <span class="lang-en">Leaves nearly empty, travels through tissues picking up excess cholesterol and returns it to the liver for recycling or elimination.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-6 bg-white/5 rounded-2xl border border-white/10 text-center">
+                    <p class="font-serif italic text-xl text-mint-vibrant">
+                        <span class="lang-es">"¿Tendría algún sentido decir que el camión de reparto de piezas de Ford es 'el camión malo' y el camión de basura que retira los palés vacíos es 'el camión bueno'? ¡Son dos partes de una misma red logística indispensable!"</span>
+                        <span class="lang-en">"Would it make any sense to say Ford's parts delivery truck is 'the bad truck' and the recycling truck picking up empty pallets is 'the good truck'? They are two parts of the exact same essential logistics network!"</span>
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 4: JOHN GOFMAN, LA BOMBA ATÓMICA Y LA SAL -->
+            <section class="space-y-6">
+                <h2 class="font-serif text-3xl text-white border-l-4 border-mint-vibrant pl-4">
+                    <span class="lang-es">4. John Gofman, la Bomba Atómica y el Truco de la Sal (1948)</span>
+                    <span class="lang-en">4. John Gofman, the Atomic Bomb, and the Salt Trick (1948)</span>
+                </h2>
+
+                <p class="text-offwhite/80 leading-relaxed text-lg font-light">
+                    <span class="lang-es">¿De dónde salieron las famosas siglas LDL y HDL? Sorpréndete: <strong>no tienen nada que ver con la medicina ni con la salud</strong>.</span>
+                </p>
+
+                <p class="text-offwhite/80 leading-relaxed text-base font-light">
+                    <span class="lang-es">En 1948 en Berkeley (California), el Dr. <strong>John Gofman</strong> venía de trabajar en el <strong>Proyecto Manhattan</strong> junto a Robert Oppenheimer aislando plutonio para la primera bomba atómica mediante <em>ultracentrifugadoras</em>. Cuando volvió a la medicina, aplicó esta misma centrifugadora gigante al suero sanguíneo.</span>
+                </p>
+
+                <!-- INFOGRAPHIC 2 IMAGE: ULTRACENTRIFUGADORA GOFMAN -->
+                <div class="my-8">
+                    <div class="glass-card rounded-2xl overflow-hidden p-4 border-mint-vibrant/30">
+                        <img src="../images/ultracentrifugadora_gofman.png" alt="Experimento Ultracentrifugadora Gofman 1948" class="w-full rounded-xl shadow-2xl">
+                        <div class="p-6 text-center">
+                            <h4 class="font-serif italic text-xl text-white mb-2">
+                                <span class="lang-es">El Descubrimiento por Flotación de Gofman (1948)</span>
+                                <span class="lang-en">Gofman's Flotation Discovery (1948)</span>
+                            </h4>
+                            <p class="text-xs text-offwhite/60">
+                                <span class="lang-es">Al añadir sal al plasma sanguíneo para aumentar su densidad, las partículas llenas de grasa flotaron hacia arriba como corchos en una piscina.</span>
+                                <span class="lang-en">Adding salt to blood plasma increased fluid density, making fat-filled particles float to the top like corks in a pool.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-4 text-offwhite/80 leading-relaxed font-light">
+                    <p>
+                        <span class="lang-es">Durante años, los médicos veían una mancha borrosa en las pruebas que llamaban la "Proteína X" y creían que era un fallo de medición. Gofman se dio cuenta de que las partículas ricas en grasa eran <strong>menos densas que el líquido</strong> y pugnaban por flotar hacia arriba mientras las proteínas pesadas (albúmina) se hundían.</span>
+                        <span class="lang-en">For years, doctors saw a blurry smudge in tests calling it "Protein X" thinking it was a machine glitch. Gofman realized fat-rich particles were <strong>less dense than the fluid</strong> trying to float upward while heavy proteins (albumin) sank.</span>
+                    </p>
+                    <p>
+                        <span class="lang-es">Gofman hizo algo de una sencillez insultante: <strong>le echó sal al suero sanguíneo</strong>. Al aumentar la densidad del líquido, las partículas flotaron limpiamente en capas según su densidad:</span>
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+                    <div class="p-6 bg-white/5 border border-white/10 rounded-2xl">
+                        <h4 class="text-yellow-400 font-bold mb-2">LDL (Low-Density Lipoprotein)</h4>
+                        <p class="text-xs text-offwhite/70">
+                            <span class="lang-es"><strong>Lipoproteína de Baja Densidad</strong>: Al llevar más carga de grasa (que pesa poco), flotaba más arriba. En el laboratorio la llamaron simplemente "la fracción que flota más arriba".</span>
+                            <span class="lang-en"><strong>Low-Density Lipoprotein</strong>: Carrying more fat cargo (which is light), it floated near the top. In the lab they named it simply "the lighter floating fraction".</span>
+                        </p>
+                    </div>
+                    <div class="p-6 bg-white/5 border border-white/10 rounded-2xl">
+                        <h4 class="text-mint-vibrant font-bold mb-2">HDL (High-Density Lipoprotein)</h4>
+                        <p class="text-xs text-offwhite/70">
+                            <span class="lang-es"><strong>Lipoproteína de Alta Densidad</strong>: Al llevar proporcionalmente más proteína (pesada), flotaba más abajo. La llamaron "la fracción pesada".</span>
+                            <span class="lang-en"><strong>High-Density Lipoprotein</strong>: Carrying proportionally more heavy protein, it floated lower. They named it "the heavy fraction".</span>
+                        </p>
+                    </div>
+                </div>
+
+                <p class="text-offwhite/70 text-sm italic bg-mint-vibrant/5 p-4 rounded-xl border border-mint-vibrant/20">
+                    <span class="lang-es">💡 <strong>Conclusión:</strong> LDL y HDL significan literalmente <em>"flota más arriba"</em> y <em>"flota más abajo"</em>. Es como clasificar las piedras en una cantera entre "grava fina" y "grava gruesa". Nombres de máquina, nada de moral.</span>
+                    <span class="lang-en">💡 <strong>Conclusion:</strong> LDL and HDL literally mean <em>"floats higher"</em> and <em>"floats lower"</em>. Like sorting stones in a quarry into "fine gravel" and "coarse gravel". Machine labels, zero moral judgment.</span>
+                </p>
+            </section>
+
+            <!-- SECTION 5: FRAMINGHAM Y EL TELÉFONO ESCACHARRADO DE 1977 -->
+            <section class="space-y-6">
+                <h2 class="font-serif text-3xl text-white border-l-4 border-mint-vibrant pl-4">
+                    <span class="lang-es">5. El Teléfono Escacharrado: De Framingham a la Televisión</span>
+                    <span class="lang-en">5. The Game of Broken Telephone: From Framingham to TV</span>
+                </h2>
+
+                <p class="text-offwhite/80 leading-relaxed text-lg font-light">
+                    <span class="lang-es">Si las siglas sólo significan cómo flotan en un tubo de ensayo... ¿quién y cuándo inventó los apodos "bueno" y "malo"?</span>
+                </p>
+
+                <div class="space-y-4 text-offwhite/80 leading-relaxed font-light">
+                    <p>
+                        <span class="lang-es">En abril de 1945 fallece repentinamente el presidente de EEUU <strong>Franklin D. Roosevelt</strong> por un infarto masivo. Como la mitad del país moría de del corazón sin saber la causa, el Congreso financió el histórico <strong>Estudio de Framingham</strong> (1948), examinando durante décadas a 5.209 vecinos de un pueblo de Massachusetts.</span>
+                        <span class="lang-en">In April 1945, US President <strong>Franklin D. Roosevelt</strong> died suddenly of a massive stroke. Since half the nation was dying of heart disease for unknown reasons, Congress funded the landmark <strong>Framingham Study</strong> (1948), examining 5,209 residents of a Massachusetts town across decades.</span>
+                    </p>
+                    <p>
+                        <span class="lang-es">En <strong>mayo de 1977</strong>, en el <em>American Journal of Medicine</em>, Castelli y Kannel publican un estudio observacional con una frase en el título: <em>"La HDL como factor protector frente a la enfermedad coronaria"</em>.</span>
+                        <span class="lang-en">In <strong>May 1977</strong>, in the <em>American Journal of Medicine</em>, Castelli and Kannel published an observational study titled: <em>"High-density lipoprotein as a protective factor against coronary heart disease"</em>.</span>
+                    </p>
+                </div>
+
+                <!-- Sequence steps timeline -->
+                <div class="relative border-l border-mint-vibrant/30 ml-4 pl-6 space-y-6 py-4">
+                    <div class="relative">
+                        <span class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-mint-vibrant"></span>
+                        <h4 class="text-white font-bold text-sm">Paso 1 · Artículo Científico (1977)</h4>
+                        <p class="text-xs text-white/60">"La HDL aparece como un factor protector estadístico en esta muestra."</p>
+                    </div>
+                    <div class="relative">
+                        <span class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-mint-vibrant/70"></span>
+                        <h4 class="text-white font-bold text-sm">Paso 2 · Prensa y Divulgación</h4>
+                        <p class="text-xs text-white/60">"Descubren una lipoproteína que protege el corazón."</p>
+                    </div>
+                    <div class="relative">
+                        <span class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-mint-vibrant/40"></span>
+                        <h4 class="text-white font-bold text-sm">Paso 3 · Televisión y Campañas de Salud Pública (Años 80)</h4>
+                        <p class="text-xs text-white/60">"Para explicarlo en 20 segundos de televisión: Esta es la buena y la otra es la mala."</p>
+                    </div>
+                </div>
+
+                <p class="text-offwhite/80 leading-relaxed font-light">
+                    <span class="lang-es">Nadie mintió ni hubo conspiraciones. Simplemente en cada paso se simplificó el mensaje hasta que una observación estadística de laboratorio se convirtió en un <strong>juicio moral universal sobre una molécula de tu sangre</strong>.</span>
+                    <span class="lang-en">No one lied and there were no conspiracies. Each step simply simplified the message until a laboratory statistical observation became a <strong>universal moral verdict on a molecule in your blood</strong>.</span>
+                </p>
+            </section>
+
+            <!-- INFOGRAPHIC 3 IMAGE: FUEGO VS HUMO -->
+            <div class="my-12">
+                <div class="glass-card rounded-2xl overflow-hidden p-4 border-mint-vibrant/30">
+                    <img src="../images/humo_vs_fuego.png" alt="La Metáfora del Fuego y el Humo" class="w-full rounded-xl shadow-2xl">
+                    <div class="p-6 text-center">
+                        <h4 class="font-serif italic text-xl text-white mb-2">
+                            <span class="lang-es">La Metáfora Médica: El Fuego vs. El Humo</span>
+                            <span class="lang-en">The Medical Metaphor: Fire vs. Smoke</span>
+                        </h4>
+                        <p class="text-xs text-offwhite/60">
+                            <span class="lang-es">Poner ventiladores gigantes para dispersar el humo no apaga el incendio de la casa. Los fármacos subieron la cifra de HDL (el humo), pero no previnieron los infartos (el fuego).</span>
+                            <span class="lang-en">Installing giant fans to blow smoke away doesn't extinguish a house fire. Drugs raised the HDL number (smoke), but failed to prevent heart attacks (fire).</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 6: EL FUEGO Y EL HUMO -->
+            <section class="space-y-6">
+                <h2 class="font-serif text-3xl text-white border-l-4 border-mint-vibrant pl-4">
+                    <span class="lang-es">6. Por qué los Fármacos Fallaron: El Fuego y el Humo</span>
+                    <span class="lang-en">6. Why the Drugs Failed: Fire and Smoke</span>
+                </h2>
+
+                <p class="text-offwhite/80 leading-relaxed text-lg font-light">
+                    <span class="lang-es">La industria farmacéutica razonó de forma supuestamente impecable: <em>"Si la gente con HDL alta tiene menos infartos, fabriquemos un fármaco que suba la HDL"</em>. Se probaron 3 fármacos en ensayos clínicos masivos.</span>
+                </p>
+
+                <div class="p-6 bg-red-500/10 border border-red-500/30 rounded-2xl">
+                    <h3 class="text-red-400 font-bold text-lg mb-2">
+                        <span class="lang-es">💥 Resultado de los Ensayos Clínicos</span>
+                        <span class="lang-en">💥 Clinical Trial Results</span>
+                    </h3>
+                    <p class="text-sm text-offwhite/80 leading-relaxed">
+                        <span class="lang-es">Los 3 ensayos tuvieron que <strong>cancelarse de emergencia</strong>. Lograron subir la cifra de HDL tal y como querían, pero los pacientes <strong>siguieron sufriendo los mismos infartos y muriendo exactamente igual</strong>. Subir el número no protegió a nadie.</span>
+                        <span class="lang-en">All 3 trials had to be <strong>cancelled prematurely</strong>. They succeeded in raising the HDL number as intended, but patients <strong>continued suffering heart attacks and dying at the exact same rate</strong>. Raising the number protected no one.</span>
+                    </p>
+                </div>
+
+                <div class="space-y-4 text-offwhite/80 leading-relaxed font-light">
+                    <h3 class="font-serif text-2xl text-white mt-6">
+                        <span class="lang-es">Entendiendo la Metáfora del Fuego y el Humo</span>
+                        <span class="lang-en">Understanding the Fire & Smoke Metaphor</span>
+                    </h3>
+                    <p>
+                        <span class="lang-es">Donde hay un incendio, hay humo. Si alguien ve que el humo y el fuego van juntos e instala máquinas de humo artificial por toda la ciudad, habrá más humo en los medidores, pero las casas no arderán más ni menos.</span>
+                        <span class="lang-en">Where there is a fire, there is smoke. If someone notices smoke and fire always go together and installs artificial smoke machines across town, meters will report more smoke, but houses won't burn any more or less.</span>
+                    </p>
+                    <p>
+                        <span class="lang-es">Aquel hombre de Framingham no estaba protegido <em>porque</em> tuviera la HDL alta. Tenía la HDL alta <em>porque</em> no fumaba, caminaba cada día, tenía buena masa muscular y su metabolismo manejaba bien el azúcar. <strong>Todo su estilo de vida sano le protegía el corazón y, además, como consecuencia, le subía la HDL</strong>.</span>
+                        <span class="lang-en">That Framingham subject wasn't protected <em>because</em> he had high HDL. He had high HDL <em>because</em> he didn't smoke, walked daily, had healthy muscle mass, and possessed proper insulin sensitivity. <strong>His healthy lifestyle protected his heart and, as a byproduct, elevated his HDL</strong>.</span>
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 7: EL EJERCICIO PRÁCTICO -->
+            <section class="space-y-6">
+                <h2 class="font-serif text-3xl text-white border-l-4 border-mint-vibrant pl-4">
+                    <span class="lang-es">7. Tu Ejercicio Práctico de 30 Minutos</span>
+                    <span class="lang-en">7. Your 30-Minute Practical Exercise</span>
+                </h2>
+
+                <p class="text-offwhite/80 leading-relaxed text-lg font-light">
+                    <span class="lang-es">La palabra "malo" cierra la conversación y te hace sentir culpable. En lugar de preguntarte <em>¿por qué mi hígado está enviando más camiones de materia prima a reparar mis arterias o tejidos?</em>, te lleva ciegamente a querer destruir la cifra.</span>
+                    <span class="lang-en">The word "bad" closes the conversation and breeds guilt. Instead of asking <em>why is my liver sending more trucks with raw materials to repair tissues?</em>, it blindly pushes you to destroy the number.</span>
+                </p>
+
+                <div class="glass-card p-8 rounded-2xl border border-mint-vibrant/40 bg-mint-vibrant/5">
+                    <h3 class="font-serif text-2xl text-white mb-4 flex items-center gap-3">
+                        <i class="fa-solid fa-pen-to-square text-mint-vibrant"></i>
+                        <span class="lang-es">Haz esto hoy mismo con tu analítica</span>
+                        <span class="lang-en">Do this today with your lab report</span>
+                    </h3>
+                    <ol class="space-y-4 text-sm text-offwhite/80 list-decimal list-inside leading-relaxed font-light">
+                        <li>
+                            <span class="lang-es">Busca tu última analítica médica (en papel o en el móvil).</span>
+                            <span class="lang-en">Find your latest medical blood test (paper or phone).</span>
+                        </li>
+                        <li>
+                            <span class="lang-es">Tacha mentalmente (o con un bolígrafo) donde pone <s>"Colesterol Bueno"</s> y escribe: <strong>"Colesterol viajando en camiones de recogida"</strong>.</span>
+                            <span class="lang-en">Cross out where it says <s>"Good Cholesterol"</s> and write: <strong>"Cholesterol traveling in recycling trucks"</strong>.</span>
+                        </li>
+                        <li>
+                            <span class="lang-es">Tacha donde pone <s>"Colesterol Malo"</s> y escribe: <strong>"Colesterol viajando en camiones de reparto"</strong>.</span>
+                            <span class="lang-en">Cross out where it says <s>"Bad Cholesterol"</s> and write: <strong>"Cholesterol traveling in delivery trucks"</strong>.</span>
+                        </li>
+                        <li>
+                            <span class="lang-es">Léelo en voz alta. Siente cómo pasa de ser un <strong>veredicto culpable</strong> a ser <strong>información biológica limpia</strong>.</span>
+                            <span class="lang-en">Read it out loud. Feel how it turns from a <strong>guilty verdict</strong> into <strong>clean biological information</strong>.</span>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- CALL TO ACTION & FOOTER NAV -->
+            <div class="py-12 border-t border-white/10 text-center space-y-6">
+                <h3 class="font-serif italic text-3xl text-white">
+                    <span class="lang-es">¿Quieres seguir aprendiendo con El Hombre de la Barba Blanca?</span>
+                    <span class="lang-en">Want to keep learning with The White-Bearded Man?</span>
+                </h3>
+                <p class="text-offwhite/60 text-sm max-w-xl mx-auto font-light">
+                    <span class="lang-es">Explora el resto de lecciones explicadas con el mismo rigor científico y sencillez didáctica.</span>
+                    <span class="lang-en">Explore all other lessons explained with the same scientific rigor and accessible simplicity.</span>
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 pt-4">
+                    <a href="../index.html" class="btn-mint px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest inline-flex items-center gap-3">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span class="lang-es inline">Volver al Hub de Lecciones</span>
+                        <span class="lang-en inline">Back to Lessons Hub</span>
+                    </a>
+                    <a href="../../index.html" class="px-8 py-4 rounded-full border border-white/20 hover:border-mint-vibrant text-white font-bold text-xs uppercase tracking-widest inline-flex items-center gap-3 transition-colors">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="lang-es inline">Salud Equilibrio</span>
+                        <span class="lang-en inline">Salud Equilibrio</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 text-center bg-obsidian">
+        <div class="max-w-7xl mx-auto px-8">
+            <p class="text-[10px] tracking-[6px] uppercase font-light text-white/30">
+                <span class="lang-es">© 2026 Salud Equilibrio · Basado en las lecciones de Jose M. Castillejo</span>
+                <span class="lang-en">© 2026 Salud Equilibrio · Based on lessons by Jose M. Castillejo</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Multilingual & Dropdown Script -->
+    <script>
+        const LANG_KEY = 'salud_equilibrio_lang';
+
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            document.getElementById('lang-dropdown').classList.toggle('show');
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.closest('.lang-trigger')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem(LANG_KEY, lang);
+            
+            const flag = lang === 'es' ? '🇪🇸' : '🇬🇧';
+            const text = lang.toUpperCase();
+            document.getElementById('current-flag').innerText = flag;
+            document.getElementById('current-lang-text').innerText = text;
+
+            const dropdown = document.getElementById('lang-dropdown');
+            if(dropdown) dropdown.classList.remove('show');
+        }
+
+        function initLanguage() {
+            const savedLang = localStorage.getItem(LANG_KEY) || 'es';
+            setLanguage(savedLang);
+        }
+
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+</body>
+
+</html>

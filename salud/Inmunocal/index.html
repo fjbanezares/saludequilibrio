@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inmunocal · Nutrición Celular y Glutatión | Salud Equilibrio</title>
+    <meta name="description" content="Descubre Inmunocal: el precursor de glutatión de alta calidad respaldado por patentes internacionales, el PDR y décadas de investigación científica.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Noto Serif & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Noto Serif', 'serif'],
+                    },
+                    colors: {
+                        obsidian: '#0e0e0e',
+                        cyan: {
+                            glow: '#06b6d4',
+                            vibrant: '#22d3ee',
+                        },
+                        mint: {
+                            vibrant: '#66dd8b',
+                            glow: 'rgba(102, 221, 139, 0.4)',
+                        },
+                        offwhite: '#f5f5f5',
+                    },
+                    borderRadius: {
+                        'xl-custom': '2rem',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: #0e0e0e;
+            color: #f5f5f5;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(14, 14, 14, 0.85);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(34, 211, 238, 0.4);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -15px rgba(34, 211, 238, 0.2);
+        }
+
+        .btn-cyan {
+            background: #22d3ee;
+            color: #0f172a;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.4);
+        }
+
+        .btn-cyan:hover {
+            filter: brightness(1.15);
+            box-shadow: 0 0 30px rgba(34, 211, 238, 0.7);
+            transform: scale(1.03);
+        }
+
+        .text-glow-cyan {
+            text-shadow: 0 0 20px rgba(34, 211, 238, 0.6);
+        }
+
+        /* ─── Language toggle system ─── */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(14, 14, 14, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            min-width: 160px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .dropdown-content.show { display: block; }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-option:hover {
+            background: rgba(34, 211, 238, 0.15);
+            color: #fff;
+        }
+
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .lang-trigger:hover {
+            border-color: rgba(34, 211, 238, 0.4);
+            background: rgba(34, 211, 238, 0.05);
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-cyan-glow/30 selection:text-white" data-lang="es">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full z-50 glass-nav h-24 flex items-center">
+        <div class="max-w-7xl mx-auto px-8 w-full flex justify-between items-center">
+            <a href="../../index.html" class="flex items-center gap-4 group">
+                <div class="h-14 w-14 flex items-center justify-center">
+                    <img src="../../logo.png" alt="Salud Equilibrio Logo" class="h-full w-full object-contain brightness-125 contrast-110 group-hover:scale-110 transition-transform">
+                </div>
+                <span class="font-serif text-2xl tracking-tighter text-white">Salud<span class="text-mint-vibrant font-light">Equilibrio</span></span>
+            </a>
+            
+            <div class="hidden lg:flex gap-8 items-center">
+                <div class="flex gap-8 text-[10px] tracking-[3px] uppercase font-bold text-white/60">
+                    <a href="../index.html" class="hover:text-white transition-colors">
+                        <span class="lang-es inline">Salud Integral</span>
+                        <span class="lang-en inline">Holistic Health</span>
+                    </a>
+                    <a href="../hombre_barba_blanca/index.html" class="hover:text-mint-vibrant transition-colors">
+                        <span class="lang-es inline">El Hombre de la Barba Blanca</span>
+                        <span class="lang-en inline">White-Bearded Man</span>
+                    </a>
+                    <a href="index.html" class="text-cyan-vibrant font-bold">
+                        <span class="lang-es inline">Inmunocal</span>
+                        <span class="lang-en inline">Immunocal</span>
+                    </a>
+                </div>
+
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fa-solid fa-chevron-down text-[8px] opacity-50 ml-1"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')">
+                            <span>🇪🇸</span>
+                            <span>Castellano</span>
+                        </div>
+                        <div class="lang-option" onclick="setLanguage('en')">
+                            <span>🇬🇧</span>
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-40 pb-16 px-8 relative">
+        <div class="absolute inset-0 z-0 bg-gradient-to-b from-cyan-glow/10 via-transparent to-transparent"></div>
+        <div class="max-w-6xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <div class="space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center gap-3 bg-cyan-vibrant/10 border border-cyan-vibrant/30 px-6 py-2 rounded-full backdrop-blur-md">
+                    <span class="w-2.5 h-2.5 rounded-full bg-cyan-vibrant animate-pulse"></span>
+                    <span class="text-xs uppercase tracking-[4px] font-semibold text-cyan-vibrant">
+                        <span class="lang-es inline">Nutrición Celular · Cisteína Bioactiva</span>
+                        <span class="lang-en inline">Cellular Nutrition · Bioactive Cysteine</span>
+                    </span>
+                </div>
+
+                <h1 class="font-serif text-4xl md:text-6xl text-white leading-tight font-normal">
+                    <span class="lang-es">Inmunocal: El Poder de la <span class="italic text-glow-cyan block mt-2 font-light">Cisteína Enlazada</span></span>
+                    <span class="lang-en">Immunocal: The Power of <span class="italic text-glow-cyan block mt-2 font-light">Bonded Cysteine</span></span>
+                </h1>
+
+                <p class="text-lg text-offwhite/70 font-light leading-relaxed">
+                    <span class="lang-es">El suplemento nutracéutico diseñado para elevar la producción de <strong>Glutatión Intracelular</strong>, el antioxidante maestro que desintoxica tus células y fortalece tu respuesta inmunológica.</span>
+                    <span class="lang-en">The nutraceutical supplement designed to elevate <strong>Intracellular Glutathione</strong> synthesis, the master antioxidant detoxifying your cells and strengthening immune defense.</span>
+                </p>
+
+                <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-4">
+                    <a href="#patentes" class="btn-cyan px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest inline-flex items-center gap-3">
+                        <i class="fa-solid fa-award"></i>
+                        <span class="lang-es inline">Descubrir Patentes y Ciencia</span>
+                        <span class="lang-en inline">Discover Patents & Science</span>
+                    </a>
+                    <a href="modelo_negocio_competencia/index.html" class="px-8 py-4 rounded-full border border-cyan-vibrant/40 hover:border-cyan-vibrant text-cyan-vibrant font-bold text-xs uppercase tracking-widest inline-flex items-center gap-3 transition-colors">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <span class="lang-es inline">Ver Estudio de Mercado</span>
+                        <span class="lang-en inline">View Market Study</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Image Mockup -->
+            <div class="relative">
+                <div class="glass-card rounded-2xl overflow-hidden p-4 border-cyan-vibrant/30 shadow-2xl">
+                    <img src="images/inmunocal_box_mockup.png" alt="Inmunocal Platinum Product Presentation" class="w-full rounded-xl object-cover">
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-12 px-8">
+        <div class="max-w-6xl mx-auto space-y-20">
+
+            <!-- 1. POR QUÉ MUCHOS ELAJEN INMUNOCAL -->
+            <section class="space-y-8">
+                <div class="text-center max-w-3xl mx-auto space-y-4">
+                    <h2 class="font-serif text-3xl md:text-4xl text-white">
+                        <span class="lang-es">¿Por qué Inmunocal Marca la Diferencia?</span>
+                        <span class="lang-en">Why Does Immunocal Make the Difference?</span>
+                    </h2>
+                    <p class="text-offwhite/70 font-light text-base leading-relaxed">
+                        <span class="lang-es">Aunque en el mercado existen alternativas como la N-Acetilcisteína (NAC) o precursores genéricos, Inmunocal destaca por su formulación "Todo en Uno", su biodisponibilidad y sus patentes clínicas únicas.</span>
+                        <span class="lang-en">While alternatives like N-Acetylcysteine (NAC) exist, Immunocal stands out for its all-in-one formulation, bioavailability, and unique clinical patents.</span>
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <div class="glass-card p-8 rounded-2xl border-cyan-vibrant/20">
+                        <div class="text-3xl text-cyan-vibrant mb-4"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3 class="font-serif text-xl text-white mb-3">
+                            <span class="lang-es">Cisteína Enlazada Protegida</span>
+                            <span class="lang-en">Protected Bonded Cysteine</span>
+                        </h3>
+                        <p class="text-xs text-offwhite/60 leading-relaxed font-light">
+                            <span class="lang-es">La cisteína común se destruye en el estómago. Inmunocal utiliza proteína bioactiva no desnaturalizada que llega intacta al torrente sanguíneo.</span>
+                            <span class="lang-en">Standard cysteine breaks down in stomach acid. Immunocal uses undenatured bioactive protein that reaches the bloodstream intact.</span>
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-2xl border-cyan-vibrant/20">
+                        <div class="text-3xl text-cyan-vibrant mb-4"><i class="fa-solid fa-droplet font-bold"></i></div>
+                        <h3 class="font-serif text-xl text-white mb-3">
+                            <span class="lang-es">Experiencia "Todo en Uno"</span>
+                            <span class="lang-en">"All-in-One" Experience</span>
+                        </h3>
+                        <p class="text-xs text-offwhite/60 leading-relaxed font-light">
+                            <span class="lang-es">Fórmula completa de proteínas suero-lácteas de altísimo valor biológico, excelente palatabilidad y digestibilidad superior sin molestias estomacales.</span>
+                            <span class="lang-en">Complete whey protein isolate with supreme biological value, great palatability, and smooth digestion without stomach distress.</span>
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-2xl border-cyan-vibrant/20">
+                        <div class="text-3xl text-cyan-vibrant mb-4"><i class="fa-solid fa-file-medical"></i></div>
+                        <h3 class="font-serif text-xl text-white mb-3">
+                            <span class="lang-es">Listado en el PDR Médico</span>
+                            <span class="lang-en">Listed in Medical PDR</span>
+                        </h3>
+                        <p class="text-xs text-offwhite/60 leading-relaxed font-light">
+                            <span class="lang-es">Aparece citado en el <em>Physicians' Desk Reference</em> (PDR) de EE.UU. y en el CPS canadiense como nutracéutico probado para la salud humana.</span>
+                            <span class="lang-en">Referenced in the US <em>Physicians' Desk Reference</em> (PDR) and Canadian CPS as a proven nutraceutical for human health.</span>
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- 2. DIAGRAMA DE SÍNTESIS DE GLUTATIÓN -->
+            <section class="glass-card rounded-2xl overflow-hidden p-6 md:p-10 border-cyan-vibrant/30">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <span class="text-xs text-cyan-vibrant font-bold uppercase tracking-widest block mb-2">
+                            <span class="lang-es inline">Mecanismo Biológico Probadísimo</span>
+                            <span class="lang-en inline">Proven Biological Mechanism</span>
+                        </span>
+                        <h3 class="font-serif text-3xl text-white font-bold mb-4">
+                            <span class="lang-es">¿Cómo actúan las células al elevar el Glutatión?</span>
+                            <span class="lang-en">How Cells Respond to Raised Glutathione?</span>
+                        </h3>
+                        <p class="text-sm text-offwhite/70 font-light leading-relaxed mb-6">
+                            <span class="lang-es">El glutatión (GSH) no se puede tomar directamente en pastillas porque la digestión lo degrada. La única vía efectiva es entregar a la célula la <strong>Cisteína Enlazada</strong> necesaria para que la mitocondria fabrique su propio glutatión natural.</span>
+                            <span class="lang-en">Glutathione (GSH) cannot be taken directly as a pill as digestion breaks it down. The only effective route is delivering <strong>Bonded Cysteine</strong> to cells so mitochondria synthesize their own natural glutathione.</span>
+                        </p>
+
+                        <ul class="space-y-3 text-xs text-offwhite/80">
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-cyan-vibrant"></i>
+                                <span class="lang-es inline">Neutralización masiva de Radicales Libres y Estrés Oxidativo</span>
+                                <span class="lang-en inline">Massive Free Radical & Oxidative Stress Neutralization</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-cyan-vibrant"></i>
+                                <span class="lang-es inline">Desintoxicación profunda a nivel hepático y renal</span>
+                                <span class="lang-en inline">Deep liver and kidney cellular detoxification</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-check text-cyan-vibrant"></i>
+                                <span class="lang-es inline">Optimización del rendimiento físico y la energía biológica</span>
+                                <span class="lang-en inline">Optimization of physical performance and bio-energy</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <img src="images/glutation_celular_diagram.png" alt="Infografía de Síntesis de Glutatión Celular" class="w-full rounded-xl shadow-2xl">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. PATENTES Y RESPALDO CIENTÍFICO -->
+            <section id="patentes" class="space-y-8">
+                <div class="text-center max-w-3xl mx-auto space-y-4">
+                    <h2 class="font-serif text-3xl md:text-4xl text-white">
+                        <span class="lang-es">Más de 75 Patentes e Investigaciones Clínicas</span>
+                        <span class="lang-en">Over 75 Patents & Clinical Studies</span>
+                    </h2>
+                    <p class="text-offwhite/70 font-light text-base leading-relaxed">
+                        <span class="lang-es">Inmunocal no es una moda pasajera: cuenta con más de 45 años de investigación clínica por científicos de la Universidad McGill en Canadá.</span>
+                        <span class="lang-en">Immunocal is not a passing trend: it is backed by over 45 years of research by McGill University scientists in Canada.</span>
+                    </p>
+                </div>
+
+                <div class="glass-card rounded-2xl overflow-hidden p-6 md:p-10 border-cyan-vibrant/30">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                        <div>
+                            <img src="images/patentes_estudio_comparativo.png" alt="Infografía de Patentes e Investigación Científica" class="w-full rounded-xl shadow-2xl">
+                        </div>
+                        <div class="space-y-6">
+                            <div class="border-l-2 border-cyan-vibrant pl-4">
+                                <h4 class="text-white font-bold text-lg mb-1">
+                                    <span class="lang-es">Dr. Gustavo Bounous</span>
+                                    <span class="lang-en">Dr. Gustavo Bounous</span>
+                                </h4>
+                                <p class="text-xs text-offwhite/70 font-light">
+                                    <span class="lang-es">Descubridor del impacto de la proteína aislada de suero bioactiva en el sistema inmune humano en la Universidad McGill.</span>
+                                    <span class="lang-en">Discoverer of bioactive whey isolate protein impact on the human immune system at McGill University.</span>
+                                </p>
+                            </div>
+
+                            <div class="border-l-2 border-cyan-vibrant pl-4">
+                                <h4 class="text-white font-bold text-lg mb-1">
+                                    <span class="lang-es">Patentes Mundiales de Utilidad</span>
+                                    <span class="lang-en">Worldwide Utility Patents</span>
+                                </h4>
+                                <p class="text-xs text-offwhite/70 font-light">
+                                    <span class="lang-es">Patentes médicas otorgadas en EEUU, Canadá, Europa y Asia por su capacidad demostrada de elevar el glutatión.</span>
+                                    <span class="lang-en">Medical patents issued in US, Canada, Europe, and Asia for demonstrated glutathione-raising capacity.</span>
+                                </p>
+                            </div>
+
+                            <div class="border-l-2 border-cyan-vibrant pl-4">
+                                <h4 class="text-white font-bold text-lg mb-1">
+                                    <span class="lang-es">Publicaciones en PubMed</span>
+                                    <span class="lang-en">PubMed Peer-Reviewed Studies</span>
+                                </h4>
+                                <p class="text-xs text-offwhite/70 font-light">
+                                    <span class="lang-es">Decenas de artículos publicados en revistas médicas de revisión por pares demostrando mejoras sustanciales en la calidad de vida.</span>
+                                    <span class="lang-en">Dozens of peer-reviewed articles published in medical journals demonstrating substantial quality-of-life improvements.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. TRANSPARENCIA TOTAL: ESTUDIO COMPARATIVO DE MERCADO -->
+            <section class="glass-card p-10 rounded-2xl border-amber-500/40 bg-gradient-to-r from-amber-500/10 via-transparent to-transparent space-y-6">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="space-y-4 text-center md:text-left">
+                        <span class="text-xs text-amber-400 font-bold uppercase tracking-widest block">
+                            <span class="lang-es inline">Transparencia Total e Investigación Libre</span>
+                            <span class="lang-en inline">Full Transparency & Open Research</span>
+                        </span>
+                        <h3 class="font-serif text-3xl text-white font-bold">
+                            <span class="lang-es">Estudio Forense: Inmunocal vs. Competencia (NAC)</span>
+                            <span class="lang-en">Forensic Study: Immunocal vs. Competition (NAC)</span>
+                        </h3>
+                        <p class="text-sm text-offwhite/70 font-light leading-relaxed max-w-2xl">
+                            <span class="lang-es">No ocultamos nada. Te invitamos a leer nuestro análisis detallado sobre el modelo de negocio de Immunotec, la comparativa de costes por gramo de cisteína frente a alternativas como la NAC y por qué, a pesar de la competencia, muchas personas concluyen que Inmunocal vale absolutamente la pena.</span>
+                            <span class="lang-en">We hide nothing. We invite you to read our detailed analysis on Immunotec's business model, cost-per-gram cysteine comparisons versus alternatives like NAC, and why many conclude Immunocal is fully worth it.</span>
+                        </p>
+                    </div>
+
+                    <div class="shrink-0">
+                        <a href="modelo_negocio_competencia/index.html" class="btn-cyan px-8 py-5 rounded-full font-bold text-xs uppercase tracking-widest inline-flex items-center gap-3">
+                            <i class="fa-solid fa-chart-pie"></i>
+                            <span class="lang-es inline">Leer Estudio Forense de Mercado</span>
+                            <span class="lang-en inline">Read Forensic Market Study</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. DESCARGO DE RESPONSABILIDAD MÉDICA -->
+            <section class="p-8 bg-white/5 border border-white/10 rounded-2xl text-center space-y-4">
+                <div class="text-cyan-vibrant text-2xl"><i class="fa-solid fa-user-doctor"></i></div>
+                <h4 class="font-serif text-lg text-white font-bold">
+                    <span class="lang-es">Compromiso de Salud Responsable</span>
+                    <span class="lang-en">Responsible Health Commitment</span>
+                </h4>
+                <p class="text-xs text-offwhite/60 font-light leading-relaxed max-w-3xl mx-auto">
+                    <span class="lang-es">Inmunocal es un complemento alimenticio nutracéutico diseñado para nutrir el organismo a nivel celular. <strong>No es un medicamento ni sustituye el tratamiento prescrito por tu médico</strong>. La salud real requiere un enfoque integral: buena hidratación, alimentación viva, descanso de calidad, movimiento diario y seguimiento médico profesional.</span>
+                    <span class="lang-en">Immunocal is a nutraceutical food supplement designed to nourish cells. <strong>It is not a drug and does not replace medical treatment prescribed by your physician</strong>. Real health demands a holistic approach: proper hydration, whole food, restful sleep, daily movement, and professional medical guidance.</span>
+                </p>
+            </section>
+
+            <!-- FOOTER NAV -->
+            <div class="py-8 text-center space-y-6">
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="../index.html" class="btn-cyan px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest inline-flex items-center gap-3">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span class="lang-es inline">Volver a Salud Integral</span>
+                        <span class="lang-en inline">Back to Holistic Health</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 text-center bg-obsidian">
+        <div class="max-w-7xl mx-auto px-8">
+            <p class="text-[10px] tracking-[6px] uppercase font-light text-white/30">
+                <span class="lang-es">© 2026 Salud Equilibrio · Inmunocal & Nutrición Celular</span>
+                <span class="lang-en">© 2026 Salud Equilibrio · Immunocal & Cellular Nutrition</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Multilingual Script -->
+    <script>
+        const LANG_KEY = 'salud_equilibrio_lang';
+
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            document.getElementById('lang-dropdown').classList.toggle('show');
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.closest('.lang-trigger')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem(LANG_KEY, lang);
+            
+            const flag = lang === 'es' ? '🇪🇸' : '🇬🇧';
+            const text = lang.toUpperCase();
+            document.getElementById('current-flag').innerText = flag;
+            document.getElementById('current-lang-text').innerText = text;
+
+            const dropdown = document.getElementById('lang-dropdown');
+            if(dropdown) dropdown.classList.remove('show');
+        }
+
+        function initLanguage() {
+            const savedLang = localStorage.getItem(LANG_KEY) || 'es';
+            setLanguage(savedLang);
+        }
+
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+</body>
+
+</html>

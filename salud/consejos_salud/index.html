@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consejos de Salud y Nutrición Celular | Salud Equilibrio</title>
+    <meta name="description" content="Consejos de salud integral, optimización metabólica, glutatión y nutrición celular avanzada. Recomencaciones sobre Inmunocal y regeneración.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Noto Serif & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Noto Serif', 'serif'],
+                    },
+                    colors: {
+                        obsidian: '#0e0e0e',
+                        emerald: {
+                            glow: '#10b981',
+                            light: '#a7f3d0'
+                        },
+                        mint: {
+                            vibrant: '#66dd8b',
+                            glow: 'rgba(102, 221, 139, 0.4)',
+                        },
+                        offwhite: '#f5f5f5',
+                    },
+                    borderRadius: {
+                        'xl-custom': '2rem',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: #0e0e0e;
+            color: #f5f5f5;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(14, 14, 14, 0.85);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(16, 185, 129, 0.4);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-emerald {
+            background: #10b981;
+            color: #0e0e0e;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-emerald:hover {
+            filter: brightness(1.15);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.7);
+            transform: scale(1.03);
+        }
+
+        .text-glow-emerald {
+            text-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+        }
+
+        /* ─── Language toggle system ─── */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(14, 14, 14, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            min-width: 160px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .dropdown-content.show { display: block; }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-option:hover {
+            background: rgba(16, 185, 129, 0.15);
+            color: #fff;
+        }
+
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .lang-trigger:hover {
+            border-color: rgba(16, 185, 129, 0.4);
+            background: rgba(16, 185, 129, 0.05);
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-emerald-glow/30 selection:text-white" data-lang="es">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full z-50 glass-nav h-24 flex items-center">
+        <div class="max-w-7xl mx-auto px-8 w-full flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-4 group">
+                <div class="h-14 w-14 flex items-center justify-center">
+                    <img src="../logo.png" alt="Salud Equilibrio Logo" class="h-full w-full object-contain brightness-125 contrast-110 group-hover:scale-110 transition-transform">
+                </div>
+                <span class="font-serif text-2xl tracking-tighter text-white">Salud<span class="text-mint-vibrant font-light">Equilibrio</span></span>
+            </a>
+            
+            <div class="hidden lg:flex gap-8 items-center">
+                <div class="flex gap-8 text-[10px] tracking-[3px] uppercase font-bold text-white/60">
+                    <a href="../index.html" class="hover:text-white transition-colors">
+                        <span class="lang-es inline">Salud Integral</span>
+                        <span class="lang-en inline">Holistic Health</span>
+                    </a>
+                    <a href="../hombre_barba_blanca/index.html" class="hover:text-mint-vibrant transition-colors">
+                        <span class="lang-es inline">El Hombre de la Barba Blanca</span>
+                        <span class="lang-en inline">White-Bearded Man</span>
+                    </a>
+                    <a href="index.html" class="text-emerald-glow font-bold">
+                        <span class="lang-es inline">Nutrición Celular & Inmunocal</span>
+                        <span class="lang-en inline">Cellular Nutrition & Immunocal</span>
+                    </a>
+                </div>
+
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fa-solid fa-chevron-down text-[8px] opacity-50 ml-1"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')">
+                            <span>🇪🇸</span>
+                            <span>Castellano</span>
+                        </div>
+                        <div class="lang-option" onclick="setLanguage('en')">
+                            <span>🇬🇧</span>
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-40 pb-20 px-8 relative">
+        <div class="absolute inset-0 z-0 bg-gradient-to-b from-emerald-glow/10 via-transparent to-transparent"></div>
+        <div class="max-w-5xl mx-auto relative z-10 text-center">
+            
+            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-emerald-glow/30 to-mint-vibrant/20 mx-auto mb-8 border-2 border-emerald-glow/40 flex items-center justify-center text-4xl text-emerald-light shadow-2xl">
+                <i class="fa-solid fa-shield-virus"></i>
+            </div>
+
+            <h2 class="font-serif text-xs tracking-[10px] uppercase text-emerald-light mb-4 font-semibold">
+                <span class="lang-es">Nutrición Celular & Glutatión · Consejos de Salud</span>
+                <span class="lang-en">Cellular Nutrition & Glutathione · Health Advice</span>
+            </h2>
+
+            <h1 class="font-serif text-4xl md:text-6xl text-white mb-6 leading-tight">
+                <span class="lang-es">Optimizando el <span class="italic text-glow-emerald font-light">Sistema Inmune Celular</span></span>
+                <span class="lang-en">Optimizing the <span class="italic text-glow-emerald font-light">Cellular Immune System</span></span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-offwhite/70 font-light leading-relaxed max-w-3xl mx-auto mb-10">
+                <span class="lang-es">Espacio dedicado a la suplementación de alta eficacia, el papel del Glutatión como maestro antioxidante del cuerpo y los beneficios respaldados por la ciencia de suplementos como <strong>Inmunocal</strong>.</span>
+                <span class="lang-en">Dedicated space for high-potency supplementation, the role of Glutathione as master antioxidant, and science-backed benefits of supplements like <strong>Immunocal</strong>.</span>
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-12 px-8">
+        <div class="max-w-6xl mx-auto space-y-16">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="text-3xl text-emerald-glow mb-4"><i class="fa-solid fa-dna"></i></div>
+                    <h3 class="font-serif text-xl text-white mb-3">
+                        <span class="lang-es">Glutatión Maestro</span>
+                        <span class="lang-en">Master Glutathione</span>
+                    </h3>
+                    <p class="text-xs text-offwhite/60 leading-relaxed font-light">
+                        <span class="lang-es">El principal antioxidante intracelular que neutraliza los radicales libres, desintoxica el hígado y protege el ADN de las células.</span>
+                        <span class="lang-en">The primary intracellular antioxidant neutralizing free radicals, detoxifying the liver, and protecting cellular DNA.</span>
+                    </p>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="text-3xl text-emerald-glow mb-4"><i class="fa-solid fa-bottle-droplet"></i></div>
+                    <h3 class="font-serif text-xl text-white mb-3">
+                        <span class="lang-es">Precursores de Cisteína</span>
+                        <span class="lang-en">Cysteine Precursors</span>
+                    </h3>
+                    <p class="text-xs text-offwhite/60 leading-relaxed font-light">
+                        <span class="lang-es">La clave de Inmunocal: aportar cisteína enlazada no desnaturalizada para que el propio cuerpo sintetice glutatión de forma natural.</span>
+                        <span class="lang-en">The key to Immunocal: delivering bonded non-denatured cysteine allowing the body to synthesize glutathione naturally.</span>
+                    </p>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="text-3xl text-emerald-glow mb-4"><i class="fa-solid fa-person-running"></i></div>
+                    <h3 class="font-serif text-xl text-white mb-3">
+                        <span class="lang-es">Vitalidad y Rendimiento</span>
+                        <span class="lang-en">Vitality & Performance</span>
+                    </h3>
+                    <p class="text-xs text-offwhite/60 leading-relaxed font-light">
+                        <span class="lang-es">Recuperación muscular acelerada, reducción del estrés oxidativo celular y mayor energía biológica diaria.</span>
+                        <span class="lang-en">Accelerated muscle recovery, reduced cellular oxidative stress, and enhanced daily biological energy.</span>
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Inmunocal Feature Block -->
+            <div class="glass-card p-10 rounded-2xl border-emerald-glow/30">
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="w-24 h-24 rounded-full bg-emerald-glow/10 border border-emerald-glow/40 flex items-center justify-center text-4xl text-emerald-glow shrink-0">
+                        <i class="fa-solid fa-capsules"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-emerald-glow font-bold uppercase tracking-widest block mb-2">
+                            <span class="lang-es inline">Recomendación Nutracéutica</span>
+                            <span class="lang-en inline">Nutraceutical Recommendation</span>
+                        </span>
+                        <h3 class="font-serif text-2xl text-white font-bold mb-3">
+                            <span class="lang-es">¿Por qué recomendamos Inmunocal en nuestro enfoque?</span>
+                            <span class="lang-en">Why do we recommend Immunocal in our approach?</span>
+                        </h3>
+                        <p class="text-sm text-offwhite/70 font-light leading-relaxed mb-6">
+                            <span class="lang-es">Inmunocal es un aislado de proteína de suero de leche con patentes internacionales respaldadas por décadas de estudios clínicos. Al elevar los niveles de glutatión celular, proporciona el cimiento de nutrición celular sobre el que cualquier terapia de salud integral florece.</span>
+                            <span class="lang-en">Immunocal is a whey protein isolate backed by international patents and decades of clinical studies. By raising cellular glutathione levels, it provides the foundation of cellular nutrition upon which any holistic health protocol thrives.</span>
+                        </p>
+                        <a href="../Inmunocal/index.html" class="btn-emerald px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-widest inline-flex items-center gap-3">
+                            <span class="lang-es inline">Ver Portal Inmunocal & Estudio Comparativo</span>
+                            <span class="lang-en inline">View Immunocal Portal & Comparative Study</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center pt-8">
+                <a href="../index.html" class="btn-emerald px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest inline-flex items-center gap-3">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span class="lang-es inline">Volver a Salud Integral</span>
+                    <span class="lang-en inline">Back to Holistic Health</span>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 text-center bg-obsidian mt-20">
+        <div class="max-w-7xl mx-auto px-8">
+            <p class="text-[10px] tracking-[6px] uppercase font-light text-white/30">
+                <span class="lang-es">© 2026 Salud Equilibrio · Consejos de Salud y Nutrición Celular</span>
+                <span class="lang-en">© 2026 Salud Equilibrio · Health Advice & Cellular Nutrition</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Multilingual Script -->
+    <script>
+        const LANG_KEY = 'salud_equilibrio_lang';
+
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            document.getElementById('lang-dropdown').classList.toggle('show');
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.closest('.lang-trigger')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem(LANG_KEY, lang);
+            
+            const flag = lang === 'es' ? '🇪🇸' : '🇬🇧';
+            const text = lang.toUpperCase();
+            document.getElementById('current-flag').innerText = flag;
+            document.getElementById('current-lang-text').innerText = text;
+
+            const dropdown = document.getElementById('lang-dropdown');
+            if(dropdown) dropdown.classList.remove('show');
+        }
+
+        function initLanguage() {
+            const savedLang = localStorage.getItem(LANG_KEY) || 'es';
+            setLanguage(savedLang);
+        }
+
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+</body>
+
+</html>

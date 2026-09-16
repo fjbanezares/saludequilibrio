@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Jorge Carvajal · Sintergética y Medicina de Conciencia | Salud Equilibrio</title>
+    <meta name="description" content="Divulgación y lecciones del Dr. Jorge Carvajal Posada, creador de la Sintergética y pionero de la medicina de la conciencia y sanación holística.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Noto Serif & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Noto Serif', 'serif'],
+                    },
+                    colors: {
+                        obsidian: '#0e0e0e',
+                        violet: {
+                            glow: '#9d4edd',
+                            light: '#e0aaff'
+                        },
+                        mint: {
+                            vibrant: '#66dd8b',
+                            glow: 'rgba(102, 221, 139, 0.4)',
+                        },
+                        offwhite: '#f5f5f5',
+                    },
+                    borderRadius: {
+                        'xl-custom': '2rem',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: #0e0e0e;
+            color: #f5f5f5;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(14, 14, 14, 0.85);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(157, 78, 221, 0.4);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -15px rgba(157, 78, 221, 0.2);
+        }
+
+        .btn-violet {
+            background: #9d4edd;
+            color: #fff;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 0 15px rgba(157, 78, 221, 0.4);
+        }
+
+        .btn-violet:hover {
+            filter: brightness(1.15);
+            box-shadow: 0 0 30px rgba(157, 78, 221, 0.7);
+            transform: scale(1.03);
+        }
+
+        .text-glow-violet {
+            text-shadow: 0 0 20px rgba(157, 78, 221, 0.6);
+        }
+
+        /* ─── Language toggle system ─── */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(14, 14, 14, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            min-width: 160px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .dropdown-content.show { display: block; }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-option:hover {
+            background: rgba(157, 78, 221, 0.15);
+            color: #fff;
+        }
+
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .lang-trigger:hover {
+            border-color: rgba(157, 78, 221, 0.4);
+            background: rgba(157, 78, 221, 0.05);
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-violet-glow/30 selection:text-white" data-lang="es">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full z-50 glass-nav h-24 flex items-center">
+        <div class="max-w-7xl mx-auto px-8 w-full flex justify-between items-center">
+            <a href="../../index.html" class="flex items-center gap-4 group">
+                <div class="h-14 w-14 flex items-center justify-center">
+                    <img src="../../logo.png" alt="Salud Equilibrio Logo" class="h-full w-full object-contain brightness-125 contrast-110 group-hover:scale-110 transition-transform">
+                </div>
+                <span class="font-serif text-2xl tracking-tighter text-white">Salud<span class="text-mint-vibrant font-light">Equilibrio</span></span>
+            </a>
+            
+            <div class="hidden lg:flex gap-8 items-center">
+                <div class="flex gap-8 text-[10px] tracking-[3px] uppercase font-bold text-white/60">
+                    <a href="../index.html" class="hover:text-white transition-colors">
+                        <span class="lang-es inline">Salud Integral</span>
+                        <span class="lang-en inline">Holistic Health</span>
+                    </a>
+                    <a href="../hombre_barba_blanca/index.html" class="hover:text-mint-vibrant transition-colors">
+                        <span class="lang-es inline">El Hombre de la Barba Blanca</span>
+                        <span class="lang-en inline">White-Bearded Man</span>
+                    </a>
+                    <a href="index.html" class="text-violet-glow font-bold">
+                        <span class="lang-es inline">Dr. Jorge Carvajal</span>
+                        <span class="lang-en inline">Dr. Jorge Carvajal</span>
+                    </a>
+                </div>
+
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fa-solid fa-chevron-down text-[8px] opacity-50 ml-1"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')">
+                            <span>🇪🇸</span>
+                            <span>Castellano</span>
+                        </div>
+                        <div class="lang-option" onclick="setLanguage('en')">
+                            <span>🇬🇧</span>
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-40 pb-20 px-8 relative">
+        <div class="absolute inset-0 z-0 bg-gradient-to-b from-violet-glow/10 via-transparent to-transparent"></div>
+        <div class="max-w-5xl mx-auto relative z-10 text-center">
+            
+            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-violet-glow/30 to-mint-vibrant/20 mx-auto mb-8 border-2 border-violet-glow/40 flex items-center justify-center text-4xl text-violet-light shadow-2xl">
+                <i class="fa-solid fa-brain"></i>
+            </div>
+
+            <h2 class="font-serif text-xs tracking-[10px] uppercase text-violet-light mb-4 font-semibold">
+                <span class="lang-es">Sintergética & Medicina de la Conciencia · Dr. Jorge Carvajal</span>
+                <span class="lang-en">Bio-Synthesy & Consciousness Medicine · Dr. Jorge Carvajal</span>
+            </h2>
+
+            <h1 class="font-serif text-4xl md:text-6xl text-white mb-6 leading-tight">
+                <span class="lang-es">La Sanación desde la <span class="italic text-glow-violet font-light">Síntesis del Ser</span></span>
+                <span class="lang-en">Healing through the <span class="italic text-glow-violet font-light">Synthesis of Being</span></span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-offwhite/70 font-light leading-relaxed max-w-3xl mx-auto mb-10">
+                <span class="lang-es">Estudiamos y divulgamos la obra del Dr. Jorge Carvajal Posada, creador de la Sintergética. Una propuesta médica integrativa que une la sabiduría milenaria de oriente con el rigor de la biofísica y la medicina occidental.</span>
+                <span class="lang-en">We study and share the work of Dr. Jorge Carvajal Posada, creator of Bio-Synthesy. An integrative medical paradigm fusing ancient Eastern wisdom with biophysics and Western medicine.</span>
+            </p>
+
+            <div class="p-4 bg-white/5 border border-white/10 rounded-2xl max-w-2xl mx-auto text-xs text-white/50 italic">
+                <span class="lang-es">Nota: Esta sección es un homenaje didáctico y espacio de estudio del trabajo del Dr. Jorge Carvajal por parte del equipo de Salud Equilibrio.</span>
+                <span class="lang-en">Note: This section is an educational tribute and study hub dedicated to Dr. Jorge Carvajal's teachings by Salud Equilibrio.</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Key Pillars of Sintergética -->
+    <main class="py-12 px-8">
+        <div class="max-w-6xl mx-auto space-y-16">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="text-3xl text-violet-light mb-4"><i class="fa-solid fa-infinity"></i></div>
+                    <h3 class="font-serif text-xl text-white mb-3">
+                        <span class="lang-es">Sintergética</span>
+                        <span class="lang-en">Bio-Synthesy</span>
+                    </h3>
+                    <p class="text-xs text-offwhite/60 leading-relaxed font-light">
+                        <span class="lang-es">Integración de la Medicina Tradicional China, el Ayurveda, la homeopatía y la alopatía en una síntesis con la conciencia como hilo conductor.</span>
+                        <span class="lang-en">Integration of Traditional Chinese Medicine, Ayurveda, homeopathy, and allopathy bound together by consciousness.</span>
+                    </p>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="text-3xl text-violet-light mb-4"><i class="fa-solid fa-atom"></i></div>
+                    <h3 class="font-serif text-xl text-white mb-3">
+                        <span class="lang-es">Bioenergética & Luz</span>
+                        <span class="lang-en">Bioenergetics & Light</span>
+                    </h3>
+                    <p class="text-xs text-offwhite/60 leading-relaxed font-light">
+                        <span class="lang-es">Uso de la luz, el color, el sonido y la información electromagnética para estimular la capacidad del propio organismo de autorregularse.</span>
+                        <span class="lang-en">Use of light, color, sound, and electromagnetic information to trigger the body's innate self-healing capabilities.</span>
+                    </p>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="text-3xl text-violet-light mb-4"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <h3 class="font-serif text-xl text-white mb-3">
+                        <span class="lang-es">Medicina del Alma</span>
+                        <span class="lang-en">Medicine of the Soul</span>
+                    </h3>
+                    <p class="text-xs text-offwhite/60 leading-relaxed font-light">
+                        <span class="lang-es">Comprender la enfermedad no como un castigo, sino como una llamada de atención del cuerpo para reordenar nuestras emociones y propósito vital.</span>
+                        <span class="lang-en">Understanding illness not as a curse, but as a biological wake-up call to harmonize emotions and life purpose.</span>
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Lessons / Video Series Section -->
+            <div class="glass-card p-10 rounded-2xl border-violet-glow/30">
+                <h3 class="font-serif italic text-3xl text-white mb-6">
+                    <span class="lang-es">Principios Fundamentales según el Dr. Carvajal</span>
+                    <span class="lang-en">Core Principles according to Dr. Carvajal</span>
+                </h3>
+                <div class="space-y-6 text-sm text-offwhite/80 font-light leading-relaxed">
+                    <div class="border-l-2 border-violet-glow pl-4 space-y-1">
+                        <h4 class="text-white font-bold">
+                            <span class="lang-es">1. La Conciencia como Matriz de la Vida</span>
+                            <span class="lang-en">1. Consciousness as the Matrix of Life</span>
+                        </h4>
+                        <p class="text-xs text-white/60">
+                            <span class="lang-es">La energía sigue al pensamiento. Sanar requiere transformar la información de la matriz energética celular antes de manifestarse en la biología.</span>
+                            <span class="lang-en">Energy follows thought. Healing requires transforming information in the bio-field before manifesting in biology.</span>
+                        </p>
+                    </div>
+
+                    <div class="border-l-2 border-violet-glow pl-4 space-y-1">
+                        <h4 class="text-white font-bold">
+                            <span class="lang-es">2. El Síntoma como Lenguaje</span>
+                            <span class="lang-en">2. The Symptom as Language</span>
+                        </h4>
+                        <p class="text-xs text-white/60">
+                            <span class="lang-es">Tratar el síntoma sin escuchar su significado es callar al mensajero. El síntoma es la solución biológica que el cuerpo encuentra ante un conflicto sin resolver.</span>
+                            <span class="lang-en">Suppressing symptoms without listening to their meaning silences the messenger. Symptoms are the body's biological response to unresolved conflict.</span>
+                        </p>
+                    </div>
+
+                    <div class="border-l-2 border-violet-glow pl-4 space-y-1">
+                        <h4 class="text-white font-bold">
+                            <span class="lang-es">3. La Síntesis que Une lo Aparentemente Opuesto</span>
+                            <span class="lang-en">3. Synthesis Uniting Apparent Opposites</span>
+                        </h4>
+                        <p class="text-xs text-white/60">
+                            <span class="lang-es">No hay conflicto entre la medicina alopática y la tradicional; la verdadera sanación ocurre cuando se suman todas las herramientas respetando la ecología del ser humano.</span>
+                            <span class="lang-en">There is no war between conventional and traditional medicine; true healing occurs when combining tools respecting human bio-ecology.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center pt-8">
+                <a href="../index.html" class="btn-violet px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest inline-flex items-center gap-3">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span class="lang-es inline">Volver a Salud Integral</span>
+                    <span class="lang-en inline">Back to Holistic Health</span>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 text-center bg-obsidian mt-20">
+        <div class="max-w-7xl mx-auto px-8">
+            <p class="text-[10px] tracking-[6px] uppercase font-light text-white/30">
+                <span class="lang-es">© 2026 Salud Equilibrio · Homenaje al Dr. Jorge Carvajal</span>
+                <span class="lang-en">© 2026 Salud Equilibrio · Tribute to Dr. Jorge Carvajal</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Multilingual Script -->
+    <script>
+        const LANG_KEY = 'salud_equilibrio_lang';
+
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            document.getElementById('lang-dropdown').classList.toggle('show');
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.closest('.lang-trigger')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem(LANG_KEY, lang);
+            
+            const flag = lang === 'es' ? '🇪🇸' : '🇬🇧';
+            const text = lang.toUpperCase();
+            document.getElementById('current-flag').innerText = flag;
+            document.getElementById('current-lang-text').innerText = text;
+
+            const dropdown = document.getElementById('lang-dropdown');
+            if(dropdown) dropdown.classList.remove('show');
+        }
+
+        function initLanguage() {
+            const savedLang = localStorage.getItem(LANG_KEY) || 'es';
+            setLanguage(savedLang);
+        }
+
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+</body>
+
+</html>

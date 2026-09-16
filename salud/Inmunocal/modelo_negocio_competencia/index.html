@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis Forense e Infografía: Immunotec & Immunocal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0f172a',
+                            slate: '#1e293b',
+                            teal: '#06b6d4',
+                            cyan: '#22d3ee',
+                            amber: '#f59e0b',
+                            rose: '#f43f5e',
+                            emerald: '#10b981',
+                            indigo: '#6366f1',
+                            violet: '#8b5cf6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 360px;
+            }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 50%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+    </style>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Noto Serif & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Language Toggle System CSS -->
+    <style>
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            min-width: 160px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .dropdown-content.show { display: block; }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-option:hover {
+            background: rgba(34, 211, 238, 0.15);
+            color: #fff;
+        }
+
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .lang-trigger:hover {
+            border-color: rgba(34, 211, 238, 0.4);
+            background: rgba(34, 211, 238, 0.05);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-slate-900" data-lang="es">
+
+    <!-- Global Salud Equilibrio Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="../../../index.html" class="flex items-center gap-3 group">
+                <div class="h-12 w-12 flex items-center justify-center">
+                    <img src="../../../logo.png" alt="Salud Equilibrio Logo" class="h-full w-full object-contain brightness-125 contrast-110 group-hover:scale-110 transition-transform">
+                </div>
+                <span class="font-serif text-xl tracking-tighter text-white">Salud<span class="text-cyan-400 font-light">Equilibrio</span></span>
+            </a>
+            
+            <div class="hidden lg:flex gap-6 items-center">
+                <div class="flex gap-6 text-[10px] tracking-[2px] uppercase font-bold text-slate-300">
+                    <a href="../../../index.html" class="hover:text-cyan-400 transition-colors">
+                        <span class="lang-es inline">🏠 Inicio</span>
+                        <span class="lang-en inline">🏠 Home</span>
+                    </a>
+                    <a href="../../../index.html#agua" class="hover:text-cyan-400 transition-colors">
+                        <span class="lang-es inline">💧 Agua Kangen & Negocio</span>
+                        <span class="lang-en inline">💧 Kangen Water & Business</span>
+                    </a>
+                    <a href="../../index.html" class="hover:text-cyan-400 transition-colors">
+                        <span class="lang-es inline">📚 Divulgación & Maestros</span>
+                        <span class="lang-en inline">📚 Outreach & Mentors</span>
+                    </a>
+                    <a href="../index.html" class="text-cyan-400 font-bold border-b border-cyan-400 pb-0.5">
+                        <span class="lang-es inline">🌿 Portal Inmunocal</span>
+                        <span class="lang-en inline">🌿 Immunocal Portal</span>
+                    </a>
+                </div>
+
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fa-solid fa-chevron-down text-[8px] opacity-50 ml-1"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')">
+                            <span>🇪🇸</span>
+                            <span>Castellano</span>
+                        </div>
+                        <div class="lang-option" onclick="setLanguage('en')">
+                            <span>🇬🇧</span>
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sub-header Breadcrumb Bar -->
+        <div class="bg-slate-900/60 border-t border-slate-800/60 px-4 sm:px-6 lg:px-8 py-2 text-xs text-slate-400">
+            <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+                <div class="flex items-center space-x-2 text-[11px]">
+                    <a href="../../../index.html" class="hover:text-cyan-400">Salud Equilibrio</a>
+                    <span>/</span>
+                    <a href="../../index.html" class="hover:text-cyan-400">Salud</a>
+                    <span>/</span>
+                    <a href="../index.html" class="hover:text-cyan-400">Inmunocal</a>
+                    <span>/</span>
+                    <span class="text-cyan-400 font-semibold">Estudio Forense de Mercado & Competencia</span>
+                </div>
+
+                <!-- Section shortcuts -->
+                <div class="hidden md:flex space-x-4 text-[10px] uppercase tracking-wider font-semibold text-slate-400">
+                    <a href="#kpi" class="hover:text-cyan-400">Resumen</a>
+                    <a href="#bioquimica" class="hover:text-cyan-400">Bioquímica</a>
+                    <a href="#valor-añadido" class="hover:text-cyan-400">Inmunocal vs NAC</a>
+                    <a href="#desglose-coste" class="hover:text-cyan-400">Coste</a>
+                    <a href="#mlm" class="hover:text-cyan-400">MLM</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative py-16 px-4 sm:px-6 lg:px-8 gradient-bg border-b border-slate-800">
+        <div class="max-w-5xl mx-auto text-center space-y-6">
+            <div
+                class="inline-block px-4 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-cyan-400 text-xs font-semibold uppercase tracking-wider">
+                Investigación Científica, Nutracéutica y Financiera
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
+                Deconstrucción de <span class="gradient-text">Immunocal</span> vs. <span
+                    class="text-emerald-400">NAC</span> y Viabilidad del Negocio
+            </h1>
+            <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                ¿Qué justifica la diferencia entre $30 de NAC y $200 de Immunocal? Un análisis detallado de la matriz
+                proteica, creatina, precursores de óxido nítrico, sabor, adherencia y rentabilidad MLM.
+            </p>
+        </div>
+    </section>
+
+    <section id="kpi" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-2">Métricas Clave y Resumen Ejecutivo</h2>
+            <p class="text-slate-400 leading-relaxed">
+                Un vistazo rápido a los números que equilibran el valor nutricional del producto frente a la realidad
+                económica del modelo de distribución.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div
+                class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-lg hover:border-cyan-500/50 transition-all">
+                <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Aporte Proteico Completo
+                </div>
+                <div class="text-3xl sm:text-4xl font-extrabold text-cyan-400 mb-1">20 g / día</div>
+                <div class="text-sm font-medium text-slate-200 mb-2">Proteína de Aislado de Suero</div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    2 sobres aportan aminoácidos esenciales y BCAA de alto valor biológico (BV 104) que el NAC sintético
+                    no posee.
+                </p>
+            </div>
+
+            <div
+                class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-lg hover:border-amber-500/50 transition-all">
+                <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Brecha Financiera Real
+                </div>
+                <div class="text-3xl sm:text-4xl font-extrabold text-amber-400 mb-1">$90 vs $180</div>
+                <div class="text-sm font-medium text-slate-200 mb-2">Stack Equivalente vs Immunocal</div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Comprar NAC + Proteína WPI + Creatina + Óxido Nítrico por separado cuesta ~$90/mes. La diferencia de
+                    precio real es de ~2x, no de 10x.
+                </p>
+            </div>
+
+            <div
+                class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-lg hover:border-emerald-500/50 transition-all">
+                <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Sabor y Adherencia</div>
+                <div class="text-3xl sm:text-4xl font-extrabold text-emerald-400 mb-1">&gt; 90%</div>
+                <div class="text-sm font-medium text-slate-200 mb-2">Tolerancia Digestiva y Gustativa</div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Immunocal Sport elimina el olor sulfuroso del NAC, permitiendo consumo placentero diario como batido
+                    deportivo o desayuno.
+                </p>
+            </div>
+
+            <div
+                class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-lg hover:border-rose-500/50 transition-all">
+                <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Viabilidad Distribuidor
+                </div>
+                <div class="text-3xl sm:text-4xl font-extrabold text-rose-500 mb-1">78.4%</div>
+                <div class="text-sm font-medium text-slate-200 mb-2">Ganancia $0 - $15 / año</div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Aunque el producto tiene un gran perfil organoléptico y nutricional, el modelo multinivel presenta
+                    pérdidas para la gran mayoría.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="bioquimica" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-800">
+        <div class="mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-2">Fundamentos Bioquímicos: ¿Cómo Funciona la
+                Cistina?</h2>
+            <p class="text-slate-400 leading-relaxed">
+                El glutatión (GSH) no puede absorberse intacto. Tanto el NAC como Immunocal buscan superar este
+                obstáculo, pero lo hacen mediante estructuras químicas y formatos completamente diferentes.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-4">
+                <h3 class="text-xl font-bold text-cyan-400 mb-2">La Cistina Unida en Matriz Proteica</h3>
+                <p class="text-sm text-slate-300 leading-relaxed">
+                    Para sintetizar Glutatión, la célula necesita <strong>Cisteína</strong>. El glutamato y la glicina
+                    abundan en la dieta regular. La cisteína libre es inestable y tóxica en altas concentraciones
+                    libres.
+                </p>
+                <p class="text-sm text-slate-300 leading-relaxed">
+                    <strong>Immunocal</strong> entrega dos moléculas de cisteína enlazadas por puentes disulfuro
+                    (<strong>Cistina</strong>) dentro de la estructura natural de la albúmina de suero lácteo. Esta
+                    proteína actúa como escudo protector durante la digestión.
+                </p>
+                <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 space-y-2">
+                    <div class="text-xs font-bold text-amber-400 uppercase tracking-wide">Diferencia Farmacocinética
+                        clave</div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        El NAC es un derivado sintético acetilado (N-Acetil-L-Cisteína). Immunocal es una matriz
+                        alimentaria proteica completa con valor biológico de 104, aporte macro-nutricional y péptidos
+                        bioactivos adicionales.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+                <h3 class="text-xl font-bold text-slate-100 mb-4 text-center">Proceso de Absorción Comparado</h3>
+
+                <div class="space-y-6">
+                    <div class="p-4 rounded-lg bg-emerald-950/40 border border-emerald-900/60">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-900 text-emerald-200">OPCIÓN
+                                A: NAC (N-Acetilcisteína)</span>
+                            <span class="text-xs text-emerald-400 font-mono">Fármaco / Molécula Aislada</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                            <div class="p-2 bg-slate-900 rounded border border-slate-800">1. Cápsula / Polvo Ácido</div>
+                            <div class="p-2 bg-slate-900 rounded border border-slate-800 text-amber-300">2.
+                                Desacetilación Hepática</div>
+                            <div class="p-2 bg-slate-900 rounded border border-slate-800 text-emerald-300">3. Aumento
+                                Rápido de GSH</div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-lg bg-cyan-950/40 border border-cyan-900/60">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold px-2 py-0.5 rounded bg-cyan-900 text-cyan-200">OPCIÓN B:
+                                Immunocal (Aislado de Suero Lácteo)</span>
+                            <span class="text-xs text-cyan-400 font-mono">Alimento Funcional Multicomponente</span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-4 gap-2 text-center text-xs">
+                            <div class="p-2 bg-slate-900 rounded border border-slate-800">1. Cistina en Matriz de Suero
+                            </div>
+                            <div class="p-2 bg-slate-900 rounded border border-slate-800 text-cyan-300">2. Proteólisis
+                                Fisiológica</div>
+                            <div class="p-2 bg-slate-900 rounded border border-slate-800 text-indigo-300">3. +20g
+                                Proteína + Co-factores</div>
+                            <div class="p-2 bg-slate-900 rounded border border-slate-800 text-emerald-400 font-bold">4.
+                                Síntesis GSH + BCAA + ATP</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 text-xs text-slate-400 bg-slate-950 p-3 rounded border border-slate-800">
+                    <strong>Conclusión Bioquímica:</strong> El NAC entrega cisteína de forma directa y económica.
+                    Immunocal entrega cisteína junto con un paquete integral de nutrición proteica y ergogénica.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Immunocal vs NAC Added Value -->
+    <section id="valor-añadido" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-800">
+        <div class="mb-8">
+            <div
+                class="inline-block px-3 py-1 rounded bg-violet-950 border border-violet-800 text-violet-300 text-xs font-bold uppercase tracking-wider mb-2">
+                Análisis Profundo de Producto
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-2">¿Qué Aporta Immunocal que NO Aporta el NAC?
+            </h2>
+            <p class="text-slate-400 leading-relaxed">
+                Si bien el NAC es imbatible en precio para subir el glutatión de forma aislada, Immunocal (especialmente
+                las versiones <strong>Platinum</strong> y <strong>Sport</strong>) no es solo cisteína: es un complejo
+                ergogénico y metabólico con múltiples ingredientes activos y ventajas de consumo.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-lg font-bold text-slate-100 mb-2">Comparativa de Perfil Funcional (Radar 6 Ejes)
+                    </h3>
+                    <p class="text-xs text-slate-400 mb-4">
+                        Evaluación multidimensional entre NAC solo, Immunocal Clásico, Platinum y Sport.
+                    </p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="valueRadarChart"></canvas>
+                </div>
+                <p class="text-xs text-slate-400 mt-4 bg-slate-950 p-3 rounded border border-slate-800">
+                    <strong>Lectura del gráfico:</strong> El NAC destaca únicamente en el eje de precursor de Glutatión.
+                    Immunocal Sport y Platinum dominan en valor proteico, modulación de rendimiento (Creatina/NO) y
+                    palatabilidad.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 border-l-4 border-l-cyan-400">
+                    <div class="text-xs font-bold text-cyan-400 uppercase tracking-wide mb-1">1. Matriz Proteica de Alto
+                        Valor Biológico (WPI)</div>
+                    <h4 class="text-base font-bold text-slate-100 mb-1">20 Gramos de Proteína Limpia por Dosis</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        El NAC es un aminoácido sintético aislado (0 gramos de proteína estructural). Immunocal es un
+                        aislado de proteína de suero (WPI) con un Valor Biológico de 104. Aporta leucina, isoleucina y
+                        valina (BCAAs) indispensables para preservar la masa muscular, tratar la sarcopenia y acelerar
+                        la recuperación física.
+                    </p>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 border-l-4 border-l-amber-400">
+                    <div class="text-xs font-bold text-amber-400 uppercase tracking-wide mb-1">2. Creatina y Precursores
+                        Ergogénicos (Platinum & Sport)</div>
+                    <h4 class="text-base font-bold text-slate-100 mb-1">Carga de ATP, Fuerza y Óxido Nítrico</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        <strong>Immunocal Platinum</strong> incorpora precursores de creatina y minerales reguladores
+                        del pH (RMF) que reducen la acidosis metabólica. <strong>Immunocal Sport</strong> agrega
+                        Creatina monohidrato directa, Citrulina y Extracto de Remolacha (Nitro Boost), lo que potencia
+                        la producción de Óxido Nítrico (NO), vasodilatación, energía ATP y resistencia celular.
+                    </p>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 border-l-4 border-l-violet-400">
+                    <div class="text-xs font-bold text-violet-400 uppercase tracking-wide mb-1">3. Péptidos Moduladores
+                        de Citoquinas (CMP™)</div>
+                    <h4 class="text-base font-bold text-slate-100 mb-1">Modulación Antiinflamatoria Sistémica</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Las versiones avanzadas contienen CMP™ (Cytokine Modulating Peptides), péptidos bioactivos que
+                        ayudan a regular la respuesta inflamatoria celular e inhibir citoquinas proinflamatorias como
+                        TNF-alfa e IL-1, algo que el NAC no realiza por sí solo.
+                    </p>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 border-l-4 border-l-emerald-400">
+                    <div class="text-xs font-bold text-emerald-400 uppercase tracking-wide mb-1">4. Sabor,
+                        Agradecimiento Digestivo y Adherencia</div>
+                    <h4 class="text-base font-bold text-slate-100 mb-1">Experiencia Organoléptica y Adherencia Real</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        El NAC en polvo/cápsula tiene un fuerte olor a azufre ("huevo podrido") y un gusto altamente
+                        ácido que causa reflujo, acidez gástrica y náuseas en muchos pacientes. Immunocal Sport tiene un
+                        sabor agradable a frutas (maracuyá/cereza) o neutro que se mezcla fácilmente en batidos,
+                        actuando como tentempié o suplemento deportivo de consumo placentero.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Cost Unbundling Breakdown -->
+    <section id="desglose-coste" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-800">
+        <div class="mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-2">Desglose Financiero "Unbundling":
+                Reconstruyendo el Stack Equivalente</h2>
+            <p class="text-slate-400 leading-relaxed">
+                Comparar $30 de NAC contra $180 de Immunocal Sport no es una comparación justa de "manzanas con
+                manzanas". Si un atleta o paciente comprase por separado todos los ingredientes activos que contiene un
+                sobre de Immunocal Sport, ¿cuál sería el coste real?
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-8">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+                <h3 class="text-lg font-bold text-slate-100 mb-2">Coste Mensual: Inmunocal vs. Stack Equivalente por
+                    Separado ($ USD)</h3>
+                <p class="text-xs text-slate-400 mb-4">
+                    Comparativa de comprar suplementos individuales de alta calidad frente a la fórmula todo-en-uno de
+                    Immunocal.
+                </p>
+                <div class="chart-container">
+                    <canvas id="unbundlingChart"></canvas>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 overflow-x-auto">
+                <h3 class="text-lg font-bold text-slate-100 mb-4">Desglose de Ingredientes del "Stack Equivalente"</h3>
+                <table class="w-full text-left text-xs text-slate-300">
+                    <thead class="bg-slate-950 text-slate-100 font-semibold border-b border-slate-800">
+                        <tr>
+                            <th class="p-2.5">Ingrediente Equivalente</th>
+                            <th class="p-2.5">Función Biológica</th>
+                            <th class="p-2.5 text-cyan-400">Coste Estimado/Mes</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800">
+                        <tr>
+                            <td class="p-2.5 font-bold">NAC (N-Acetilcisteína) 600-1200mg</td>
+                            <td class="p-2.5">Precursor de Glutatión</td>
+                            <td class="p-2.5 text-emerald-400 font-mono">$18.00</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2.5 font-bold">Aislado de Proteína de Suero (WPI) 600g</td>
+                            <td class="p-2.5">Sintesis Muscular, BCAAs</td>
+                            <td class="p-2.5 text-emerald-400 font-mono">$32.00</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2.5 font-bold">Creatina Monohidrato Creapure® (150g)</td>
+                            <td class="p-2.5">Energía ATP, Fuerza Muscular</td>
+                            <td class="p-2.5 text-emerald-400 font-mono">$14.00</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2.5 font-bold">L-Citrullina + Ext. Remolacha (Nitro Boost)</td>
+                            <td class="p-2.5">Vasodiluminación / Óxido Nítrico</td>
+                            <td class="p-2.5 text-emerald-400 font-mono">$22.00</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2.5 font-bold">Electrolitos Citrato (Mg, K, Ca)</td>
+                            <td class="p-2.5">Regulación de pH metabólico</td>
+                            <td class="p-2.5 text-emerald-400 font-mono">$10.00</td>
+                        </tr>
+                        <tr class="bg-slate-950 font-bold border-t border-slate-700">
+                            <td class="p-2.5 text-slate-100">TOTAL STACK SEPARADO</td>
+                            <td class="p-2.5 text-slate-400">Sumatoria de 5 botes distintos</td>
+                            <td class="p-2.5 text-amber-400 font-mono">$96.00 / mes</td>
+                        </tr>
+                        <tr class="bg-cyan-950/30 font-bold">
+                            <td class="p-2.5 text-cyan-300">IMMUNOCAL SPORT (Todo en 1)</td>
+                            <td class="p-2.5 text-cyan-300">Conveniencia + Sabor + Patente</td>
+                            <td class="p-2.5 text-cyan-400 font-mono">$160 - $185 / mes</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 text-slate-300 space-y-3">
+            <h4 class="font-bold text-cyan-400 text-sm">Análisis de Valor Justificado:</h4>
+            <p class="text-xs leading-relaxed">
+                Cuando analizamos Immunocal Sport o Platinum desde la óptica de un <strong>Stack Nutricional
+                    Completo</strong> (Proteína WPI + Creatina + Óxido Nítrico + Precursores de GSH + Citratos +
+                Sabor/Conveniencia), el sobreprecio real ya no es de 10x, sino de aproximadamente <strong>1.6x a
+                    1.8x</strong> frente a comprar 5 botes de suplementos por separado. Para un deportista o persona que
+                busca practicidad y un excelente sabor, ese margen extra paga la conveniencia de un único sobre fácil de
+                tomar.
+            </p>
+        </div>
+    </section>
+
+    <section id="evidencia" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-800">
+        <div class="mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-2">Evidencia Clínica y Descomposición de
+                Resultados "Increíbles"</h2>
+            <p class="text-slate-400 leading-relaxed">
+                ¿Por qué hay personas que experimentan mejoras notables? La ciencia médica explica estos testimonios
+                como la conjunción de tres factores fisiológicos y contextuales bien documentados.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-lg font-bold text-slate-100 mb-2">Hallazgos Clínicos Documentados (% de Cambio)</h3>
+                    <p class="text-xs text-slate-400 mb-4">
+                        Resultados observados en ensayos con aislados de proteína de suero ricos en cisteína frente a
+                        controles.
+                    </p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="clinicalChart"></canvas>
+                </div>
+                <p class="text-xs text-slate-400 mt-4 bg-slate-950 p-3 rounded border border-slate-800">
+                    <strong>Contexto:</strong> Ensayos clínicos (como Lands et al.) demuestran mejoras del 13% en
+                    potencia muscular y 35.5% en GSH linfocitario. En sarcopenia, el aporte proteico + cisteína
+                    incrementa la fuerza funcional.
+                </p>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-lg font-bold text-slate-100 mb-2">Tríada Explicativa de los Testimonios Impactantes
+                    </h3>
+                    <p class="text-xs text-slate-400 mb-4">
+                        Factores fisiológicos, estadísticos y psicológicos tras los testimonios de recuperación.
+                    </p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="perceptionChart"></canvas>
+                </div>
+                <p class="text-xs text-slate-400 mt-4 bg-slate-950 p-3 rounded border border-slate-800">
+                    <strong>Conclusión:</strong> Salir de un déficit proteico/antioxidante se siente como un cambio
+                    drástico. La regresión a la media y el efecto placebo por alta inversión amplifican la percepción
+                    del beneficio.
+                </p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+                <div class="text-cyan-400 font-bold text-base mb-2">1. Corrección de Deficiencia Nutricional</div>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Muchas personas viven con ingesta proteica insuficiente y agotamiento celular. Aportar 20g de
+                    proteína WPI + cistina + creatina activa la recuperación muscular y mitocondrial de inmediato.
+                </p>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+                <div class="text-amber-400 font-bold text-base mb-2">2. Regresión a la Media</div>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Las personas suelen iniciar tratamientos en el pico de un brote o dolor. Por dinámica estadística
+                    natural de las enfermedades, la intensidad cede días después, atribuyéndose el 100% al producto.
+                </p>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+                <div class="text-rose-400 font-bold text-base mb-2">3. Placebo y Compromiso de Inversión</div>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Invertir $150+ al mes genera un alto compromiso emocional y psico-neurobiológico. La expectativa
+                    positiva desencadena liberación real de endorfinas y dopamina, reduciendo la percepción del dolor.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="regulacion" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-800">
+        <div class="mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-2">Marco Regulatorio, Declaraciones Ilegales y
+                Riesgos</h2>
+            <p class="text-slate-400 leading-relaxed">
+                Es fundamental separar las propiedades nutricionales legítimas del producto de los abusos publicitarios
+                en los que incurren algunos distribuidores.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 border-l-4 border-l-rose-500">
+                <div class="text-xs font-bold uppercase tracking-wider text-rose-400 mb-2">Auditorías TINA.org & DSSRC
+                </div>
+                <h3 class="text-base font-bold text-slate-100 mb-2">Prohibición de Proclamas Médicas</h3>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Organismos reguladores han advertido repetidamente a distribuidores por atribuir a Immunocal
+                    capacidad para "curar" cáncer, autismo, diabetes o infecciones. Como complemento alimenticio, no
+                    puede hacer afirmaciones terapéuticas.
+                </p>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 border-l-4 border-l-amber-500">
+                <div class="text-xs font-bold uppercase tracking-wider text-amber-400 mb-2">AESAN & EFSA (España /
+                    Europa)</div>
+                <h3 class="text-base font-bold text-slate-100 mb-2">Reglamento de Declaraciones de Salud</h3>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Bajo el Real Decreto 1487/2009 en España y la directiva europea, los complementos alimenticios sólo
+                    pueden atribuirse propiedades de mantenimiento nutricional general. Promocionar cura expone a
+                    sanciones administrativas severas.
+                </p>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 border-l-4 border-l-cyan-500">
+                <div class="text-xs font-bold uppercase tracking-wider text-cyan-400 mb-2">Precaución Inmunológica</div>
+                <h3 class="text-base font-bold text-slate-100 mb-2">Contraindicaciones Médicas</h3>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Pacientes con trasplante de órganos en tratamiento inmunosupresor activo no deben consumirlo sin
+                    supervisión, ya que estimular la inmunidad puede interferir con la medicación. También está
+                    contraindicado en alérgicos severos a proteínas lácteas.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="mlm" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-800">
+        <div class="mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-2">Auditoría Financiera del Modelo Multinivel
+                (IDS Oficial)</h2>
+            <p class="text-slate-400 leading-relaxed">
+                Análisis contable del Resumen Público de Divulgación de Ingresos (Income Disclosure Statement) oficial
+                de Immunotec para determinar la rentabilidad de ingresar como distribuidor.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-lg font-bold text-slate-100 mb-2">Distribución de Ingresos Anuales Brutos por Rango
+                        ($ USD)</h3>
+                    <p class="text-xs text-slate-400 mb-4">
+                        Comparación entre el nivel jerárquico y los ingresos promedios anuales antes de descontar
+                        compras obligatorias.
+                    </p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="idsBarChart"></canvas>
+                </div>
+                <p class="text-xs text-slate-400 mt-4 bg-slate-950 p-3 rounded border border-slate-800">
+                    <strong>Concentración en la Base:</strong> Más del 97% de los registrados obtienen ingresos brutos
+                    inferiores al volumen de compras mínimas anuales exigidas para calificar.
+                </p>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-lg font-bold text-slate-100 mb-2">Realidad Financiera Neta de la Fuerza de Ventas
+                    </h3>
+                    <p class="text-xs text-slate-400 mb-4">
+                        Porcentaje de consultores según su rentabilidad económica real tras deducir costes operativos y
+                        autosostenimiento.
+                    </p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="financialPieChart"></canvas>
+                </div>
+                <p class="text-xs text-slate-400 mt-4 bg-slate-950 p-3 rounded border border-slate-800">
+                    <strong>Estructura MLM Estándar:</strong> Siguiendo el patrón observado por la FTC en empresas de
+                    red, menos del 1% logra ingresos equivalentes a un salario completo sostenible.
+                </p>
+            </div>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 overflow-x-auto">
+            <h3 class="text-lg font-bold text-slate-100 mb-4">Tabla Oficial de Ingresos de Immunotec (Datos IDS)</h3>
+            <table class="w-full text-left text-xs text-slate-300">
+                <thead class="bg-slate-950 text-slate-100 font-semibold border-b border-slate-800">
+                    <tr>
+                        <th class="p-3">Rango Calificado (Paid As Rank)</th>
+                        <th class="p-3 text-cyan-400">% del Total de Consultores</th>
+                        <th class="p-3 text-emerald-400">Promedio Mensual (Bruto)</th>
+                        <th class="p-3 text-amber-400">Promedio Anual (Bruto)</th>
+                        <th class="p-3">Estado de Rentabilidad Neta</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800">
+                    <tr class="bg-rose-950/20">
+                        <td class="p-3 font-bold text-slate-200">Emprendedor (Entrepreneur)</td>
+                        <td class="p-3 font-bold text-rose-400">75.2%</td>
+                        <td class="p-3">$0 USD</td>
+                        <td class="p-3">$0 USD</td>
+                        <td class="p-3 text-rose-400 font-bold">Pérdida por consumo exigido</td>
+                    </tr>
+                    <tr class="bg-rose-950/10">
+                        <td class="p-3 font-bold text-slate-200">Asociado</td>
+                        <td class="p-3 font-bold text-rose-400">3.2%</td>
+                        <td class="p-3">$7 USD</td>
+                        <td class="p-3">$15 USD</td>
+                        <td class="p-3 text-rose-400 font-bold">Déficit Operativo Elevado</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-bold text-slate-200">Emprendedor (Venture)</td>
+                        <td class="p-3 font-bold text-amber-400">18.6%</td>
+                        <td class="p-3">$51 USD</td>
+                        <td class="p-3">$202 USD</td>
+                        <td class="p-3 text-amber-400 font-bold">Sin cobertura de cuota mensual</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-bold text-slate-200">Plata (Silver)</td>
+                        <td class="p-3">2.2%</td>
+                        <td class="p-3">$323 USD</td>
+                        <td class="p-3">$1,154 USD</td>
+                        <td class="p-3 text-slate-400">Punto de equilibrio ajustado</td>
+                    </tr>
+                    <tr class="bg-emerald-950/20">
+                        <td class="p-3 font-bold text-slate-200">Oro (Gold)</td>
+                        <td class="p-3 text-emerald-400">&lt; 1.0%</td>
+                        <td class="p-3">$1,460 USD</td>
+                        <td class="p-3">$6,734 USD</td>
+                        <td class="p-3 text-emerald-400 font-bold">Ingreso suplementario modesto</td>
+                    </tr>
+                    <tr class="bg-emerald-950/30">
+                        <td class="p-3 font-bold text-slate-200">Diamante a Platino Principal</td>
+                        <td class="p-3 text-emerald-400">&lt; 0.5%</td>
+                        <td class="p-3">$5,404 a $50,511 USD</td>
+                        <td class="p-3">$33,827 a $464,561 USD</td>
+                        <td class="p-3 text-emerald-400 font-bold">Cúspide de la Red</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="veredicto" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-800">
+        <div class="mb-8 text-center">
+            <div
+                class="inline-block px-4 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-3">
+                Síntesis Decisional Integrada
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-100">Veredicto Final: Elección Consumidor vs.
+                Negocio</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div
+                class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between border-t-4 border-t-cyan-500">
+                <div>
+                    <div class="flex items-center space-x-2 mb-3">
+                        <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+                        <h3 class="text-xl font-bold text-slate-100">Como Consumidor / Atleta</h3>
+                    </div>
+                    <ul class="space-y-3 text-xs text-slate-300 leading-relaxed mb-6">
+                        <li class="flex items-start space-x-2">
+                            <span class="text-cyan-400 font-bold">✓</span>
+                            <span><strong>Aporte multidimensional superior:</strong> Immunocal Sport / Platinum ofrecen
+                                proteína WPI + Creatina + Nitro Boost + Citratos + Cistina en un solo sobre de gran
+                                sabor.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-emerald-400 font-bold">✓</span>
+                            <span><strong>Excelente adherencia:</strong> Ideal si buscas la conveniencia de un batido
+                                deportivo rico y sin las molestias digestivas ni el mal olor a azufre del NAC
+                                solo.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-amber-400 font-bold">!</span>
+                            <span><strong>Alternativa ajustada:</strong> Si solo buscas elevar el glutatión de forma
+                                económica sin proteína ni creatina, el NAC de $20/mes sigue siendo la opción racional en
+                                coste puro.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 text-xs text-cyan-300 font-bold">
+                    Recomendación Consumidor: RECOMENDADO si valoras el formato "todo en uno" proteico/deportivo de gran
+                    sabor y tienes el presupuesto.
+                </div>
+            </div>
+
+            <div
+                class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between border-t-4 border-t-rose-500">
+                <div>
+                    <div class="flex items-center space-x-2 mb-3">
+                        <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                        <h3 class="text-xl font-bold text-slate-100">Como Oportunidad de Negocio MLM</h3>
+                    </div>
+                    <ul class="space-y-3 text-xs text-slate-300 leading-relaxed mb-6">
+                        <li class="flex items-start space-x-2">
+                            <span class="text-rose-400 font-bold">✕</span>
+                            <span><strong>Estadística financiera desfavorable:</strong> El 78.4% de los participantes no
+                                obtiene ingresos brutos, operando con déficit por autoconsumo obligatorio.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-rose-400 font-bold">✕</span>
+                            <span><strong>Resistencia de precio en venta directa:</strong> Vender un suplemento de
+                                $150-$180/mes exige esfuerzo comercial continuo frente a alternativas de tienda.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-amber-400 font-bold">!</span>
+                            <span><strong>Riesgo reputacional:</strong> Atribuir propiedades curativas ilegales para
+                                lograr ventas expone al distribuidor a sanciones regulatorias.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 text-xs text-rose-300 font-bold">
+                    Recomendación Negocio: NO RECOMENDADO. La tasa de éxito económico nulo supera el 97% según datos de
+                    la propia compañía.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer
+        class="bg-slate-900 border-t border-slate-800 py-8 px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-500 space-y-2">
+        <p>Informe de Investigación Forense y Análisis Nutracéutico Comparativo de Immunotec, Immunocal y NAC.</p>
+        <p>Este documento es de carácter informativo e investigación de mercado. No constituye asesoramiento médico
+            formal ni invitación financiera.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const commonTooltipConfig = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function (tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                    return label.join(' ');
+                                } else {
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: false
+            };
+
+            // NEW 1. Radar Chart: Value Comparison Matrix
+            const ctxValueRadar = document.getElementById('valueRadarChart').getContext('2d');
+            new Chart(ctxValueRadar, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        ['Precursor de', 'Glutatión'],
+                        ['Aporte Proteico', '(WPI / BCAAs)'],
+                        ['Rendimiento ATP', '& Creatina'],
+                        ['Oxido Nitrico', '& Vasodilatacion'],
+                        ['Modulacion', 'Antiinflamatoria'],
+                        ['Sabor y Facilidad', 'de Tomar']
+                    ],
+                    datasets: [
+                        {
+                            label: 'NAC Solo (600mg)',
+                            data: [85, 0, 0, 0, 20, 15],
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.15)',
+                            borderWidth: 2
+                        },
+                        {
+                            label: 'Immunocal Sport',
+                            data: [90, 95, 90, 95, 85, 95],
+                            borderColor: '#06b6d4',
+                            backgroundColor: 'rgba(6, 182, 212, 0.2)',
+                            borderWidth: 2
+                        },
+                        {
+                            label: 'Immunocal Platinum',
+                            data: [90, 95, 70, 40, 90, 75],
+                            borderColor: '#8b5cf6',
+                            backgroundColor: 'rgba(139, 92, 246, 0.15)',
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    ...commonTooltipConfig,
+                    scales: {
+                        r: {
+                            angleLines: { color: '#334155' },
+                            grid: { color: '#1e293b' },
+                            pointLabels: {
+                                color: '#94a3b8',
+                                font: { size: 10 }
+                            },
+                            ticks: { display: false, max: 100 }
+                        }
+                    },
+                    plugins: {
+                        ...commonTooltipConfig.plugins,
+                        legend: {
+                            position: 'bottom',
+                            labels: { color: '#94a3b8', boxWidth: 10, font: { size: 10 } }
+                        }
+                    }
+                }
+            });
+
+            // NEW 2. Unbundling Cost Chart
+            const ctxUnbundling = document.getElementById('unbundlingChart').getContext('2d');
+            new Chart(ctxUnbundling, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        ['NAC Solo', '(Cápsulas)'],
+                        ['Stack Equivalente', '(5 Suplementos)'],
+                        ['Immunocal Sport', '(Fórmula Todo en 1)']
+                    ],
+                    datasets: [{
+                        label: 'Coste Mensual ($ USD)',
+                        data: [18, 96, 170],
+                        backgroundColor: [
+                            '#10b981',
+                            '#f59e0b',
+                            '#06b6d4'
+                        ],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    ...commonTooltipConfig,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: '#94a3b8',
+                                callback: function (value) { return '$' + value; }
+                            },
+                            grid: { color: '#334155' }
+                        },
+                        x: {
+                            ticks: { color: '#94a3b8' },
+                            grid: { display: false }
+                        }
+                    },
+                    plugins: {
+                        ...commonTooltipConfig.plugins,
+                        legend: { display: false }
+                    }
+                }
+            });
+
+            // 3. Clinical Outcomes Chart
+            const ctxClinical = document.getElementById('clinicalChart').getContext('2d');
+            new Chart(ctxClinical, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        ['Potencia', 'Muscular Max'],
+                        ['GSH en', 'Linfocitos'],
+                        ['Fuerza Extra', 'en Sarcopenia'],
+                        ['Preservacion', 'GSH Cerebro']
+                    ],
+                    datasets: [{
+                        label: 'Efecto % Registrado',
+                        data: [13, 35.5, 10, 25],
+                        backgroundColor: [
+                            '#06b6d4',
+                            '#10b981',
+                            '#f59e0b',
+                            '#6366f1'
+                        ],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    ...commonTooltipConfig,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: '#94a3b8',
+                                callback: function (value) { return value + '%'; }
+                            },
+                            grid: { color: '#334155' }
+                        },
+                        x: {
+                            ticks: { color: '#94a3b8' },
+                            grid: { display: false }
+                        }
+                    },
+                    plugins: {
+                        ...commonTooltipConfig.plugins,
+                        legend: { display: false }
+                    }
+                }
+            });
+
+            // 4. Triad Perception Donut Chart
+            const ctxPerception = document.getElementById('perceptionChart').getContext('2d');
+            new Chart(ctxPerception, {
+                type: 'doughnut',
+                data: {
+                    labels: [
+                        ['Correccion Deficit', 'Proteico/GSH'],
+                        ['Regresion', 'Estadistica a Media'],
+                        ['Efecto Placebo &', 'Compromiso Coste']
+                    ],
+                    datasets: [{
+                        data: [40, 35, 25],
+                        backgroundColor: [
+                            '#06b6d4',
+                            '#f59e0b',
+                            '#f43f5e'
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#0f172a'
+                    }]
+                },
+                options: {
+                    ...commonTooltipConfig,
+                    plugins: {
+                        ...commonTooltipConfig.plugins,
+                        legend: {
+                            position: 'bottom',
+                            labels: { color: '#94a3b8', boxWidth: 12, font: { size: 10 } }
+                        }
+                    }
+                }
+            });
+
+            // 5. IDS Income Distribution Bar Chart
+            const ctxIds = document.getElementById('idsBarChart').getContext('2d');
+            new Chart(ctxIds, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        ['Emprendedor', '(Sin Ventas)'],
+                        ['Asociado', '(Inicial)'],
+                        ['Emprendedor', 'Venture'],
+                        ['Consultor', 'Plata'],
+                        ['Consultor', 'Oro'],
+                        ['Diamante', 'a Platino']
+                    ],
+                    datasets: [{
+                        label: 'Ingreso Anual Promedio ($ USD)',
+                        data: [0, 15, 202, 1154, 6734, 45000],
+                        backgroundColor: '#06b6d4',
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    ...commonTooltipConfig,
+                    scales: {
+                        y: {
+                            type: 'logarithmic',
+                            ticks: {
+                                color: '#94a3b8',
+                                callback: function (value) { return '$' + value; }
+                            },
+                            grid: { color: '#334155' }
+                        },
+                        x: {
+                            ticks: { color: '#94a3b8' },
+                            grid: { display: false }
+                        }
+                    },
+                    plugins: {
+                        ...commonTooltipConfig.plugins,
+                        legend: { display: false }
+                    }
+                }
+            });
+
+            // 6. Financial Reality Breakdown Pie Chart
+            const ctxFinancial = document.getElementById('financialPieChart').getContext('2d');
+            new Chart(ctxFinancial, {
+                type: 'pie',
+                data: {
+                    labels: [
+                        ['Ingresos $0 - $15', '(Perdida Neta)'],
+                        ['Ingresos $202/año', '(Déficit Operativo)'],
+                        ['Ingresos $1.1k/año', '(Punto Equilibrio)'],
+                        ['Ingreso Sustentable', '(Rango Oro+)']
+                    ],
+                    datasets: [{
+                        data: [78.4, 18.6, 2.2, 0.8],
+                        backgroundColor: [
+                            '#f43f5e',
+                            '#f59e0b',
+                            '#06b6d4',
+                            '#10b981'
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#0f172a'
+                    }]
+                },
+                options: {
+                    ...commonTooltipConfig,
+                    plugins: {
+                        ...commonTooltipConfig.plugins,
+                        legend: {
+                            position: 'bottom',
+                            labels: { color: '#94a3b8', boxWidth: 12, font: { size: 10 } }
+                        }
+                    }
+                }
+            });
+
+        });
+    </script>
+
+    <!-- Language Toggle Script -->
+    <script>
+        const LANG_KEY = 'salud_equilibrio_lang';
+
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            document.getElementById('lang-dropdown').classList.toggle('show');
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.closest('.lang-trigger')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem(LANG_KEY, lang);
+            
+            const flag = lang === 'es' ? '🇪🇸' : '🇬🇧';
+            const text = lang.toUpperCase();
+            document.getElementById('current-flag').innerText = flag;
+            document.getElementById('current-lang-text').innerText = text;
+
+            const dropdown = document.getElementById('lang-dropdown');
+            if(dropdown) dropdown.classList.remove('show');
+        }
+
+        function initLanguage() {
+            const savedLang = localStorage.getItem(LANG_KEY) || 'es';
+            setLanguage(savedLang);
+        }
+
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+</body>
+
+</html>

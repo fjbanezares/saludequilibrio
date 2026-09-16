@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Hombre de la Barba Blanca | Salud Equilibrio</title>
+    <meta name="description" content="Lecciones magistrales de salud y biología explicadas para tontos por Jose M. Castillejo (El Hombre de la Barba Blanca). Rigor científico sin jerga incomprensible.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Noto Serif & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Noto Serif', 'serif'],
+                    },
+                    colors: {
+                        obsidian: '#0e0e0e',
+                        gold: {
+                            glow: '#d4af37',
+                            light: '#f3e5ab'
+                        },
+                        mint: {
+                            vibrant: '#66dd8b',
+                            glow: 'rgba(102, 221, 139, 0.4)',
+                        },
+                        offwhite: '#f5f5f5',
+                    },
+                    borderRadius: {
+                        'xl-custom': '2rem',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: #0e0e0e;
+            color: #f5f5f5;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(14, 14, 14, 0.85);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(102, 221, 139, 0.4);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -15px rgba(102, 221, 139, 0.15);
+        }
+
+        .btn-mint {
+            background: #66dd8b;
+            color: #0e0e0e;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 0 15px rgba(102, 221, 139, 0.3);
+        }
+
+        .btn-mint:hover {
+            filter: brightness(1.1);
+            box-shadow: 0 0 30px rgba(102, 221, 139, 0.6);
+            transform: scale(1.03);
+        }
+
+        .text-glow-mint {
+            text-shadow: 0 0 20px rgba(102, 221, 139, 0.5);
+        }
+
+        /* ─── Language toggle system ─── */
+        .lang-en { display: none; }
+        [data-lang="en"] .lang-en { display: block; }
+        [data-lang="en"] .lang-es { display: none; }
+
+        .lang-es.inline { display: inline; }
+        .lang-en.inline { display: none; }
+        [data-lang="en"] .lang-es.inline { display: none; }
+        [data-lang="en"] .lang-en.inline { display: inline; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: rgba(14, 14, 14, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            min-width: 160px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .dropdown-content.show { display: block; }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-option:hover {
+            background: rgba(102, 221, 139, 0.1);
+            color: #fff;
+        }
+
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .lang-trigger:hover {
+            border-color: rgba(102, 221, 139, 0.4);
+            background: rgba(102, 221, 139, 0.05);
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-mint-vibrant/30 selection:text-white" data-lang="es">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full z-50 glass-nav h-24 flex items-center">
+        <div class="max-w-7xl mx-auto px-8 w-full flex justify-between items-center">
+            <a href="../../index.html" class="flex items-center gap-4 group">
+                <div class="h-14 w-14 flex items-center justify-center">
+                    <img src="../../logo.png" alt="Salud Equilibrio Logo" class="h-full w-full object-contain brightness-125 contrast-110 group-hover:scale-110 transition-transform">
+                </div>
+                <span class="font-serif text-2xl tracking-tighter text-white">Salud<span class="text-mint-vibrant font-light">Equilibrio</span></span>
+            </a>
+            
+            <div class="hidden lg:flex gap-8 items-center">
+                <div class="flex gap-8 text-[10px] tracking-[3px] uppercase font-bold text-white/60">
+                    <a href="../../index.html#agua" class="hover:text-white transition-colors">
+                        <span class="lang-es inline">💧 Agua Kangen & Negocio</span>
+                        <span class="lang-en inline">💧 Kangen Water & Business</span>
+                    </a>
+                    <a href="index.html" class="hover:text-mint-vibrant transition-colors text-mint-vibrant">
+                        <span class="lang-es inline">📚 El Hombre de la Barba Blanca</span>
+                        <span class="lang-en inline">📚 White-Bearded Man</span>
+                    </a>
+                    <a href="../jorge_carvajal/index.html" class="hover:text-violet-glow transition-colors">
+                        <span class="lang-es inline">🧠 Dr. Jorge Carvajal</span>
+                        <span class="lang-en inline">🧠 Dr. Jorge Carvajal</span>
+                    </a>
+                </div>
+
+                <!-- Language Dropdown -->
+                <div style="position: relative; display: inline-block;">
+                    <div class="lang-trigger" onclick="toggleDropdown(event)">
+                        <span id="current-flag">🇪🇸</span>
+                        <span id="current-lang-text">ES</span>
+                        <i class="fa-solid fa-chevron-down text-[8px] opacity-50 ml-1"></i>
+                    </div>
+                    <div class="dropdown-content" id="lang-dropdown">
+                        <div class="lang-option" onclick="setLanguage('es')">
+                            <span>🇪🇸</span>
+                            <span>Castellano</span>
+                        </div>
+                        <div class="lang-option" onclick="setLanguage('en')">
+                            <span>🇬🇧</span>
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-40 pb-20 px-8 relative">
+        <div class="absolute inset-0 z-0 bg-gradient-to-b from-mint-vibrant/10 via-transparent to-transparent"></div>
+        <div class="max-w-5xl mx-auto relative z-10 text-center">
+            
+            <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-8 border-2 border-mint-vibrant/40 p-1 shadow-2xl">
+                <img src="images/barba_blanca_maestro.png" alt="Jose M. Castillejo" class="w-full h-full object-cover rounded-full">
+            </div>
+
+            <h2 class="font-serif text-xs tracking-[10px] uppercase text-mint-vibrant mb-4 font-semibold">
+                <span class="lang-es">Divulgación Médica Sin Filtros · Jose M. Castillejo</span>
+                <span class="lang-en">Unfiltered Medical Outreach · Jose M. Castillejo</span>
+            </h2>
+
+            <h1 class="font-serif text-4xl md:text-6xl text-white mb-6 leading-tight">
+                <span class="lang-es">El Hombre de la <span class="italic text-glow-mint font-light">Barba Blanca</span></span>
+                <span class="lang-en">The White-Bearded <span class="italic text-glow-mint font-light">Man</span></span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-offwhite/70 font-light leading-relaxed max-w-3xl mx-auto mb-10">
+                <span class="lang-es">Lecciones de salud y biología explicadas para tontos: desglosando los grandes mitos de la medicina moderna con rigor histórico, ciencia de fuentes primarias y sin etiquetas morales simplistas.</span>
+                <span class="lang-en">Health and biology masterclasses explained simply: dismantling major medical myths with historical rigor, primary science sources, and zero simplistic moral labels.</span>
+            </p>
+        </div>
+    </header>
+
+    <!-- Lessons Grid Section -->
+    <main class="py-12 px-8">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="font-serif text-2xl text-white mb-10 border-l-4 border-mint-vibrant pl-4">
+                <span class="lang-es">Serie de Lecciones: La Verdad del Colesterol</span>
+                <span class="lang-en">Lesson Series: The Truth About Cholesterol</span>
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- LESSON 1 CARD (Teaser) -->
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between opacity-75">
+                    <div>
+                        <div class="bg-white/5 p-6 border-b border-white/5 flex justify-between items-center">
+                            <span class="text-xs uppercase tracking-widest font-semibold text-white/50">Lección #1</span>
+                            <span class="text-[10px] bg-white/10 px-3 py-1 rounded-full text-white/60">Capítulo 1</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h4 class="font-serif text-xl text-white">
+                                <span class="lang-es">La Historia Secreta del Colesterol y el Ensayo de Minnesota</span>
+                                <span class="lang-en">The Secret History of Cholesterol & Minnesota Trial</span>
+                            </h4>
+                            <p class="text-xs text-offwhite/60 leading-relaxed">
+                                <span class="lang-es">Cómo el mayor ensayo clínico de la historia demostró que bajar el colesterol no salvó ni una vida, y cómo esos datos acabaron 40 años en un sótano.</span>
+                                <span class="lang-en">How the largest clinical trial in history proved lowering cholesterol saved zero lives, and how those results sat in a basement for 40 years.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <span class="text-xs text-mint-vibrant font-semibold flex items-center gap-2">
+                            <i class="fa-solid fa-clock"></i>
+                            <span class="lang-es">Capítulo Teaser / Próximamente</span>
+                            <span class="lang-en">Teaser / Coming Soon</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- LESSON 2 CARD (ACTIVE) -->
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between border-mint-vibrant/50 shadow-2xl relative group">
+                    <div class="absolute top-4 right-4 bg-mint-vibrant text-obsidian text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full z-10">
+                        <span class="lang-es">¡Disponible!</span>
+                        <span class="lang-en">Available Now!</span>
+                    </div>
+
+                    <div>
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="images/camiones_colesterol.png" alt="Colesterol Bueno y Malo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <span class="text-xs uppercase tracking-widest font-semibold text-mint-vibrant">Lección #2 · Destacada</span>
+                            <h4 class="font-serif text-xl text-white font-bold">
+                                <span class="lang-es">El Colesterol Bueno y Malo NO EXISTEN</span>
+                                <span class="lang-en">Good and Bad Cholesterol DO NOT EXIST</span>
+                            </h4>
+                            <p class="text-xs text-offwhite/70 leading-relaxed">
+                                <span class="lang-es">Descubre por qué LDL y HDL son camiones de reparto y recogida, por qué el experimento de 1948 con sal lo cambió todo y la metáfora del humo y el fuego.</span>
+                                <span class="lang-en">Discover why LDL and HDL are delivery and recycling trucks, why Gofman's 1948 salt experiment changed everything, and the fire vs smoke metaphor.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 pt-0">
+                        <a href="colesterol-bueno-y-malo/index.html" class="btn-mint w-full text-center py-3 rounded-xl font-bold text-xs uppercase tracking-widest block">
+                            <span class="lang-es inline">Leer Lección Explicada</span>
+                            <span class="lang-en inline">Read Full Lesson</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- LESSON 3 CARD (Teaser) -->
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between opacity-75">
+                    <div>
+                        <div class="bg-white/5 p-6 border-b border-white/5 flex justify-between items-center">
+                            <span class="text-xs uppercase tracking-widest font-semibold text-white/50">Lección #3</span>
+                            <span class="text-[10px] bg-white/10 px-3 py-1 rounded-full text-white/60">Capítulo 3</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h4 class="font-serif text-xl text-white">
+                                <span class="lang-es">La Fórmula de 1972: El Cálculo del LDL</span>
+                                <span class="lang-en">The 1972 Formula: How LDL is Calculated</span>
+                            </h4>
+                            <p class="text-xs text-offwhite/60 leading-relaxed">
+                                <span class="lang-es">Descubre por qué la cifra de tu analítica no se mide en el laboratorio, sino que se calcula con una fórmula de 1972 construida sobre 448 personas.</span>
+                                <span class="lang-en">Discover why your lab report number isn't physically measured, but calculated using a 1972 math formula based on 448 people.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <span class="text-xs text-mint-vibrant font-semibold flex items-center gap-2">
+                            <i class="fa-solid fa-hourglass-half"></i>
+                            <span class="lang-es">En preparación</span>
+                            <span class="lang-en">In progress</span>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 text-center bg-obsidian mt-20">
+        <div class="max-w-7xl mx-auto px-8">
+            <p class="text-[10px] tracking-[6px] uppercase font-light text-white/30">
+                <span class="lang-es">© 2026 Salud Equilibrio · El Hombre de la Barba Blanca</span>
+                <span class="lang-en">© 2026 Salud Equilibrio · The White-Bearded Man</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Multilingual Script -->
+    <script>
+        const LANG_KEY = 'salud_equilibrio_lang';
+
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            document.getElementById('lang-dropdown').classList.toggle('show');
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.closest('.lang-trigger')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem(LANG_KEY, lang);
+            
+            const flag = lang === 'es' ? '🇪🇸' : '🇬🇧';
+            const text = lang.toUpperCase();
+            document.getElementById('current-flag').innerText = flag;
+            document.getElementById('current-lang-text').innerText = text;
+
+            const dropdown = document.getElementById('lang-dropdown');
+            if(dropdown) dropdown.classList.remove('show');
+        }
+
+        function initLanguage() {
+            const savedLang = localStorage.getItem(LANG_KEY) || 'es';
+            setLanguage(savedLang);
+        }
+
+        document.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+</body>
+
+</html>
