@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paz Mental en Tiempos Difíciles | Conferencia en Madrid de Gen-la Kelsang Dekyong | Salud Equilibrio</title>
+    <title>Paz Mental en Tiempos Difíciles | Teatro CaixaBank Príncipe Pío | Salud Equilibrio</title>
     <meta name="description"
-        content="Transcripción completa y análisis de la célebre conferencia de Gen-la Kelsang Dekyong en Madrid. La felicidad como decisión interna soberana, las 9 láminas y cómo transformar la adversidad en el camino espiritual.">
+        content="Esto es lo que se dijo en el Teatro CaixaBank Príncipe Pío en la tarde del 19 de septiembre de 2026. Gen-la Kelsang Dekyong y la felicidad como decisión interna soberana.">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -50,7 +50,7 @@
                         offwhite: '#f5f7f5',
                     },
                     borderRadius: {
-                        'xl-custom': '2rem',
+                        'xl-custom': '2.5rem',
                     }
                 }
             }
@@ -64,8 +64,8 @@
             min-height: 100vh;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 15% 10%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 85% 60%, rgba(102, 221, 139, 0.05) 0%, transparent 45%),
+                radial-gradient(circle at 15% 10%, rgba(212, 175, 55, 0.05) 0%, transparent 45%),
+                radial-gradient(circle at 85% 50%, rgba(102, 221, 139, 0.04) 0%, transparent 45%),
                 radial-gradient(circle at 50% 90%, rgba(21, 41, 30, 0.7) 0%, transparent 60%);
             background-attachment: fixed;
         }
@@ -91,8 +91,8 @@
         }
 
         .glass-card-gold {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(15, 26, 20, 0.7));
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(15, 26, 20, 0.75));
+            border: 1px solid rgba(212, 175, 55, 0.35);
         }
 
         .glass-quote {
@@ -104,11 +104,20 @@
 
         .key-phrase {
             color: #fbf0b9;
-            font-weight: 600;
-            background: rgba(212, 175, 55, 0.1);
-            padding: 0.1rem 0.35rem;
-            border-radius: 0.3rem;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            font-weight: 700;
+            background: rgba(212, 175, 55, 0.12);
+            padding: 0.1rem 0.4rem;
+            border-radius: 0.35rem;
+            border-bottom: 1.5px solid rgba(212, 175, 55, 0.4);
+        }
+
+        .key-phrase-mint {
+            color: #a3f3be;
+            font-weight: 700;
+            background: rgba(102, 221, 139, 0.12);
+            padding: 0.1rem 0.4rem;
+            border-radius: 0.35rem;
+            border-bottom: 1.5px solid rgba(102, 221, 139, 0.4);
         }
 
         .btn-gold {
@@ -124,21 +133,8 @@
             transform: translateY(-2px);
         }
 
-        .btn-outline-gold {
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            color: #fbf0b9;
-            background: rgba(212, 175, 55, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .btn-outline-gold:hover {
-            background: rgba(212, 175, 55, 0.15);
-            border-color: #d4af37;
-            transform: translateY(-2px);
-        }
-
         .text-glow-gold {
-            text-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.45);
         }
 
         /* ─── Language toggle system ─── */
@@ -206,7 +202,7 @@
             background: rgba(212, 175, 55, 0.08);
         }
 
-        /* Lightbox modal */
+        /* Lightbox modal styles */
         #lightbox-modal {
             display: none;
             opacity: 0;
@@ -217,17 +213,29 @@
             opacity: 1;
         }
 
-        .slide-thumb {
+        /* Integrated image card styles */
+        .interactive-infographic {
             cursor: pointer;
-            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            overflow: hidden;
         }
-        .slide-thumb:hover {
-            transform: scale(1.025);
+        .interactive-infographic:hover {
+            transform: translateY(-4px);
             border-color: rgba(212, 175, 55, 0.6);
-            box-shadow: 0 15px 35px -5px rgba(212, 175, 55, 0.25);
+            box-shadow: 0 25px 50px -10px rgba(212, 175, 55, 0.25);
+        }
+        .interactive-infographic .zoom-badge {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        .interactive-infographic:hover .zoom-badge {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .chapter-pill {
+        .chapter-badge {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
@@ -246,10 +254,11 @@
 
 <body class="antialiased selection:bg-gold/30 selection:text-white" data-lang="es">
 
-    <!-- Navbar -->
+    <!-- Top Navigation Bar -->
     <nav class="fixed w-full z-50 glass-nav h-24 flex items-center">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full flex justify-between items-center">
             
+            <!-- Logo & Brand -->
             <a href="../../index.html" class="flex items-center gap-4 group">
                 <div class="h-12 w-12 flex items-center justify-center">
                     <img src="../../assets/logo.png" alt="Salud Equilibrio Logo"
@@ -260,22 +269,19 @@
                 </span>
             </a>
 
+            <!-- Nav Links -->
             <div class="hidden lg:flex gap-8 items-center text-[11px] tracking-[2px] uppercase font-bold text-white/70">
                 <a href="../../index.html" class="hover:text-gold transition-colors">
                     <span class="lang-es inline">Inicio</span>
                     <span class="lang-en inline">Home</span>
                 </a>
-                <a href="#charla" class="hover:text-gold text-gold transition-colors">
+                <a href="#inicio" class="hover:text-gold text-gold transition-colors">
                     <span class="lang-es inline">🪷 La Charla</span>
                     <span class="lang-en inline">🪷 The Talk</span>
                 </a>
-                <a href="#infografias" class="hover:text-gold transition-colors">
-                    <span class="lang-es inline">🖼️ 9 Láminas</span>
-                    <span class="lang-en inline">🖼️ 9 Slides</span>
-                </a>
-                <a href="#transcripcion" class="hover:text-gold transition-colors">
-                    <span class="lang-es inline">📖 Texto Completo</span>
-                    <span class="lang-en inline">📖 Full Text</span>
+                <a href="#desarrollo" class="hover:text-gold transition-colors">
+                    <span class="lang-es inline">📖 Análisis & Las 9 Láminas</span>
+                    <span class="lang-en inline">📖 Analysis & The 9 Slides</span>
                 </a>
                 <a href="../hombre_barba_blanca/index.html" class="hover:text-mint-vibrant transition-colors">
                     <span class="lang-es inline">👨‍🦳 El Barba Blanca</span>
@@ -287,7 +293,7 @@
                 </a>
             </div>
 
-            <!-- Language Toggle & Back button -->
+            <!-- Language Dropdown & Portal Button -->
             <div class="flex items-center gap-4">
                 <div style="position: relative; display: inline-block;">
                     <div class="lang-trigger" onclick="toggleDropdown(event)">
@@ -317,53 +323,56 @@
         </div>
     </nav>
 
-    <!-- Header Section -->
-    <header id="charla" class="relative pt-44 pb-20 md:py-48 px-6 lg:px-12 overflow-hidden border-b border-white/5">
+    <!-- Header Section (Title FIRST, followed by discrete event note) -->
+    <header id="inicio" class="relative pt-44 pb-20 md:py-48 px-6 lg:px-12 overflow-hidden border-b border-white/5">
         <div class="max-w-5xl mx-auto text-center relative z-10">
             
-            <div class="inline-flex items-center gap-3 px-6 py-2.5 rounded-full border border-gold/40 bg-gold/10 text-gold-light text-xs font-semibold uppercase tracking-[3px] mb-8 shadow-[0_0_25px_rgba(212,175,55,0.15)]">
-                <i class="fa-solid fa-om text-gold"></i>
-                <span class="lang-es">Conferencia Magistral en Madrid • Ponente: Gen-la Kelsang Dekyong</span>
-                <span class="lang-en">Master Lecture in Madrid • Speaker: Gen-la Kelsang Dekyong</span>
-            </div>
-
-            <h1 class="font-serif italic text-5xl md:text-7xl lg:text-8xl text-white mb-8 leading-[1.08] tracking-tight">
+            <!-- 1. The Title is FIRST as requested -->
+            <h1 class="font-serif italic text-5xl md:text-7xl lg:text-8xl text-white mb-6 leading-[1.06] tracking-tight">
                 <span class="lang-es">Paz Mental en <br><span class="not-italic text-glow-gold text-gold-light font-normal">Tiempos Difíciles</span></span>
                 <span class="lang-en">Peace of Mind in <br><span class="not-italic text-glow-gold text-gold-light font-normal">Difficult Times</span></span>
             </h1>
 
-            <p class="text-xl md:text-2xl text-offwhite/85 font-light leading-relaxed max-w-3xl mx-auto mb-12">
+            <!-- 2. Discrete context note (NO mention of transcript or .md) -->
+            <p class="text-base md:text-xl text-gold-light/95 font-serif italic mb-4">
+                <span class="lang-es">Esto es lo que se dijo en el Teatro CaixaBank Príncipe Pío en la tarde del 19 de septiembre de 2026.</span>
+                <span class="lang-en">This is what was shared at the CaixaBank Príncipe Pío Theatre on the evening of September 19, 2026.</span>
+            </p>
+
+            <p class="text-sm md:text-base text-offwhite/70 font-light leading-relaxed max-w-2xl mx-auto mb-12">
                 <span class="lang-es">
-                    Transcripción fiel, enriquecida y estructurada de la charla a la que asistí en Madrid, 
-                    con la serie de 9 infografías y el puente hacia una verdad universal:
+                    Enseñanzas de la ponente <strong>Gen-la Kelsang Dekyong</strong>, integradas en un recorrido visual y filosófico a través de 9 láminas comentadas en profundidad.
                 </span>
                 <span class="lang-en">
-                    Faithful, structured and enriched transcript of the talk attended in Madrid, 
-                    with the 9-infographic series and the bridge to a universal truth:
+                    Teachings by speaker <strong>Gen-la Kelsang Dekyong</strong>, integrated into a visual and philosophical journey through 9 in-depth annotated infographics.
                 </span>
             </p>
 
             <!-- Personal Author Declaration & Books Box -->
-            <div class="glass-card glass-card-gold p-8 md:p-12 rounded-[2.5rem] text-left mb-12 shadow-2xl relative">
+            <div class="glass-card glass-card-gold p-8 md:p-12 rounded-[2.5rem] text-left mb-12 shadow-2xl relative overflow-hidden">
                 <div class="flex items-center gap-3 text-gold text-xs uppercase tracking-[3px] font-bold mb-4">
                     <i class="fa-solid fa-feather-pointed"></i>
-                    <span class="lang-es inline">Declaración y Obras de FJ Bañares</span>
-                    <span class="lang-en inline">Statement & Works by FJ Bañares</span>
+                    <span class="lang-es inline">Declaración y Visión Personal • FJ Bañares</span>
+                    <span class="lang-en inline">Personal Declaration & Vision • FJ Bañares</span>
                 </div>
+                
                 <h3 class="font-serif italic text-2xl md:text-3xl text-white mb-4">
-                    <span class="lang-es">«Durante años he promovido esta convicción: la felicidad es una decisión interna que no depende del exterior»</span>
-                    <span class="lang-en">"For years I have promoted this conviction: happiness is an internal decision that does not depend on the exterior"</span>
+                    <span class="lang-es">«Durante años he promovido esta idea: la felicidad es una decisión interna que no depende del exterior»</span>
+                    <span class="lang-en">"For years I have promoted this idea: happiness is an internal decision that does not depend on the exterior"</span>
                 </h3>
+
                 <p class="text-offwhite/85 font-light leading-relaxed mb-6 text-sm md:text-base">
                     <span class="lang-es">
-                        No hay circunstancia ajena, crisis económica, diagnóstico médico o contratiempo que posea por sí mismo el poder de arrebatarte la paz interior si tu mente no le otorga permiso. 
-                        La ponencia de Genla Dekyong en Madrid cristaliza de forma magistral este mismo principio. 
-                        Esta enseñanza es exactamente la que he volcado en mis dos libros principales:
+                        Quien busca la paz o la dicha permanente en el vaivén del mundo exterior persigue un espejismo en el desierto. 
+                        Durante años he sostenido y divulgado en mis conferencias y textos que <strong>ningún acontecimiento externo tiene el poder de concederte serenidad ni de quitártela sin el consentimiento de tu propia mente</strong>. 
+                        Asistir a las enseñanzas de Genla Dekyong en el Teatro Príncipe Pío fue una confirmación conmovedora de cómo la sabiduría budista milenaria y la experiencia viva convergen en este punto exacto.
+                        Esta premisa es también el hilo conductor de mis dos obras principales:
                     </span>
                     <span class="lang-en">
-                        No external circumstance, financial crisis, medical report, or setback possesses the power to strip away your inner peace unless your mind grants permission. 
-                        Genla Dekyong's talk in Madrid brilliantly crystallizes this same bedrock principle. 
-                        This teaching is precisely what I have articulated in my two foundational books:
+                        Whoever seeks lasting peace or joy in the fickle fluctuations of the outside world is chasing a desert mirage. 
+                        For years I have advocated in my writings and lectures that <strong>no outer event holds the inherent power to grant you calm nor strip it away without your own mind's consent</strong>. 
+                        Attending Genla Dekyong's talk at Príncipe Pío Theatre was a moving confirmation of how timeless Buddhist insight and lived experience converge precisely here.
+                        This premise is also the spine of my two foundational books:
                     </span>
                 </p>
 
@@ -378,7 +387,7 @@
                             <div>
                                 <span class="font-serif text-white font-bold text-base block">El Libro de Jesús</span>
                                 <span class="text-xs text-gold/90 block">librojesus.pazaresosset.es</span>
-                                <span class="text-[10px] text-white/50 block">La vía del amor consciente y el desapego interior</span>
+                                <span class="text-[11px] text-white/50 block">La vía del amor consciente y el desapego interior</span>
                             </div>
                         </div>
                         <i class="fa-solid fa-arrow-up-right-from-square text-sm text-gold/70 group-hover:text-gold transition-colors"></i>
@@ -393,7 +402,7 @@
                             <div>
                                 <span class="font-serif text-white font-bold text-base block">El Libro del Karma</span>
                                 <span class="text-xs text-gold/90 block">karma.pazaresosset.es</span>
-                                <span class="text-[10px] text-white/50 block">Causa, efecto y trascendencia del sufrimiento</span>
+                                <span class="text-[11px] text-white/50 block">Causa, efecto y trascendencia del sufrimiento</span>
                             </div>
                         </div>
                         <i class="fa-solid fa-arrow-up-right-from-square text-sm text-gold/70 group-hover:text-gold transition-colors"></i>
@@ -401,762 +410,990 @@
                 </div>
             </div>
 
-            <!-- Quick Navigation Shortcuts -->
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#transcripcion" class="btn-gold px-8 py-4 rounded-full font-bold text-xs tracking-[2px] uppercase inline-flex items-center gap-2">
-                    <i class="fa-solid fa-book-open"></i>
-                    <span class="lang-es inline">Leer la Transcripción Completa (.md)</span>
-                    <span class="lang-en inline">Read the Complete Transcript (.md)</span>
-                </a>
-                <a href="#infografias" class="btn-outline-gold px-8 py-4 rounded-full font-bold text-xs tracking-[2px] uppercase inline-flex items-center gap-2">
-                    <i class="fa-solid fa-images"></i>
-                    <span class="lang-es inline">Ver Galería de 9 Láminas</span>
-                    <span class="lang-en inline">View 9 Infographics Gallery</span>
-                </a>
-            </div>
+            <!-- Scroll Anchor -->
+            <a href="#desarrollo" class="btn-gold px-10 py-4 rounded-full font-bold text-xs tracking-[2px] uppercase inline-flex items-center gap-3">
+                <i class="fa-solid fa-arrow-down"></i>
+                <span class="lang-es inline">Explorar las 9 Láminas y el Análisis Completo</span>
+                <span class="lang-en inline">Explore the 9 Infographics & Full Analysis</span>
+            </a>
 
         </div>
     </header>
 
-    <!-- SECTION: 9 INFOGRAPHICS GALLERY -->
-    <section id="infografias" class="py-24 px-6 lg:px-12 border-b border-white/5 bg-forest-deep/30">
-        <div class="max-w-7xl mx-auto">
-            
-            <div class="text-center mb-16">
-                <span class="chapter-pill mb-4">
-                    <i class="fa-solid fa-layer-group text-gold"></i>
-                    <span class="lang-es inline">Infografías de la Charla</span>
-                    <span class="lang-en inline">Talk Infographics</span>
+    <!-- MAIN BODY: INTEGRATED CHAPTER-BY-CHAPTER EXPANSION WITH THE 9 IMAGES -->
+    <main id="desarrollo" class="py-20 px-6 lg:px-12 max-w-6xl mx-auto space-y-28">
+
+        <!-- ========================================================================= -->
+        <!-- CHAPTER 1 / LÁMINA 1: IDEAS PARA LA FELICIDAD Y LA PAZ MENTAL -->
+        <!-- ========================================================================= -->
+        <article class="glass-card rounded-[2.5rem] p-8 md:p-14 border-gold/25 relative">
+            <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+                <span class="chapter-badge">
+                    <i class="fa-solid fa-sun text-gold"></i>
+                    <span class="lang-es inline">Lámina 1 • Fundamentos</span>
+                    <span class="lang-en inline">Slide 1 • Foundations</span>
                 </span>
-                <h2 class="font-serif italic text-3xl md:text-5xl text-white mb-4">
-                    <span class="lang-es">Las 9 Láminas en Alta Resolución</span>
-                    <span class="lang-en">The 9 High-Resolution Infographics</span>
-                </h2>
-                <p class="text-offwhite/70 max-w-2xl mx-auto font-light text-sm md:text-base">
-                    <span class="lang-es">Haz clic sobre cualquier lámina para verla ampliada a pantalla completa.</span>
-                    <span class="lang-en">Click on any infographic to inspect it in full-screen resolution.</span>
-                </p>
+                <span class="text-xs text-gold/70 font-semibold uppercase tracking-widest">
+                    <span class="lang-es inline">Haz clic en la lámina para ampliar</span>
+                    <span class="lang-en inline">Click slide to expand</span>
+                </span>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
                 
-                <!-- Slide 1 -->
-                <div class="glass-card rounded-2xl overflow-hidden slide-thumb"
-                    onclick="openLightbox('paz_tiempos dificiles1.png', 'Lámina 1: Ideas para la felicidad y la paz mental', 'Slide 1: Ideas for happiness and peace of mind')">
-                    <div class="aspect-[1/1.4] overflow-hidden bg-black/40">
-                        <img src="paz_tiempos dificiles1.png" alt="Lámina 1: Ideas para la felicidad y la paz mental" class="w-full h-full object-cover">
+                <!-- Infographic Image (Left/Col 5) with click-to-zoom -->
+                <div class="lg:col-span-5">
+                    <div class="interactive-infographic rounded-2xl border border-gold/30 bg-black/50 shadow-xl group"
+                        onclick="openLightbox('paz_tiempos dificiles1.png', 'Lámina 1: Ideas para la felicidad y la paz mental', 'Slide 1: Ideas for happiness and peace of mind')">
+                        <img src="paz_tiempos dificiles1.png" alt="Lámina 1: Ideas para la felicidad y la paz mental"
+                            class="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center zoom-badge">
+                            <span class="px-4 py-2 rounded-full bg-gold text-obsidian text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-2xl">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                <span class="lang-es inline">Ampliar en Pantalla Completa</span>
+                                <span class="lang-en inline">View Full Screen</span>
+                            </span>
+                        </div>
                     </div>
-                    <div class="p-5">
-                        <span class="text-[10px] uppercase tracking-[2px] font-bold text-gold block mb-1">Lámina 1</span>
-                        <h4 class="font-serif text-white font-bold text-sm">Ideas para la felicidad y la paz mental</h4>
-                    </div>
+                    <span class="text-[11px] text-center block text-white/50 mt-3 italic">
+                        <span class="lang-es inline">Lámina 1: Panorama general de la enseñanza</span>
+                        <span class="lang-en inline">Slide 1: Overview of the teaching</span>
+                    </span>
                 </div>
 
-                <!-- Slide 2 -->
-                <div class="glass-card rounded-2xl overflow-hidden slide-thumb"
-                    onclick="openLightbox('paz_tiempos dificiles2.png', 'Lámina 2: Meditación Inicial - Respirar y Calmar la Mente', 'Slide 2: Opening Meditation')">
-                    <div class="aspect-[1/1.4] overflow-hidden bg-black/40">
-                        <img src="paz_tiempos dificiles2.png" alt="Lámina 2: Meditación Inicial" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-5">
-                        <span class="text-[10px] uppercase tracking-[2px] font-bold text-gold block mb-1">Lámina 2</span>
-                        <h4 class="font-serif text-white font-bold text-sm">Meditación inicial (Los 6 pasos y la intención)</h4>
-                    </div>
-                </div>
+                <!-- Comprehensive Text & Analysis (Right/Col 7) -->
+                <div class="lg:col-span-7 space-y-6 text-offwhite/85 font-light leading-relaxed">
+                    <h2 class="font-serif italic text-3xl md:text-4xl text-white font-bold leading-tight">
+                        <span class="lang-es">Ideas para la Felicidad y la Paz Mental: Cómo Mantener la Calma en Tiempos Difíciles</span>
+                        <span class="lang-en">Ideas for Happiness & Peace of Mind: Preserving Inner Calm in Difficult Times</span>
+                    </h2>
 
-                <!-- Slide 3 -->
-                <div class="glass-card rounded-2xl overflow-hidden slide-thumb"
-                    onclick="openLightbox('paz_tiempos dificiles3.png', 'Lámina 3: ¿Qué es la Meditación?', 'Slide 3: What is Meditation?')">
-                    <div class="aspect-[1/1.4] overflow-hidden bg-black/40">
-                        <img src="paz_tiempos dificiles3.png" alt="Lámina 3: ¿Qué es la meditación?" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-5">
-                        <span class="text-[10px] uppercase tracking-[2px] font-bold text-gold block mb-1">Lámina 3</span>
-                        <h4 class="font-serif text-white font-bold text-sm">¿Qué es la meditación? (El objeto virtuoso)</h4>
-                    </div>
-                </div>
-
-                <!-- Slide 4 -->
-                <div class="glass-card rounded-2xl overflow-hidden slide-thumb"
-                    onclick="openLightbox('paz_tiempos dificiles4.png', 'Lámina 4: Los Tiempos Difíciles También Enseñan', 'Slide 4: Difficult Times Also Teach')">
-                    <div class="aspect-[1/1.4] overflow-hidden bg-black/40">
-                        <img src="paz_tiempos dificiles4.png" alt="Lámina 4: Los tiempos difíciles enseñan" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-5">
-                        <span class="text-[10px] uppercase tracking-[2px] font-bold text-gold block mb-1">Lámina 4</span>
-                        <h4 class="font-serif text-white font-bold text-sm">Los tiempos difíciles enseñan (El olivar y el fútbol)</h4>
-                    </div>
-                </div>
-
-                <!-- Slide 5 -->
-                <div class="glass-card rounded-2xl overflow-hidden slide-thumb"
-                    onclick="openLightbox('paz_tiempos dificiles5.png', 'Lámina 5: Preguntas Esenciales', 'Slide 5: Essential Questions')">
-                    <div class="aspect-[1/1.4] overflow-hidden bg-black/40">
-                        <img src="paz_tiempos dificiles5.png" alt="Lámina 5: Preguntas esenciales" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-5">
-                        <span class="text-[10px] uppercase tracking-[2px] font-bold text-gold block mb-1">Lámina 5</span>
-                        <h4 class="font-serif text-white font-bold text-sm">Preguntas esenciales (Las 4 preguntas vitales)</h4>
-                    </div>
-                </div>
-
-                <!-- Slide 6 -->
-                <div class="glass-card rounded-2xl overflow-hidden slide-thumb"
-                    onclick="openLightbox('paz_tiempos dificiles6.png', 'Lámina 6: Transformar la Adversidad I - Humildad y Paciencia', 'Slide 6: Transforming Adversity I')">
-                    <div class="aspect-[1/1.4] overflow-hidden bg-black/40">
-                        <img src="paz_tiempos dificiles6.png" alt="Lámina 6: Humildad y paciencia" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-5">
-                        <span class="text-[10px] uppercase tracking-[2px] font-bold text-gold block mb-1">Lámina 6</span>
-                        <h4 class="font-serif text-white font-bold text-sm">Transformar la adversidad I: Humildad y paciencia</h4>
-                    </div>
-                </div>
-
-                <!-- Slide 7 -->
-                <div class="glass-card rounded-2xl overflow-hidden slide-thumb"
-                    onclick="openLightbox('paz_tiempos dificiles7.png', 'Lámina 7: Transformar la Adversidad II - Karma y Compasión', 'Slide 7: Transforming Adversity II')">
-                    <div class="aspect-[1/1.4] overflow-hidden bg-black/40">
-                        <img src="paz_tiempos dificiles7.png" alt="Lámina 7: Karma y compasión" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-5">
-                        <span class="text-[10px] uppercase tracking-[2px] font-bold text-gold block mb-1">Lámina 7</span>
-                        <h4 class="font-serif text-white font-bold text-sm">Transformar la adversidad II: Karma y compasión</h4>
-                    </div>
-                </div>
-
-                <!-- Slide 8 -->
-                <div class="glass-card rounded-2xl overflow-hidden slide-thumb"
-                    onclick="openLightbox('paz_tiempos dificiles8.png', 'Lámina 8: Transformar la Adversidad III - Cambiar la Mirada', 'Slide 8: Transforming Adversity III')">
-                    <div class="aspect-[1/1.4] overflow-hidden bg-black/40">
-                        <img src="paz_tiempos dificiles8.png" alt="Lámina 8: Cambiar la mirada" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-5">
-                        <span class="text-[10px] uppercase tracking-[2px] font-bold text-gold block mb-1">Lámina 8</span>
-                        <h4 class="font-serif text-white font-bold text-sm">Transformar la adversidad III: Cambiar la mirada</h4>
-                    </div>
-                </div>
-
-                <!-- Slide 9 -->
-                <div class="glass-card rounded-2xl overflow-hidden slide-thumb"
-                    onclick="openLightbox('paz_tiempos dificiles9.png', 'Lámina 9: Meditación Final - Integrar y Dedicar', 'Slide 9: Closing Meditation')">
-                    <div class="aspect-[1/1.4] overflow-hidden bg-black/40">
-                        <img src="paz_tiempos dificiles9.png" alt="Lámina 9: Meditación final" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-5">
-                        <span class="text-[10px] uppercase tracking-[2px] font-bold text-gold block mb-1">Lámina 9</span>
-                        <h4 class="font-serif text-white font-bold text-sm">Meditación final: Integrar y dedicar</h4>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-    <!-- SECTION: THE FULL TRANSCRIPT (.MD) RENDERED IN BEAUTIFUL HTML -->
-    <main id="transcripcion" class="py-24 px-6 lg:px-12 max-w-4xl mx-auto space-y-20">
-        
-        <div class="text-center pb-8 border-b border-white/10 space-y-4">
-            <span class="chapter-pill">
-                <i class="fa-solid fa-align-left text-gold"></i>
-                <span class="lang-es inline">Transcripción Fiel del .MD</span>
-                <span class="lang-en inline">Verbatim .MD Transcript</span>
-            </span>
-            <h2 class="font-serif italic text-4xl md:text-5xl text-white">
-                <span class="lang-es">Peace of Mind in Difficult Times</span>
-                <span class="lang-en">Peace of Mind in Difficult Times</span>
-            </h2>
-            <p class="text-xs text-white/50 italic max-w-xl mx-auto">
-                <span class="lang-es">
-                    Transcripción editada de la conferencia budista de Gen-la Kelsang Dekyong en Madrid. Se han preservado íntegramente la sustancia, secuencia y meditaciones prácticas.
-                </span>
-                <span class="lang-en">
-                    Edited transcript of the Buddhist talk by Gen-la Kelsang Dekyong in Madrid. The substance, sequence, and practical meditations have been fully preserved.
-                </span>
-            </p>
-        </div>
-
-        <!-- ======================================================== -->
-        <!-- PART I: OPENING MEDITATION -->
-        <!-- ======================================================== -->
-        <article class="glass-card p-8 md:p-12 rounded-[2rem] border-gold/30 space-y-6">
-            <div class="flex items-center justify-between pb-3 border-b border-white/10">
-                <h3 class="font-serif text-2xl md:text-3xl text-gold font-bold">
-                    <span class="lang-es">Parte I — Meditación de Apertura</span>
-                    <span class="lang-en">Part I — Opening Meditation</span>
-                </h3>
-                <span class="text-xs text-white/40 uppercase tracking-widest font-bold">Lámina 2</span>
-            </div>
-
-            <p class="leading-relaxed text-offwhite/90">
-                <span class="lang-es">Siéntate en una posición cómoda y <span class="key-phrase">relájate física y mentalmente</span>.</span>
-                <span class="lang-en">Sit in a comfortable position and <span class="key-phrase">relax physically and mentally</span>.</span>
-            </p>
-
-            <p class="leading-relaxed text-offwhite/90">
-                <span class="lang-es">
-                    Respira de forma natural, preferiblemente por la nariz y no por la boca. 
-                    Toma conciencia de la sensación de la respiración cuando entra y sale por las fosas nasales. 
-                    <span class="key-phrase">Haz que esta sensación sea el objeto de tu meditación</span> e intenta concentrarte en ella con exclusión de todo lo demás.
-                </span>
-                <span class="lang-en">
-                    Breathe naturally, preferably through the nostrils rather than the mouth. 
-                    Become aware of the sensation of the breath as it enters and leaves the nostrils. 
-                    <span class="key-phrase">Let this sensation be the object of meditation</span> and try to focus on it to the exclusion of everything else.
-                </span>
-            </p>
-
-            <p class="leading-relaxed text-offwhite/90">
-                <span class="lang-es">
-                    Surgirá una fuerte tentación de seguir los pensamientos que te distraen a medida que aparezcan. 
-                    Intenta resistir esta tentación y <span class="key-phrase">mantén tu atención en la sensación de la respiración</span>.
-                </span>
-                <span class="lang-en">
-                    There will be a strong temptation to follow distracting thoughts as they arise. 
-                    Try to resist this temptation and <span class="key-phrase">keep your attention on the sensation of the breath</span>.
-                </span>
-            </p>
-
-            <p class="leading-relaxed text-offwhite/90">
-                <span class="lang-es">
-                    Si notas que tu atención se ha dispersado, <span class="key-phrase">deja de seguir el pensamiento distractor y regresa suavemente tu atención a la respiración</span>. 
-                    Quizá tengas que hacerlo muchas veces. Con el tiempo, la mente empieza a serenarse.
-                </span>
-                <span class="lang-en">
-                    If you notice that your attention has wandered, <span class="key-phrase">stop following the distracting thought and gently return your attention to the breath</span>. 
-                    You may need to do this many times. Eventually the mind begins to settle.
-                </span>
-            </p>
-
-            <p class="leading-relaxed text-offwhite/90">
-                <span class="lang-es">
-                    A medida que los pensamientos distractores disminuyen, surge una sensación de relajación y paz mental. Descansa en este estado de calma durante unos instantes.
-                </span>
-                <span class="lang-en">
-                    As distracting thoughts subside, a sense of relaxation and mental peace arises. Rest in this state of calm for a short while.
-                </span>
-            </p>
-
-            <p class="leading-relaxed text-offwhite/90">
-                <span class="lang-es">Con esta mente más pacífica, genera una buena motivación para escuchar:</span>
-                <span class="lang-en">With this more peaceful mind, develop a good motivation for listening:</span>
-            </p>
-
-            <div class="glass-quote">
-                <p class="font-serif italic text-lg text-gold-light">
-                    <span class="lang-es">
-                        «Que pueda escuchar algo útil y beneficioso que pueda poner en práctica, para mejorarme a mí mismo, convertirme en una mejor persona y ser cada vez más capaz de beneficiar a los demás.»
-                    </span>
-                    <span class="lang-en">
-                        "May I hear something helpful and beneficial that I can put into practice, so that I can improve myself, become a better person, and become increasingly able to benefit others."
-                    </span>
-                </p>
-            </div>
-
-            <p class="leading-relaxed text-offwhite/90">
-                <span class="lang-es">Decide escuchar con una mente clara y un buen corazón, y procurar no olvidar lo que resulte provechoso. Luego concluye con suavidad la meditación en la respiración.</span>
-                <span class="lang-en">Resolve to listen with a clear mind and a good heart, and to try not to forget what is useful. Then gently conclude the breathing meditation.</span>
-            </p>
-        </article>
-
-        <!-- ======================================================== -->
-        <!-- PART II: THE TEACHING -->
-        <!-- ======================================================== -->
-        <div class="pt-6 space-y-12">
-            
-            <div class="border-b border-gold/30 pb-4">
-                <h3 class="font-serif text-3xl md:text-4xl text-white font-bold">
-                    <span class="lang-es">Parte II — La Enseñanza</span>
-                    <span class="lang-en">Part II — The Teaching</span>
-                </h3>
-            </div>
-
-            <!-- 1. Inner peace and world peace -->
-            <section class="glass-card p-8 rounded-2xl space-y-4">
-                <h4 class="font-serif text-2xl text-gold-light font-bold">
-                    <span class="lang-es">1. Paz interior y paz en el mundo</span>
-                    <span class="lang-en">1. Inner peace and world peace</span>
-                </h4>
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        Incluso tras solo unos minutos de meditación, es posible notar cierto grado de paz en la mente. 
-                        Esto es fundamental porque <span class="key-phrase">la paz mundial no puede desarrollarse sin que antes se desarrolle la paz en las mentes individuales</span>.
-                    </span>
-                    <span class="lang-en">
-                        Even after only a few minutes of meditation, it is possible to notice a degree of peace in the mind. 
-                        This is important because <span class="key-phrase">world peace cannot develop without peace developing first within individual minds</span>.
-                    </span>
-                </p>
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        El cultivo de la paz interior no es, por tanto, una mera relajación personal. Está conectado con la forma en que vivimos, con la manera en que nos relacionamos con los demás y, en última instancia, con la paz en el mundo entero.
-                    </span>
-                    <span class="lang-en">
-                        The cultivation of inner peace is therefore not merely personal relaxation. It is connected with the way we live, the way we relate to other people and, ultimately, with peace in the wider world.
-                    </span>
-                </p>
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        Una práctica tan simple como la meditación en la respiración puede ser de utilidad cada día. Cuando la mente se ve desbordada por pensamientos distractores, incluso un breve periodo de calma facilita pensar con claridad.
-                    </span>
-                    <span class="lang-en">
-                        A simple practice such as breathing meditation can be useful every day. When the mind is overwhelmed by distracting thoughts, even a short period of calm can make it easier to think clearly.
-                    </span>
-                </p>
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        El punto más hondo, no obstante, es que <span class="key-phrase">la meditación no se limita a seguir el aire</span>. La meditación en la respiración es una preparación: asienta la mente para que podamos adiestrarnos en formas de pensar que transformen la vivencia de nuestra vida.
-                    </span>
-                    <span class="lang-en">
-                        The deeper point, however, is that <span class="key-phrase">meditation is not limited to following the breath</span>. Breathing meditation is a preparation. It settles the mind so that we can train in ways of thinking that change how we experience our life.
-                    </span>
-                </p>
-            </section>
-
-            <!-- 2. What meditation is -->
-            <section class="glass-card p-8 rounded-2xl space-y-4">
-                <h4 class="font-serif text-2xl text-gold-light font-bold">
-                    <span class="lang-es">2. Qué es la meditación</span>
-                    <span class="lang-en">2. What meditation is</span>
-                </h4>
-                <div class="glass-quote">
-                    <p class="font-serif italic text-lg text-white">
-                        <span class="lang-es">«La meditación es una mente que se concentra de forma unidireccional en un objeto virtuoso y cuya función es volver la mente pacífica y serena.»</span>
-                        <span class="lang-en">"Meditation is a mind that focuses single-pointedly on a virtuous object and whose function is to make the mind peaceful and calm."</span>
-                    </p>
-                </div>
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        A efectos prácticos, <span class="key-phrase">un objeto virtuoso es aquello que produce un estado mental más pacífico y constructivo</span>.
-                    </span>
-                    <span class="lang-en">
-                        For practical purposes, <span class="key-phrase">a virtuous object is something that produces a more peaceful and constructive state of mind</span>.
-                    </span>
-                </p>
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        El propósito de la meditación es, pues, volver la mente tranquila y apacible. <span class="key-phrase">Si nuestra mente está en paz, experimentamos felicidad. Si nuestra mente no tiene paz, resulta muy difícil ser felices incluso cuando nuestras condiciones externas son excelentes</span>. Ya lo sabemos por experiencia propia.
-                    </span>
-                    <span class="lang-en">
-                        The purpose of meditation is therefore to make the mind calm and peaceful. <span class="key-phrase">If our mind is peaceful, we experience happiness. If our mind is not peaceful, it is very difficult to be happy even when our external conditions are excellent</span>. We already know this from experience.
-                    </span>
-                </p>
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        Podemos estar en un restaurante agradable, con alguien a quien queremos, degustando una comida deliciosa. De pronto ocurre algo y nos enfadamos. Al instante, el disfrute desaparece. El restaurante no ha cambiado. La comida no ha cambiado. <span class="key-phrase">Lo que ha cambiado es nuestra propia mente</span>. Un estado pacífico y positivo se ha vuelto negativo, y nuestra felicidad se ha desvanecido con él.
-                    </span>
-                    <span class="lang-en">
-                        We can be in a pleasant restaurant, with someone we love, eating food we enjoy. Then something happens and we become annoyed. Suddenly the enjoyment disappears. The restaurant has not changed. The food has not changed. <span class="key-phrase">What has changed is our mind</span>. A peaceful and positive state of mind has become negative, and our own happiness has disappeared with it.
-                    </span>
-                </p>
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        Esto sucede porque tenemos hábitos mentales arraigados: ira, celos, orgullo, apego, egoísmo y confusión. Si aprendemos a trabajar con estos hábitos, podemos adiestrar poco a poco la mente para mantenerse serena aun en circunstancias difíciles.
-                    </span>
-                    <span class="lang-en">
-                        This happens because we have strong mental habits: anger, jealousy, pride, greed, selfishness and confusion. If we learn to work with these habits, we can gradually train the mind to remain peaceful even when circumstances are difficult.
-                    </span>
-                </p>
-            </section>
-
-            <!-- 3. Worldly pleasure and real happiness -->
-            <section class="glass-card p-8 rounded-2xl space-y-4">
-                <h4 class="font-serif text-2xl text-gold-light font-bold">
-                    <span class="lang-es">3. Placer mundano y verdadera felicidad</span>
-                    <span class="lang-en">3. Worldly pleasure and real happiness</span>
-                </h4>
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        Cuando los pensamientos distractores se asientan y la mente se aquieta, puede brotar desde el interior un sentimiento de paz, contentamiento y bienestar. 
-                        Esto es completamente distinto del placer mundano ordinario.
-                    </span>
-                    <span class="lang-en">
-                        When distracting thoughts settle and the mind becomes still, a feeling of peace, contentment and well-being can arise from within. 
-                        This is different from ordinary worldly pleasure.
-                    </span>
-                </p>
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        <span class="key-phrase">El placer mundano depende en exceso de las condiciones externas. La felicidad que emana de una mente en paz surge internamente</span>. Por eso resulta inmensamente más útil cuando la vida se complica.
-                    </span>
-                    <span class="lang-en">
-                        <span class="key-phrase">Worldly pleasure depends heavily on external conditions. The happiness that comes from a peaceful mind arises internally</span>. It is therefore far more useful when life becomes difficult.
-                    </span>
-                </p>
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        Gran parte del estrés y de la tensión que sufrimos proviene de la mente, y ese estrés vuelve más espinoso cualquier otro problema. Diez o quince minutos diarios de meditación reducen la agitación mental y aportan una sensación más espaciosa y templada. Con la mente más en calma nos sentimos también más cercanos y mejor dispuestos hacia los demás, lo que mejora paulatinamente nuestras relaciones.
-                    </span>
-                    <span class="lang-en">
-                        Much of the stress and tension we experience comes from the mind, and this stress can make many other problems harder to deal with. Ten or fifteen minutes of breathing meditation each day can reduce mental agitation and produce a calmer, more spacious feeling. With a calmer mind we also tend to feel warmer and better disposed towards other people, which gradually improves our relationships.
-                    </span>
-                </p>
-            </section>
-
-            <!-- 4. Difficult times are not an exception -->
-            <section class="glass-card p-8 rounded-2xl space-y-4">
-                <h4 class="font-serif text-2xl text-gold-light font-bold">
-                    <span class="lang-es">4. Los tiempos difíciles no son una excepción</span>
-                    <span class="lang-en">4. Difficult times are not an exception</span>
-                </h4>
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        A menudo imaginamos que nuestra auténtica felicidad dará comienzo cuando por fin terminen los contratiempos. Pero las dificultades no desaparecen de manera definitiva: se intensifican, se atenúan y después surge un nuevo problema.
-                    </span>
-                    <span class="lang-en">
-                        We often imagine that our real happiness will begin when difficult times finally stop. But difficult times do not seem to disappear permanently. They become more intense, then less intense, and then another difficulty appears.
-                    </span>
-                </p>
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        A veces nos creemos los únicos que sufren. Las redes sociales refuerzan este espejismo mostrando vidas aparentemente más alegres y sencillas. Pero todos —ricos y pobres, jóvenes y ancianos— experimentan dificultades. El envejecimiento, la enfermedad y la muerte forman parte ineludible de la condición humana.
-                    </span>
-                    <span class="lang-en">
-                        Sometimes we imagine that we are the only ones struggling. Social media can reinforce this impression because other people's lives often appear happier and easier than our own. But everyone experiences difficulties: rich and poor, young and old. Aging, sickness and death are also part of the human condition.
-                    </span>
-                </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                    <div class="p-4 rounded-xl bg-red-950/20 border border-red-500/20">
-                        <span class="text-xs uppercase tracking-widest text-red-400 font-bold block mb-1">Pregunta Errónea</span>
-                        <p class="font-serif italic text-sm text-offwhite/80">«¿Cómo puedo construir una vida en la que jamás ocurra nada difícil?»</p>
-                    </div>
-                    <div class="p-4 rounded-xl bg-gold/10 border border-gold/30">
-                        <span class="text-xs uppercase tracking-widest text-gold font-bold block mb-1">Pregunta Sabia</span>
-                        <p class="font-serif italic text-sm text-gold-light">«¿Cómo puedo mantener una mente pacífica cuando las dificultades ocurren?»</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 5. Make suffering meaningful -->
-            <section class="glass-card p-8 rounded-2xl space-y-4">
-                <h4 class="font-serif text-2xl text-gold-light font-bold">
-                    <span class="lang-es">5. Dar sentido al sufrimiento</span>
-                    <span class="lang-en">5. Make suffering meaningful</span>
-                </h4>
-                <div class="glass-quote">
-                    <p class="font-serif italic text-xl text-gold-light">
-                        <span class="lang-es">«Haz que tu sufrimiento tenga sentido.»</span>
-                        <span class="lang-en">"Make your suffering meaningful."</span>
-                    </p>
-                </div>
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        Las dificultades van a llegar de todos modos. <span class="key-phrase">Si pueden utilizarse para generar algo beneficioso, ya no tienen por qué ser experiencias vacías de sentido que únicamente nos hagan infelices</span>. Dos analogías sencillas lo ilustran:
-                    </span>
-                    <span class="lang-en">
-                        Difficulties will come anyway. <span class="key-phrase">If they can be used to produce something beneficial, then they no longer have to be meaningless experiences that simply make us unhappy</span>. Two simple analogies illustrate this:
-                    </span>
-                </p>
-                <div class="space-y-3 pl-4 border-l-2 border-white/20">
-                    <p class="text-sm text-offwhite/80">
-                        <strong>El cultivador de olivos:</strong> Casi nadie se entusiasmaría si le ofrecieran un montón de estiércol de oveja. Sin embargo, un olivarero ecológico ve exactamente en eso un abono imprescindible. El objeto es el mismo; su valor cambia según cómo se comprenda y utilice.
-                    </p>
-                    <p class="text-sm text-offwhite/80">
-                        <strong>El futbolista:</strong> Si juegas distraídamente con un balón y alguien corre hacia ti para quitártelo, te irritarás. Pero si estás entrenando para ser mejor jugador, quien te disputa el balón y te exige el máximo te está ayudando a perfeccionarte.
-                    </p>
-                </div>
-                <p class="text-xs italic text-white/60">
-                    <span class="lang-es">El punto no es que las dificultades sean placenteras; el punto es que pueden volverse profundamente útiles.</span>
-                    <span class="lang-en">The point is not that difficulties are pleasant. The point is that they can become useful.</span>
-                </p>
-            </section>
-
-            <!-- 6, 7, 8 & 9 -->
-            <section class="glass-card p-8 rounded-2xl space-y-6">
-                <h4 class="font-serif text-2xl text-gold-light font-bold">
-                    <span class="lang-es">6 al 9. Respuesta, Desarrollo Interior y la Mente ante el Problema</span>
-                    <span class="lang-en">6 to 9. Changing Response, Inner Growth & Mind's View</span>
-                </h4>
-                
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        Jamás crearemos una vida ordinaria sin tropiezos: ni cambiando de país, ni de pareja, ni de empleo. Ante pérdidas, diagnósticos severos, rupturas o dolor, surge una llamada a la humildad y a las cuatro preguntas existenciales sobre el significado de la vida. 
-                        La respuesta budista es unánime: <span class="key-phrase">el desarrollo interior</span>.
-                    </span>
-                    <span class="lang-en">
-                        We will never create an ordinary life containing no difficulties. Major difficulties humble us and challenge our sense of total control, raising four deep questions. The teaching gives one basic answer to all four: <span class="key-phrase">inner development</span>.
-                    </span>
-                </p>
-
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        Desarrollarse interiormente significa volverse más paciente, bondadoso, compasivo y sabio semana a semana. 
-                        La felicidad es la vivencia de una mente apacible. Si la mente está serena, la alegría puede florecer en medio del vendaval; si la mente está atormentada, ni el mayor lujo externo logrará complacerla.
-                    </span>
-                    <span class="lang-en">
-                        To develop inwardly means to become more patient, loving, kind, compassionate and wise. Happiness is the experience of a peaceful mind. If the mind is peaceful, happiness can arise even when external circumstances are difficult.
-                    </span>
-                </p>
-
-                <div class="p-4 rounded-xl bg-gold/10 border border-gold/30">
-                    <h5 class="font-serif font-bold text-gold-light text-base mb-1">
-                        <span class="lang-es">La situación no siempre es el problema</span>
-                        <span class="lang-en">The situation is not always the problem</span>
-                    </h5>
-                    <p class="text-xs text-offwhite/85 leading-relaxed">
+                    <p>
                         <span class="lang-es">
-                            Solemos creer: <em>«La situación es mi problema»</em>. Pero el sufrimiento doloroso que padecemos depende en gran medida de cómo nuestra mente responde a ella. 
-                            Si respondiéramos con calma y lucidez, la prueba se viviría como una oportunidad. El sufrimiento se vuelve atroz cuando añadimos ira, frustración, desencanto y ansiedad.
+                            En la cabecera de esta primera lámina leemos la proclama que abre todo el itinerario: 
+                            <strong class="text-gold">«Un mundo más sereno comienza en ti»</strong>. 
+                            Genla Dekyong expuso con nitidez en Príncipe Pío que la búsqueda de la paz mental no es una huida contemplativa ni un lujo reservado a unos pocos elegidos, sino la tarea más urgente y responsable de nuestro tiempo. 
+                            <span class="key-phrase">La paz en el mundo exterior jamás podrá fabricarse con mentes individuales dominadas por la agitación, el resentimiento y el miedo</span>.
                         </span>
                         <span class="lang-en">
-                            We normally think: <em>"This external situation is my problem."</em> But the painful problem we experience depends greatly on the way our mind responds. 
-                            If we respond with a positive and peaceful mind, it affects us very differently. Negative emotions destroy the very peace that is the source of happiness.
+                            At the top of this first infographic shines the proclamation opening our entire path: 
+                            <strong class="text-gold">"A calmer world begins within you"</strong>. 
+                            Genla Dekyong explained at Príncipe Pío that cultivating inner peace is neither a contemplative escape nor a luxury for the few, but the most pressing and responsible duty of our era. 
+                            <span class="key-phrase">Peace in the external world can never be forged by individual minds dominated by agitation, resentment, and fear</span>.
+                        </span>
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                        <div class="p-4 rounded-xl bg-forest-emerald/40 border border-gold/20 text-center">
+                            <i class="fa-solid fa-sun text-gold text-xl mb-2"></i>
+                            <h4 class="font-serif font-bold text-white text-sm mb-1">Idea Central</h4>
+                            <p class="text-xs text-offwhite/70">La verdadera fuente de felicidad es la paz interior, no las condiciones externas.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-forest-emerald/40 border border-mint-vibrant/20 text-center">
+                            <i class="fa-solid fa-person-praying text-mint-vibrant text-xl mb-2"></i>
+                            <h4 class="font-serif font-bold text-white text-sm mb-1">Meditación</h4>
+                            <p class="text-xs text-offwhite/70">Calma el torbellino de la mente y nos capacita para pensar con lucidez.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-forest-emerald/40 border border-cyan-400/20 text-center">
+                            <i class="fa-solid fa-earth-americas text-cyan-300 text-xl mb-2"></i>
+                            <h4 class="font-serif font-bold text-white text-sm mb-1">Propósito</h4>
+                            <p class="text-xs text-offwhite/70">Al sanar tu mente interior, aportas una vibración sanadora a toda la humanidad.</p>
+                        </div>
+                    </div>
+
+                    <p>
+                        <span class="lang-es">
+                            En las rocas del paisaje contemplamos grabados los hitos: <strong>Disciplina, Bienestar, Un mundo mejor</strong>, y a la derecha el horizonte de una sociedad verdaderamente humana: 
+                            <em>«Personas más conscientes, comunidades más humanas, un planeta más en armonía»</em>. 
+                            Como profundizo en <a href="https://librojesus.pazaresosset.es" target="_blank" class="text-gold underline font-semibold">El Libro de Jesús</a>, 
+                            el maestro de Galilea enseñaba exactamente lo mismo: el Reino de los Cielos no viene con señales externas de poder o riqueza; <strong>el Reino está dentro de vosotros</strong>. 
+                            Cuando cambias tu estado interior de conciencia, tu experiencia entera de la realidad se transmuta.
+                        </span>
+                        <span class="lang-en">
+                            Inscribed upon the stones we see: <strong>Discipline, Well-being, A Better World</strong>, and to the right the vision of an authentic human society: 
+                            <em>"More conscious individuals, more human communities, a planet in harmony"</em>. 
+                            As I explore in <a href="https://librojesus.pazaresosset.es" target="_blank" class="text-gold underline font-semibold">The Book of Jesus</a>, 
+                            the master of Galilee taught the exact same truth: the Kingdom does not arrive with outer pomp; <strong>the Kingdom is within you</strong>. 
+                            When you shift your internal state of consciousness, your entire experience of reality transforms.
                         </span>
                     </p>
                 </div>
-            </section>
 
-        </div>
-
-        <!-- ======================================================== -->
-        <!-- PART III: FIVE WAYS TO TRANSFORM ADVERSITY -->
-        <!-- ======================================================== -->
-        <div class="pt-6 space-y-12">
-            
-            <div class="border-b border-gold/30 pb-4">
-                <h3 class="font-serif text-3xl md:text-4xl text-white font-bold">
-                    <span class="lang-es">Parte III — Cinco Formas de Transformar la Adversidad</span>
-                    <span class="lang-en">Part III — Five Ways to Transform Adversity</span>
-                </h3>
-            </div>
-
-            <!-- 10 & 11: Humility & Patience -->
-            <section class="glass-card p-8 rounded-2xl space-y-4">
-                <h4 class="font-serif text-2xl text-gold-light font-bold">
-                    <span class="lang-es">10 & 11. Humildad y Paciencia</span>
-                    <span class="lang-en">10 & 11. Humility & Patience</span>
-                </h4>
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        <strong>Humildad:</strong> La dificultad rompe la soberbia del control y nos abre a aprender. El orgullo bloquea el aprendizaje; la humildad lo fecunda.
-                    </span>
-                    <span class="lang-en">
-                        <strong>Humility:</strong> Difficulty can make us recognize the limits of our understanding. Pride closes learning down; humility opens the mind.
-                    </span>
-                </p>
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        <strong>Paciencia:</strong> No es enfadarse por dentro mientras fingimos calma. <span class="key-phrase">La verdadera paciencia es la capacidad de aceptar una situación difícil para preservar la paz mental</span>. 
-                        Pelear mentalmente contra un hecho consumado añade una segunda tortura. La aceptación no dice que la situación sea buena: reconoce la realidad sin destruir nuestra paz en el proceso.
-                    </span>
-                    <span class="lang-en">
-                        <strong>Patience:</strong> It does not mean becoming irritated while pretending calm. <span class="key-phrase">Real patience is the ability to accept a difficult situation in order to preserve peace of mind</span>. 
-                        Refusing to accept reality adds a second layer of suffering. Acceptance recognizes reality without destroying peace of mind.
-                    </span>
-                </p>
-                <div class="glass-quote">
-                    <p class="font-serif italic text-base text-gold-light">
-                        <span class="lang-es">«Cualquiera puede enfadarse: la ira no es fuerza por el mero hecho de sentirse violenta. Requiere una fortaleza mucho mayor mantenerse pacífico ante la adversidad. La paciencia es una forma suprema de riqueza interna.»</span>
-                        <span class="lang-en">"Anyone can become angry. It takes much greater strength to remain peaceful in a difficult situation. Patience is therefore a form of inner wealth."</span>
-                    </p>
-                </div>
-            </section>
-
-            <!-- 12: Karma -->
-            <section class="glass-card glass-card-gold p-8 rounded-2xl space-y-4">
-                <div class="flex items-center justify-between pb-2 border-b border-gold/30">
-                    <h4 class="font-serif text-2xl text-gold-light font-bold">
-                        <span class="lang-es">12. Comprensión del Karma</span>
-                        <span class="lang-en">12. Understanding Karma</span>
-                    </h4>
-                    <a href="https://karma.pazaresosset.es" target="_blank"
-                        class="text-xs text-gold underline hover:text-white font-bold">
-                        karma.pazaresosset.es →
-                    </a>
-                </div>
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        A menudo preguntamos: <em>¿Por qué me pasa esto a mí?</em> (curiosamente, casi nunca lo preguntamos cuando todo sale perfecto). 
-                        La enseñanza del karma propone que nuestras vivencias tienen causas: las acciones virtuosas originan felicidad y las dañinas causan sufrimiento.
-                    </span>
-                    <span class="lang-en">
-                        We often ask: <em>Why is this happening to me?</em> (interestingly, we rarely ask when everything goes well). 
-                        The teaching on karma proposes that our experiences have causes: virtuous actions produce happiness and non-virtuous actions bring suffering.
-                    </span>
-                </p>
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        Ante un suceso amargo, en lugar de sembrar nueva ira y odio futuro, lo contemplamos como <span class="key-phrase">la maduración y extinción de potenciales kármicos previos</span>. Mantenemos una mente serena y dejamos que el trago pase limpiamente.
-                    </span>
-                    <span class="lang-en">
-                        When something difficult happens, we regard it as <span class="key-phrase">the ripening of previous karmic potential</span>. Instead of reacting with anger, we keep a calm mind and allow the experience to pass.
-                    </span>
-                </p>
-            </section>
-
-            <!-- 13: Compassion -->
-            <section class="glass-card p-8 rounded-2xl space-y-4">
-                <h4 class="font-serif text-2xl text-gold-light font-bold">
-                    <span class="lang-es">13. Compasión</span>
-                    <span class="lang-en">13. Compassion</span>
-                </h4>
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        Cuando sufrimos, toda nuestra atención tiende a contraerse de manera egoísta sobre nosotros mismos. 
-                        Genla Dekyong alienta el movimiento opuesto: si padeces una jaqueca, dolor de espalda o una enfermedad grave, recuerda a los miles de seres que en tu ciudad y en el mundo atraviesan lo mismo o algo peor. Desea con firmeza:
-                    </span>
-                    <span class="lang-en">
-                        Normally, when we suffer, our attention contracts around ourselves. 
-                        The teaching encourages the opposite movement: if you are ill or in pain, remember all the people suffering similarly or worse, and wish:
-                    </span>
-                </p>
-                <div class="glass-quote">
-                    <p class="font-serif italic text-lg text-white">
-                        <span class="lang-es">«Que todos ellos queden libres del dolor y del sufrimiento.»</span>
-                        <span class="lang-en">"May they be free from pain and suffering."</span>
-                    </p>
-                </div>
-                <p class="text-xs italic text-offwhite/70">
-                    <span class="lang-es">Esa mente es compasión. Así, nuestra propia aflicción se convierte en abono para abrir el corazón.</span>
-                    <span class="lang-en">That mind is compassion. In this way, our own difficulty becomes material for developing compassion.</span>
-                </p>
-            </section>
-
-            <!-- 14, 15, 16 & 17 -->
-            <section class="glass-card p-8 rounded-2xl space-y-6">
-                <h4 class="font-serif text-2xl text-gold-light font-bold">
-                    <span class="lang-es">14 al 17. Cambiar la Mirada y la Práctica Cotidiana</span>
-                    <span class="lang-en">14 to 17. Shifting the View & Daily Practice</span>
-                </h4>
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        <strong>Todo depende de cómo lo miremos:</strong> Dos personas con la misma enfermedad reaccionan de modo opuesto: una la transforma espiritualmente y permanece sonriente; la otra se hunde en la desesperación. 
-                        Adiestrarse en esto se denomina tradicionalmente: <span class="key-phrase">«Transformar la adversidad en el camino espiritual»</span>.
-                    </span>
-                    <span class="lang-en">
-                        <strong>Everything depends on how we look at it:</strong> Two people with the same illness: one transforms it spiritually and stays cheerful; the other sinks into anxiety. This training is traditionally called: <span class="key-phrase">"Transforming adversity into the spiritual path"</span>.
-                    </span>
-                </p>
-                <p class="leading-relaxed text-offwhite/90">
-                    <span class="lang-es">
-                        Al desarrollar esta solidez interna, el miedo al futuro se extingue: todo suceso podrá utilizarse para crecer. Nos convertimos en la roca sobre la que otros pueden apoyarse. 
-                        Y recordamos el corolario supremo: <span class="key-phrase">sin paz interior individual, la paz exterior colectiva es sencillamente imposible</span>.
-                    </span>
-                    <span class="lang-en">
-                        As we master this, fear diminishes because whatever happens can be used for development. We become a rock others can lean upon. 
-                        And we return to the core truth: <span class="key-phrase">without inner peace, outer peace is impossible</span>.
-                    </span>
-                </p>
-            </section>
-
-        </div>
-
-        <!-- ======================================================== -->
-        <!-- PART IV: CLOSING MEDITATION -->
-        <!-- ======================================================== -->
-        <article class="glass-card p-8 md:p-12 rounded-[2rem] border-gold/40 bg-gradient-to-b from-forest-deep to-black/80 space-y-6">
-            <div class="flex items-center justify-between pb-3 border-b border-white/10">
-                <h3 class="font-serif text-2xl md:text-3xl text-gold font-bold">
-                    <span class="lang-es">Parte IV — Meditación de Clausura</span>
-                    <span class="lang-en">Part IV — Closing Meditation</span>
-                </h3>
-                <span class="text-xs text-white/40 uppercase tracking-widest font-bold">Lámina 9</span>
-            </div>
-
-            <p class="leading-relaxed text-offwhite/90">
-                <span class="lang-es">
-                    Siéntate cómodamente y decide que, durante unos minutos, meditarás sin seguir distracciones.
-                    Trae a la mente una dificultad que estés experimentando actualmente (es preferible empezar por algo manejable y no por el mayor trauma de tu vida).
-                </span>
-                <span class="lang-en">
-                    Sit comfortably and decide that, for a few minutes, you are going to meditate without following distractions.
-                    Bring to mind a difficulty you are currently experiencing (begin with something manageable rather than your greatest trauma).
-                </span>
-            </p>
-
-            <div class="space-y-3 pl-4 border-l-2 border-gold/40 text-sand italic font-serif">
-                <p>«Cuando las cosas van mal en mi vida, normalmente considero que la situación externa misma es mi problema. Pero el problema que experimento depende en gran medida de mi mente, de mi mirada y de mi actitud.»</p>
-                <p>«Imagina responder a esta situación con una mente positiva y pacífica. Imagina aceptar el hecho de que ya está sucediendo. La situación podría volverse entonces un desafío o una oportunidad de crecimiento.»</p>
-            </div>
-
-            <div class="glass-quote">
-                <p class="font-serif italic text-base text-gold-light">
-                    «Esta dificultad me está ayudando. Me está enseñando a desarrollar fortaleza mental y buenas cualidades internas.»
-                </p>
-            </div>
-
-            <p class="leading-relaxed text-offwhite/90">
-                <span class="lang-es">Llega a la siguiente conclusión sosegada:</span>
-                <span class="lang-en">Come to the following quiet conclusion:</span>
-            </p>
-
-            <div class="p-4 rounded-xl bg-gold/15 border border-gold/40 text-gold-light font-serif italic text-sm md:text-base">
-                «Si quiero ser feliz y librarme de problemas, y si deseo ayudar a otros a lograr lo mismo, debo aprender a cultivar y preservar una mente pacífica. Utilizaré las dificultades que surjan en mi vida para mejorarme en beneficio de los demás.»
-            </div>
-
-            <p class="leading-relaxed text-offwhite/90">
-                <span class="lang-es">Finalmente, recuerda al mundo entero y genera el anhelo universal:</span>
-                <span class="lang-en">Finally, remember all people and generate the universal wish:</span>
-            </p>
-
-            <div class="glass-quote text-center">
-                <p class="font-serif italic text-lg text-white">
-                    «¡Qué maravilloso sería si todos los seres pudieran desarrollar y conservar la paz mental y hallar la vida feliz y llena de sentido que tanto anhelan!»
-                </p>
-                <span class="text-xs uppercase tracking-widest text-gold font-bold block mt-2">
-                    Dedica el beneficio de la meditación a la liberación del sufrimiento y a la paz en el mundo.
-                </span>
             </div>
         </article>
 
-        <!-- ======================================================== -->
-        <!-- KEY IDEAS AT A GLANCE (THE 12 BULLETS) -->
-        <!-- ======================================================== -->
-        <section class="glass-card p-8 md:p-10 rounded-2xl space-y-4">
-            <h4 class="font-serif text-2xl text-gold-light font-bold">
-                <span class="lang-es">Ideas Clave de un Vistazo</span>
-                <span class="lang-en">Key Ideas at a Glance</span>
-            </h4>
-            <ul class="space-y-2.5 text-sm text-offwhite/85">
-                <li class="flex items-start gap-3"><span class="text-gold font-bold">•</span><span>La verdadera fuente de la felicidad es la paz interior.</span></li>
-                <li class="flex items-start gap-3"><span class="text-gold font-bold">•</span><span>Meditar es entrenar la mente para volverse calma, apacible y constructiva.</span></li>
-                <li class="flex items-start gap-3"><span class="text-gold font-bold">•</span><span>Los tiempos difíciles son inevitables; la cuestión crucial es cómo respondemos ante ellos.</span></li>
-                <li class="flex items-start gap-3"><span class="text-gold font-bold">•</span><span>El sufrimiento cobra sentido cuando se utiliza para el desarrollo interior.</span></li>
-                <li class="flex items-start gap-3"><span class="text-gold font-bold">•</span><span>Una misma dificultad puede vivirse de manera enteramente distinta según nuestra mirada.</span></li>
-                <li class="flex items-start gap-3"><span class="text-gold font-bold">•</span><span>Las dificultades nos ayudan a cultivar humildad, paciencia, sabiduría y compasión.</span></li>
-                <li class="flex items-start gap-3"><span class="text-gold font-bold">•</span><span>La aceptación protege la paz mental; no significa aprobar la situación como buena.</span></li>
-                <li class="flex items-start gap-3"><span class="text-gold font-bold">•</span><span>La enseñanza budista sobre el karma nos anima a evitar acciones perjudiciales y a cultivar las beneficiosas.</span></li>
-                <li class="flex items-start gap-3"><span class="text-gold font-bold">•</span><span>El propio dolor puede recordarnos el dolor ajeno y convertirse en el cimiento de la compasión.</span></li>
-                <li class="flex items-start gap-3"><span class="text-gold font-bold">•</span><span>Transformar la adversidad significa usar la dificultad como material de elevación espiritual.</span></li>
-                <li class="flex items-start gap-3"><span class="text-gold font-bold">•</span><span>Desarrollar paz interior nos capacita para sostener y ayudar eficazmente a los demás.</span></li>
-                <li class="flex items-start gap-3"><span class="text-gold font-bold">•</span><span>La paz exterior depende de manera inexorable del cultivo previo de la paz interior.</span></li>
-            </ul>
+        <!-- ========================================================================= -->
+        <!-- CHAPTER 2 / LÁMINA 2: MEDITACIÓN INICIAL -->
+        <!-- ========================================================================= -->
+        <article class="glass-card rounded-[2.5rem] p-8 md:p-14 border-gold/25 relative">
+            <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+                <span class="chapter-badge">
+                    <i class="fa-solid fa-wind text-gold"></i>
+                    <span class="lang-es inline">Lámina 2 • Meditación Inicial</span>
+                    <span class="lang-en inline">Slide 2 • Initial Meditation</span>
+                </span>
+                <span class="text-xs text-gold/70 font-semibold uppercase tracking-widest">
+                    <span class="lang-es inline">Los 6 Pasos y la Intención</span>
+                    <span class="lang-en inline">The 6 Steps & Intention</span>
+                </span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                
+                <div class="lg:col-span-5 order-2 lg:order-1">
+                    <div class="interactive-infographic rounded-2xl border border-gold/30 bg-black/50 shadow-xl group"
+                        onclick="openLightbox('paz_tiempos dificiles2.png', 'Lámina 2: Meditación Inicial - Respirar, Calmar y Escuchar', 'Slide 2: Opening Meditation')">
+                        <img src="paz_tiempos dificiles2.png" alt="Lámina 2: Meditación inicial"
+                            class="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center zoom-badge">
+                            <span class="px-4 py-2 rounded-full bg-gold text-obsidian text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-2xl">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                <span class="lang-es inline">Ampliar en Pantalla Completa</span>
+                                <span class="lang-en inline">View Full Screen</span>
+                            </span>
+                        </div>
+                    </div>
+                    <span class="text-[11px] text-center block text-white/50 mt-3 italic">
+                        <span class="lang-es inline">Lámina 2: Respirar, calmar la mente y escuchar con el corazón</span>
+                        <span class="lang-en inline">Slide 2: Breathing, settling the mind and listening with the heart</span>
+                    </span>
+                </div>
+
+                <div class="lg:col-span-7 order-1 lg:order-2 space-y-6 text-offwhite/85 font-light leading-relaxed">
+                    <h2 class="font-serif italic text-3xl md:text-4xl text-white font-bold leading-tight">
+                        <span class="lang-es">La Meditación de Apertura: Despejar el Ruido del Sistema Nervioso</span>
+                        <span class="lang-en">The Opening Meditation: Clearing the Noise of the Nervous System</span>
+                    </h2>
+
+                    <p>
+                        <span class="lang-es">
+                            En el teatro, Genla Dekyong no inició su intervención con definiciones conceptuales, sino pidiendo silencio para realizar una práctica guiada. 
+                            La lámina detalla con precisión matemática los <strong class="text-gold">6 pasos esenciales</strong>:
+                        </span>
+                        <span class="lang-en">
+                            In the theatre, Genla Dekyong did not start with theoretical lectures, but invited stillness into the room. 
+                            The infographic details with exact clarity the <strong class="text-gold">6 essential steps</strong>:
+                        </span>
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div class="p-3.5 rounded-xl bg-forest-emerald/30 border border-white/10">
+                            <strong class="text-gold block mb-1">1. Postura y Sosiego:</strong>
+                            Siéntate con comodidad; suelta la rigidez de hombros, mandíbula y cuello. Relaja el cuerpo para que la mente se sosiegue.
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-forest-emerald/30 border border-white/10">
+                            <strong class="text-gold block mb-1">2. Respiración Nasal:</strong>
+                            Respira de forma natural por la nariz; la respiración nasal activa el óxido nítrico y estimula la calma fisiológica.
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-forest-emerald/30 border border-white/10">
+                            <strong class="text-gold block mb-1">3. Atención Pura al Aire:</strong>
+                            Siente el aire al entrar fresco y salir tibio. Ese roce sensorial es el ancla que retiene la mente en el presente.
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-forest-emerald/30 border border-white/10">
+                            <strong class="text-gold block mb-1">4. Soltar la Distracción:</strong>
+                            Cuando aparezcan pensamientos de pendientes o juicios, no luches contra ellos: suelta con gentileza y regresa al aire.
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-forest-emerald/30 border border-white/10">
+                            <strong class="text-gold block mb-1">5. Habitar la Calma:</strong>
+                            Permanece unos instantes descansando en ese silencio interior, saboreando el espacio libre de fricción.
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-forest-emerald/30 border border-white/10">
+                            <strong class="text-gold block mb-1">6. Intención Altruista:</strong>
+                            Prepara el corazón antes de escuchar o reflexionar con un anhelo de superación para beneficiar a los demás.
+                        </div>
+                    </div>
+
+                    <!-- The Pure Intention Box -->
+                    <div class="glass-quote">
+                        <span class="text-xs font-bold uppercase tracking-widest text-gold block mb-1">La Fórmula de la Intención Pura:</span>
+                        <p class="font-serif italic text-base md:text-lg text-sand">
+                            «Que pueda escuchar algo útil para mejorarme, ser mejor persona y ayudar más a los demás.»
+                        </p>
+                    </div>
+
+                    <p>
+                        <span class="lang-es">
+                            <span class="key-phrase">Escuchar sin intención pura es mera acumulación de datos para inflar el ego</span>. 
+                            La verdadera sabiduría solo puede depositarse en un recipiente limpio y humilde. 
+                            Al calmar la respiración, el sistema nervioso simpático (lucha y huida) se desactiva y da paso al tono vagal parasimpático, 
+                            el estado biológico indispensable para que la conciencia reflexiva despierte.
+                        </span>
+                        <span class="lang-en">
+                            <span class="key-phrase">Listening without pure motivation is merely hoarding data to inflate intellectual pride</span>. 
+                            Authentic wisdom can only be poured into a clean, humble vessel. 
+                            By steadying the breath, the sympathetic nervous system downregulates, making way for vagal parasympathetic tone—the biological prerequisite for reflective awareness.
+                        </span>
+                    </p>
+                </div>
+
+            </div>
+        </article>
+
+        <!-- ========================================================================= -->
+        <!-- CHAPTER 3 / LÁMINA 3: ¿QUÉ ES LA MEDITACIÓN? -->
+        <!-- ========================================================================= -->
+        <article class="glass-card rounded-[2.5rem] p-8 md:p-14 border-gold/25 relative">
+            <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+                <span class="chapter-badge">
+                    <i class="fa-solid fa-brain text-gold"></i>
+                    <span class="lang-es inline">Lámina 3 • La Esencia de la Práctica</span>
+                    <span class="lang-en inline">Slide 3 • Essence of Practice</span>
+                </span>
+                <span class="text-xs text-gold/70 font-semibold uppercase tracking-widest">
+                    <span class="lang-es inline">Definición y Función Real</span>
+                    <span class="lang-en inline">Definition & True Function</span>
+                </span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                
+                <div class="lg:col-span-5">
+                    <div class="interactive-infographic rounded-2xl border border-gold/30 bg-black/50 shadow-xl group"
+                        onclick="openLightbox('paz_tiempos dificiles3.png', 'Lámina 3: ¿Qué es la Meditación?', 'Slide 3: What is Meditation?')">
+                        <img src="paz_tiempos dificiles3.png" alt="Lámina 3: ¿Qué es la meditación?"
+                            class="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center zoom-badge">
+                            <span class="px-4 py-2 rounded-full bg-gold text-obsidian text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-2xl">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                <span class="lang-es inline">Ampliar en Pantalla Completa</span>
+                                <span class="lang-en inline">View Full Screen</span>
+                            </span>
+                        </div>
+                    </div>
+                    <span class="text-[11px] text-center block text-white/50 mt-3 italic">
+                        <span class="lang-es inline">Lámina 3: Una práctica para volver la mente más clara, tranquila y feliz</span>
+                        <span class="lang-en inline">Slide 3: A practice to make the mind clearer, calmer and happier</span>
+                    </span>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6 text-offwhite/85 font-light leading-relaxed">
+                    <h2 class="font-serif italic text-3xl md:text-4xl text-white font-bold leading-tight">
+                        <span class="lang-es">¿Qué es la Meditación? Más Allá del Misticismo Vacío</span>
+                        <span class="lang-en">What is Meditation? Beyond Superficial Mysticism</span>
+                    </h2>
+
+                    <p>
+                        <span class="lang-es">
+                            Frecuentemente se confunde meditar con "dejar la mente en blanco" o escapar del mundo real. 
+                            Genla Dekyong dio en Madrid la definición budista exacta: 
+                            <strong class="text-gold">«La meditación es una mente enfocada de forma unidireccional en un objeto virtuoso, cuya función directa es volver la mente pacífica y serena»</strong>.
+                        </span>
+                        <span class="lang-en">
+                            Meditation is frequently misunderstood as "emptying the mind" or escaping reality. 
+                            Genla Dekyong delivered the precise Buddhist definition in Madrid: 
+                            <strong class="text-gold">"Meditation is a mind focused single-pointedly on a virtuous object, whose direct function is to make the mind peaceful and calm"</strong>.
+                        </span>
+                    </p>
+
+                    <div class="p-5 rounded-2xl bg-forest-emerald/40 border border-gold/20 space-y-3">
+                        <h4 class="font-serif text-white font-bold text-base flex items-center gap-2">
+                            <i class="fa-solid fa-utensils text-gold"></i>
+                            <span>La Parábola del Restaurante: La Prueba Irrefutable</span>
+                        </h4>
+                        <p class="text-xs leading-relaxed text-offwhite/80">
+                            Imagina que estás en el restaurante más selecto de Madrid, en una mesa con vistas privilegiadas, degustando un manjar exquisito en compañía de la persona que más amas. 
+                            Todo el escenario exterior es inmejorable. 
+                            De pronto, tu acompañante hace un comentario que interpretas como una ofensa, o recuerdas un agravio pasado. 
+                            Al instante, <strong>todo el placer sensorial se evapora</strong>. La comida deja de saber bien, el lujo del local se vuelve molesto y te invade una amargura asfixiante. 
+                            <span class="key-phrase">El restaurante no cambió. La comida no cambió. Lo único que cambió fue tu mente</span>.
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-gold/10 border border-gold/30 text-center">
+                        <p class="font-serif italic text-gold-light text-base md:text-lg">
+                            «El placer externo cambia; la paz interior sostiene.»
+                        </p>
+                    </div>
+
+                    <p>
+                        <span class="lang-es">
+                            El placer mundano depende al cien por cien de factores exteriores inestables (dinero, halagos, estatus, salud física). 
+                            En cuanto el factor externo se altera, el placer colapsa. 
+                            La verdadera felicidad, en cambio, es la vivencia directa de una mente pacífica. Por eso, adiestrarse apenas 10 o 15 minutos al día en enfocar la mente en estados virtuosos 
+                            (paciencia, gratitud, amor benevolente) rinde un retorno existencial incalculable.
+                        </span>
+                        <span class="lang-en">
+                            Worldly pleasure depends completely on volatile external triggers (money, praise, social validation). 
+                            The moment outer conditions shift, pleasure vanishes. 
+                            Real happiness, by contrast, is the natural experience of a peaceful mind. Training just 10 to 15 minutes a day in virtuous objects 
+                            (patience, gratitude, goodwill) yields an immeasurable existential return.
+                        </span>
+                    </p>
+                </div>
+
+            </div>
+        </article>
+
+        <!-- ========================================================================= -->
+        <!-- CHAPTER 4 / LÁMINA 4: LOS TIEMPOS DIFÍCILES TAMBIÉN ENSEÑAN -->
+        <!-- ========================================================================= -->
+        <article class="glass-card rounded-[2.5rem] p-8 md:p-14 border-gold/25 relative">
+            <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+                <span class="chapter-badge">
+                    <i class="fa-solid fa-tree text-gold"></i>
+                    <span class="lang-es inline">Lámina 4 • La Alquimia del Sufrimiento</span>
+                    <span class="lang-en inline">Slide 4 • Alchemy of Suffering</span>
+                </span>
+                <span class="text-xs text-gold/70 font-semibold uppercase tracking-widest">
+                    <span class="lang-es inline">El Olivar y el Fútbol</span>
+                    <span class="lang-en inline">Olive Farmer & Football</span>
+                </span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                
+                <div class="lg:col-span-5 order-2 lg:order-1">
+                    <div class="interactive-infographic rounded-2xl border border-gold/30 bg-black/50 shadow-xl group"
+                        onclick="openLightbox('paz_tiempos dificiles4.png', 'Lámina 4: Los Tiempos Difíciles También Enseñan', 'Slide 4: Difficult Times Also Teach')">
+                        <img src="paz_tiempos dificiles4.png" alt="Lámina 4: Los tiempos difíciles también enseñan"
+                            class="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center zoom-badge">
+                            <span class="px-4 py-2 rounded-full bg-gold text-obsidian text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-2xl">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                <span class="lang-es inline">Ampliar en Pantalla Completa</span>
+                                <span class="lang-en inline">View Full Screen</span>
+                            </span>
+                        </div>
+                    </div>
+                    <span class="text-[11px] text-center block text-white/50 mt-3 italic">
+                        <span class="lang-es inline">Lámina 4: La cuestión no es evitar toda dificultad, sino aprender a responder</span>
+                        <span class="lang-en inline">Slide 4: The question is not avoiding difficulty, but learning how to respond</span>
+                    </span>
+                </div>
+
+                <div class="lg:col-span-7 order-1 lg:order-2 space-y-6 text-offwhite/85 font-light leading-relaxed">
+                    <h2 class="font-serif italic text-3xl md:text-4xl text-white font-bold leading-tight">
+                        <span class="lang-es">Hacer que el Sufrimiento Tenga Sentido: Las Dos Parábolas de Genla Dekyong</span>
+                        <span class="lang-en">Making Suffering Meaningful: Genla Dekyong's Two Parables</span>
+                    </h2>
+
+                    <p>
+                        <span class="lang-es">
+                            Pasamos la vida alimentando la fantasía infantil de que seremos felices el día en que "todos los problemas se terminen". 
+                            Pero las dificultades no se extinguen jamás en este mundo: pérdidas, desencantos, enfermedades y vejez son compañeras inseparables de la existencia. 
+                            La propuesta magistral de la ponente fue: <strong class="text-gold">«Haz que tu sufrimiento tenga sentido»</strong>.
+                        </span>
+                        <span class="lang-en">
+                            We spend life indulging the naive daydream that we will be happy once "all problems finally cease". 
+                            Yet difficulties never permanently vanish: loss, disappointment, sickness, and aging are inseparable from existence. 
+                            The speaker's master directive was: <strong class="text-gold">"Make your suffering meaningful"</strong>.
+                        </span>
+                    </p>
+
+                    <!-- The Two Parables in detail -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-5 rounded-2xl bg-forest-emerald/40 border border-mint-vibrant/30 space-y-2">
+                            <div class="flex items-center gap-2 text-mint-vibrant font-serif font-bold text-sm">
+                                <i class="fa-solid fa-seedling"></i>
+                                <span>Parábola del Olivar Ecológico</span>
+                            </div>
+                            <p class="text-xs text-offwhite/80 leading-relaxed">
+                                Si a un transeúnte común le arrojas estiércol de oveja a los pies, lo rechazará con asco e indignación. 
+                                Pero el cultivador ecológico de olivos se alegra: sabe que ese mismo estiércol es el abono más fértil que nutrirá las raíces y dará cosechas de aceite dorado. 
+                                <span class="key-phrase-mint">El estiércol no cambia; lo que cambia es la sabiduría de quien sabe transformarlo en fruto</span>.
+                            </p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-forest-emerald/40 border border-gold/30 space-y-2">
+                            <div class="flex items-center gap-2 text-gold font-serif font-bold text-sm">
+                                <i class="fa-solid fa-futbol"></i>
+                                <span>Parábola del Rival en el Fútbol</span>
+                            </div>
+                            <p class="text-xs text-offwhite/80 leading-relaxed">
+                                Si juegas con una pelota en el jardín y alguien te la quita, te enfadas. 
+                                Pero si estás entrenando para ser profesional, necesitas que el defensa contrario te presione, te dispute cada metro y te obligue a exigirte al límite. 
+                                <span class="key-phrase">La oposición difícil es exactamente lo que forja tu destreza y maestría</span>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="glass-quote">
+                        <p class="font-serif italic text-base text-gold-light">
+                            «La misma dificultad puede vivirse como un obstáculo destructor o como una sagrada oportunidad de crecimiento.»
+                        </p>
+                    </div>
+
+                    <p>
+                        <span class="lang-es">
+                            Cuando un revés económico o personal te asalte, no malgastes tu energía vital preguntando con ira <em>«¿Por qué a mí?»</em>. 
+                            Míralo a los ojos y pregúntate: <strong>¿Qué abono fértil hay aquí para mi alma? ¿Qué músculo de templanza me está obligando a ejercitar este rival?</strong>
+                        </span>
+                        <span class="lang-en">
+                            When an economic or personal setback strikes, do not drain your vital energy shouting in anger <em>"Why me?"</em>. 
+                            Look it straight in the eye and ask: <strong>What fertile fertilizer is here for my soul? What muscle of resilience is this opponent compelling me to build?</strong>
+                        </span>
+                    </p>
+                </div>
+
+            </div>
+        </article>
+
+        <!-- ========================================================================= -->
+        <!-- CHAPTER 5 / LÁMINA 5: PREGUNTAS ESENCIALES -->
+        <!-- ========================================================================= -->
+        <article class="glass-card rounded-[2.5rem] p-8 md:p-14 border-gold/25 relative">
+            <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+                <span class="chapter-badge">
+                    <i class="fa-solid fa-compass text-gold"></i>
+                    <span class="lang-es inline">Lámina 5 • El Sentido de la Vida</span>
+                    <span class="lang-en inline">Slide 5 • Meaning of Life</span>
+                </span>
+                <span class="text-xs text-gold/70 font-semibold uppercase tracking-widest">
+                    <span class="lang-es inline">Las 4 Preguntas Profundas</span>
+                    <span class="lang-en inline">The 4 Deep Questions</span>
+                </span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                
+                <div class="lg:col-span-5">
+                    <div class="interactive-infographic rounded-2xl border border-gold/30 bg-black/50 shadow-xl group"
+                        onclick="openLightbox('paz_tiempos dificiles5.png', 'Lámina 5: Preguntas Esenciales', 'Slide 5: Essential Questions')">
+                        <img src="paz_tiempos dificiles5.png" alt="Lámina 5: Preguntas esenciales"
+                            class="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center zoom-badge">
+                            <span class="px-4 py-2 rounded-full bg-gold text-obsidian text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-2xl">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                <span class="lang-es inline">Ampliar en Pantalla Completa</span>
+                                <span class="lang-en inline">View Full Screen</span>
+                            </span>
+                        </div>
+                    </div>
+                    <span class="text-[11px] text-center block text-white/50 mt-3 italic">
+                        <span class="lang-es inline">Lámina 5: Las dificultades pueden despertar preguntas profundas</span>
+                        <span class="lang-en inline">Slide 5: Difficulties can awaken profound questions</span>
+                    </span>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6 text-offwhite/85 font-light leading-relaxed">
+                    <h2 class="font-serif italic text-3xl md:text-4xl text-white font-bold leading-tight">
+                        <span class="lang-es">Las Cuatro Preguntas Esenciales: El Quiebre de las Falsas Certezas</span>
+                        <span class="lang-en">The Four Essential Questions: Shattering False Certainties</span>
+                    </h2>
+
+                    <p>
+                        <span class="lang-es">
+                            Cuando la vida transcurre sobre raíles cómodos, la mente se adormece en el consumo y la rutina. 
+                            Pero cuando llega un golpe contundente —la pérdida de un ser querido, la quiebra de un proyecto, un diagnóstico hospitalario grave—, 
+                            la soberbia de creer que lo controlamos todo salta en pedazos. 
+                            Es en ese instante sagrado de vulnerabilidad cuando emergen <strong class="text-gold">las 4 preguntas nucleares</strong> reflejadas en la lámina:
+                        </span>
+                        <span class="lang-en">
+                            When life runs smoothly on autopilot, the mind is lulled to sleep by routine and consumption. 
+                            Yet when an inescapable crisis hits—the loss of a loved one, bankruptcy, a grave medical prognosis—the arrogant illusion of total control shatters. 
+                            In that sacred moment of vulnerability, <strong class="text-gold">the 4 core questions</strong> on this slide emerge:
+                        </span>
+                    </p>
+
+                    <div class="space-y-2.5">
+                        <div class="p-3.5 rounded-xl bg-forest-emerald/40 border border-white/10 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gold/20 text-gold flex items-center justify-center font-bold text-xs shrink-0">1</span>
+                            <span class="text-sm font-serif italic text-white">¿Cuál es el sentido real de mi vida?</span>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-forest-emerald/40 border border-white/10 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gold/20 text-gold flex items-center justify-center font-bold text-xs shrink-0">2</span>
+                            <span class="text-sm font-serif italic text-white">¿Qué me hará verdaderamente feliz?</span>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-forest-emerald/40 border border-white/10 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gold/20 text-gold flex items-center justify-center font-bold text-xs shrink-0">3</span>
+                            <span class="text-sm font-serif italic text-white">¿Cómo puedo beneficiar más a los demás?</span>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-forest-emerald/40 border border-white/10 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-gold/20 text-gold flex items-center justify-center font-bold text-xs shrink-0">4</span>
+                            <span class="text-sm font-serif italic text-white">¿Qué me ayudará cuando mi vida se acerque a su final?</span>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-gold/15 border border-gold/40">
+                        <h4 class="font-serif font-bold text-gold-light text-base mb-1">
+                            <span class="lang-es">La Única Respuesta: El Desarrollo Interior</span>
+                            <span class="lang-en">The Single Answer: Inner Development</span>
+                        </h4>
+                        <p class="text-xs text-offwhite/90 leading-relaxed">
+                            A las cuatro preguntas responde la enseñanza con idéntica clave: <strong>el desarrollo de la mente</strong>. 
+                            Ni las propiedades inmobiliarias, ni las cuentas corrientes, ni la fama mundana podrán cruzar el umbral de la muerte contigo. 
+                            Lo único que te acompañará y dará sentido a tu existencia es cuánto has crecido en paciencia, en bondad incondicional, en sabiduría y en capacidad de amar.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </article>
+
+        <!-- ========================================================================= -->
+        <!-- CHAPTER 6 / LÁMINA 6: TRANSFORMAR LA ADVERSIDAD I -->
+        <!-- ========================================================================= -->
+        <article class="glass-card rounded-[2.5rem] p-8 md:p-14 border-gold/25 relative">
+            <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+                <span class="chapter-badge">
+                    <i class="fa-solid fa-shield-halved text-gold"></i>
+                    <span class="lang-es inline">Lámina 6 • Vías I & II</span>
+                    <span class="lang-en inline">Slide 6 • Pathways I & II</span>
+                </span>
+                <span class="text-xs text-gold/70 font-semibold uppercase tracking-widest">
+                    <span class="lang-es inline">Humildad & Paciencia</span>
+                    <span class="lang-en inline">Humility & Patience</span>
+                </span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                
+                <div class="lg:col-span-5 order-2 lg:order-1">
+                    <div class="interactive-infographic rounded-2xl border border-gold/30 bg-black/50 shadow-xl group"
+                        onclick="openLightbox('paz_tiempos dificiles6.png', 'Lámina 6: Transformar la Adversidad I - Humildad y Paciencia', 'Slide 6: Transforming Adversity I - Humility & Patience')">
+                        <img src="paz_tiempos dificiles6.png" alt="Lámina 6: Humildad y paciencia"
+                            class="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center zoom-badge">
+                            <span class="px-4 py-2 rounded-full bg-gold text-obsidian text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-2xl">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                <span class="lang-es inline">Ampliar en Pantalla Completa</span>
+                                <span class="lang-en inline">View Full Screen</span>
+                            </span>
+                        </div>
+                    </div>
+                    <span class="text-[11px] text-center block text-white/50 mt-3 italic">
+                        <span class="lang-es inline">Lámina 6: La ira destruye la calma; la paciencia la conserva</span>
+                        <span class="lang-en inline">Slide 6: Anger destroys peace; patience protects it</span>
+                    </span>
+                </div>
+
+                <div class="lg:col-span-7 order-1 lg:order-2 space-y-6 text-offwhite/85 font-light leading-relaxed">
+                    <h2 class="font-serif italic text-3xl md:text-4xl text-white font-bold leading-tight">
+                        <span class="lang-es">Humildad y Paciencia: Los Dos Escudos Invulnerables del Corazón</span>
+                        <span class="lang-en">Humility & Patience: The Two Invulnerable Shields of the Heart</span>
+                    </h2>
+
+                    <p>
+                        <span class="lang-es">
+                            Bajo las nubes grises de la crítica, la frustración, los imprevistos y las dudas, la figura de la lámina permanece serena con los ojos cerrados. 
+                            ¿Por qué no se desespera? Porque domina dos artes supremas:
+                        </span>
+                        <span class="lang-en">
+                            Beneath dark clouds of criticism, frustration, unforeseen events, and doubt, the figure on the infographic remains perfectly still with closed eyes. 
+                            How? By mastering two supreme arts:
+                        </span>
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-xl bg-forest-emerald/40 border-l-4 border-gold">
+                            <h4 class="font-serif font-bold text-gold-light text-base mb-1">1. La Humildad Despierta</h4>
+                            <p class="text-xs leading-relaxed text-offwhite/80">
+                                La dificultad derriba el orgullo y nos desengaña de la pretensión de controlar el universo. 
+                                La persona soberbia se indigna ante cualquier fallo ajeno o contratiempo; la persona humilde reconoce: <em>«No lo controlo todo; de esta situación tengo algo vital que aprender»</em>.
+                            </p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-forest-emerald/40 border-l-4 border-mint-vibrant">
+                            <h4 class="font-serif font-bold text-mint-soft text-base mb-1">2. La Paciencia Real (No Resignación)</h4>
+                            <p class="text-xs leading-relaxed text-offwhite/80">
+                                La paciencia se confunde a menudo con tragar rabia en silencio. Genla Dekyong lo aclaró de forma tajante: 
+                                <span class="key-phrase">«Paciencia es aceptar la realidad presente para proteger tu propia paz mental»</span>. 
+                                Si una taza ya se rompió, maldecir enfurecido no recompone la cerámica: solo añade infelicidad y envenena tu sangre. 
+                                Aceptar el hecho consumado no significa aprobarlo; significa no añadirle un segundo sufrimiento estéril.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="glass-quote">
+                        <p class="font-serif italic text-base text-gold-light">
+                            «Cualquiera puede enfadarse: la ira no es fuerza por el mero hecho de sentirse violenta. Requiere una fuerza interior infinitamente superior mantenerse en paz en medio de la provocación.»
+                        </p>
+                    </div>
+
+                    <p class="text-xs text-white/70 italic">
+                        <span class="lang-es">Empieza entrenando con pequeñas molestias cotidianas: el semáforo en rojo, el café derramado, la lentitud del ordenador. Quien domina lo pequeño se vuelve invencible en lo grande.</span>
+                        <span class="lang-en">Begin training with small daily frictions: red lights, spilled coffee, internet lag. Whoever masters the minor tests becomes unconquerable in the major trials.</span>
+                    </p>
+                </div>
+
+            </div>
+        </article>
+
+        <!-- ========================================================================= -->
+        <!-- CHAPTER 7 / LÁMINA 7: TRANSFORMAR LA ADVERSIDAD II (KARMA & COMPASIÓN) -->
+        <!-- ========================================================================= -->
+        <article class="glass-card glass-card-gold rounded-[2.5rem] p-8 md:p-14 relative">
+            <div class="flex items-center justify-between mb-8 pb-4 border-b border-gold/30">
+                <span class="chapter-badge">
+                    <i class="fa-solid fa-dharmachakra text-gold"></i>
+                    <span class="lang-es inline">Lámina 7 • Vías III & IV</span>
+                    <span class="lang-en inline">Slide 7 • Pathways III & IV</span>
+                </span>
+                <a href="https://karma.pazaresosset.es" target="_blank"
+                    class="text-xs text-gold underline hover:text-white font-bold flex items-center gap-1.5">
+                    <span>karma.pazaresosset.es</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                
+                <div class="lg:col-span-5">
+                    <div class="interactive-infographic rounded-2xl border border-gold/40 bg-black/60 shadow-2xl group"
+                        onclick="openLightbox('paz_tiempos dificiles7.png', 'Lámina 7: Transformar la Adversidad II - Karma y Compasión', 'Slide 7: Transforming Adversity II - Karma & Compassion')">
+                        <img src="paz_tiempos dificiles7.png" alt="Lámina 7: Karma y compasión"
+                            class="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center zoom-badge">
+                            <span class="px-4 py-2 rounded-full bg-gold text-obsidian text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-2xl">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                <span class="lang-es inline">Ampliar en Pantalla Completa</span>
+                                <span class="lang-en inline">View Full Screen</span>
+                            </span>
+                        </div>
+                    </div>
+                    <span class="text-[11px] text-center block text-gold/70 mt-3 italic">
+                        <span class="lang-es inline">Lámina 7: El dolor como puerta hacia una compasión más profunda</span>
+                        <span class="lang-en inline">Slide 7: Pain as a gateway into deeper compassion</span>
+                    </span>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6 text-offwhite/85 font-light leading-relaxed">
+                    <h2 class="font-serif italic text-3xl md:text-4xl text-white font-bold leading-tight">
+                        <span class="lang-es">Karma y Compasión: Romper la Prisión del Yo</span>
+                        <span class="lang-en">Karma & Compassion: Shattering the Prison of the Ego</span>
+                    </h2>
+
+                    <p>
+                        <span class="lang-es">
+                            Esta lámina articula dos de los principios más transformadores de toda la conferencia, conectando de manera directa con lo que desarrollo en 
+                            <a href="https://karma.pazaresosset.es" target="_blank" class="text-gold underline font-bold">El Libro del Karma</a>:
+                        </span>
+                        <span class="lang-en">
+                            This infographic articulates two of the most life-altering principles of the talk, harmonizing seamlessly with my dedicated work in 
+                            <a href="https://karma.pazaresosset.es" target="_blank" class="text-gold underline font-bold">The Book of Karma</a>:
+                        </span>
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="p-5 rounded-2xl bg-black/50 border border-gold/30 space-y-2">
+                            <h4 class="font-serif text-gold-light font-bold text-base flex items-center gap-2">
+                                <i class="fa-solid fa-seedling text-gold"></i>
+                                <span>1. La Comprensión del Karma: La Causa y el Efecto</span>
+                            </h4>
+                            <p class="text-xs leading-relaxed text-offwhite/80">
+                                Las experiencias que vivimos no son azares crueles ni castigos arbitrarios: son la maduración de semillas y causas previas. 
+                                Si reaccionamos ante un agravio con venganza o ira, lo único que logramos es plantar una nueva semilla de veneno que germinará en mayor sufrimiento futuro. 
+                                <span class="key-phrase">El practicante sabio acoge la dificultad sabiendo que está saldando una deuda kármica antigua</span>, permitiendo que la aflicción se extinga sin dejar residuo de rencor.
+                            </p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-black/50 border border-gold/30 space-y-2">
+                            <h4 class="font-serif text-gold-light font-bold text-base flex items-center gap-2">
+                                <i class="fa-solid fa-heart text-gold"></i>
+                                <span>2. La Alquimia de la Compasión Universal</span>
+                            </h4>
+                            <p class="text-xs leading-relaxed text-offwhite/80">
+                                Cuando enfermamos o sufrimos un desengaño, el ego nos encierra en una espiral narcisista: <em>«Mi dolor, mi soledad, mi tragedia»</em>. 
+                                Genla Dekyong propuso en el teatro el giro radical: 
+                                <span class="key-phrase">usa tu dolor como un puente empático para conectar con los millones de seres que sufren en este mismo instante</span>. 
+                                Aunque sea un dolor de muelas o una jaqueca, piensa: <em>«Que mi experiencia sirva para que todos los seres que sufren dolor queden libres de él»</em>. 
+                                En ese segundo, el sufrimiento deja de ser veneno y se convierte en néctar de compasión.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="glass-quote text-center">
+                        <p class="font-serif italic text-base text-gold-light">
+                            «Así, la dificultad deja de encerrar el corazón y lo vuelve más amplio, empático y compasivo.»
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </article>
+
+        <!-- ========================================================================= -->
+        <!-- CHAPTER 8 / LÁMINA 8: CAMBIAR LA MIRADA -->
+        <!-- ========================================================================= -->
+        <article class="glass-card rounded-[2.5rem] p-8 md:p-14 border-gold/25 relative">
+            <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+                <span class="chapter-badge">
+                    <i class="fa-solid fa-eye text-gold"></i>
+                    <span class="lang-es inline">Lámina 8 • Vía V</span>
+                    <span class="lang-en inline">Slide 8 • Pathway V</span>
+                </span>
+                <span class="text-xs text-gold/70 font-semibold uppercase tracking-widest">
+                    <span class="lang-es inline">Transformar la Adversidad en el Camino</span>
+                    <span class="lang-en inline">Adversity as Spiritual Path</span>
+                </span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                
+                <div class="lg:col-span-5 order-2 lg:order-1">
+                    <div class="interactive-infographic rounded-2xl border border-gold/30 bg-black/50 shadow-xl group"
+                        onclick="openLightbox('paz_tiempos dificiles8.png', 'Lámina 8: Transformar la Adversidad III - Cambiar la Mirada', 'Slide 8: Transforming Adversity III - Shifting the View')">
+                        <img src="paz_tiempos dificiles8.png" alt="Lámina 8: Cambiar la mirada"
+                            class="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center zoom-badge">
+                            <span class="px-4 py-2 rounded-full bg-gold text-obsidian text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-2xl">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                <span class="lang-es inline">Ampliar en Pantalla Completa</span>
+                                <span class="lang-en inline">View Full Screen</span>
+                            </span>
+                        </div>
+                    </div>
+                    <span class="text-[11px] text-center block text-white/50 mt-3 italic">
+                        <span class="lang-es inline">Lámina 8: No siempre elegimos lo que ocurre, pero sí cómo convertirlo en crecimiento</span>
+                        <span class="lang-en inline">Slide 8: We don't choose what occurs, but we choose how to turn it into growth</span>
+                    </span>
+                </div>
+
+                <div class="lg:col-span-7 order-1 lg:order-2 space-y-6 text-offwhite/85 font-light leading-relaxed">
+                    <h2 class="font-serif italic text-3xl md:text-4xl text-white font-bold leading-tight">
+                        <span class="lang-es">Cambiar la Mirada: El Caso Clínico de los Dos Pacientes</span>
+                        <span class="lang-en">Shifting the View: The Clinical Case of Two Patients</span>
+                    </h2>
+
+                    <p>
+                        <span class="lang-es">
+                            En esta lámina culmina el corazón metodológico de la conferencia. 
+                            Una situación no es intrínsecamente un infierno o una bendición: <strong class="text-gold">es nuestra interpretación la que le confiere su naturaleza</strong>.
+                        </span>
+                        <span class="lang-en">
+                            This infographic brings the methodological core of the talk to its peak. 
+                            A situation is not inherently hellish or blessed: <strong class="text-gold">our interpretation alone bestows its nature</strong>.
+                        </span>
+                    </p>
+
+                    <div class="p-5 rounded-2xl bg-forest-emerald/40 border border-white/10 space-y-3 text-xs leading-relaxed">
+                        <h4 class="font-serif text-white font-bold text-sm">El Ejemplo de los Dos Enfermos en el Hospital:</h4>
+                        <p>
+                            Dos personas reciben exactamente el mismo diagnóstico severo. 
+                            La primera piensa: <em>«Esto es horrible, mi vida está arruinada, es una injusticia total»</em>. Su mente se llena de pánico, resentimiento y desánimo, debilitando aún más su sistema inmune. 
+                        </p>
+                        <p>
+                            La segunda persona utiliza el entrenamiento interior: <em>«Esta enfermedad me recuerda la impermanencia de todo lo físico; me enseña a valorar cada respiro y a sentir empatía profunda por los que sufren»</em>. 
+                            Conserva la serenidad, la gratitud y una sonrisa cálida hacia médicos y familiares. 
+                            <span class="key-phrase">El informe médico es idéntico; pero una vive un calvario de amargura y la otra una experiencia de florecimiento espiritual</span>.
+                        </p>
+                    </div>
+
+                    <!-- Cairns progression -->
+                    <div class="grid grid-cols-4 gap-2 text-center text-xs font-serif font-bold">
+                        <div class="p-2.5 rounded-xl bg-black/40 border border-white/10 text-white/70">1. Heridas</div>
+                        <div class="p-2.5 rounded-xl bg-black/40 border border-white/10 text-gold-light">2. Aprendizaje</div>
+                        <div class="p-2.5 rounded-xl bg-black/40 border border-white/10 text-mint-soft">3. Fuerza</div>
+                        <div class="p-2.5 rounded-xl bg-gold/20 border border-gold text-white">4. Servicio</div>
+                    </div>
+
+                    <p>
+                        <span class="lang-es">
+                            Cuando aprendes a transformar la adversidad en camino, <span class="key-phrase">el miedo al futuro desaparece</span>. 
+                            Ya no vives temblando por lo que pueda pasar mañana, porque sabes con certeza que cualquier cosa que acontezca contendrá el material exacto para hacerte más humilde, más fuerte y más sabio. 
+                            Te conviertes así en la roca sólida en la que otros pueden apoyarse en tiempos convulsos.
+                        </span>
+                        <span class="lang-en">
+                            When you master transforming adversity into the path, <span class="key-phrase">fear of the future dissolves</span>. 
+                            You no longer live shivering over tomorrow's uncertainties, because you know with unshakable certainty that whatever unfolds will provide the exact material to make you humbler, stronger, and wiser. 
+                            You become the steadfast rock upon which others can lean.
+                        </span>
+                    </p>
+                </div>
+
+            </div>
+        </article>
+
+        <!-- ========================================================================= -->
+        <!-- CHAPTER 9 / LÁMINA 9: MEDITACIÓN FINAL -->
+        <!-- ========================================================================= -->
+        <article class="glass-card rounded-[2.5rem] p-8 md:p-14 border-gold/30 bg-gradient-to-br from-forest-deep via-obsidian to-forest-emerald/30 relative">
+            <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+                <span class="chapter-badge">
+                    <i class="fa-solid fa-dove text-gold"></i>
+                    <span class="lang-es inline">Lámina 9 • Clausura y Dedicatoria</span>
+                    <span class="lang-en inline">Slide 9 • Closing & Dedication</span>
+                </span>
+                <span class="text-xs text-mint-vibrant font-bold uppercase tracking-widest">
+                    <span class="lang-es inline">Práctica Analítica Final</span>
+                    <span class="lang-en inline">Final Analytical Practice</span>
+                </span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                
+                <div class="lg:col-span-5">
+                    <div class="interactive-infographic rounded-2xl border border-gold/30 bg-black/50 shadow-xl group"
+                        onclick="openLightbox('paz_tiempos dificiles9.png', 'Lámina 9: Meditación Final - Integrar la Enseñanza', 'Slide 9: Closing Meditation')">
+                        <img src="paz_tiempos dificiles9.png" alt="Lámina 9: Meditación final"
+                            class="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center zoom-badge">
+                            <span class="px-4 py-2 rounded-full bg-gold text-obsidian text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-2xl">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                <span class="lang-es inline">Ampliar en Pantalla Completa</span>
+                                <span class="lang-en inline">View Full Screen</span>
+                            </span>
+                        </div>
+                    </div>
+                    <span class="text-[11px] text-center block text-white/50 mt-3 italic">
+                        <span class="lang-es inline">Lámina 9: Integrar la enseñanza y dedicarla al bien de todos</span>
+                        <span class="lang-en inline">Slide 9: Integrating the teaching and dedicating it to all beings</span>
+                    </span>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6 text-offwhite/85 font-light leading-relaxed">
+                    <h2 class="font-serif italic text-3xl md:text-4xl text-white font-bold leading-tight">
+                        <span class="lang-es">La Meditación Final de Clausura: Sellar la Sabiduría en el Corazón</span>
+                        <span class="lang-en">The Final Closing Meditation: Sealing Wisdom in the Heart</span>
+                    </h2>
+
+                    <p>
+                        <span class="lang-es">
+                            Para cerrar aquella tarde en el Teatro Príncipe Pío, Genla Dekyong guió a los presentes a través de una meditación analítica en 6 movimientos para asentar todo lo escuchado:
+                        </span>
+                        <span class="lang-en">
+                            To conclude that evening at Príncipe Pío Theatre, Genla Dekyong guided all present through an analytical meditation in 6 movements:
+                        </span>
+                    </p>
+
+                    <ol class="space-y-3 text-xs md:text-sm">
+                        <li class="p-3 rounded-xl bg-forest-emerald/30 border border-white/10 flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-full bg-gold/20 text-gold flex items-center justify-center font-bold shrink-0 text-xs">1</span>
+                            <span><strong>Elige una prueba real:</strong> Trae a tu mente una dificultad concreta con la que estés lidiando ahora mismo.</span>
+                        </li>
+                        <li class="p-3 rounded-xl bg-forest-emerald/30 border border-white/10 flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-full bg-gold/20 text-gold flex items-center justify-center font-bold shrink-0 text-xs">2</span>
+                            <span><strong>Observa el daño del enfado:</strong> Comprueba con lucidez cómo la queja y el desánimo aumentan el peso del problema sin aportar solución alguna.</span>
+                        </li>
+                        <li class="p-3 rounded-xl bg-forest-emerald/30 border border-white/10 flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-full bg-gold/20 text-gold flex items-center justify-center font-bold shrink-0 text-xs">3</span>
+                            <span><strong>Visualiza la aceptación:</strong> Imagina acoger la situación con una mente espaciosa, comprensiva y serena.</span>
+                        </li>
+                        <li class="p-3 rounded-xl bg-forest-emerald/30 border border-white/10 flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-full bg-gold/20 text-gold flex items-center justify-center font-bold shrink-0 text-xs">4</span>
+                            <span><strong>Toma una decisión firme:</strong> <em class="text-gold">«Elijo desarrollar y mantener una mente en paz; no dejaré que este suceso me robe mi dicha»</em>.</span>
+                        </li>
+                        <li class="p-3 rounded-xl bg-forest-emerald/30 border border-white/10 flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-full bg-gold/20 text-gold flex items-center justify-center font-bold shrink-0 text-xs">5</span>
+                            <span><strong>Usa la dificultad para madurar:</strong> Emplea la fricción para cultivar paciencia activa, humildad y sabiduría práctica.</span>
+                        </li>
+                        <li class="p-3 rounded-xl bg-forest-emerald/30 border border-white/10 flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-full bg-gold/20 text-gold flex items-center justify-center font-bold shrink-0 text-xs">6</span>
+                            <span><strong>Expande tu corazón hacia los demás:</strong> Recuerda a quienes sufren en Madrid, en España y en el mundo entero.</span>
+                        </li>
+                    </ol>
+
+                    <!-- Universal Dedication -->
+                    <div class="glass-quote text-center p-6 rounded-2xl">
+                        <span class="text-xs uppercase tracking-[3px] font-bold text-gold block mb-2">Plegaria de Dedicatoria Universal:</span>
+                        <p class="font-serif italic text-base md:text-xl text-sand">
+                            «Que todos los seres puedan aliviar su sufrimiento, encontrar una vida significativa y contribuir a la paz en el mundo.»
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </article>
+
+        <!-- ========================================================================= -->
+        <!-- THE BIOLOGICAL BRIDGE: KANGEN WATER -->
+        <!-- ========================================================================= -->
+        <section class="glass-card rounded-[2.5rem] p-8 md:p-12 border-cyan-500/30 bg-gradient-to-r from-obsidian via-forest-deep to-cyan-950/25 relative overflow-hidden">
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                <div class="lg:col-span-2 space-y-4">
+                    <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/10 text-cyan-300 text-xs font-bold uppercase tracking-[2px]">
+                        <i class="fa-solid fa-droplet"></i>
+                        <span class="lang-es inline">El Corolario Biológico • Salud Equilibrio</span>
+                        <span class="lang-en inline">The Biological Corollary • Salud Equilibrio</span>
+                    </span>
+                    <h3 class="font-serif italic text-3xl md:text-4xl text-white">
+                        <span class="lang-es">La Biología de la Serenidad: <span class="not-italic text-cyan-300">El Agua Kangen</span> y el Cerebro en Calma</span>
+                        <span class="lang-en">The Biology of Serenity: <span class="not-italic text-cyan-300">Kangen Water</span> & the Calm Brain</span>
+                    </h3>
+                    <p class="text-offwhite/80 font-light text-sm md:text-base leading-relaxed">
+                        <span class="lang-es">
+                            En <strong>Salud Equilibrio</strong> sabemos que la mente no habita en el vacío: habita en un cerebro y un sistema nervioso biológicos. 
+                            Una persona cuyo cerebro se encuentra intoxicado por acidez metabólica, deshidratación tisular crónica e inflamación oxidativa 
+                            difícilmente podrá sostener la serenidad budista: su amígdala cerebral se disparará ante la menor provocación.
+                        </span>
+                        <span class="lang-en">
+                            At <strong>Salud Equilibrio</strong> we know the mind does not dwell in a vacuum: it inhabits a biological brain and nervous system. 
+                            When brain tissues suffer from metabolic acidosis, micro-dehydration, and oxidative stress, sustaining meditative calm is nearly impossible: the amygdala constantly triggers fight-or-flight reactions.
+                        </span>
+                    </p>
+                    <p class="text-offwhite/70 font-light text-xs md:text-sm leading-relaxed">
+                        <span class="lang-es">
+                            El <strong>Agua Kangen</strong> aporta agua microestructurada hexagonal, abundante en hidrógeno molecular activo y con alto potencial de óxido-reducción negativo (-ORP). 
+                            Penetra directamente la barrera hematoencefálica, apaga el fuego de la neuroinflamación y devuelve al sistema nervioso parasimpático su equilibrio natural, 
+                            constituyendo la base fisiológica ideal para sostener una mente en paz.
+                        </span>
+                        <span class="lang-en">
+                            <strong>Kangen Water</strong> provides hexagonal micro-clustered water rich in active molecular hydrogen with deep negative ORP. 
+                            It hydrates across cellular barriers, neutralizes neuroinflammation, and restores parasympathetic balance—the physical foundation for lasting peace of mind.
+                        </span>
+                    </p>
+                    <div class="pt-2">
+                        <a href="../../kangen_water/index.html"
+                            class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-cyan-400 hover:bg-cyan-300 text-obsidian font-bold text-xs tracking-[2px] uppercase transition-all shadow-[0_0_25px_rgba(6,182,212,0.3)]">
+                            <span class="lang-es inline">Conocer la Tecnología Kangen</span>
+                            <span class="lang-en inline">Explore Kangen Technology</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-1 glass-card p-6 rounded-2xl border-cyan-400/20 text-center space-y-4">
+                    <div class="w-16 h-16 rounded-full bg-cyan-400/10 text-cyan-300 text-3xl flex items-center justify-center mx-auto">
+                        <i class="fa-solid fa-water"></i>
+                    </div>
+                    <h5 class="font-serif text-white font-bold text-lg">
+                        <span class="lang-es inline">Célula en Paz, Mente en Paz</span>
+                        <span class="lang-en inline">Peaceful Cell, Peaceful Mind</span>
+                    </h5>
+                    <p class="text-xs text-offwhite/60 leading-relaxed">
+                        <span class="lang-es inline">«La homeostasis biológica es el cimiento terrenal donde florece la serenidad espiritual.»</span>
+                        <span class="lang-en inline">"Biological homeostasis is the earthly ground where spiritual calm blossoms."</span>
+                    </p>
+                </div>
+            </div>
         </section>
 
-        <!-- KANGEN WATER & SISTER MENTORS INTEGRATION -->
-        <section class="glass-card p-8 md:p-10 rounded-2xl border-cyan-500/30 bg-gradient-to-r from-obsidian via-forest-deep to-cyan-950/20 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div class="space-y-3">
-                <span class="text-xs uppercase tracking-[2px] font-bold text-cyan-300">Soporte Biológico • Salud Equilibrio</span>
-                <h4 class="font-serif text-2xl text-white font-bold">El Agua Kangen: El Templo Celular de la Mente</h4>
-                <p class="text-xs md:text-sm text-offwhite/80 font-light leading-relaxed max-w-xl">
-                    Una mente pacífica se apoya en un cerebro hidratado a nivel celular profundo, alcalino y libre de neuroinflamación oxidativa. El agua ionizada Kangen aporta los electrones y el hidrógeno molecular necesarios para aquietar el sistema simpático.
-                </p>
+        <!-- SISTER SECTION: EL HOMBRE DE LA BARBA BLANCA -->
+        <section class="border-t border-white/10 pt-16">
+            <div class="glass-card rounded-[2.5rem] p-8 md:p-12 border-mint-vibrant/30 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="flex items-center gap-6">
+                    <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden shrink-0 border-2 border-mint-vibrant/50 shadow-2xl">
+                        <img src="../hombre_barba_blanca/images/barba_blanca_maestro.png" alt="Jose M. Castillejo" class="w-full h-full object-cover">
+                    </div>
+                    <div class="space-y-1">
+                        <span class="text-[10px] uppercase tracking-[2px] font-bold text-mint-vibrant block">Divulgación Médica Sin Filtros</span>
+                        <h4 class="font-serif text-2xl text-white font-bold">Jose M. Castillejo (El Hombre de la Barba Blanca)</h4>
+                        <p class="text-xs text-offwhite/70 max-w-xl font-light">
+                            Desmitificando los dogmas de la medicina moderna, el colesterol y la microbiota explicados con rigor de fuentes primarias y sin rodeos "para tontos".
+                        </p>
+                    </div>
+                </div>
+                <a href="../hombre_barba_blanca/index.html"
+                    class="btn-gold px-8 py-4 rounded-full font-bold text-xs uppercase tracking-[2px] shrink-0 text-center">
+                    Ver Sección del Barba Blanca
+                </a>
             </div>
-            <a href="../../kangen_water/index.html"
-                class="px-8 py-4 rounded-full bg-cyan-400 hover:bg-cyan-300 text-obsidian font-bold text-xs uppercase tracking-widest shrink-0 transition-colors">
-                Descubrir Agua Kangen
-            </a>
         </section>
 
     </main>
 
-    <!-- LIGHTBOX MODAL (ZOOM VIEW) -->
+    <!-- LIGHTBOX MODAL (HIGH RES ZOOM) -->
     <div id="lightbox-modal"
         class="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl flex flex-col items-center justify-center p-4 sm:p-8"
         onclick="closeLightbox(event)">
+        
         <div class="w-full max-w-4xl flex items-center justify-between py-4 text-white z-10" onclick="event.stopPropagation()">
-            <span id="lightbox-title" class="font-serif text-lg md:text-xl text-gold-light font-bold block"></span>
+            <div>
+                <span id="lightbox-title" class="font-serif text-lg md:text-xl text-gold-light font-bold block"></span>
+                <span class="text-xs text-white/50 uppercase tracking-widest">
+                    <span class="lang-es inline">Haz clic fuera o pulsa ESC para cerrar</span>
+                    <span class="lang-en inline">Click outside or press ESC to close</span>
+                </span>
+            </div>
             <button onclick="closeLightboxDirect()"
                 class="w-10 h-10 rounded-full bg-white/10 hover:bg-gold hover:text-black flex items-center justify-center text-lg transition-colors">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
+
         <div class="relative max-w-4xl max-h-[82vh] flex items-center justify-center overflow-hidden" onclick="event.stopPropagation()">
             <img id="lightbox-img" src="" alt="Infografía ampliada"
                 class="max-w-full max-h-[80vh] object-contain rounded-xl shadow-[0_0_50px_rgba(0,0,0,0.9)] border border-gold/30">
-        </div>
-        <div class="mt-3 text-xs text-white/40 uppercase tracking-widest">
-            Haz clic fuera o pulsa ESC para cerrar
         </div>
     </div>
 
@@ -1181,7 +1418,7 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Interactive Scripts: Language Toggle & Lightbox -->
     <script>
         const LANG_KEY = 'salud_equilibrio_lang';
 
