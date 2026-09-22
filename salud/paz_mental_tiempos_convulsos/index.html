@@ -217,6 +217,24 @@
             opacity: 1;
         }
 
+        /* Fullscreen Image Lightbox */
+        #image-fullscreen-modal {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        #image-fullscreen-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .cursor-zoom-in {
+            cursor: zoom-in;
+        }
+        .cursor-zoom-out {
+            cursor: zoom-out;
+        }
+
         .slide-thumb {
             cursor: pointer;
             transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
@@ -276,7 +294,7 @@
                 </span>
             </a>
 
-            <div class="hidden lg:flex gap-8 items-center text-[11px] tracking-[2px] uppercase font-bold text-white/70">
+            <div class="hidden lg:flex gap-7 items-center text-[11px] tracking-[2px] uppercase font-bold text-white/70">
                 <a href="../../index.html" class="hover:text-gold transition-colors">
                     <span class="lang-es inline">Inicio</span>
                     <span class="lang-en inline">Home</span>
@@ -285,20 +303,24 @@
                     <span class="lang-es inline">🪷 La Charla</span>
                     <span class="lang-en inline">🪷 The Talk</span>
                 </a>
-                <a href="#infografias" class="hover:text-gold transition-colors">
-                    <span class="lang-es inline">🖼️ 9 Láminas & Ensayos</span>
-                    <span class="lang-en inline">🖼️ 9 Slides & Essays</span>
+                <a href="#palabras-charla" class="hover:text-gold transition-colors">
+                    <span class="lang-es inline">📜 Palabras de la Charla</span>
+                    <span class="lang-en inline">📜 Spoken Words</span>
                 </a>
-                <a href="#transcripcion" class="hover:text-gold transition-colors">
-                    <span class="lang-es inline">📖 Charla Completa</span>
-                    <span class="lang-en inline">📖 Full Talk</span>
+                <a href="#video-charla" class="hover:text-gold transition-colors">
+                    <span class="lang-es inline">🎥 Vídeo Privado</span>
+                    <span class="lang-en inline">🎥 Private Video</span>
+                </a>
+                <a href="#infografias" class="hover:text-gold transition-colors">
+                    <span class="lang-es inline">🖼️ 9 Láminas</span>
+                    <span class="lang-en inline">🖼️ 9 Slides</span>
                 </a>
                 <a href="#donaciones" class="hover:text-gold transition-colors">
                     <span class="lang-es inline">🌱 Mecenazgo</span>
                     <span class="lang-en inline">🌱 Patronage</span>
                 </a>
                 <a href="../hombre_barba_blanca/index.html" class="hover:text-mint-vibrant transition-colors">
-                    <span class="lang-es inline">👨‍🦳 El Barba Blanca</span>
+                    <span class="lang-es inline">👨‍🦳 Barba Blanca</span>
                     <span class="lang-en inline">👨‍🦳 White Beard</span>
                 </a>
                 <a href="../../kangen_water/index.html" class="hover:text-cyan-400 text-cyan-300">
@@ -352,7 +374,7 @@
                 <span class="lang-en">This is what was said on September 19, 2026 in this talk.</span>
             </p>
 
-            <p class="text-sm md:text-base text-offwhite/70 font-light leading-relaxed max-w-2xl mx-auto mb-12">
+            <p class="text-sm md:text-base text-offwhite/70 font-light leading-relaxed max-w-2xl mx-auto mb-8">
                 <span class="lang-es">
                     Impartida por la ponente <strong>Gen-la Kelsang Dekyong</strong> en Madrid. 
                     Un recordatorio lúcido de que la serenidad no es un fruto azaroso de las circunstancias exteriores, sino una conquista de la mente.
@@ -363,25 +385,35 @@
                 </span>
             </p>
 
-            <!-- Personal Author Declaration & Books Box -->
+            <!-- DIRECT ACCESS TO THE HEART OF THE TALK (THE SPOKEN WORDS) -->
+            <div class="mb-12 flex flex-wrap justify-center gap-4">
+                <a href="#palabras-charla" class="px-8 py-4 rounded-full bg-gradient-to-r from-gold via-amber-200 to-gold text-obsidian font-serif font-bold text-sm md:text-base tracking-wide shadow-2xl shadow-gold/30 hover:scale-105 hover:shadow-gold/50 transition-all flex items-center gap-3 border border-white/30">
+                    <i class="fa-solid fa-scroll text-obsidian text-lg"></i>
+                    <span class="lang-es inline">Acceso directo a las Palabras de la Charla (El Corazón del Encuentro)</span>
+                    <span class="lang-en inline">Direct Access to the Words of the Talk (Heart of the Gathering)</span>
+                    <i class="fa-solid fa-arrow-down text-xs"></i>
+                </a>
+            </div>
+
+            <!-- Reflection & Works by A Glimpse of Light into the Darkness -->
             <div class="glass-card glass-card-gold p-8 md:p-12 rounded-[2.5rem] text-left mb-12 shadow-2xl relative">
                 <div class="flex items-center gap-3 text-gold text-xs uppercase tracking-[3px] font-bold mb-4">
                     <i class="fa-solid fa-feather-pointed"></i>
-                    <span class="lang-es inline">Declaración y Obras de FJ Bañares</span>
-                    <span class="lang-en inline">Statement & Works by FJ Bañares</span>
+                    <span class="lang-es inline">Reflexión y Obras de A Glimpse of Light into the Darkness</span>
+                    <span class="lang-en inline">Reflection & Works by A Glimpse of Light into the Darkness</span>
                 </div>
                 <h3 class="font-serif italic text-2xl md:text-3xl text-white mb-4">
-                    <span class="lang-es">«Durante años he promovido esta convicción: la felicidad es una decisión interna que no depende del exterior»</span>
-                    <span class="lang-en">"For years I have promoted this conviction: happiness is an internal decision that does not depend on the exterior"</span>
+                    <span class="lang-es">«Durante años se ha promovido esta convicción: la felicidad es una decisión interna que no depende del exterior»</span>
+                    <span class="lang-en">"For years this conviction has been championed: happiness is an internal decision that does not depend on the exterior"</span>
                 </h3>
                 <p class="text-offwhite/85 font-light leading-relaxed mb-6 text-sm md:text-base">
                     <span class="lang-es">
                         No existe acontecimiento exterior, turbulencia económica o contratiempo mundano que tenga la facultad innata de arrebatarte la paz interior si tu propia mente no capitula. 
-                        Asistir a esta ponencia fue constatar cómo la sabiduría intemporal confirma esta misma verdad que he volcado en mis dos libros principales:
+                        Asistir a esta ponencia fue constatar cómo la sabiduría intemporal abraza esta misma verdad, desarrollada en profundidad en las obras de <strong>A Glimpse of Light into the Darkness</strong>:
                     </span>
                     <span class="lang-en">
                         No outer event, economic storm, or worldly friction holds the innate power to strip away your inner peace unless your own mind surrenders. 
-                        Attending this talk was a moving validation of how timeless wisdom confirms this very truth, which I have poured into my two foundational books:
+                        Attending this talk was a moving validation of how timeless wisdom embraces this very truth, developed in depth in the works of <strong>A Glimpse of Light into the Darkness</strong>:
                     </span>
                 </p>
 
@@ -396,7 +428,7 @@
                             <div>
                                 <span class="font-serif text-white font-bold text-base block">El Libro de Jesús</span>
                                 <span class="text-xs text-gold/90 block">librojesus.pazaresosset.es</span>
-                                <span class="text-[11px] text-white/50 block">La vía del amor consciente y el reino interior</span>
+                                <span class="text-[11px] text-white/50 block">A Glimpse of Light into the Darkness • El reino interior</span>
                             </div>
                         </div>
                         <i class="fa-solid fa-arrow-up-right-from-square text-sm text-gold/70 group-hover:text-gold transition-colors"></i>
@@ -411,7 +443,7 @@
                             <div>
                                 <span class="font-serif text-white font-bold text-base block">El Libro del Karma</span>
                                 <span class="text-xs text-gold/90 block">karma.pazaresosset.es</span>
-                                <span class="text-[11px] text-white/50 block">Causa, efecto y trascendencia del sufrimiento</span>
+                                <span class="text-[11px] text-white/50 block">A Glimpse of Light into the Darkness • Causa y efecto</span>
                             </div>
                         </div>
                         <i class="fa-solid fa-arrow-up-right-from-square text-sm text-gold/70 group-hover:text-gold transition-colors"></i>
@@ -421,20 +453,118 @@
 
             <!-- Navigation buttons -->
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="#infografias" class="btn-gold px-8 py-4 rounded-full font-bold text-xs tracking-[2px] uppercase inline-flex items-center gap-2">
-                    <i class="fa-solid fa-images"></i>
-                    <span class="lang-es inline">Ver las 9 Láminas & Ensayos</span>
-                    <span class="lang-en inline">Explore the 9 Slides & Essays</span>
+                <a href="#palabras-charla" class="btn-gold px-8 py-4 rounded-full font-bold text-xs tracking-[2px] uppercase inline-flex items-center gap-2 shadow-lg shadow-gold/20">
+                    <i class="fa-solid fa-scroll"></i>
+                    <span class="lang-es inline">Las Palabras de la Charla</span>
+                    <span class="lang-en inline">The Spoken Words</span>
                 </a>
-                <a href="#transcripcion" class="btn-outline-gold px-8 py-4 rounded-full font-bold text-xs tracking-[2px] uppercase inline-flex items-center gap-2">
-                    <i class="fa-solid fa-book-open"></i>
-                    <span class="lang-es inline">Leer la Charla Completa</span>
-                    <span class="lang-en inline">Read the Full Talk</span>
+                <a href="#video-charla" class="btn-outline-gold px-8 py-4 rounded-full font-bold text-xs tracking-[2px] uppercase inline-flex items-center gap-2">
+                    <i class="fa-brands fa-youtube text-red-500"></i>
+                    <span class="lang-es inline">Vídeo Grabación (Acceso Privado)</span>
+                    <span class="lang-en inline">Recorded Video (Private Access)</span>
+                </a>
+                <a href="#infografias" class="btn-outline-gold px-8 py-4 rounded-full font-bold text-xs tracking-[2px] uppercase inline-flex items-center gap-2">
+                    <i class="fa-solid fa-images"></i>
+                    <span class="lang-es inline">9 Láminas & Ensayos</span>
+                    <span class="lang-en inline">9 Slides & Essays</span>
                 </a>
             </div>
 
         </div>
     </header>
+
+    <!-- SECTION: PRIVATE YOUTUBE VIDEO & GMAIL ACCESS REQUEST -->
+    <section id="video-charla" class="py-16 px-6 lg:px-12 border-b border-white/5 bg-gradient-to-b from-black/50 via-forest-deep/30 to-transparent">
+        <div class="max-w-5xl mx-auto">
+            <div class="glass-card glass-card-gold rounded-[2.5rem] p-6 sm:p-10 md:p-12 border-gold/30 shadow-2xl relative overflow-hidden">
+                <!-- Ambient Glow Behind -->
+                <div class="absolute -top-24 -right-24 w-72 h-72 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="text-center max-w-3xl mx-auto space-y-3 mb-8">
+                    <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-950/50 border border-red-500/30 text-red-400 text-xs font-semibold tracking-wider uppercase">
+                        <i class="fa-brands fa-youtube text-red-500"></i>
+                        <span class="lang-es inline">Grabación Original • Acceso Privado</span>
+                        <span class="lang-en inline">Original Recording • Private Access</span>
+                    </span>
+                    <h3 class="font-serif italic text-2xl sm:text-3xl md:text-4xl text-white">
+                        <span class="lang-es">Vídeo de la Ponencia en Madrid</span>
+                        <span class="lang-en">Video of the Talk in Madrid</span>
+                    </h3>
+                    <p class="text-xs sm:text-sm text-offwhite/75 font-light leading-relaxed">
+                        <span class="lang-es">
+                            Esta grabación en vídeo se encuentra alojada en YouTube bajo acceso privado. Si deseas visualizarla íntegramente, introduce abajo tu cuenta de <strong>Gmail</strong> y te habilitaremos los permisos de acceso individuales para que puedas verla.
+                        </span>
+                        <span class="lang-en">
+                            This video recording is hosted privately on YouTube. If you wish to watch it in full, please submit your <strong>Gmail</strong> account below and we will personally grant you viewing permissions on YouTube.
+                        </span>
+                    </p>
+                </div>
+
+                <!-- Responsive Embedded Video Player Container -->
+                <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/15 bg-black mb-8 group">
+                    <iframe class="w-full h-full"
+                        src="https://www.youtube.com/embed/-qYHMUGW_N4?rel=0&modestbranding=1"
+                        title="Gen-la Kelsang Dekyong - Paz Mental en Tiempos Difíciles"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <!-- Gmail Access Request Form -->
+                <div class="max-w-2xl mx-auto p-6 sm:p-8 rounded-2xl bg-black/60 border border-gold/30">
+                    <h4 class="font-serif text-lg text-gold font-bold mb-2 text-center flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-key"></i>
+                        <span class="lang-es inline">Solicitar Permiso de Visualización con tu Gmail</span>
+                        <span class="lang-en inline">Request Viewing Permission with your Gmail</span>
+                    </h4>
+                    <p class="text-xs text-white/60 text-center mb-5 font-light">
+                        <span class="lang-es">Solo las cuentas autorizadas por Google pueden reproducir el vídeo privado. Te concederemos acceso individual:</span>
+                        <span class="lang-en">Only Google-authorized accounts can play the private video. We will grant you individual access:</span>
+                    </p>
+
+                    <form id="gmail-access-form" onsubmit="handleGmailRequest(event)" class="space-y-4">
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <div class="relative flex-1">
+                                <i class="fa-brands fa-google absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-sm"></i>
+                                <input type="email" id="gmail-input" required placeholder="tu-correo@gmail.com"
+                                    class="w-full pl-11 pr-4 py-3.5 rounded-xl bg-white/5 border border-white/15 focus:border-gold focus:outline-none text-white text-sm placeholder:text-white/30 transition-all">
+                            </div>
+                            <button type="submit"
+                                class="px-6 py-3.5 rounded-xl bg-gold hover:bg-gold-light text-obsidian font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg shadow-gold/20 shrink-0">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                <span class="lang-es inline">Pedir Permiso</span>
+                                <span class="lang-en inline">Request Access</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between flex-wrap gap-2 text-[11px] text-white/40 pt-1">
+                            <span><i class="fa-solid fa-shield-halved text-gold/60 mr-1"></i> Respeto total a tu privacidad, sin spam.</span>
+                            <a id="whatsapp-video-link" href="https://wa.me/34687377537?text=Hola,%20solicito%20acceso%20al%20vídeo%20privado%20de%20la%20charla%20para%20mi%20correo%20de%20Gmail:" target="_blank"
+                                class="text-mint-vibrant hover:underline flex items-center gap-1">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <span class="lang-es inline">O pedir al instante por WhatsApp</span>
+                                <span class="lang-en inline">Or request instantly via WhatsApp</span>
+                            </a>
+                        </div>
+                    </form>
+
+                    <!-- Success / Confirmation Notice (Hidden by default) -->
+                    <div id="gmail-success-alert" class="hidden mt-4 p-4 rounded-xl bg-forest-emerald/60 border border-mint-vibrant/60 text-center space-y-2">
+                        <div class="text-mint-vibrant text-xl"><i class="fa-solid fa-circle-check"></i></div>
+                        <h5 class="text-white font-bold text-sm">
+                            <span class="lang-es inline">¡Solicitud Registrada!</span>
+                            <span class="lang-en inline">Request Registered!</span>
+                        </h5>
+                        <p class="text-xs text-white/80 font-light" id="gmail-feedback-text">
+                            <span class="lang-es">Hemos abierto tu correo para remitir la petición. En cuanto habilitemos tu Gmail en YouTube, podrás reproducir el vídeo directamente aquí.</span>
+                            <span class="lang-en">We have opened your email client to dispatch the request. Once your Gmail is authorized on YouTube, you will be able to play the video directly here.</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <!-- SECTION: 9 INFOGRAPHICS WITH CLICK-TO-READ EXTENSIVE ESSAY MODAL -->
     <section id="infografias" class="py-24 px-6 lg:px-12 border-b border-white/5 bg-forest-deep/30">
@@ -634,25 +764,26 @@
         </div>
     </section>
 
-    <!-- SECTION: THE FULL TALK TRANSCRIPT (BEAUTIFULLY FORMATTED WITH TITLES AND HIGHLIGHTS) -->
-    <main id="transcripcion" class="py-24 px-6 lg:px-12 max-w-4xl mx-auto space-y-20">
+    <!-- SECTION: THE LIVING WORDS OF THE TALK (SPOKEN WORDS / HEART OF THE MEETING) -->
+    <main id="palabras-charla" class="py-24 px-6 lg:px-12 max-w-4xl mx-auto space-y-20 relative">
+        <a id="transcripcion" class="absolute -top-24"></a>
         
         <div class="text-center pb-8 border-b border-white/10 space-y-4">
             <span class="chapter-pill">
-                <i class="fa-solid fa-align-left text-gold"></i>
-                <span class="lang-es inline">El Mensaje Íntegro</span>
-                <span class="lang-en inline">The Full Message</span>
+                <i class="fa-solid fa-scroll text-gold"></i>
+                <span class="lang-es inline">El Corazón del Encuentro</span>
+                <span class="lang-en inline">The Heart of the Gathering</span>
             </span>
             <h2 class="font-serif italic text-4xl md:text-5xl text-white">
-                <span class="lang-es">La Enseñanza Completa de la Conferencia</span>
-                <span class="lang-en">The Complete Teaching of the Talk</span>
+                <span class="lang-es">Las Palabras de la Charla</span>
+                <span class="lang-en">The Living Words of the Talk</span>
             </h2>
             <p class="text-xs text-gold/80 font-serif italic max-w-xl mx-auto">
                 <span class="lang-es">
-                    Preservando fielmente la secuencia, meditaciones y reflexiones compartidas en la tarde del 19 de septiembre en Madrid.
+                    El mensaje vivo tal como fue compartido en la tarde del 19 de septiembre en Madrid, con sus meditaciones y reflexiones paso a paso.
                 </span>
                 <span class="lang-en">
-                    Faithfully preserving the sequence, meditations, and insights shared on the evening of September 19 in Madrid.
+                    The living message exactly as shared on the evening of September 19 in Madrid, with its step-by-step meditations and reflections.
                 </span>
             </p>
         </div>
@@ -1301,10 +1432,33 @@
         <!-- Modal Content: Two Responsive Columns (Image Left, Essay Right) -->
         <div class="w-full max-w-6xl h-[80vh] grid grid-cols-1 lg:grid-cols-12 gap-6 overflow-hidden" onclick="event.stopPropagation()">
             
-            <!-- Left: High-Res Image View -->
-            <div class="lg:col-span-5 h-full flex items-center justify-center bg-black/60 rounded-2xl border border-white/10 p-2 overflow-hidden">
-                <img id="modal-img" src="" alt="Infografía ampliada"
-                    class="max-w-full max-h-full object-contain rounded-xl shadow-2xl">
+            <!-- Left: High-Res Image View with Expand & Download Actions -->
+            <div class="lg:col-span-5 h-full flex flex-col justify-between bg-black/70 rounded-2xl border border-white/10 p-3 overflow-hidden">
+                <div class="relative flex-1 w-full flex items-center justify-center cursor-zoom-in group overflow-hidden rounded-xl bg-black/40" onclick="openFullscreenImage()" title="Pulsa para ampliar en pantalla completa">
+                    <img id="modal-img" src="" alt="Infografía ampliada"
+                        class="max-w-full max-h-[58vh] object-contain rounded-xl shadow-2xl transition-transform duration-300 group-hover:scale-[1.03]">
+                    <div class="absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-black/80 border border-gold/40 text-gold-light text-[11px] font-medium flex items-center gap-1.5 shadow-lg pointer-events-none group-hover:bg-gold group-hover:text-black transition-colors">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        <span class="lang-es inline">Toca para ampliar</span>
+                        <span class="lang-en inline">Tap to enlarge</span>
+                    </div>
+                </div>
+
+                <!-- Action Bar: Download Button & Fullscreen Trigger -->
+                <div class="w-full pt-3 mt-2 border-t border-white/10 flex items-center gap-2">
+                    <a id="modal-download-btn" href="" download=""
+                        class="flex-1 py-2.5 px-3 rounded-xl bg-gold/15 hover:bg-gold text-gold hover:text-black font-semibold text-xs transition-colors flex items-center justify-center gap-2 border border-gold/30">
+                        <i class="fa-solid fa-download"></i>
+                        <span class="lang-es inline">Descargar Lámina</span>
+                        <span class="lang-en inline">Download Slide</span>
+                    </a>
+                    <button type="button" onclick="openFullscreenImage()"
+                        class="py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs transition-colors flex items-center gap-2 border border-white/15">
+                        <i class="fa-solid fa-expand"></i>
+                        <span class="lang-es inline">Ampliar</span>
+                        <span class="lang-en inline">Expand</span>
+                    </button>
+                </div>
             </div>
 
             <!-- Right: The Complete In-depth Essay -->
@@ -1318,6 +1472,37 @@
 
         <div class="mt-3 text-xs text-white/40 uppercase tracking-widest">
             Haz clic fuera o pulsa ESC para cerrar
+        </div>
+    </div>
+
+    <!-- FULLSCREEN HIGH-RES IMAGE LIGHTBOX -->
+    <div id="image-fullscreen-modal"
+        class="fixed inset-0 z-[70] bg-black/98 backdrop-blur-2xl flex flex-col items-center justify-center p-4 sm:p-6"
+        onclick="closeFullscreenImage()">
+        
+        <!-- Top Toolbar -->
+        <div class="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 flex items-center gap-3" onclick="event.stopPropagation()">
+            <a id="fs-download-btn" href="" download=""
+                class="px-4 py-2 rounded-full bg-gold/20 hover:bg-gold text-gold hover:text-black border border-gold/40 text-xs font-semibold flex items-center gap-2 transition-all shadow-xl">
+                <i class="fa-solid fa-download"></i>
+                <span class="lang-es inline">Descargar Alta Resolución</span>
+                <span class="lang-en inline">Download High-Res</span>
+            </a>
+            <button onclick="closeFullscreenImage()"
+                class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white text-lg flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="relative max-w-[95vw] max-h-[90vh] flex items-center justify-center" onclick="event.stopPropagation()">
+            <img id="fullscreen-img" src="" alt="Lámina en pantalla completa"
+                class="max-w-full max-h-[88vh] object-contain rounded-xl shadow-2xl cursor-zoom-out"
+                onclick="closeFullscreenImage()">
+        </div>
+
+        <div class="absolute bottom-4 text-xs text-white/50 pointer-events-none">
+            <span class="lang-es inline">Haz clic en la imagen o pulsa ESC para volver</span>
+            <span class="lang-en inline">Click image or press ESC to return</span>
         </div>
     </div>
 
@@ -1579,9 +1764,23 @@
             const modal = document.getElementById('essay-modal');
             const img = document.getElementById('modal-img');
             const badge = document.getElementById('modal-badge-number');
+            const dlBtn = document.getElementById('modal-download-btn');
+            const fsDlBtn = document.getElementById('fs-download-btn');
+            const fsImg = document.getElementById('fullscreen-img');
 
-            img.src = `paz_tiempos dificiles${slideNum}.png`;
+            const imgSrc = `paz_tiempos dificiles${slideNum}.png`;
+            img.src = imgSrc;
+            if (fsImg) fsImg.src = imgSrc;
             badge.innerText = slideNum;
+
+            if (dlBtn) {
+                dlBtn.href = imgSrc;
+                dlBtn.download = `lamina-paz-mental-${slideNum}.png`;
+            }
+            if (fsDlBtn) {
+                fsDlBtn.href = imgSrc;
+                fsDlBtn.download = `lamina-paz-mental-${slideNum}.png`;
+            }
 
             renderModalContent(slideNum);
 
@@ -1601,9 +1800,23 @@
             contentEl.innerHTML = lang === 'es' ? essay.bodyEs : essay.bodyEn;
         }
 
+        function openFullscreenImage() {
+            if (!currentActiveSlide) return;
+            const fsModal = document.getElementById('image-fullscreen-modal');
+            const fsImg = document.getElementById('fullscreen-img');
+            if (fsImg) fsImg.src = `paz_tiempos dificiles${currentActiveSlide}.png`;
+            if (fsModal) fsModal.classList.add('active');
+        }
+
+        function closeFullscreenImage() {
+            const fsModal = document.getElementById('image-fullscreen-modal');
+            if (fsModal) fsModal.classList.remove('active');
+        }
+
         function closeEssayModalDirect() {
+            closeFullscreenImage();
             const modal = document.getElementById('essay-modal');
-            modal.classList.remove('active');
+            if (modal) modal.classList.remove('active');
             document.body.style.overflow = 'auto';
             currentActiveSlide = null;
         }
@@ -1614,11 +1827,49 @@
             }
         }
 
+        function handleGmailRequest(e) {
+            e.preventDefault();
+            const emailInput = document.getElementById('gmail-input');
+            const email = emailInput ? emailInput.value.trim() : '';
+            if (!email) return;
+
+            const subject = encodeURIComponent("Solicitud de Acceso al Vídeo Privado en YouTube (Gen-la Dekyong)");
+            const body = encodeURIComponent(`Hola,\n\nSolicito permiso para visualizar la grabación de la ponencia de Gen-la Dekyong en Madrid.\n\nMi cuenta de Gmail para otorgar acceso en YouTube es:\n${email}\n\nMuchas gracias.`);
+            
+            // Dispatch via mailto
+            window.location.href = `mailto:javier@saludequilibrio.es?subject=${subject}&body=${body}`;
+
+            // Show feedback notice
+            const alertBox = document.getElementById('gmail-success-alert');
+            if (alertBox) {
+                alertBox.classList.remove('hidden');
+            }
+        }
+
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeEssayModalDirect();
+            if (e.key === 'Escape') {
+                const fsModal = document.getElementById('image-fullscreen-modal');
+                if (fsModal && fsModal.classList.contains('active')) {
+                    closeFullscreenImage();
+                } else {
+                    closeEssayModalDirect();
+                }
+            }
         });
 
-        document.addEventListener('DOMContentLoaded', initLanguage);
+        document.addEventListener('DOMContentLoaded', () => {
+            initLanguage();
+
+            // Dynamic WhatsApp message with entered Gmail
+            const gmailInput = document.getElementById('gmail-input');
+            const waLink = document.getElementById('whatsapp-video-link');
+            if (gmailInput && waLink) {
+                gmailInput.addEventListener('input', (e) => {
+                    const val = e.target.value.trim();
+                    waLink.href = `https://wa.me/34687377537?text=${encodeURIComponent('Hola, solicito acceso al vídeo privado de la charla en YouTube para mi cuenta de Gmail: ' + (val || '[escribe aquí tu gmail]'))}`;
+                });
+            }
+        });
     </script>
 </body>
 
